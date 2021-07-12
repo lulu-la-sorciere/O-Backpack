@@ -23,6 +23,7 @@ Anonyme > backpackeurs - couchsurfing >Admin >Superadmin
 | En tant que | Je veux également| Afin de (si besoin/nécessaire) |
 |--|--|--|
 | connecté | pouvoir me connecter | afin de voir et/ou modifier mon profil |
+| connecté | pouvoir me connecter | afin de voir les profils d'autres membres |
 | connecté | pouvoir participer/commenter le forum | afin d'échanger avec d'autres backpackeurs|
 | connecté | pouvoir créer des articles de blog | afin de partager l'experience/vécu/informations |
 | connecté | pouvoir commenter les blogs | afin de partager/apporter vécu/exp |
@@ -34,6 +35,7 @@ Anonyme > backpackeurs - couchsurfing >Admin >Superadmin
 
 | En tant que | Je veux également| Afin de (si besoin/nécessaire) |
 |--|--|--|
+| connecté | pouvoir me connecter | afin de voir les profils d'autres membres |
 | connecté | pouvoir me connecter | afin de voir et/ou modifier mon profil |
 | connecté | pouvoir acceder au formulaire | afin de proposer le gîte et/ou le couvert |
 | connecté | pouvoir acceder au t'chat privé | afin de communiquer avec d'autres membres|
