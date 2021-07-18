@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/location", name="location_")
+ * @Route("/", name="location_")
  */
 
 class LocationController extends AbstractController
