@@ -17,16 +17,26 @@ main {
     margin: 2em auto;
 }
 
+h2 {
+    background-color: #D87151;
+    padding: 0.8em;
+    width: 55%;
+    border-radius: 5px;
+    border: 1px solid #EEBC69;
+    margin: auto;
+}
+
 /* header */
 
 header {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 #logomenu {
-    max-height: 100px;
+    max-height: 80px;
     padding-left: 1em;
 }
 
@@ -52,7 +62,7 @@ a {
     flex-wrap: wrap;
     justify-content: flex-end;
     align-content: center;
-    margin-left: 1em;
+    margin-right: 2em;
     margin-top: 2.5em;
 }
 
@@ -62,7 +72,7 @@ a {
     flex-direction: column;
     justify-content: center;
     padding: 5px;
-    margin-top: 1em;
+    margin-top: 0.5em;
 }
 
 .bar {
@@ -78,7 +88,6 @@ a {
 .nav-menu {
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-end;
     align-items: center;
 }
 
@@ -106,7 +115,7 @@ a {
     .nav-menu {
         position: fixed;
         right: -100%;
-        top: 5rem;
+        top: 2rem;
         flex-direction: column;
         background-color: #32AAAA;
         width: 100%;
@@ -122,7 +131,7 @@ a {
     }
 
     .nav-item {
-        margin: 2.5rem 0;
+        margin: 2rem 0;
     }
 
     .hamburger {
@@ -142,6 +151,20 @@ a {
         transform: translateY(-8px) rotate(-45deg);
     }
 
+}
+
+/* footer */
+
+footer {
+    font-size: 0.8em;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #D87151;
+    text-align: center;
+    justify-content: center;
+    padding: 0.5em 0;
+    border-top: 1px solid #EEBC69;
 }
 
 /* home */
@@ -182,4 +205,31 @@ h3 {
 
 .postright {
     width: 70%;
+    text-align: left;
+    padding-left: 0.5em;
+}
+
+h4 {
+    color: #EEBC69;
+    margin-bottom: 0.2em;
+}
+
+/* continent */
+
+.continentul {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.continentli {
+    width: 47%;
+    background-color: #32AAAA;
+    border-radius: 7px;
+    border: 2px groove #EEBC69;
+    margin: 0.3em;
+    padding: 2em;
+}
+
+.continentall {
+    width: 100%;
 }
