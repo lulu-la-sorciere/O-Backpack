@@ -1,16 +1,144 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;1,400&display=swap');
+
 /* general */
 
 html {
     background-color: #155472;
     color: #F7F2EB;
+    font-size: 1em;
+    font-family: 'Roboto', sans-serif;
 }
 
-/* logo */
+main {
+    max-width: 80%;
+    text-align: center;
+    margin-top: 2em;
+}
+
+/* header */
+
+header {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
 
 #logomenu {
     max-height: 100px;
 }
 
-/* mobile nav */
+/* nav */
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color:  #F7F2EB;
+}
+
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-content: center;
+    margin-left: 1em;
+    margin-top: 2.5em;
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5px;
+    margin-top: 1em;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: #EEBC69;
+}
+
+.nav-menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.nav-item {
+    margin-left: 2em;
+}
+
+.nav-link{
+    font-size: 3em;
+    font-weight: 400;
+    color: #EEBC69;
+}
+
+.nav-link:hover{
+    color: #F7F2EB;
+}
+
+.nav-ul a:hover {
+    text-decoration: none;
+    color: #EEBC69;
+    transition: 0.3s;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .nav-menu {
+        position: fixed;
+        right: -100%;
+        top: 5rem;
+        flex-direction: column;
+        background-color: #32AAAA;
+        width: 100%;
+        border-radius: 10px;
+        text-align:right;
+        transition: 0.3s;
+        box-shadow:
+            0 10px 27px rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-item {
+        margin: 2.5rem 0;
+    }
+
+    .hamburger {
+        display: block;
+        cursor: pointer;
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+}
