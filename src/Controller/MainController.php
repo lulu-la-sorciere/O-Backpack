@@ -8,12 +8,12 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/", name="main")
- * 
+ *
  */
 class MainController extends AbstractController
 {
     /**
-     * @Route("home", name="home")
+     * @Route("", name="home")
      *
      * @return Response
      */
