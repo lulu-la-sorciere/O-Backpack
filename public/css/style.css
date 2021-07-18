@@ -11,9 +11,10 @@ html {
 }
 
 main {
-    max-width: 80%;
+    display: block;
+    max-width: 90%;
     text-align: center;
-    margin-top: 2em;
+    margin: 2em auto;
 }
 
 /* header */
@@ -26,6 +27,7 @@ header {
 
 #logomenu {
     max-height: 100px;
+    padding-left: 1em;
 }
 
 /* nav */
@@ -100,7 +102,6 @@ a {
     transition: 0.3s;
 }
 
-
 @media only screen and (max-width: 768px) {
     .nav-menu {
         position: fixed;
@@ -141,4 +142,44 @@ a {
         transform: translateY(-8px) rotate(-45deg);
     }
 
+}
+
+/* home */
+
+h3 {
+    font-style: italic;
+    padding: 1em;
+}
+
+.threelastposts {
+    background-color: #32AAAA;
+    border-radius: 7px;
+    border: 2px groove #F7F2EB;
+    margin-top: 1em;
+}
+
+.lastposts {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1em;
+    align-items: center;
+    margin: 1em auto;
+}
+
+.post {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #32AAAA;
+    border-radius: 7px;
+    border: 2px groove #EEBC69;
+    margin-top: 1em;
+    padding: 1em;
+}
+
+.postleft {
+    width: 30%;
+}
+
+.postright {
+    width: 70%;
 }
