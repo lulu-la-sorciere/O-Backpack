@@ -11,7 +11,7 @@
  
     <ul class="continentul">
         {% for continent in location_continent %}
-            <li class="continentli"><a href="">{{ continent.name}}</a></li>
+            <li class="continentli"><a href="{{ path('location_detail', {id:continent.id}) }}">{{ continent.name}}</a></li>
         {% endfor %}
     </ul>
  
