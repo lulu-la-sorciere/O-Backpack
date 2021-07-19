@@ -6,14 +6,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-<<<<<<< HEAD
-
-=======
-/**
- * @Route("/", name="main_")
- *
- */
->>>>>>> 6681b390a5eac54d33cd45530222f8ea797fd716
 class MainController extends AbstractController
 {
     /**
