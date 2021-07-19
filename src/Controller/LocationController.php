@@ -26,40 +26,12 @@ class LocationController extends AbstractController
         ]);
     }
 
-    /*
-    /**
-     * @Route("continent/{id}", name="detail")
-     *
-     */
-    public function detail(Continent $continent){
-         
-        return $this->render('location/countries.html.twig',[
-            'continent' => $continent,
-            'countries'=>$continent->getCountries(),
-        ]);
-    }
     /**
      * List of countries according to continent
-     * 
-     * @Route("country", name="country")
-     */
-    /*public function show(CountryRepository $country): Response
-    {
-        return $this->render('location/country.html.twig', [
-            'country' => $country
-        ]);
-    }
-<<<<<<< HEAD
-    */
-=======
->>>>>>> 2c5bd52f25dc3cdab218b122b00402460cc6ee8b
-
-    /**
      * @Route("continent/{id}", name="detail")
      *
      */
-<<<<<<< HEAD
-    public function detail(Continent $continent)
+    public function detail ( Continent $continent )
     {
         return $this->render('location/countries.html.twig', [
             'continent' => $continent,
@@ -67,12 +39,3 @@ class LocationController extends AbstractController
         ]);
     }
 }
-=======
-    public function detail(Continent $continent){
-        return $this->render('location/countries.html.twig',[
-            'continent' => $continent,
-            'countries'=>$continent->getCountries(),
-        ]);
-    }
-}
->>>>>>> 2c5bd52f25dc3cdab218b122b00402460cc6ee8b

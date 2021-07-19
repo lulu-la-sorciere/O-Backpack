@@ -1,57 +1,56 @@
 <!DOCTYPE html>
-<html lang="fr">
-
+<html lang="fr"></html>
 <html>
 	<head>
 		<meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 		<title>
-			{% block title %}O'Backpack {% block subtitle %} {% endblock %} {% endblock %}
+			{% block title %}O'Backpack
+				{% block subtitle %}{% endblock %}
+			{% endblock %}
 		</title>
 
 		{% block stylesheets %}
-            <link rel="stylesheet" href="{{ asset('css/style.css')}}">
-        {% endblock %}
+			<link rel="stylesheet" href="{{ asset('css/style.css')}}">
+		{% endblock %}
 
-<<<<<<< HEAD
-			{% block javascripts %}
-=======
 		{% block javascripts %}
-<<<<<<< HEAD
-            <script defer src="{{ asset('js/style.js') }}"></script>
-=======
->>>>>>> 2df48921927ca3311e27665453a2007953cd346f
-            <script defer src="{{ asset('js/style.js')}}"></script>
->>>>>>> 2c5bd52f25dc3cdab218b122b00402460cc6ee8b
-        {% endblock %}
+
+			<script defer src="{{ asset('js/style.js')}}"></script>
+
+		{% endblock %}
 	</head>
 
 	<body>
 
-        {% set currentPage = app.request.get('_route') %}
+		{% set currentPage = app.request.get('_route') %}
 
-        {% block header %}
-           {# {% set currentPage = app.request.get('_route') %} #}
+		{% block header %}
+			{# {% set currentPage = app.request.get('_route') %} #}
 
-		    {% include "partials/_nav.html.twig" %}
-		    {% include "partials/_flash.html.twig" %}
+			{% include "partials/_nav.html.twig" %}
+			{% include "partials/_flash.html.twig" %}
 
-        {% endblock %}
+		{% endblock %}
 
-        <main>
-		    {% block content %}{% endblock %}
-        </main>
+		<main>
+			{% block content %}{% endblock %}
+		</main>
 
-            {% block footer %}
-                <footer>
-                    <ul class="ulfooter">
-                        <li class="lifooter"><a href="">Les super nanas : qui sommes-nous?</a><li>
-                        <li class="lifooter">Copyright 2021 Tous droits réservés</a> - <a href="">Images Rawpixel</a><li>
-                    </ul>
-                </footer>
-            {% endblock %}
-        
-	</body>
-
-</html>
+		{% block footer %}
+			<footer>
+				<ul class="ulfooter">
+					<li class="lifooter">
+						<a href="">Les super nanas : qui sommes-nous?</a>
+					</li>
+					<li></li>
+					<li class="lifooter">Copyright 2021 Tous droits réservés</li>
+				</a>
+				-
+				<a href="">Images Rawpixel</a>
+				<li></li>
+			</ul>
+		</body>
+	</html>
+</footer>{% endblock %}</body></html>
