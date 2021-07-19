@@ -1,0 +1,15 @@
+{% extends "base.html.twig" %}
+
+{% block subtitle %}  Informations  {% endblock %}
+
+{% block content %}
+<a href="">Matériel</a>
+<a href=""> Météo</a>
+
+<div>Langue : {{ country.language}}</div>
+<div>Monnaie : {{ country.money }} </div>
+
+<div>Vaccin : {{ country.vaccine }} </div>
+<div>Administratif : </div>
+<div>Evenements : {{ country.events }} </div>
+{% endblock %}

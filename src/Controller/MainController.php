@@ -24,7 +24,7 @@ class MainController extends AbstractController
         ]);
     }
 
-    /**
+     /**
      * 
      * @Route("team", name="team")
      *

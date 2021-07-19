@@ -27,16 +27,17 @@ class LocationController extends AbstractController
     }
 
     /**
+     * 
      * @Route("continent/{id}", name="detail")
      *
      */
     public function detail(Continent $continent){
-         
         return $this->render('location/countries.html.twig',[
             'continent' => $continent,
-            'countries'=>$continent->getCountries(),
+            'countries'=> $continent->getCountries(),
         ]);
     }
+
     /**
      * List of countries according to continent
      * 
@@ -48,5 +49,21 @@ class LocationController extends AbstractController
         return $this->render('location/country.html.twig', [
             'country' => $country
         ]);
+    }
+
+    /**
+     * 
+     * @Route("country/{id}/administratif", name="country_administratif")
+     * 
+     */
+    public function countryAdministratif(Country $country){
+
+        //dump('route ok');
+        return $this->render('location/administratif.html.twig',[
+                    'country' => $country,
+        ]);
+
+
+
     }
 }
