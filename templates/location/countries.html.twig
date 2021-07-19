@@ -6,7 +6,17 @@
 
  	<div class="imageandtitle">
         <img src="" alt="image monde" class="continentspec">
-        <h2>Choisisssez un pays</h2>
+        <h2>Choisissez un pays</h2>
     </div>
 	liste des pays par continent
+
+
+     <ul class="continentul">
+     
+        {% for country in countries %}
+             
+            <li class="continentli"><a href="">{{ country.name }}</a></li>
+        {% endfor %}
+    </ul>
+
 {% endblock %}
