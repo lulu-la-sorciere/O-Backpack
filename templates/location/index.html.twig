@@ -11,7 +11,11 @@
  
     <ul class="continentul">
         {% for continent in location_continent %}
+<<<<<<< HEAD
             <li class="continentli"><a href="{{ path('location_country', {id:continent.id}) }}">{{ continent.name}}</a></li>
+=======
+            <li class="continentli"><a href="{{ path('location_detail', {id:continent.id}) }}">{{ continent.name}}</a></li>
+>>>>>>> 75dd1d45ddf812065b41cabe4c71bb409f5081f9
         {% endfor %}
     </ul>
 	
