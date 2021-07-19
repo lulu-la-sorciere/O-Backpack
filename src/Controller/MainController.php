@@ -6,7 +6,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+<<<<<<< HEAD
 
+=======
+/**
+ * @Route("/", name="main_")
+ *
+ */
+>>>>>>> 6681b390a5eac54d33cd45530222f8ea797fd716
 class MainController extends AbstractController
 {
     /**
@@ -18,6 +25,19 @@ class MainController extends AbstractController
     {
         return $this->render('main/index.html.twig', [
             'title' => 'Accueil',
+        ]);
+    }
+
+     /**
+     * 
+     * @Route("team", name="team")
+     *
+     * @return void
+     */
+    public function team()
+    {
+        return $this->render('main/team.html.twig',[
+            'title' => 'Team',
         ]);
     }
 }
