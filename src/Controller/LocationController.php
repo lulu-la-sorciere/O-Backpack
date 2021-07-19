@@ -27,7 +27,7 @@ class LocationController extends AbstractController
     }
 
     /**
-     * List of countries according to continent
+     * 
      * @Route("continent/{id}", name="detail")
      *
      */
@@ -36,6 +36,18 @@ class LocationController extends AbstractController
         return $this->render('location/countries.html.twig', [
             'continent' => $continent,
             'countries' => $continent->getCountries(),
+        ]);
+    }
+
+    /**
+     * List of countries according to continent
+     * 
+     * @Route("country", name="country")
+     */
+    public function show(CountryRepository $country): Response
+    {
+        return $this->render('location/country.html.twig', [
+            'country' => $country
         ]);
     }
 }
