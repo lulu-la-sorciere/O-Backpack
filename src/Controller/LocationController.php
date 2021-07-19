@@ -19,6 +19,7 @@ class LocationController extends AbstractController
      */
     public function index(ContinentRepository $continentRepository): Response
     {
+        
         return $this->render('location/index.html.twig', [
             'location_continent' => $continentRepository->findAll(),
         ]);
