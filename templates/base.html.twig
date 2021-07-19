@@ -14,7 +14,11 @@
             <link rel="stylesheet" href="{{ asset('css/style.css')}}">
         {% endblock %}
 
+<<<<<<< HEAD
 			{% block javascripts %}
+=======
+		{% block javascripts %}
+>>>>>>> 2df48921927ca3311e27665453a2007953cd346f
             <script defer src="{{ asset('js/style.js')}}"></script>
         {% endblock %}
 	</head>
@@ -24,7 +28,7 @@
         {% set currentPage = app.request.get('_route') %}
 
         {% block header %}
-            {% set currentPage = app.request.get('_route') %}
+           {# {% set currentPage = app.request.get('_route') %} #}
 
 		    {% include "partials/_nav.html.twig" %}
 		    {% include "partials/_flash.html.twig" %}
