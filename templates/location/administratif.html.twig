@@ -3,13 +3,20 @@
 {% block subtitle %}  Informations  {% endblock %}
 
 {% block content %}
-<a href="">Matériel</a>
-<a href=""> Météo</a>
+    <div class="imageandtitle">
+        <img src="" alt="image monde" class="continentspec">
+        <h2>{{country.name}} - Administratif</h2>
+    </div>
 
-<div>Langue : {{ country.language}}</div>
-<div>Monnaie : {{ country.money }} </div>
+    <div>
+        <h3><a href="{{ path('location_country_stuff', {id:country.id}) }}">Matériel</a></h3>
+        <h3><a href=""> Météo</a></h3>
+    </div>
 
-<div>Vaccin : {{ country.vaccine }} </div>
-<div>Administratif : </div>
-<div>Evenements : {{ country.events }} </div>
+    <div>Langue : {{ country.language}}</div>
+    <div>Monnaie : {{ country.money }} </div>
+
+    <div>Vaccin : {{ country.vaccine }} </div>
+    <div>Administratif : </div>
+    <div>Evenements : {{ country.events }} </div>
 {% endblock %}
