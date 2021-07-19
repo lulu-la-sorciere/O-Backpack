@@ -51,4 +51,20 @@ class LocationController extends AbstractController
             'country' => $country
         ]);
     }
+
+    /**
+     * 
+     * @Route("country/{id}/administratif", name="country_administratif")
+     * 
+     */
+    public function countryAdministratif(Country $country){
+
+        //dump('route ok');
+        return $this->render('location/administratif.html.twig',[
+                    'country' => $country,
+        ]);
+
+
+
+    }
 }

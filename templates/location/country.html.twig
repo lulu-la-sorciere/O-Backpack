@@ -8,6 +8,11 @@
         <img src="" alt="image monde" class="continentspec">
         <h2>{{country.name}}</h2>
     </div>
+
+    <div class="administratif"><a href="{{ path('location_country_administratif', {id:country.id}) }}">Administratif</a></div>
+    <div class="meteo"><a href="">Météo</a></div>
+    <div class="events"><a href="">Evènements</a></div>
+    <div class="materiel"><a href="">Matériel</a></div>
     
     
 {% endblock %}
