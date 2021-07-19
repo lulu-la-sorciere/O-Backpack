@@ -23,7 +23,7 @@ h2 {
     width: 55%;
     border-radius: 5px;
     border: 1px solid #EEBC69;
-    margin: auto;
+    margin: auto auto 1em auto;
 }
 
 /* header */
@@ -222,11 +222,11 @@ h4 {
 }
 
 .continentli {
-    width: 47%;
+    width: 40%;
     background-color: #32AAAA;
     border-radius: 7px;
     border: 2px groove #EEBC69;
-    margin: 0.3em;
+    margin: 0.3em auto;
     padding: 2em;
 }
 

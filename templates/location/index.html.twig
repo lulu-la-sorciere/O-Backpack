@@ -8,10 +8,12 @@
         <img src="" alt="image monde" class="continentall">
         <h2>Choisisssez une zone géographique</h2>
     </div>
-
-	<ul class="continentul">
-	    <li class="continentli"><a href="">Europe</a></li>
-        <li class="continentli"><a href="">Asie</a></li>
-        <li class="continentli"><a href="">Afrique</a></li>
+ 
+    <ul class="continentul">
+        {% for continent in location_continent %}
+            <li class="continentli"><a href="">{{ continent.name}}</a></li>
+        {% endfor %}
     </ul>
+ 
+	
 {% endblock %}
