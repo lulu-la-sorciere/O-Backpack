@@ -14,7 +14,7 @@
      <ul class="continentul">
      
         {% for country in countries %}
-            <li class="continentli"><a href="{{path('location_country', {id:country.id} )}}">{{ country.name }}</a></li>
+            <li class="continentli"><a href="{{ path('location_detail', {id:continent.id}) }}">{{ country.name }}</a></li>
         {% endfor %}
     </ul>
 
