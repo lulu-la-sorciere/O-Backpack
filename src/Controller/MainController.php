@@ -6,14 +6,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/", name="main")
- * 
- */
 class MainController extends AbstractController
 {
     /**
-     * @Route("home", name="home")
+     * Method for the Homepage view
+     * @Route("", name="home")
      *
      * @return Response
      */
@@ -21,6 +18,19 @@ class MainController extends AbstractController
     {
         return $this->render('main/index.html.twig', [
             'title' => 'Accueil',
+        ]);
+    }
+
+     /**
+     * Method for the Team's view
+     * @Route("team", name="team")
+     *
+     * @return void
+     */
+    public function team()
+    {
+        return $this->render('main/team.html.twig',[
+            'title' => 'Team',
         ]);
     }
 }
