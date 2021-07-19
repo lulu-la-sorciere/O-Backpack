@@ -42,10 +42,11 @@ class LocationController extends AbstractController
     /**
      * List of countries according to continent
      * 
-     * @Route("country", name="country")
+     * @Route("country/{id}", name="country")
      */
-    public function show(CountryRepository $country): Response
+    public function show(Country $country): Response
     {
+        //dd($country);
         return $this->render('location/country.html.twig', [
             'country' => $country
         ]);

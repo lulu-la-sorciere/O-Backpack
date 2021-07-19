@@ -16,6 +16,13 @@
 		{% endblock %}
 
 		{% block javascripts %}
+            <script defer src="{{ asset('js/style.js')}}"></script>
+        {% endblock %}
+	</head>
+
+	<body>
+
+        {% set currentPage = app.request.get('_route') %}
 
 			<script defer src="{{ asset('js/style.js')}}"></script>
 
