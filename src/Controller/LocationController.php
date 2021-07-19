@@ -48,15 +48,4 @@ class LocationController extends AbstractController
             'country' => $country
         ]);
     }
-
-    /**
-     * @Route("continent/{id}", name="detail")
-     *
-     */
-    public function detail(Continent $continent){
-        return $this->render('location/countries.html.twig',[
-            'continent' => $continent,
-            'countries'=>$continent->getCountries(),
-        ]);
-    }
 }
