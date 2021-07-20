@@ -17,9 +17,7 @@ class UserController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('user/index.html.twig', [
-            'controller_name' => 'UserController',
-        ]);
+        return $this->render('user/index.html.twig');
     }
 
 
@@ -28,9 +26,35 @@ class UserController extends AbstractController
      */
     public function edit(Request $request, User $user, UserPasswordHasherInterface $passwordHasher): Response
     {
-        //The member can change its personnal information in its account
-
+        //The member only can change its personnal information in its account
         $this->denyAccessUnlessGranted('USER_EDIT', $user, 'Accès refusé - Zone protégée');
+        
+        //change password
+        $user = new User();
+
+        $form = $this->createForm(UserType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // former password
+            $plainPassword = $form->get('password')->getData();
+
+            // hashing password
+            $hashedPassword = $passwordHasher->hashPassword(
+                $user,
+                $plainPassword
+            );
+
+            // updating and hashing passwword
+            $user->setPassword($hashedPassword);
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($user);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('user_index');
+        }
+        
 
 
     }
