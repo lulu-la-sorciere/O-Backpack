@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Galerie
+{% endblock %}
+
+{% block content %}
+
+	<div class="imageandtitle">
+		<img src="" alt="image monde" class="continentspec">
+		<h2>
+			Galerie Photo
+		</h2>
+	</div>
+
+	<section class="gallery continentul">
+		{% for continent in continents %}
+			<div class="continentli">
+
+				<a class="left">
+					<span class="left_arrow">&lt;</span>
+				</a>
+				<img src="pic.jpg" alt="Pic">
+				<a class="right">
+					<span class="right_arrow">&gt;</span>
+				</a>
+
+				<a href="{{ path('blog_continentPic', {id:continent.id}) }} ">
+					{{ continent.name }}
+				</a>
+
+			</div>
+		{% endfor %}
+
+	</section>
+{% endblock %}
