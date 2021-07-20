@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class PostController extends AbstractController
 {
     /**
-     * @Route("/", name="")
+     * @Route("/", name="list")
      */
     public function index(): Response
     {
@@ -22,14 +22,5 @@ class PostController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/list", name="list")
-     */
-    public function list()
-    {
-
-        return $this->render('post/articleslist.html.twig', [
-            'listeArticles' => 'listeArticles',
-        ]);
-    }
+    
 }
