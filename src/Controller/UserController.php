@@ -22,7 +22,7 @@ class UserController extends AbstractController
 
 
     /**
-     * @Route("/{id}/edit", name="user_edit", methods={"GET","POST"})
+     * @Route("/{id}/member", name="user_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, User $user, UserPasswordHasherInterface $passwordHasher): Response
     {
@@ -54,6 +54,7 @@ class UserController extends AbstractController
 
             return $this->redirectToRoute('user_index');
         }
+    }
 
         /**
         * @Route("/users/{id}", name="update-user", requirements={"id"="\d+"}, methods={"POST"})
@@ -64,19 +65,15 @@ class UserController extends AbstractController
         * @return Response
         * @throws Exception
         */
-        public function update(UserManager $userManager, Request $request, int $id)
+        public function update(User $user, Request $request, int $id)
         {
-            $user = $userManager->findOneWithDescription($id);
             $form = $this->createForm(UserType::class, $user);
+
             $form->handleRequest($request);
         
             // when the form is completed
             if ($form->isSubmitted() && $form->isValid()) {
-                // fetching user
-                /** @var User $user */
-                $user = $form->getData();
-            
-                // saving user
+                
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($user);
                 $em->flush();
@@ -84,7 +81,7 @@ class UserController extends AbstractController
         
             // redirection to member account with updated datas
             return $this->redirectToRoute('get-user', ['id' => $user->getId()]);
-        }
+        
         
 
 

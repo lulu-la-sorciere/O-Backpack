@@ -4,6 +4,10 @@
 
 {% block content %}
 
+{{ dd(app.user)}}
+
+    <p>Bienvenue dans votre compte, {{ app.user.nickname }}</p>
+
     <h5>Vos informations</h5>
 
     <p>Nom : {{ app.user.name }}</p>
@@ -12,7 +16,7 @@
     <p>Date de naissance : {{ app.user.date_of_birth|date('d/m/Y') }}</p>
     <p>Pays : {{ app.user.country }}</p>
 
-    <p>parcours??</p>
+    <p>liste des itinéraires/parcours??</p>
 
 
     <h5>Modifiez vos données</h5>
