@@ -5,7 +5,8 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use App\Entity\User;
-use App\Form\UserType;
+use App\Form\ChangePasswordType;
+use App\Form\MemberDataType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -30,9 +31,9 @@ class UserController extends AbstractController
         $this->denyAccessUnlessGranted('USER_EDIT', $user, 'Accès refusé - Zone protégée');
         
         //change password
-        $user = new User();
+        $user = $this->getUser();
 
-        $form = $this->createForm(UserType::class, $user);
+        $form = $this->createForm(ChangePasswordType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -52,7 +53,7 @@ class UserController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            return $this->redirectToRoute('user_index');
+            return $this->redirectToRoute('_profile');
         }
     }
 
@@ -67,7 +68,7 @@ class UserController extends AbstractController
         */
         public function update(User $user, Request $request, int $id)
         {
-            $form = $this->createForm(UserType::class, $user);
+            $form = $this->createForm(MemberDataType::class, $user);
 
             $form->handleRequest($request);
         
