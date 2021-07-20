@@ -11,97 +11,27 @@
         <a href="">Rechercher</a>
         <a href="">Filtre</a>
     </div>
-    <div class="post">
-        <div class="postleft">
-            <figure class="postpic">
-                <img src="#" alt="photo illustrant l'article">
-            </figure>
-        </div>
-        <div class="postright">
-            <h4>Article 1</h4>
-            <div class="postbeginning">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce varius placerat purus vel volutpat. Fusce non velit nec quam euismod posuere vel eget diam. Praesent.  
-                <p>Auteur : Tata Yoyo</p>
+    
+    {% for post in posts %}
+        <div class="post">
+            <div class="postleft">
+                <figure class="postpic">
+                    <img src="#" alt="photo illustrant l'article">
+                </figure>
             </div>
-           
-            <div class="continue">
-                <a href="#">Lire la suite</a>
-            </div>
-        </div>
-    </div>
-    <div class="post">
-        <div class="postleft">
-            <figure class="postpic">
-                <img src="#" alt="photo illustrant l'article">
-            </figure>
-        </div>
-        <div class="postright">
-            <h4>Article 2</h4>
-            <div class="postbeginning">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce varius placerat purus vel volutpat. Fusce non velit nec quam euismod posuere vel eget diam. Praesent.  
-                <p>Auteur : Tonton Alexis</p>
-            </div>
-           
-            <div class="continue">
-                <a href="#">Lire la suite</a>
+            <div class="postright">
+                <h4>{{ post.title }}</h4>
+                <div class="postbeginning">
+                    <p>{{ post.content }}</p>
+                    <p>Auteur : {{ post.user.nickname }} - date de publication : {#{{ post.publishedAt }}#}</p>
+                </div>
+                            <div class="continue">
+                    <a href="{{ path('blog_post', {id:post.id}) }}">Lire la suite</a>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="post">
-        <div class="postleft">
-            <figure class="postpic">
-                <img src="#" alt="photo illustrant l'article">
-            </figure>
-        </div>
-        <div class="postright">
-            <h4>Article 3</h4>
-            <div class="postbeginning">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce varius placerat purus vel volutpat. Fusce non velit nec quam euismod posuere vel eget diam. Praesent.  
-                <p>Auteur : Madame Michu</p>
-            </div>
-           
-            <div class="continue">
-                <a href="#">Lire la suite</a>
-            </div>
-        </div>
-    </div>
-    <div class="post">
-        <div class="postleft">
-            <figure class="postpic">
-                <img src="#" alt="photo illustrant l'article">
-            </figure>
-        </div>
-        <div class="postright">
-            <h4>Article 4</h4>
-            <div class="postbeginning">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce varius placerat purus vel volutpat. Fusce non velit nec quam euismod posuere vel eget diam. Praesent.  
-                <p>Auteur : Monsieur Greg</p>
-            </div>
-           
-            <div class="continue">
-                <a href="#">Lire la suite</a>
-            </div>
-        </div>
-    </div>
-    <div class="post">
-        <div class="postleft">
-            <figure class="postpic">
-                <img src="#" alt="photo illustrant l'article">
-            </figure>
-        </div>
-        <div class="postright">
-            <h4>Kebab</h4>
-            <div class="postbeginning">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce varius placerat purus vel volutpat. Fusce non velit nec quam euismod posuere vel eget diam. Praesent.  
-                <p>Auteur : Charles</p>
-            </div>
-           
-            <div class="continue">
-                <a href="#">Lire la suite</a>
-            </div>
-        </div>
-    </div>
-
+    {% endfor %}
+    
     <button class="post">Voir Plus</button>
 
 {% endblock %}

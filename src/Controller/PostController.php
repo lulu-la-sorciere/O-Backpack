@@ -2,7 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Comment;
+use App\Entity\Post;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Form\CommentFormType;
+use App\Repository\CommentRepository;
+use App\Repository\PostRepository;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -28,11 +34,13 @@ class PostController extends AbstractController
      *
      * @return void
      */
-    public function postsList()
+    public function postsList(PostRepository $postRepository)
     {
        // dd('road-ok');
+       $posts = $postRepository->findAll();
         return $this->render('post/postsList.html.twig', [
             "title" => "Articles",
+            "posts" => $posts ,
         ]);
 
     }
@@ -43,11 +51,40 @@ class PostController extends AbstractController
      *
      * @return void
      */
-    public function detail($id)
+    public function detail(Post $post, Request $request, CommentRepository $commentRepository)
     {
-        return $this->render('post/post.html.twig', [
-            "title" => "Article " . $id,
+        // dump($post);
+        // dd($commentRepository->findBy(['post'=>$post]));
+        
+        $comments= $commentRepository->findBy(['post'=>$post]);
+       
+        $newComment = new Comment();
+        $form = $this->createForm(CommentFormType::class, $newComment);
+        $form->handleRequest($request);
 
+        if ($form->isSubmitted() && $form->isValid()) {
+            // 6) Après soumission du formulaire, on va pouvoir
+            // sauvegarder nos données
+            // L'objet catégorie contient les données transmises lors
+            // du clic sur le bouton "Valider"
+            $em = $this->getDoctrine()->getManager();
+
+            // On sauvegarde la catégorie en BDD
+            $em->persist($newComment);
+            $em->flush();
+
+            // Message flash
+            // $_SESSION['tototiti'] = 'La categorie ...';
+            //$this->addFlash('info', 'La catégorie ' . $category->getName() . ' a bien été créée');
+
+            // 7) On redirige vers la liste des catégories
+            return $this->redirectToRoute('main_home');
+        }
+
+        return $this->render('post/post.html.twig', [
+            "title" => $post->getTitle(),
+            "comments"=> $comments,
+            "commentForm" =>$form->createView(),
         ]);
     }
 }

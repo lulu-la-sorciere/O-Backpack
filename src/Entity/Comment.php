@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\CommentRepository;
 use Doctrine\ORM\Mapping as ORM;
+use DateTime;
 
 /**
  * @ORM\Entity(repositoryClass=CommentRepository::class)
@@ -47,6 +48,15 @@ class Comment
      */
     private $post;
 
+    public function __construct()
+    {
+        $this->publishedAt = new DateTime();
+        $this->createdAt = new DateTime();
+        $this->updatedAt = new DateTime();   
+
+    }
+
+    
     public function getId(): ?int
     {
         return $this->id;
