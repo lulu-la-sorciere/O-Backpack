@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-Blog
+	Blog
 {% endblock %}
 
 {% block content %}
@@ -13,35 +13,53 @@ Blog
 		</h2>
 	</div>
 
-	<h3>
-		Recherche
-	</h3>
-	<h3>
-		Filtre
-	</h3>
+	<div class="links">
+		<a href="">Recherche</a>
+		<a href="">Filtre</a>
+	</div>
 
-	<div>
-		<ul>
-			<li>
+	<div class="lastpost">
+		<art>
+			<h4>
 				Title : Le tour du monde en 80jrs
-			</li>
-			<li>Author:
-			</li>
-			<li>Publication Date: 01/01/1901
-			</li>
-			<li>Update date:21/07/2021
-			</li>
-			<li>
-				Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab dicta, illum eius aperiam nobis facere dolorum, quidem rerum perferendis quis fuga explicabo nulla molestias porro omnis voluptate harum. Laborum, qui.</li>
-		</ul>
+			</h4>
+			<ul>
+				<li>Author : Jon Doe
+				</li>
+				<li>Publication Date: 01/01/1901
+				</li>
+				<li>Update date:21/07/2021
+				</li>
+			</ul>
+			<p>
+				Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab dicta,illum eius aperiam nobis facere dolorum, quidem rerum perferendis quisfuga explicabo nulla molestias porro omnis voluptate harum. Laborum, qui</p>
+		</art>
+		<h3>
+			Lire nos articles
+		</h3>
 
-		<h3>Lire nos articles</h3>
 	</div>
 	<div class="blog_carousel">
+		<div class="carousel-inner">
+			<div class="item active">
+				<img src="pic1" alt="Picture 1">
+			</div>
+			<div class="item active">
+				<img src="pic2" alt="Picture 2">
+			</div>
+			<div class="item active">
+				<img src="pic3" alt="Picture 3">
+			</div>
+		</div>
+		
+		<a class="left">
+		<span class="left_arrow">	&lt;</span>
+		</a>
+		<a class="right">
+		<span class="right_arrow">	&gt;</span>
+		</a>
 
-		<img src="" alt="Picture 1">
-		<img src="" alt="Picture 2">
-		<h3>Galerie photo // Pictures links</h3>
+		<h3>Galerie photo </h3>
 	</div>
 
 {% endblock %}
