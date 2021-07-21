@@ -18,6 +18,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class LocationController extends AbstractController
 {
     /**
+     * Method to display the list of continents
      * @Route("continent", name="continent")
      */
     public function index(ContinentRepository $continentRepository): Response
@@ -29,7 +30,7 @@ class LocationController extends AbstractController
     }
 
     /**
-     * 
+     * Method for display the countries list by continent
      * @Route("continent/{id}", name="detail")
      *
      */
@@ -42,7 +43,7 @@ class LocationController extends AbstractController
     }
 
     /**
-     * List of countries according to continent
+     * Country's details
      * 
      * @Route("country/{id}", name="country")
      */
@@ -55,7 +56,7 @@ class LocationController extends AbstractController
     }
 
     /**
-     * 
+     * Method for administration administrative information
      * @Route("country/{id}/administratif", name="country_administratif")
      * 
      */
@@ -69,7 +70,7 @@ class LocationController extends AbstractController
     }
 
     /**
-     * 
+     * Current weather for the selected Country
      * @Route("country/{id}/weather", name="country_weather")
      * 
      */
@@ -86,14 +87,13 @@ class LocationController extends AbstractController
     }
     
     /**
+     * List of materials to be provided
      * @Route("country/{id}/stuff", name="country_stuff")
      *
      * @return void
      */
     public function countryStuff(Country $country, StuffRepository $stuff)
     {
-       
-  
         return $this->render('location/stuff.html.twig', [
             "country" => $country,
             "stuff" => $stuff,

@@ -8,11 +8,13 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/", name="main_")
- *
+ * 
  */
+
 class MainController extends AbstractController
 {
     /**
+     * Method for the Homepage view
      * @Route("", name="home")
      *
      * @return Response
@@ -25,7 +27,7 @@ class MainController extends AbstractController
     }
 
      /**
-     * 
+     * Method for the Team's view
      * @Route("team", name="team")
      *
      * @return void

@@ -8,7 +8,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-
 /**
  * @Route("/blog", name="blog_", requirements={"id" = "\d+"})
  */
@@ -16,7 +15,8 @@ class PostController extends AbstractController
 {
     /**
      * Method to blog page
-     * @Route("/", name="list")
+     * 
+     * @Route("", name="list")
      */
     public function index(): Response
     {
@@ -48,5 +48,20 @@ class PostController extends AbstractController
             'continent' => $continent,
 
         ]);
+    }
+
+    /**
+     * Method to display the list of articles
+     * @Route("/post", name="posts")
+     *
+     * @return void
+     */
+    public function postsList()
+    {
+       // dd('road-ok');
+        return $this->render('post/postsList.html.twig', [
+            "title" => "Articles",
+        ]);
+
     }
 }
