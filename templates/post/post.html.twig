@@ -28,41 +28,15 @@
     </section>
     
     <section >
-        <form action=""> ajouter un commentaire</form>     
-        <div class="post">
-            <p>auteur : fabiooclock <img src="#" alt="avatarFabio"></p>
-            <p>commentaire Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit minima modi nobis adipisci blanditiis! Ipsum.</p>
-        </div>   
-        <div class="post">
-            <p>auteur : gregoclock  <img src="#" alt="avatarGreg"></p>
-            <p>commentaire 1 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa, sapiente.</p>     
-        </div>
-        <div class="post">
-            <p>auteur : charlesoclock <img src="#" alt="avatarCharles"></p>
-            <p>commentaire 2 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam maxime itaque distinctio sit velit earum minus, possimus et aliquam ratione. </p>
-        </div>
-        <div class="post">
-            <p>auteur : alexisoclock <img src="#" alt="avatarAlexis"></p>
-            <p>commentaire 3 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi, dignissimos. </p>
-        </div>
-        <div class="post">
-            <p>auteur : mickaeloclock <img src="#" alt="avatarMickael"></p>
-            <p>commentaire 4 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed, sint.</p>
-        </div>
-        <div class="post">
-            <p>auteur : julienoclock  <img src="#" alt="avatarJulien"></p>
-            <p>commentaire 5 Lorem ipsum dolor sit amet.</p>
-        </div>
-        <div class="post">
-            <p>auteur : morganoclock  <img src="#" alt="avatarMorgan"></p>
-            <p>commentaire 6 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit cum dignissimos perspiciatis odio nam ab corrupti velit qui soluta perferendis?</p>
-        </div>
-        <div class="post">
-            <p>auteur : christopheoclock <img src="#" alt="avatarChristophe"></p>
-            <p>commentaire 7 Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit minima modi nobis adipisci blanditiis! Ipsum.</p>
-        </div>
-        
+      {{ form(commentForm) }}
+
+        <form action=""> ajouter un commentaire</form>    
+        {% for comment in comments %}
+            <div class="post">
+                <p>Auteur : {{comment.user.nickname}} <img src="#" alt="{{comment.user.nickname}}"> - date : {{ comment.publishedAt|date('d-m-Y') }} </p>
+                <p>{{comment.content}}</p>
+            </div> 
+        {% endfor %}
     </section>
 
-        
 {% endblock %}

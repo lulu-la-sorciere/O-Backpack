@@ -31,6 +31,31 @@
 
         {% endblock %}
 
+		<main>
+			{% block content %}{% endblock %}
+		</main>
+
+		{% block footer %}
+			<footer>
+				<ul class="ulfooter">
+					<li class="lifooter">
+						<a href="{{ path('main_team') }}">Les super nanas : qui sommes-nous?</a>
+					</li>
+					
+					<li class="lifooter">
+						Copyright 2021 Tous droits réservés
+					</li>
+			
+					<li>
+						<a href="">Images Rawpixel</a>
+					</li>
+				
+				</ul>
+			</footer>
+
+		{% endblock %}
+	</body>
+</html>
         <main>
 		    {% block content %}{% endblock %}
         </main>
