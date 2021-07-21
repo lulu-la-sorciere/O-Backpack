@@ -236,3 +236,9 @@ h4 {
 .continentall {
     width: 100%;
 }
+
+/* search */
+
+.results, .search_form {
+    padding : 2em;
+}
