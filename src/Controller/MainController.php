@@ -13,6 +13,33 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class MainController extends AbstractController
 {
+
+    /**
+     * Method for a page under construction
+     * @Route("construction", name="construction")
+     *
+     * @return void
+     */
+    public function constructionPage()
+    {
+        return $this->render('main/constructionPage.html.twig',[
+            "title" => "Page en construction",
+        ]);
+    }
+
+    /**
+     * Method to display the 404 error page
+     * @Route("error", name="error")
+     *
+     * @return void
+     */
+    public function error()
+    {
+        return $this->render('main/error.html.twig', [
+            "title" => "Erreur 404",
+        ]);
+    }
+
     /**
      * Method for the Homepage view
      * @Route("", name="home")

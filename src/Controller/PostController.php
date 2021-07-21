@@ -51,7 +51,7 @@ class PostController extends AbstractController
     }
 
     /**
-     * Method to display the list of articles
+     * Method to display the list of posts
      * @Route("/post", name="posts")
      *
      * @return void
@@ -63,5 +63,19 @@ class PostController extends AbstractController
             "title" => "Articles",
         ]);
 
+    }
+
+    /**
+     * Method to display the details of a post
+     * @Route ("/post/{id}", name="post")
+     *
+     * @return void
+     */
+    public function detail($id)
+    {
+        return $this->render('post/post.html.twig', [
+            "title" => "Article " . $id,
+
+        ]);
     }
 }
