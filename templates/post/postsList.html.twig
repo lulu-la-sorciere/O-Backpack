@@ -22,7 +22,7 @@
             <div class="postright">
                 <h4>{{ post.title }}</h4>
                 <div class="postbeginning">
-                    <p>{{ post.content }}</p>
+                    <p>{{ post.content|slice(0, 300) }}...</p>
                     <p>Auteur : {{ post.user.nickname }} - date de publication : {#{{ post.publishedAt }}#}</p>
                 </div>
                             <div class="continue">
