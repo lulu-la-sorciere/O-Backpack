@@ -3,15 +3,17 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
+
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  */
-class User
+class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     /**
      * @ORM\Id
@@ -19,6 +21,22 @@ class User
      * @ORM\Column(type="integer")
      */
     private $id;
+
+    /**
+     * @ORM\Column(type="string", length=180, unique=true)
+     */
+    private $email;
+
+    /**
+     * @ORM\Column(type="json")
+     */
+    private $roles = [];
+
+    /**
+     * @var string The hashed password
+     * @ORM\Column(type="string")
+     */
+    private $password;
 
     /**
      * @ORM\Column(type="string", length=100)
@@ -31,19 +49,9 @@ class User
     private $lastname;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $email;
-
-    /**
      * @ORM\Column(type="string", length=100)
      */
     private $nickname;
-
-    /**
-     * @ORM\Column(type="string", length=150)
-     */
-    private $password;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -61,11 +69,6 @@ class User
     private $dateOfBirth;
 
     /**
-     * @ORM\Column(type="string", length=50)
-     */
-    private $role;
-
-    /**
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
@@ -78,39 +81,107 @@ class User
     /**
      * @ORM\Column(type="datetime")
      */
-    private $updatedAt;
+    private $updateAt;
 
     /**
-     * @ORM\OneToMany(targetEntity=Post::class, mappedBy="user", orphanRemoval=true)
+     * @ORM\Column(type="boolean")
      */
-    private $post;
-
-    /**
-     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="user")
-     */
-    private $comment;
-
-    /**
-     * @ORM\OneToMany(targetEntity=ForumSubject::class, mappedBy="user")
-     */
-    private $forumSubject;
-
-    /**
-     * @ORM\OneToMany(targetEntity=Response::class, mappedBy="user")
-     */
-    private $response;
-
-    public function __construct()
-    {
-        $this->post = new ArrayCollection();
-        $this->comment = new ArrayCollection();
-        $this->forumSubject = new ArrayCollection();
-        $this->response = new ArrayCollection();
-    }
+    private $isVerified = false;
 
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * A visual identifier that represents this user.
+     *
+     * @see UserInterface
+     */
+    public function getUserIdentifier(): string
+    {
+        return (string) $this->email;
+    }
+
+    /**
+     * @deprecated since Symfony 5.3, use getUserIdentifier instead
+     */
+    public function getUsername(): string
+    {
+        return (string) $this->email;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    /**
+     * @see PasswordAuthenticatedUserInterface
+     */
+    public function getPassword(): string
+    {
+        return $this->password;
+    }
+
+    public function setPassword(string $password): self
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * Returning a salt is only needed, if you are not using a modern
+     * hashing algorithm (e.g. bcrypt or sodium) in your security.yaml.
+     *
+     * @see UserInterface
+     */
+    public function getSalt(): ?string
+    {
+        return null;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function eraseCredentials()
+    {
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
+    }
+
+    public function __construct()
+    {
+        $this->createdAt = new DateTime();
+        $this->updateAt = new DateTime();
+        $this->publishedAt = new DateTime();
     }
 
     public function getFirstname(): ?string
@@ -137,18 +208,6 @@ class User
         return $this;
     }
 
-    public function getEmail(): ?string
-    {
-        return $this->email;
-    }
-
-    public function setEmail(string $email): self
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
     public function getNickname(): ?string
     {
         return $this->nickname;
@@ -157,18 +216,6 @@ class User
     public function setNickname(string $nickname): self
     {
         $this->nickname = $nickname;
-
-        return $this;
-    }
-
-    public function getPassword(): ?string
-    {
-        return $this->password;
-    }
-
-    public function setPassword(string $password): self
-    {
-        $this->password = $password;
 
         return $this;
     }
@@ -209,23 +256,13 @@ class User
         return $this;
     }
 
-    public function getRole(): ?string
-    {
-        return $this->role;
-    }
-
-    public function setRole(string $role): self
-    {
-        $this->role = $role;
-
-        return $this;
-    }
-
     public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->createdAt;
     }
-
+    /**
+     * @ORM\PrePersist
+     */
     public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
@@ -238,6 +275,9 @@ class User
         return $this->publishedAt;
     }
 
+    /**
+     * @ORM\PrePersist
+     */
     public function setPublishedAt(\DateTimeInterface $publishedAt): self
     {
         $this->publishedAt = $publishedAt;
@@ -245,134 +285,29 @@ class User
         return $this;
     }
 
-    public function getUpdatedAt(): ?\DateTimeInterface
+    public function getUpdateAt(): ?\DateTimeInterface
     {
-        return $this->updatedAt;
-    }
-
-    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
-    {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
+        return $this->updateAt;
     }
 
     /**
-     * @return Collection|Post[]
+     * @ORM\PrePersist
      */
-    public function getPost(): Collection
+    public function setUpdateAt(\DateTimeInterface $updateAt): self
     {
-        return $this->post;
-    }
-
-    public function addPost(Post $post): self
-    {
-        if (!$this->post->contains($post)) {
-            $this->post[] = $post;
-            $post->setUser($this);
-        }
+        $this->updateAt = $updateAt;
 
         return $this;
     }
 
-    public function removePost(Post $post): self
+    public function isVerified(): bool
     {
-        if ($this->post->removeElement($post)) {
-            // set the owning side to null (unless already changed)
-            if ($post->getUser() === $this) {
-                $post->setUser(null);
-            }
-        }
-
-        return $this;
+        return $this->isVerified;
     }
 
-    /**
-     * @return Collection|Comment[]
-     */
-    public function getComment(): Collection
+    public function setIsVerified(bool $isVerified): self
     {
-        return $this->comment;
-    }
-
-    public function addComment(Comment $comment): self
-    {
-        if (!$this->comment->contains($comment)) {
-            $this->comment[] = $comment;
-            $comment->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeComment(Comment $comment): self
-    {
-        if ($this->comment->removeElement($comment)) {
-            // set the owning side to null (unless already changed)
-            if ($comment->getUser() === $this) {
-                $comment->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|ForumSubject[]
-     */
-    public function getForumSubject(): Collection
-    {
-        return $this->forumSubject;
-    }
-
-    public function addForumSubject(ForumSubject $forumSubject): self
-    {
-        if (!$this->forumSubject->contains($forumSubject)) {
-            $this->forumSubject[] = $forumSubject;
-            $forumSubject->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeForumSubject(ForumSubject $forumSubject): self
-    {
-        if ($this->forumSubject->removeElement($forumSubject)) {
-            // set the owning side to null (unless already changed)
-            if ($forumSubject->getUser() === $this) {
-                $forumSubject->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Response[]
-     */
-    public function getResponse(): Collection
-    {
-        return $this->response;
-    }
-
-    public function addResponse(Response $response): self
-    {
-        if (!$this->response->contains($response)) {
-            $this->response[] = $response;
-            $response->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeResponse(Response $response): self
-    {
-        if ($this->response->removeElement($response)) {
-            // set the owning side to null (unless already changed)
-            if ($response->getUser() === $this) {
-                $response->setUser(null);
-            }
-        }
+        $this->isVerified = $isVerified;
 
         return $this;
     }

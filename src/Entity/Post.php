@@ -57,6 +57,7 @@ class Post
 
     /**
      * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="post")
+     * @ORM\OrderBy({"id"="DESC"})
      */
     private $comment;
 

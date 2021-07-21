@@ -111,50 +111,7 @@ a {
     transition: 0.3s;
 }
 
-@media only screen and (max-width: 768px) {
-    .nav-menu {
-        position: fixed;
-        right: -100%;
-        top: 2rem;
-        flex-direction: column;
-        background-color: #32AAAA;
-        width: 100%;
-        border-radius: 10px;
-        text-align:right;
-        transition: 0.3s;
-        box-shadow:
-            0 10px 27px rgba(0, 0, 0, 0.05);
-    }
 
-    .nav-menu.active {
-        left: 0;
-    }
-
-    .nav-item {
-        margin: 2rem 0;
-    }
-
-    .hamburger {
-        display: block;
-        cursor: pointer;
-    }
-
-    .hamburger.active .bar:nth-child(2) {
-        opacity: 0;
-    }
-
-    .hamburger.active .bar:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
-    }
-
-    .hamburger.active .bar:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
-    }
-    .article {
-        text-align: justify;
-    }
-
-}
 
 /* footer */
 
@@ -241,4 +198,68 @@ h4 {
 
 .results, .search_form {
     padding : 2em;
+}
+/* In progress */
+
+.construction {
+    width: 60%;
+}
+/* team */
+.team img {
+    width: 100%;
+}
+.teamList{
+    display: flex;
+    flex-wrap: wrap;
+    margin:auto;
+    justify-content: center;
+}
+.team {
+    width: 20%;
+    margin:0.5em;
+}
+@media only screen and (max-width: 768px) {
+    .nav-menu {
+        position: fixed;
+        right: -100%;
+        top: 2rem;
+        flex-direction: column;
+        background-color: #32AAAA;
+        width: 100%;
+        border-radius: 10px;
+        text-align:right;
+        transition: 0.3s;
+        box-shadow:
+            0 10px 27px rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-item {
+        margin: 2rem 0;
+    }
+
+    .hamburger {
+        display: block;
+        cursor: pointer;
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+    .team {
+        width: 40%;
+        margin:0.5em;
+    }
+
 }

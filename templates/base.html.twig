@@ -15,35 +15,33 @@
 			<link rel="stylesheet" href="{{ asset('css/style.css')}}">
 		{% endblock %}
 
-		{% block javascripts %}
+			{% block javascripts %}
             <script defer src="{{ asset('js/style.js')}}"></script>
         {% endblock %}
 	</head>
 
 	<body>
 
-		{% set currentPage = app.request.get('_route') %}
+        {% set currentPage = app.request.get('_route') %}
 
-		{% block header %}
-			{# {% set currentPage = app.request.get('_route') %} #}
+        {% block header %}
 
-			{% include "partials/_nav.html.twig" %}
-			{% include "partials/_flash.html.twig" %}
+		    {% include "partials/_nav.html.twig" %}
+		    {% include "partials/_flash.html.twig" %}
 
-		{% endblock %}
+        {% endblock %}
 
 		<main>
 			{% block content %}{% endblock %}
 		</main>
-
-		{% block footer %}
-			<footer>
-				<ul class="ulfooter">
-					<li class="lifooter">
-						<a href="{{ path('main_team') }}">Les super nanas : qui sommes-nous?</a>
-					</li>
-					<li class="lifooter">Copyright 2021 Tous droits réservés
-				-
-				<a href="">Images Rawpixel</a></li>				
-			</ul>
-</footer>{% endblock %}</body></html>
+			
+            {% block footer %}
+                <footer>
+                    <ul class="ulfooter">
+                        <li class="lifooter"><a href="{{ path('main_team') }}">Les super nanas : qui sommes-nous?</a><li>
+                        <li class="lifooter">Copyright 2021 Tous droits réservés - <a href="">Images Rawpixel</a><li>
+                    </ul>
+                </footer>
+            {% endblock %}
+	</body>
+</html>
