@@ -7,32 +7,40 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use App\Entity\User;
 use App\Form\ChangePasswordType;
 use App\Form\MemberDataType;
+use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * @Route("/user", name="user_", requirements={"id"="\d+"})
+ */
 class UserController extends AbstractController
 {
     /**
-     * @Route("/_profi", name="user")
+     * @Route("/profile/{id}", name="profile")
      */
-    public function index(): Response
+    public function index(int $id, UserRepository $userRepository): Response
     {
-        return $this->render('user/index.html.twig');
+        //dd($id);
+       
+        $user = $userRepository->find($id);
+       // dd($user);
+        return $this->render('user/index.html.twig',[
+            "user"=>$user,
+        ]);
     }
 
 
     /**
-     * @Route("/{id}/member", name="user_edit", methods={"GET","POST"})
+     * @Route("/profile/{id}/edit", name="edit", methods={"GET","POST"})
      */
     public function edit(Request $request, User $user, UserPasswordHasherInterface $passwordHasher): Response
     {
+       // dd('route ok');
         //The member only can change its personnal information in its account
-        $this->denyAccessUnlessGranted('USER_EDIT', $user, 'Accès refusé - Zone protégée');
-        
-        //change password
-        $user = $this->getUser();
-
+        $this->denyAccessUnlessGranted('ROLE_USER', $user, 'Accès refusé - Zone protégée');
+    
         $form = $this->createForm(ChangePasswordType::class, $user);
         $form->handleRequest($request);
 
@@ -52,13 +60,16 @@ class UserController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
-
-            return $this->redirectToRoute('_profile');
+            return $this->redirectToRoute('user_profile');
         }
+        return $this->render('user/edit.html.twig',[
+            "user"=>$user,
+            "form"=> $form->createView(),
+        ]);
     }
 
         /**
-        * @Route("/users/{id}", name="update-user", requirements={"id"="\d+"}, methods={"POST"})
+        * @Route("/profile/{id}/update", name="update-user")
         *
         * @param UserManager $userManager
         * @param Request $request
@@ -74,17 +85,16 @@ class UserController extends AbstractController
         
             // when the form is completed
             if ($form->isSubmitted() && $form->isValid()) {
-                
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($user);
                 $em->flush();
+                // redirection to member account with updated datas
+                return $this->redirectToRoute('user_profile', ['id'=>$user->getId()]);
             }
         
-            // redirection to member account with updated datas
-            return $this->redirectToRoute('get-user', ['id' => $user->getId()]);
-        
-        
-
-
+            return $this->render('user/update.html.twig', [
+                "user"=>$user,
+                "form" =>$form->createView(),
+            ]);
     }
 }

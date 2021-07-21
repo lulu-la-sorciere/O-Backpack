@@ -64,9 +64,10 @@ class PostController extends AbstractController
      */
     public function postsList(PostRepository $postRepository)
     {
-       // dd('road-ok');
+       //dd($postRepository);
        $posts = $postRepository->findAll();
-        return $this->render('post/postsList.html.twig', [
+       
+       return $this->render('post/postsList.html.twig', [
             "title" => "Articles",
             "posts" => $posts ,
         ]);
