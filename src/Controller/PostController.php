@@ -56,7 +56,7 @@ class PostController extends AbstractController
         // dump($post);
         // dd($commentRepository->findBy(['post'=>$post]));
         
-        $comments= $commentRepository->findBy(['post'=>$post]);
+        $comments= $commentRepository->findBy(['post'=>$post], ['id'=>'DESC']);
        
         $newComment = new Comment();
         $form = $this->createForm(CommentFormType::class, $newComment);
