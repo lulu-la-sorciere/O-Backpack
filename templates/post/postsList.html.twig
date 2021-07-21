@@ -1,37 +1,46 @@
 {% extends 'base.html.twig' %}
 
-{% block subtitle %} {{ title }}  {% endblock %}
+{% block subtitle %}
+	{{ title }}
+{% endblock %}
 
 {% block content %}
-    <div class="imageandtitle">
-        <img src="#" alt="image monde" class="continentspec">
-        <h2>{{ title }}</h2>
-    </div> 
-    <div>
-        <a href="">Rechercher</a>
-        <a href="">Filtre</a>
-    </div>
-    
-    {% for post in posts %}
-        <div class="post">
-            <div class="postleft">
-                <figure class="postpic">
-                    <img src="#" alt="photo illustrant l'article">
-                </figure>
-            </div>
-            <div class="postright">
-                <h4>{{ post.title }}</h4>
-                <div class="postbeginning">
-                    <p>{{ post.content }}</p>
-                    <p>Auteur : {{ post.user.nickname }} - date de publication : {#{{ post.publishedAt }}#}</p>
-                </div>
-                            <div class="continue">
-                    <a href="{{ path('blog_post', {id:post.id}) }}">Lire la suite</a>
-                </div>
-            </div>
-        </div>
-    {% endfor %}
-    
-    <button class="post">Voir Plus</button>
+	<div class="imageandtitle">
+		<img src="#" alt="image monde" class="continentspec">
+		<h2>{{ title }}</h2>
+	</div>
+
+		<a href="{{ path('blog_list') }}">Retour au blog</a>
+	
+	<div>
+		<a href="">Rechercher</a>
+		<a href="">Filtre</a>
+	</div>
+
+	{% for post in posts %}
+		<div class="post">
+			<div class="postleft">
+				<figure class="postpic">
+					<img src="#" alt="photo illustrant l'article">
+				</figure>
+			</div>
+			<div class="postright">
+				<h4>{{ post.title }}</h4>
+				<div class="postbeginning">
+					<p>{{ post.content }}</p>
+					<p>Auteur :
+						{{ post.user.nickname }}
+						- date de publication :
+						{#{{ post.publishedAt }}#}
+					</p>
+				</div>
+				<div class="continue">
+					<a href="{{ path('blog_post', {id:post.id}) }}">Lire la suite</a>
+				</div>
+			</div>
+		</div>
+	{% endfor %}
+
+	<button class="post">Voir Plus</button>
 
 {% endblock %}

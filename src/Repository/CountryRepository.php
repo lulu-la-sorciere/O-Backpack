@@ -19,6 +19,24 @@ class CountryRepository extends ServiceEntityRepository
         parent::__construct($registry, Country::class);
     }
 
+    /**
+     * Method for searching a country by his name
+     * 
+     */
+    public function findCountryByHisName($name)
+    {
+        //we instantiate query builder
+        $qb = $this->createQueryBuilder('country');
+
+        $qb->where('country.name LIKE :name');
+
+        $qb->setParameter(':name', "%$name%");
+
+        $query = $qb->getQuery();
+
+        return $query->getResult();
+    }
+
     // /**
     //  * @return Country[] Returns an array of Country objects
     //  */

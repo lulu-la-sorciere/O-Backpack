@@ -198,6 +198,11 @@ h4 {
     width: 100%;
 }
 
+/* search */
+
+.results, .search_form {
+    padding : 2em;
+}
 /* In progress */
 
 .construction {

@@ -19,6 +19,26 @@ class ContinentRepository extends ServiceEntityRepository
         parent::__construct($registry, Continent::class);
     }
 
+
+    /**
+     * Method for searching a continent by his name with query builder
+     * 
+     */
+    public function findSearchByNameQB($name)
+    {
+        // we instantiate querybuilder
+        $qb = $this->createQueryBuilder('continent');
+
+        $qb->where('continent.name LIKE :name');
+
+        $qb->setParameter(':name', "%$name%");
+
+        $query = $qb->getQuery();
+
+        return $query->getResult();
+
+    }
+
     // /**
     //  * @return Continent[] Returns an array of Continent objects
     //  */
