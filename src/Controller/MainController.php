@@ -61,12 +61,11 @@ class MainController extends AbstractController
 
         // We display results in vue search.html.twig
 
-        
             return $this->render('main/search.html.twig', [
                 'continents' => $continents,
                 'countries' => $countries,
                 'searchValue' => $searchValue,
-            ]);
-        
+            ]);  
+       
     }
 }
