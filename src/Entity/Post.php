@@ -77,9 +77,10 @@ class Post
         $this->comment = new ArrayCollection();
         $this->continent = new ArrayCollection();
         $this->country = new ArrayCollection();
-        $this->publishedAt = new DateTime();
         $this->createdAt = new DateTime();
         $this->updatedAt = new DateTime();
+        $this->publishedAt = new DateTime();
+
     }
 
     public function getId(): ?int
