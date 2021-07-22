@@ -4,7 +4,7 @@
 
 {% block content %}
     <div class="imageandtitle">
-        <img src="" alt="image monde" class="continentspec">
+        <img src="#" alt="image monde" class="continentspec">
         <h2>{{country.name}} - Matériel</h2>
     </div>
 
@@ -13,6 +13,13 @@
         <h3><a href=""> Météo</a></h3>
     </div>
 
-    <div>Matériel nécessaire :</div>
+    <div>Matériel nécessaire :  </div>
+    <ul>
+        {% for stuff in stuffs %}
+
+            <li> {{ stuff.name }} </li>
+    
+        {% endfor %}       
+    </ul>    
 
 {% endblock %}

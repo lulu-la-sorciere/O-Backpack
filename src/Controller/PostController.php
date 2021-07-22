@@ -114,6 +114,7 @@ class PostController extends AbstractController
             "title" => $post->getTitle(),
             "comments"=> $comments,
             "commentForm" =>$form->createView(),
+            "post"=>$post,
         ]);
     }
 }

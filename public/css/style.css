@@ -173,6 +173,10 @@ h3 {
     padding-left: 0.5em;
 }
 
+.postpic img{
+    width:100%;
+}
+
 h4 {
     color: #EEBC69;
     margin-bottom: 0.2em;
@@ -217,6 +221,7 @@ h4 {
     width: 20%;
     margin:0.5em;
 }
+
 @media only screen and (max-width: 768px) {
     .nav-menu {
         position: fixed;
