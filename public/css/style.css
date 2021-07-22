@@ -49,10 +49,12 @@ header {
 }
 
 li {
+    font-size: 10.em;
     list-style: none;
 }
 
 a {
+    font-size: 1.2em;
     text-decoration: none;
     color:  #F7F2EB;
 }
@@ -96,16 +98,18 @@ a {
 }
 
 .nav-link{
-    font-size: 3em;
+    font-size: 1.2em;
     font-weight: 400;
     color: #EEBC69;
 }
 
 .nav-link:hover{
+    font-size: 1.2em;
     color: #F7F2EB;
 }
 
 .nav-ul a:hover {
+    font-size: 1.2em;
     text-decoration: none;
     color: #EEBC69;
     transition: 0.3s;
