@@ -1,11 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block subtitle %}Modifiez Mot de passe{% endblock %}
+{% block subtitle %}Modifiez votre mot de passe{% endblock %}
 
 {% block content %}
 
-<p>Ancien mot de passe</p>
-{{ form(form) }} 
- <p>Nouveau mot de passe</p>
+    {{ form(form) }} 
 
  {% endblock %}

@@ -40,6 +40,10 @@ class Continent
         $this->posts = new ArrayCollection();
         $this->countries = new ArrayCollection();
     }
+    public function __toString()
+    {
+        return $this->name;
+    }
 
     public function getId(): ?int
     {

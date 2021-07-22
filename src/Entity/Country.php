@@ -17,11 +17,13 @@ class Country
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * 
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=100)
+     * 
      */
     private $name;
 
@@ -85,6 +87,10 @@ class Country
     {
         $this->posts = new ArrayCollection();
         $this->stuff = new ArrayCollection();
+    }
+    public function __toString()
+    {
+        return $this->name;
     }
 
     public function getId(): ?int

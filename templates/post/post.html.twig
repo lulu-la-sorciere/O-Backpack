@@ -5,57 +5,53 @@
 {% endblock %}
 
 {% block content %}
-	<div class="imageandtitle">
-		<img src="#" alt="image monde" class="continentspec">
-		<h2>{{ title }}</h2>
-	</div>
-
-	<button class="post">
+    <div class="imageandtitle">
+        <img src="#" alt="image monde" class="continentspec">
+        <h2>{{ title }}</h2>
+    </div> 
+    <button class="post">
 		<a href="{{ path('blog_posts') }}">Retour aux articles</a>
 	</button>
 
-	<section>
-		<div class="post">
-			<div class="postleft">
-				<figure class="postpic">
-					<img src="#" alt="photo illustrant l'article">
-				</figure>
-			</div>
-			<div class="postright">
-				<h4>{{ title }}</h4>
-				<div class="postbeginning">
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ullam! Ipsum sequi, aut fugiat voluptatum cumque voluptatem repellat iure eius, minima a quo distinctio placeat facere blanditiis. Dolorum officia, sint aliquid odit, est neque, iure fugiat adipisci facilis repudiandae sunt! Maxime porro, iusto dolor quo blanditiis dicta quos ex ratione sit saepe vitae, est minus, nostrum rerum incidunt ad atque accusamus quaerat quae. Provident, esse labore. Tempore mollitia soluta fugit obcaecati quidem, maxime accusamus est consequatur quod quaerat vitae praesentium itaque eum tempora! Dicta ipsum, temporibus delectus, at repellendus libero et, dignissimos incidunt corrupti facilis eum possimus eveniet fugit soluta provident harum rem voluptatem magni quas autem placeat explicabo. Officiis, illo commodi. Tempore ex quaerat accusantium odit et omnis laborum quibusdam esse aliquam rerum culpa voluptatum placeat animi neque perferendis dolorum inventore accusamus, laboriosam itaque aut voluptas nam. Cum molestias odit consequuntur minus, assumenda fuga vitae quis nemo omnis distinctio quisquam accusantium, ducimus fugiat sed. Cumque nesciunt asperiores voluptates ipsum repellendus iure quae dolore veritatis eos maxime labore porro cum quasi sunt id quos debitis et alias, nulla molestiae quia dignissimos aspernatur corrupti reiciendis. Veniam, repellendus! Minima quisquam ut ducimus voluptatibus. Recusandae a sapiente harum aperiam velit perspiciatis provident quia laudantium inventore fugiat, alias obcaecati doloribus sed odit voluptates aliquid, earum porro numquam dolorem nam? Cupiditate vitae autem ex mollitia dicta, optio sed amet nihil repudiandae modi rerum illo quam quisquam quae, error eos exercitationem dolores similique, laboriosam beatae facere. Exercitationem magni maxime qui harum! Sed odit animi sequi laborum.
-				</div>
-				<div>
-					<p>Auteur : Tata Yoyo
-						<img src="#" alt="avatarYoyo">
-					</p>
-					<p>Date de publication : 20/07/2021</p>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<section>
-		{{ form(commentForm) }}
-
-			<form action="">
-				ajouter un commentaire</form>
-			{% for comment in comments %}
-				<div class="post">
-					<p>Auteur :
-						{{comment.user.nickname}}
-						<img src="#" alt="{{comment.user.nickname}}">
-						- date :
-						{{ comment.publishedAt|date('d-m-Y') }}
-					</p>
-					<p>{{comment.content}}</p>
-				</div>
-			{% endfor %}
-		</section>
-
-		<button class="post">
+    <section>
+        <div class="post">
+            <div class="postleft">
+                <figure class="postpic">
+                    <img src="{{ asset('img/'~ post.picture)}}" alt="photo illustrant l'article">
+                </figure>
+            </div>
+            <div class="postright">
+                <h4>{{ title }}</h4>
+                <article class="postbeginning">
+                   {{post.content}}
+                </article>
+                <div>
+                    <p><img class ="miniAvatarPost" src="{{ asset('img/'~ post.user.picture)}}" alt="photo de {{post.user.nickname}}"> {{post.user.nickname}} </p> 
+                    <p>Le {{ post.publishedAt|date('d-m-Y') }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section >
+        <form action=""> Vous devez être connecté pour ajouter un commentaire</form>
+          {{ form(commentForm) }}   
+        {% for comment in comments %}
+            <div class="post">
+                <div class="commentProfile">
+                    <div>
+                        <img class ="miniAvatar" src="{{ asset('img/'~ comment.user.picture)}}" alt="{{comment.user.nickname}}">
+                    </div> 
+                    <div>
+                        {{comment.user.nickname}}  - date : {{ comment.publishedAt|date('d-m-Y') }}
+                    </div> 
+                </div>
+                <div class="fullComment">{{comment.content}}</div>
+            </div> 
+        {% endfor %}
+    </section>
+    <button class="post">
 			<a href="{{ path('blog_posts') }}">Retour aux articles</a>
 		</button>
+{% endblock %}
 
-	{% endblock %}

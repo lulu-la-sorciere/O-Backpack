@@ -5,43 +5,38 @@
 {% endblock %}
 
 {% block content %}
+
 	<div class="imageandtitle">
 		<img src="#" alt="image monde" class="continentspec">
 		<h2>{{ title }}</h2>
-	</div>
-
-		<button class="post"><a href="{{ path('blog_list') }}">Retour au blog</a></button>
-	
-	<div>
-		<a href="">Rechercher</a>
-		<a href="">Filtre</a>
-	</div>
-
-	{% for post in posts %}
-		<div class="post">
-			<div class="postleft">
-				<figure class="postpic">
-					<img src="#" alt="photo illustrant l'article">
-				</figure>
-			</div>
-			<div class="postright">
-				<h4>{{ post.title }}</h4>
-				<div class="postbeginning">
-					<p>{{ post.content }}</p>
-					<p>Auteur :
-						{{ post.user.nickname }}
-						- date de publication :
-						{#{{ post.publishedAt }}#}
-					</p>
-				</div>
-				<div class="continue">
-					<a href="{{ path('blog_post', {id:post.id}) }}">Lire la suite</a>
-				</div>
-			</div>
-		</div>
-	{% endfor %}
-
-	<button class="post">Voir Plus</button>
-	<button class="post"><a href="{{ path('blog_list') }}">Retour au blog</a></button>
-
+	</div> 
+    <div>
+        <a href="">Rechercher</a>
+        <a href="">Filtre</a>
+    </div>
+   <button class="post"><a href="{{ path('blog_list') }}">Retour au blog</a></button>
+    
+    {% for post in posts %}
+        <div class="post">
+            <div class="postleft">
+                <figure class="postpic">
+                    <img src="{{ asset('img/'~ post.picture)}}" alt="photo illustrant l'article">
+                </figure>
+            </div>
+            <div class="postright">
+                <h4>{{ post.title }}</h4>
+                <div class="postbeginning">
+                    <p>{{ post.content|slice(0, 300) }}...</p>
+                    <p>{{ post.user.nickname }} - Le {{ post.publishedAt|date('d-m-Y') }}</p>
+                </div>
+                <div class="continue">
+                    <a href="{{ path('blog_post', {id:post.id}) }}">Lire la suite</a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    
+  <button class="post">Voir Plus</button>
+  <button class="post"><a href="{{ path('blog_list') }}">Retour au blog</a></button>
+  
 {% endblock %}

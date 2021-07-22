@@ -80,6 +80,7 @@ class Post
         $this->createdAt = new DateTime();
         $this->updatedAt = new DateTime();
         $this->publishedAt = new DateTime();
+
     }
 
     public function getId(): ?int
