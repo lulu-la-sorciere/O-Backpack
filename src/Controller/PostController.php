@@ -26,10 +26,10 @@ class PostController extends AbstractController
      * 
      * @Route("", name="list")
      */
-    public function index(): Response
+    public function index(PostRepository $postR): Response
     {
         return $this->render('post/index.html.twig', [
-            'index' => 'Post',
+            'posts' => $postR->findAll(),
         ]);
     }
 
