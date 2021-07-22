@@ -8,6 +8,7 @@ use App\Entity\Continent;
 use App\Repository\ContinentRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Form\CommentFormType;
+use App\Form\PostType;
 use App\Repository\CommentRepository;
 use App\Repository\PostRepository;
 use Symfony\Component\HttpFoundation\Request;
@@ -50,7 +51,7 @@ class PostController extends AbstractController
      */
     public function continentPic(Continent $continent)
     {
-        return $this->render('post/picbycontinent.html.twig',[
+        return $this->render('post/picbycontinent.html.twig', [
             'continent' => $continent,
 
         ]);
@@ -64,14 +65,13 @@ class PostController extends AbstractController
      */
     public function postsList(PostRepository $postRepository)
     {
-       //dd($postRepository);
-       $posts = $postRepository->findAll();
-       
-       return $this->render('post/postsList.html.twig', [
-            "title" => "Articles",
-            "posts" => $posts ,
-        ]);
+        //dd($postRepository);
+        $posts = $postRepository->findAll();
 
+        return $this->render('post/postsList.html.twig', [
+            "title" => "Articles",
+            "posts" => $posts,
+        ]);
     }
 
     /**
@@ -84,9 +84,9 @@ class PostController extends AbstractController
     {
         // dump($post);
         // dd($commentRepository->findBy(['post'=>$post]));
-        
-        $comments= $commentRepository->findBy(['post'=>$post], ['id'=>'DESC']);
-       
+
+        $comments = $commentRepository->findBy(['post' => $post], ['id' => 'DESC']);
+
         $newComment = new Comment();
         $form = $this->createForm(CommentFormType::class, $newComment);
         $form->handleRequest($request);
@@ -112,8 +112,25 @@ class PostController extends AbstractController
 
         return $this->render('post/post.html.twig', [
             "title" => $post->getTitle(),
-            "comments"=> $comments,
-            "commentForm" =>$form->createView(),
+            "comments" => $comments,
+            "commentForm" => $form->createView(),
         ]);
+    }
+
+    /**
+     * Method for adding a new post
+     * 
+     * @Route("/post/add", name="add")
+     * 
+     */
+    public function addPost()
+    {
+        
+        dd('hi');
+        //$post = new Post();
+
+        //$form = $this ->createForm(PostType::class, $post);
+
+        //$form->handleRequest()
     }
 }
