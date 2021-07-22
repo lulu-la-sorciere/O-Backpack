@@ -12,6 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Continent
 {
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -113,4 +114,10 @@ class Continent
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return $this->name;
+    }
+
 }

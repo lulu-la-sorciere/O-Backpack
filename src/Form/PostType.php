@@ -4,8 +4,11 @@ namespace App\Form;
 
 use App\Entity\Post;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Choice;
 
 class PostType extends AbstractType
 {
@@ -15,12 +18,10 @@ class PostType extends AbstractType
             ->add('title')
             ->add('content')
             ->add('picture')
-            ->add('createdAt')
-            ->add('publishedAt')
-            ->add('updatedAt')
-            ->add('user')
-            ->add('continent')
+            ->add('continent', ChoiceType::class)
             ->add('country')
+            ->add('user')
+            ->add('Valider', SubmitType::class);
         ;
     }
 

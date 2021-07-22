@@ -123,14 +123,27 @@ class PostController extends AbstractController
      * @Route("/post/add", name="add")
      * 
      */
-    public function addPost()
+    public function addPost(Request $request) : Response
     {
+        // only members registrated and online can add a new post
+        $this->denyAccessUnlessGranted('ROLE_USER');
+        $post = new Post();
+
+        $form = $this->createForm(PostType::class, $post);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()){
+
+            $em= $this->getDoctrine()->getManager();
+            $em->persist($post);
+            $em->flush();
+
+            return $this->redirectToRoute('blog_posts');
+        }
         
-        dd('hi');
-        //$post = new Post();
-
-        //$form = $this ->createForm(PostType::class, $post);
-
-        //$form->handleRequest()
+        return $this->render('post/add.html.twig', [
+            'form' => $form->createView()
+        ]);
     }
 }
