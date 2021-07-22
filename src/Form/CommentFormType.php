@@ -13,13 +13,15 @@ class CommentFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('content')
+            ->add('content', null, [
+                'label' => 'Commentaire'
+            ])
             //->add('createdAt')
             //->add('publishedAt')
             //->add('updatedAt')
             //->add('user')
             //->add('post')
-            ->add('submit', SubmitType::class)
+            ->add('Envoyer', SubmitType::class)
         ;
     }
 

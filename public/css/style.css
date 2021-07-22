@@ -173,6 +173,25 @@ h3 {
     padding-left: 0.5em;
 }
 
+.postpic img{
+    width:100%;
+}
+.fullComment {
+    width: 70%;
+    text-align: left;
+}
+.commentProfile{
+    width: 27%;
+    display: flex;
+    flex-direction: column;
+}
+.miniAvatarPost{
+    max-width: 10%;
+}
+.miniAvatar {
+    max-width: 25%;
+}
+
 h4 {
     color: #EEBC69;
     margin-bottom: 0.2em;
@@ -217,6 +236,7 @@ h4 {
     width: 20%;
     margin:0.5em;
 }
+
 @media only screen and (max-width: 768px) {
     .nav-menu {
         position: fixed;
