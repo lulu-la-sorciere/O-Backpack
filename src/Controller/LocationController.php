@@ -96,6 +96,7 @@ class LocationController extends AbstractController
         
         $stuffs = $stuffRepository->findAll();
         
+        
         return $this->render('location/stuff.html.twig', [
             "country" => $country,
             "stuffs" => $stuffs,

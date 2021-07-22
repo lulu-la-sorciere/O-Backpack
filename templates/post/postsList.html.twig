@@ -23,7 +23,7 @@
                 <h4>{{ post.title }}</h4>
                 <div class="postbeginning">
                     <p>{{ post.content|slice(0, 300) }}...</p>
-                    <p>Auteur : {{ post.user.nickname }} - date de publication : {#{{ post.publishedAt }}#}</p>
+                    <p>{{ post.user.nickname }} - Le {{ post.publishedAt|date('d-m-Y') }}</p>
                 </div>
                             <div class="continue">
                     <a href="{{ path('blog_post', {id:post.id}) }}">Lire la suite</a>

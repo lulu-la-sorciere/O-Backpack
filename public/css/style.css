@@ -176,6 +176,21 @@ h3 {
 .postpic img{
     width:100%;
 }
+.fullComment {
+    width: 70%;
+    text-align: left;
+}
+.commentProfile{
+    width: 27%;
+    display: flex;
+    flex-direction: column;
+}
+.miniAvatarPost{
+    max-width: 10%;
+}
+.miniAvatar {
+    max-width: 25%;
+}
 
 h4 {
     color: #EEBC69;
