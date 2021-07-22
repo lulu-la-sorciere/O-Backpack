@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Comment;
 use App\Entity\Post;
 use App\Entity\Continent;
+use App\Entity\User;
 use App\Repository\ContinentRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Form\CommentFormType;
@@ -120,23 +121,29 @@ class PostController extends AbstractController
     /**
      * Method for adding a new post
      * 
-     * @Route("/post/add", name="add")
+     * @Route("/post/user/{id}/add", name="add")
      * 
      */
-    public function addPost(Request $request) : Response
+    public function addPost(Request $request, User $user)
     {
-        // only members registrated and online can add a new post
-        $this->denyAccessUnlessGranted('ROLE_USER');
-        $post = new Post();
+       // dd($user);
 
-        $form = $this->createForm(PostType::class, $post);
+        // only members registrated and online can add a new post
+        $this->denyAccessUnlessGranted('ROLE_USER', $user);
+        
+        $newPost = new Post();
+
+        $form = $this->createForm(PostType::class, $newPost);
 
         $form->handleRequest($request);
-
+        
         if ($form->isSubmitted() && $form->isValid()){
 
+            //
+
+            $newPost->setUser($user);
             $em= $this->getDoctrine()->getManager();
-            $em->persist($post);
+            $em->persist($newPost);
             $em->flush();
 
             return $this->redirectToRoute('blog_posts');
