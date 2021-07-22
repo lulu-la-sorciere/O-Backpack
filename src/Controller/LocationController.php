@@ -77,8 +77,6 @@ class LocationController extends AbstractController
     public function countryWeather(Country $country)
     {
 
-        //dump('route ok');
-       
         return $this->render('location/weather.html.twig', [
             'country' => $country,
         ]);
