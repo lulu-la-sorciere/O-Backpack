@@ -273,6 +273,7 @@ h4 {
     margin: 2rem 0;
   }
   .hamburger {
+    z-index: 3;
     display: block;
     cursor: pointer;
   }
