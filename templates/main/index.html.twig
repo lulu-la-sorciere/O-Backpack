@@ -1,11 +1,54 @@
 {% extends 'base.html.twig' %}
 
-{% block subtitle %} - Accueil  {% endblock %}
+{% block subtitle %} - Bienvenue!  {% endblock %}
 
 {% block content %}
-	
-    <div class="carrousel">
-        carrousel
+
+{# <div class="welcome"> #}
+
+    <div class="img-slider">
+      <div class="slide active">
+        <img src="{{ asset('img/sl01.jpg')}}" alt="photo" class="carousel">
+        <div class="info">
+          <h6>super courgette</h6>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="{{ asset('img/sl02.jpg')}}" alt="photo" class="carousel">
+        <div class="info">
+          <h6>Clélia</h6>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="{{ asset('img/sl03.jpg')}}" alt="photo" class="carousel">
+        <div class="info">
+          <h6>Céline</h6>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="{{ asset('img/sl04.jpg')}}" alt="photo" class="carousel">
+        <div class="info">
+          <h6>Samia</h6>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="{{ asset('img/sl05.jpg')}}" alt="photo" class="carousel">
+        <div class="info">
+          <h6>Viviane</h6>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+      </div>
+      <div class="navigation">
+        <div class="btn active"></div>
+        <div class="btn"></div>
+        <div class="btn"></div>
+        <div class="btn"></div>
+        <div class="btn"></div>
+      </div>
     </div>
 
     <div class="threelastposts">
@@ -64,5 +107,7 @@
             </div>
         </div>
     </div>
+
+    {# </div> #}
 
 {% endblock %}

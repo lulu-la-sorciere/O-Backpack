@@ -19,6 +19,25 @@ class StuffRepository extends ServiceEntityRepository
         parent::__construct($registry, Stuff::class);
     }
 
+    /**
+     * Method returning all stuffs by country
+     *
+     * @return void
+     */
+    public function findByCountry($id)
+    {
+
+        $em =$this->getEntityManager();
+        $query = $em->createQuery(
+            "SELECT s
+            FROM App\Entity\Stuff s 
+            JOIN s.countries as c
+            WHERE c.id = :country_id"
+        );
+        $query->setParameter('country_id', $id);
+        return $query->getResult();
+    }
+
     // /**
     //  * @return Stuff[] Returns an array of Stuff objects
     //  */

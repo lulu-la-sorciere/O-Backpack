@@ -74,15 +74,13 @@ class LocationController extends AbstractController
      * @Route("country/{id}/weather", name="country_weather")
      * 
      */
-    public function countryWeather(Country $country, StuffRepository $stuff)
+    public function countryWeather(Country $country)
     {
 
         //dump('route ok');
-        //dd (
-            $stuffAll = $stuff->findAll();
+       
         return $this->render('location/weather.html.twig', [
             'country' => $country,
-            'stuff' => $stuff,
         ]);
     }
     
@@ -94,9 +92,13 @@ class LocationController extends AbstractController
      */
     public function countryStuff(Country $country, StuffRepository $stuff)
     {
+        $stuffs = $stuff->findByCountry($country->getId());
+        //$stuffs->getCountry($country);
+       // dd($stuffs);
+        
         return $this->render('location/stuff.html.twig', [
             "country" => $country,
-            "stuff" => $stuff,
+            "stuffs" => $stuffs,
         ]);
     }
 }

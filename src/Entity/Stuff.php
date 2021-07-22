@@ -16,6 +16,7 @@ class Stuff
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * 
      */
     private $id;
 
@@ -41,6 +42,7 @@ class Stuff
 
     /**
      * @ORM\ManyToMany(targetEntity=Country::class, mappedBy="stuff")
+     * 
      */
     private $countries;
 

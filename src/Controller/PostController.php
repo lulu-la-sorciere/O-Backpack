@@ -5,9 +5,11 @@ namespace App\Controller;
 use App\Entity\Comment;
 use App\Entity\Post;
 use App\Entity\Continent;
+use App\Entity\User;
 use App\Repository\ContinentRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Form\CommentFormType;
+use App\Form\PostType;
 use App\Repository\CommentRepository;
 use App\Repository\PostRepository;
 use Symfony\Component\HttpFoundation\Request;
@@ -64,9 +66,10 @@ class PostController extends AbstractController
      */
     public function postsList(PostRepository $postRepository)
     {
-       // dd('road-ok');
+       //dd($postRepository);
        $posts = $postRepository->findAll();
-        return $this->render('post/postsList.html.twig', [
+       
+       return $this->render('post/postsList.html.twig', [
             "title" => "Articles",
             "posts" => $posts ,
         ]);
@@ -79,40 +82,75 @@ class PostController extends AbstractController
      *
      * @return void
      */
-    public function detail(Post $post, Request $request, CommentRepository $commentRepository)
+    public function detail(Post $post,User $user, Request $request, CommentRepository $commentRepository)
     {
         // dump($post);
         // dd($commentRepository->findBy(['post'=>$post]));
         
         $comments= $commentRepository->findBy(['post'=>$post], ['id'=>'DESC']);
-       
+
+        
         $newComment = new Comment();
         $form = $this->createForm(CommentFormType::class, $newComment);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // 6) Après soumission du formulaire, on va pouvoir
-            // sauvegarder nos données
-            // L'objet catégorie contient les données transmises lors
-            // du clic sur le bouton "Valider"
+            // after the form is submitted 
+          
+            // Only connected users can comment
+            $this->denyAccessUnlessGranted('ROLE_USER', $user, 'Accès refusé - Zone protégée');
+           
+            // we fetch user_id and post_id
+            $newComment->setUser($user);
+            $newComment->setPost($post);
+            
+            // we can save our data
             $em = $this->getDoctrine()->getManager();
-
-            // On sauvegarde la catégorie en BDD
             $em->persist($newComment);
             $em->flush();
 
-            // Message flash
-            // $_SESSION['tototiti'] = 'La categorie ...';
-            //$this->addFlash('info', 'La catégorie ' . $category->getName() . ' a bien été créée');
-
-            // 7) On redirige vers la liste des catégories
-            return $this->redirectToRoute('main_home');
+            // We redirect to the post
+            return $this->redirectToRoute('blog_post', ['id'=> $post->getId()] );
         }
 
         return $this->render('post/post.html.twig', [
             "title" => $post->getTitle(),
             "comments"=> $comments,
             "commentForm" =>$form->createView(),
+            "post"=>$post,
+        ]);
+
+    }
+    /**
+     * Method for adding a new post
+     * 
+     * @Route("/post/user/{id}/add", name="add")
+     * 
+     */
+    public function addPost(Request $request, User $user)
+    {
+       // dd($user);
+        // only members registrated and online can add a new post
+        $this->denyAccessUnlessGranted('ROLE_USER', $user);
+
+        $newPost = new Post();
+
+        $form = $this->createForm(PostType::class, $newPost);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()){
+
+            $newPost->setUser($user);
+            $em= $this->getDoctrine()->getManager();
+            $em->persist($newPost);
+            $em->flush();
+
+            return $this->redirectToRoute('blog_posts');
+        }
+
+        return $this->render('post/add.html.twig', [
+            'form' => $form->createView()
         ]);
     }
 }
