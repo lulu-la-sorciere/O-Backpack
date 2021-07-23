@@ -12,9 +12,11 @@ use App\Form\CommentFormType;
 use App\Form\PostType;
 use App\Repository\CommentRepository;
 use App\Repository\PostRepository;
+use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 /**
  * @Route("/blog", name="blog_", requirements={"id" = "\d+"})
@@ -81,7 +83,7 @@ class PostController extends AbstractController
      *
      * @return void
      */
-    public function detail(Post $post,User $user, Request $request, CommentRepository $commentRepository)
+    public function detail(Post $post,User $user, UserRepository $userRepo ,AuthenticationUtils $authenticationUtils, Request $request, CommentRepository $commentRepository)
     {
         // dump($post);
         // dd($commentRepository->findBy(['post'=>$post]));
@@ -98,8 +100,21 @@ class PostController extends AbstractController
             // Only connected users can comment
             $this->denyAccessUnlessGranted('ROLE_USER', $user, 'Accès refusé - Zone protégée');
            
+            // $userComment = $authenticationUtils->getLastUsername();
+           
+            /*if ($userComment === $user->getEmail()){
+
+                dd($userComment, $user->getEmail());
+               $userName =$user->getNickname();
+            }*/
+            $session = $this->get('session');
+            $sessionUser= $session->get('account');
+            $userRepo = $this->getDoctrine()->getRepository(User::class);
+            $userConnect = $userRepo->find($sessionUser->getId());
+            
+
             // we fetch user_id and post_id
-            $newComment->setUser($user);
+            $newComment->setUser($userConnect);
             $newComment->setPost($post);
             
             // we can save our data
