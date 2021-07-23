@@ -287,6 +287,44 @@ h4 {
   }
 }
 
+/* update data and paswd forms */
+
+h5 {
+  margin-bottom: 1em;
+  font-size: 1.5em;
+  color: #EEBC69;
+}
+
+.listData {
+  font-size: 1.2em;
+  text-align: left;
+  margin: auto;
+  width: 70%;
+}
+
+.listData p {
+  margin-bottom: 1em;
+}
+
+.profiletable {
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  justify-content: center;
+  margin: 2em auto;
+  border: ridge 3px #D87151;
+  padding: 1em;
+}
+
+.linkData {
+  margin-bottom: 1em;
+}
+
+.avatarprofile {
+  width: 30%;
+  padding: 0.5em;
+}
+
 /* slider */
 
 .img-slider{
