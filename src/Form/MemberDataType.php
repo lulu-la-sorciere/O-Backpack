@@ -39,8 +39,10 @@ class MemberDataType extends AbstractType
                 ],*/
             ])
             ->add('country')
-            ->add('dateOfBirth', DateType::class)
-            ->add('Valider', SubmitType::class);;
+            ->add('dateOfBirth', DateType::class, [
+                "widget" => "single_text"
+            ])
+            ->add('Valider', SubmitType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver)
