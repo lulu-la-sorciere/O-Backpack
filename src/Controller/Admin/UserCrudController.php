@@ -33,7 +33,7 @@ class UserCrudController extends AbstractCrudController
             TextField::new('lastname'),
             TextField::new('firstname'),
             ArrayField::new('roles'),
-            TextField::new('password'),
+            TextField::new('password')->hideOnForm(),
             TextField::new('country'),
             DateField::new('date_of_birth'),
             /* DateTimeField::new('createdAt'),
