@@ -162,11 +162,13 @@ class PostController extends AbstractController
                     //we transfer the picture to public file with 
                     try{
                         $picture->move(
+
+                            // file where downloading 
                             'img/',
                             $fileName
                         );
                     } catch (FileException $e) {
-                        dump('ereur');
+                        $this->addFlash("warning", "Une erreur est survenue ");
                     }
 
                 }
@@ -183,7 +185,7 @@ class PostController extends AbstractController
 
         //if not ok it returns to the add post from
         return $this->render('post/add.html.twig', [
-            'form' => $form->createView(),
+            'formPostAdd' => $form->createView(),
         ]);
     }
 }

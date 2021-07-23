@@ -8,13 +8,23 @@
 
 {% block content %}
 
-    <div class="imageandtitle">
-        <img src="#" alt="image monde" class="continentspec">
-        <h2>
-            Ajout d'article
-        </h2>
-    </div>
+	<div class="imageandtitle">
+		<img src="#" alt="image monde" class="continentspec">
+		<h2>
+			Ajout d'article
+		</h2>
+	</div>
 
-{{form(form)}}
+	<main class="form_container">
+		{{form_start(formPostAdd, {'attr': {'novalidate': 'novalidate'}}) }}
+		
+			{{ form_label(formPostAdd.title)}}
+			{{ form_widget(formPostAdd.title)}}
 
+            {{form_row(formPostAdd.content)}}
+            {{form_row(formPostAdd.country)}}
+            {{form_row(formPostAdd.continent)}}
+
+		{{form_end(formPostAdd)}}
+	</main>
 {% endblock %}
