@@ -24,6 +24,10 @@ class PostType extends AbstractType
             ->add('continent')
             ->add('country')
             //->add('user')
+            ->add('picture', FileType::class, [
+                'label' => 'Téléverser une image',
+                'required' =>false,
+                ])
             ->add('Valider', SubmitType::class);
         ;
     }
