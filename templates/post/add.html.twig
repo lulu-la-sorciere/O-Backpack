@@ -16,15 +16,15 @@
 	</div>
 
 	<main class="form_container">
-		{{form_start(formPostAdd, {'attr': {'novalidate': 'novalidate'}}) }}
-		
-			{{ form_label(formPostAdd.title)}}
-			{{ form_widget(formPostAdd.title)}}
+		{{form_start(formPostAdd,  {'attr': {'novalidate': 'novalidate'}}) }}
 
-            {{form_row(formPostAdd.content)}}
-            {{form_row(formPostAdd.country)}}
-            {{form_row(formPostAdd.continent)}}
-
+		<div class="form-post-add">{{ form_widget(formPostAdd.title)}}</div>
+		<div>{{form_widget(formPostAdd.content)}}</div>
+		<div>{{form_row(formPostAdd.country)}}</div>
+		<div>{{form_row(formPostAdd.continent)}}</div>
+        <div>{{form_row(formPostAdd.picture)}}</div>
+            
 		{{form_end(formPostAdd)}}
+        
 	</main>
 {% endblock %}
