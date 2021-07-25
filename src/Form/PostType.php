@@ -34,14 +34,18 @@ class PostType extends AbstractType
                 )
             ))
             ->add('continent', ChoiceType::class, [
-                /*'choice_value' => 'name',*/
-            ])
-            ->add('country', ChoiceType::class,[
+                'placeholder' => "Choisissez un continent", 
                 'choices' => [
-                    new Country('Country1'),
-                    new Country('Country2')],
-                'choice_value' => 'name',
+                  
+                ],
             ])
+            ->add('country', ChoiceType::class,[            
+                'placeholder' => "Choisissez un pays", 
+                'choices' => [
+                  
+                ],
+                ])
+            
             //->add('user')
             ->add('picture', FileType::class, [
                 'label' => 'Ajouter une image',

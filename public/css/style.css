@@ -478,7 +478,7 @@ h4 {
   margin: 10px;
   
 }
-.form_container input, textarea{
+.form_container input, textarea, select{
 
   width:14em;
   height:4em;
