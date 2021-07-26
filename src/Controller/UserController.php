@@ -108,9 +108,7 @@ class UserController extends AbstractController
 
                 // redirection to member account with updated datas
                 return $this->redirectToRoute('user_profile', ['id'=>$user->getId()]);
-            }else{
-                 // if the transfert is ok, we add a message for user
-                 $this->addFlash('msgError', "Vous n'avez pas modifié vos données" );
+
             }
         
             return $this->render('user/update.html.twig', [

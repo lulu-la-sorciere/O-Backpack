@@ -111,8 +111,8 @@ class PostController extends AbstractController
             $em->flush();
 
 
-                // if the transfert is ok, we add a message for user
-                $this->addFlash('msg', "Votre commentaire a été publié" );
+            // if the transfert is ok, we add a message for user
+            $this->addFlash('msg', "Votre commentaire a été publié" );
 
             // We redirect to the post
             return $this->redirectToRoute('blog_post', ['id'=> $post->getId()] );
