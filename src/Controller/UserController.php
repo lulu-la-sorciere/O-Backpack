@@ -70,7 +70,7 @@ class UserController extends AbstractController
     }
 
         /**
-        * @Route("/profile/{id}/update", name="update-user")
+        * @Route("/profile/{id}/update", name="update")
         *
         * @param UserManager $userManager
         * @param Request $request
