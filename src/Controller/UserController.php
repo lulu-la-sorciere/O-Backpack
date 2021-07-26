@@ -62,6 +62,10 @@ class UserController extends AbstractController
             //we save the changes in the BDD
             $entityManager->persist($user);
             $entityManager->flush();
+
+            // if the transfert is ok, we add a message for user
+            $this->addFlash('msg', "Votre mot de passe a bien été modifié" );
+
             return $this->redirectToRoute('user_profile', ['id'=>$user->getId()]);
         }
         return $this->render('user/edit.html.twig',[
