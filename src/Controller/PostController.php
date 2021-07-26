@@ -186,6 +186,7 @@ class PostController extends AbstractController
         //if not ok it returns to the add post from
         return $this->render('post/add.html.twig', [
             'formPostAdd' => $form->createView(),
+            'user' =>$user,
         ]);
     }
 }
