@@ -12,11 +12,13 @@ use App\Form\CommentFormType;
 use App\Form\PostType;
 use App\Repository\CommentRepository;
 use App\Repository\PostRepository;
-use App\Repository\UserRepository;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\String\Slugger\SluggerInterface;
+
 
 /**
  * @Route("/blog", name="blog_", requirements={"id" = "\d+"})
@@ -133,9 +135,9 @@ class PostController extends AbstractController
      * @Route("/post/user/{id}/add", name="add")
      * 
      */
-    public function addPost(Request $request, User $user)
+    public function addPost(Request $request, User $user, SluggerInterface $slugger)
     {
-       // dd($user);
+        //dd($user);
 
         // only members registrated and online can add a new post
         $this->denyAccessUnlessGranted('ROLE_USER', $user);
@@ -143,10 +145,40 @@ class PostController extends AbstractController
         $newPost = new Post();
 
         $form = $this->createForm(PostType::class, $newPost);
-
+        
         $form->handleRequest($request);
         
         if ($form->isSubmitted() && $form->isValid()){
+
+                // manage Downloading picturefile
+                /** @var UploadedFile $picture */
+                $picture = $form->get('picture')->getData();
+
+                // this condition to change original file's name
+                if ($picture){
+                    //we get the name's file
+                    $originalFilename = pathinfo($picture->getClientOriginalName(), PATHINFO_FILENAME);
+
+                    //we 'clean' the file name with service SluggerInterface (delete specials caracters,..)
+                    $safeFilename = $slugger->slug($originalFilename);
+
+                    //we create a unique name 
+                    $fileName = $safeFilename . '-' . uniqid() . '.' . $picture->guessExtension();
+
+                    //we transfer the picture to public file with 
+                    try{
+                        $picture->move(
+
+                            // file where downloading 
+                            'img/',
+                            $fileName
+                        );
+                    } catch (FileException $e) {
+                        $this->addFlash("warning", "Une erreur est survenue ");
+                    }
+
+                }
+                    $newPost->setPicture($fileName);
 
 
             $newPost->setUser($user);
@@ -159,8 +191,11 @@ class PostController extends AbstractController
 
             return $this->redirectToRoute('blog_posts');
         }
+
+        //if not ok it returns to the add post from
         return $this->render('post/add.html.twig', [
-            'form' => $form->createView()
+            'formPostAdd' => $form->createView(),
+            'user' =>$user,
         ]);
     }
 }
