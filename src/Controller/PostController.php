@@ -110,6 +110,10 @@ class PostController extends AbstractController
             $em->persist($newComment);
             $em->flush();
 
+
+                // if the transfert is ok, we add a message for user
+                $this->addFlash('msg', "Votre commentaire a été publié" );
+
             // We redirect to the post
             return $this->redirectToRoute('blog_post', ['id'=> $post->getId()] );
         }
@@ -149,6 +153,9 @@ class PostController extends AbstractController
             $em= $this->getDoctrine()->getManager();
             $em->persist($newPost);
             $em->flush();
+
+            // if the transfert is ok, we add a message for user
+            $this->addFlash('msg', "Votre article a bien été posté" );
 
             return $this->redirectToRoute('blog_posts');
         }

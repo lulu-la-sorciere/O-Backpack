@@ -63,6 +63,7 @@ class UserController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
+            
             // if the transfert is ok, we add a message for user
             $this->addFlash('msg', "Votre mot de passe a bien été modifié" );
 
@@ -101,11 +102,15 @@ class UserController extends AbstractController
                 //we save the changes in the BDD
                 $em->persist($user);
                 $em->flush();
-
+                
                 // if the transfert is ok, we add a message for user
                 $this->addFlash('msg', "Vos modifications ont bien été prises en compte" );
+
                 // redirection to member account with updated datas
                 return $this->redirectToRoute('user_profile', ['id'=>$user->getId()]);
+            }else{
+                 // if the transfert is ok, we add a message for user
+                 $this->addFlash('msgError', "Vous n'avez pas modifié vos données" );
             }
         
             return $this->render('user/update.html.twig', [
