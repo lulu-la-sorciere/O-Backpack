@@ -4,10 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Continent;
 use App\Entity\Country;
-use App\Entity\Stuff;
 use App\Repository\ContinentRepository;
-use App\Repository\CountryRepository;
 use App\Repository\StuffRepository;
+use App\Service\CountryRestApi;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -21,11 +20,13 @@ class LocationController extends AbstractController
      * Method to display the list of continents
      * @Route("continent", name="continent")
      */
-    public function index(ContinentRepository $continentRepository): Response
+    public function index(ContinentRepository $continentRepository, CountryRestApi $countryRestApi): Response
     {
 
+       // dd($countryRestApi->getTestData());
         return $this->render('location/index.html.twig', [
             'location_continent' => $continentRepository->findAll(),
+            //'datas'=>$countryRestApi->getTestData(),
         ]);
     }
 
@@ -34,24 +35,32 @@ class LocationController extends AbstractController
      * @Route("continent/{id}", name="detail")
      *
      */
-    public function detail(Continent $continent)
+    public function detail(Continent $continent, CountryRestApi $countryRestApi)
     {
+        // dd($countryRestApi->countryByContinent($continent->getName()));
+
+
         return $this->render('location/countries.html.twig', [
             'continent' => $continent,
             'countries' => $continent->getCountries(),
+            'datas'=>$countryRestApi->countryByContinent($continent->getName()),
         ]);
     }
 
     /**
      * Country's details
      * 
-     * @Route("country/{id}", name="country")
+     * @Route("continent/{id}/country/{name}", name="country")
      */
-    public function show(Country $country): Response
+    public function show(CountryRestApi $countryRestApi, $name, $id): Response
     {
-        //dd($country);
+        //dd($name);
+       
+        
         return $this->render('location/country.html.twig', [
-            'country' => $country
+            'country' => $countryRestApi->fetch($name),
+            'name'=>$name,
+            'id'=>$id
         ]);
     }
 
@@ -98,4 +107,5 @@ class LocationController extends AbstractController
             "stuffs" => $stuffs,
         ]);
     }
+
 }
