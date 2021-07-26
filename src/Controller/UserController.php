@@ -8,6 +8,7 @@ use App\Entity\User;
 use App\Form\ChangePasswordType;
 use App\Form\MemberDataType;
 use App\Repository\UserRepository;
+use App\Service\ImageUploader;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -85,14 +86,21 @@ class UserController extends AbstractController
         * @return Response
         * @throws Exception
         */
-        public function update(User $user, Request $request, int $id)
+        public function update(ImageUploader $imageUploader, User $user, Request $request, int $id)
         {
             $form = $this->createForm(MemberDataType::class, $user);
 
             $form->handleRequest($request);
+
+
         
             // when the form is completed
             if ($form->isSubmitted() && $form->isValid()) {
+
+                //we call the service imageuploaer and his  upload method to upload picture on blog post
+                $newFilename = $imageUploader->upload($form, 'picture');
+
+                $user->setPicture($newFilename);
 
                // after the submission and the validation of form 
                // the object "user" content the new data 

@@ -35,17 +35,14 @@ class PostType extends AbstractType
             ))
             ->add('continent', ChoiceType::class, [
                 'placeholder' => "Choisissez un continent", 
-                'choices' => [
-                  'Europe',
-                  'Afrique',
-                ],
+                'choice_value' => function (?Continent $continent) {
+                    return $continent ? $continent->getId() : '';
+                }
+              
             ])
             ->add('country', ChoiceType::class,[            
                 'placeholder' => "Choisissez un pays", 
-                'choices' => [
-                    'France',
-                    'Italie',
-                ],
+               
                 ])
             
             //->add('user')

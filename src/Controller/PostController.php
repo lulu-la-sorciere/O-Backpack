@@ -146,12 +146,14 @@ class PostController extends AbstractController
         $newPost = new Post();
 
         $form = $this->createForm(PostType::class, $newPost);
+
+        dd($form);
         
         $form->handleRequest($request);
         
         if ($form->isSubmitted() && $form->isValid()){
 
-            //we call the service imageuploaer and his method upload to upload picture on blog post
+            //we call the service imageuploaer and his upload method to upload picture on blog post
             $newFilename = $imageUploader->upload($form, 'picture');
 
             $newPost->setPicture($newFilename);

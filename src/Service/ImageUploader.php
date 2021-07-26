@@ -5,15 +5,16 @@ namespace App\Service;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 class ImageUploader
 {
 
-    private $logger;
+    private $slugger;
 
-    public function __construct(LoggerInterface $logger)
+    public function __construct(SluggerInterface $slugger)
     {
-        $this->logger = $logger;
+        $this->slugger = $slugger;
     }
 
     public function upload(Form $form, string $file)
