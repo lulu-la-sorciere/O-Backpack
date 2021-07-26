@@ -69,7 +69,9 @@
               <p>{{ post.content|slice(0, 300) }}...</p>
               <p>{{ post.user.nickname }} - Le {{ post.publishedAt|date('d-m-Y') }}</p>
           </div>
-          
+          <div class="continue">
+            <a href="{{ path('blog_post', {id:post.id}) }}">Lire la suite</a>
+        </div>
       </div>
     {% endfor %}
     </section>

@@ -83,16 +83,17 @@ class PostController extends AbstractController
      *
      * @return void
      */
-    public function detail(Post $post,User $user, UserRepository $userRepo ,AuthenticationUtils $authenticationUtils, Request $request, CommentRepository $commentRepository)
+    public function detail(Post $post,User $user, Request $request, CommentRepository $commentRepository)
     {
         // dump($post);
         // dd($commentRepository->findBy(['post'=>$post]));
-        
+        //$post->getComments();
         $comments= $commentRepository->findBy(['post'=>$post], ['id'=>'DESC']);
 
         $newComment = new Comment();
         $form = $this->createForm(CommentFormType::class, $newComment);
         $form->handleRequest($request);
+       // dd($this->getUser()->getNickname());
 
         if ($form->isSubmitted() && $form->isValid()) {
             // after the form is submitted 
@@ -100,21 +101,8 @@ class PostController extends AbstractController
             // Only connected users can comment
             $this->denyAccessUnlessGranted('ROLE_USER', $user, 'Accès refusé - Zone protégée');
            
-            // $userComment = $authenticationUtils->getLastUsername();
-           
-            /*if ($userComment === $user->getEmail()){
-
-                dd($userComment, $user->getEmail());
-               $userName =$user->getNickname();
-            }*/
-            $session = $this->get('session');
-            $sessionUser= $session->get('account');
-            $userRepo = $this->getDoctrine()->getRepository(User::class);
-            $userConnect = $userRepo->find($sessionUser->getId());
-            
-
             // we fetch user_id and post_id
-            $newComment->setUser($userConnect);
+            $newComment->setUser($this->getUser());
             $newComment->setPost($post);
             
             // we can save our data
