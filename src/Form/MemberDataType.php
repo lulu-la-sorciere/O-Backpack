@@ -3,9 +3,10 @@
 namespace App\Form;
 
 use App\Entity\User;
+
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -40,8 +41,8 @@ class MemberDataType extends AbstractType
             ])
             ->add('country')
             ->add('dateOfBirth', DateType::class, [
-                "widget" => "single_text"
-            ])
+                    "widget"=> "single_text"
+                    ])
             ->add('Valider', SubmitType::class);
     }
 
