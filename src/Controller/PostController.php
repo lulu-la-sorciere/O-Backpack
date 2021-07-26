@@ -19,6 +19,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
+
 /**
  * @Route("/blog", name="blog_", requirements={"id" = "\d+"})
  */
@@ -88,12 +89,13 @@ class PostController extends AbstractController
     {
         // dump($post);
         // dd($commentRepository->findBy(['post'=>$post]));
-        
+        //$post->getComments();
         $comments= $commentRepository->findBy(['post'=>$post], ['id'=>'DESC']);
 
         $newComment = new Comment();
         $form = $this->createForm(CommentFormType::class, $newComment);
         $form->handleRequest($request);
+       // dd($this->getUser()->getNickname());
 
         if ($form->isSubmitted() && $form->isValid()) {
             // after the form is submitted 
@@ -102,13 +104,17 @@ class PostController extends AbstractController
             $this->denyAccessUnlessGranted('ROLE_USER', $user, 'Accès refusé - Zone protégée');
            
             // we fetch user_id and post_id
-            $newComment->setUser($user);
+            $newComment->setUser($this->getUser());
             $newComment->setPost($post);
             
             // we can save our data
             $em = $this->getDoctrine()->getManager();
             $em->persist($newComment);
             $em->flush();
+
+
+            // if the transfert is ok, we add a message for user
+            $this->addFlash('msg', "Votre commentaire a été publié" );
 
             // We redirect to the post
             return $this->redirectToRoute('blog_post', ['id'=> $post->getId()] );
@@ -179,6 +185,9 @@ class PostController extends AbstractController
             $em= $this->getDoctrine()->getManager();
             $em->persist($newPost);
             $em->flush();
+
+            // if the transfert is ok, we add a message for user
+            $this->addFlash('msg', "Votre article a bien été posté" );
 
             return $this->redirectToRoute('blog_posts');
         }

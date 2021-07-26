@@ -90,10 +90,9 @@ class LocationController extends AbstractController
      */
     public function countryStuff(Country $country, StuffRepository $stuff)
     {
-        $stuffs = $stuff->findByCountry($country->getId());
-        //$stuffs->getCountry($country);
-       // dd($stuffs);
-        
+        $stuffs=$country->getStuff();
+        // dd($stuffs);
+
         return $this->render('location/stuff.html.twig', [
             "country" => $country,
             "stuffs" => $stuffs,
