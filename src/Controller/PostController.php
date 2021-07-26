@@ -52,7 +52,7 @@ class PostController extends AbstractController
      */
     public function continentPic(Continent $continent)
     {
-        return $this->render('post/picbycontinent.html.twig',[
+        return $this->render('post/picbycontinent.html.twig', [
             'continent' => $continent,
 
         ]);
@@ -66,14 +66,13 @@ class PostController extends AbstractController
      */
     public function postsList(PostRepository $postRepository)
     {
-       //dd($postRepository);
-       $posts = $postRepository->findAll();
-       
-       return $this->render('post/postsList.html.twig', [
-            "title" => "Articles",
-            "posts" => $posts ,
-        ]);
+        //dd($postRepository);
+        $posts = $postRepository->findAll();
 
+        return $this->render('post/postsList.html.twig', [
+            "title" => "Articles",
+            "posts" => $posts,
+        ]);
     }
 
     /**
@@ -89,7 +88,6 @@ class PostController extends AbstractController
         
         $comments= $commentRepository->findBy(['post'=>$post], ['id'=>'DESC']);
 
-        
         $newComment = new Comment();
         $form = $this->createForm(CommentFormType::class, $newComment);
         $form->handleRequest($request);
@@ -115,12 +113,13 @@ class PostController extends AbstractController
 
         return $this->render('post/post.html.twig', [
             "title" => $post->getTitle(),
-            "comments"=> $comments,
-            "commentForm" =>$form->createView(),
+            "comments" => $comments,
+            "commentForm" => $form->createView(),
             "post"=>$post,
         ]);
 
     }
+
     /**
      * Method for adding a new post
      * 
@@ -130,16 +129,18 @@ class PostController extends AbstractController
     public function addPost(Request $request, User $user)
     {
        // dd($user);
+
         // only members registrated and online can add a new post
         $this->denyAccessUnlessGranted('ROLE_USER', $user);
-
+        
         $newPost = new Post();
 
         $form = $this->createForm(PostType::class, $newPost);
 
         $form->handleRequest($request);
-
+        
         if ($form->isSubmitted() && $form->isValid()){
+
 
             $newPost->setUser($user);
             $em= $this->getDoctrine()->getManager();
@@ -148,7 +149,6 @@ class PostController extends AbstractController
 
             return $this->redirectToRoute('blog_posts');
         }
-
         return $this->render('post/add.html.twig', [
             'form' => $form->createView()
         ]);

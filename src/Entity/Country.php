@@ -12,6 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Country
 {
+  
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -267,4 +268,5 @@ class Country
 
         return $this;
     }
+
 }

@@ -223,6 +223,11 @@ h4 {
   width: 100%;
 }
 
+/* search */
+
+.results, .search_form {
+    padding : 2em;
+}
 /* In progress */
 
 .construction {
@@ -431,6 +436,7 @@ h5 {
       height: 10px;
       margin: 8px;
     }
+
   }
   
   @media (max-width: 620px){
