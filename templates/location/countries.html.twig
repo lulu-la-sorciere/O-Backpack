@@ -1,21 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block subtitle %} - Pays  {% endblock %}
+{% block subtitle %}
+	- Pays
+{% endblock %}
 
 {% block content %}
 
- 	<div class="imageandtitle">
-        <img src="" alt="image monde" class="continentspec">
-        <h2>{{continent.name}} - Choisisssez un pays</h2>
-    </div>
-	liste des pays par continent
-
-
-     <ul class="continentul">
-     
-        {% for country in countries %}
-            <li class="continentli"><a href="{{ path('location_country', {id:country.id}) }}">{{ country.name }}</a></li>
-        {% endfor %}
-    </ul>
+	<div class="imageandtitle">
+		<img src="" alt="image monde" class="continentspec">
+		<h2>{{continent.name}}
+			- Choisissez un pays</h2>
+	</div>
+	<button class="continue post">
+        <a href="{{ path('location_continent') }}">Retour à la liste des continents</a>
+    </button>
+	<ul class="continentul">
+		{% for country in countries %}
+			<li class="continentli">
+				<a href="{{ path('location_country', {id:country.id}) }}">{{ country.name }}</a>
+			</li>
+		{% endfor %}
+	</ul>
 
 {% endblock %}

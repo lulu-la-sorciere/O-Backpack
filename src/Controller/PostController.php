@@ -12,9 +12,13 @@ use App\Form\CommentFormType;
 use App\Form\PostType;
 use App\Repository\CommentRepository;
 use App\Repository\PostRepository;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\String\Slugger\SluggerInterface;
+
 
 /**
  * @Route("/blog", name="blog_", requirements={"id" = "\d+"})
@@ -26,10 +30,10 @@ class PostController extends AbstractController
      * 
      * @Route("", name="list")
      */
-    public function index(): Response
+    public function index(PostRepository $postR): Response
     {
         return $this->render('post/index.html.twig', [
-            'index' => 'Post',
+            'posts' => $postR->findAll(),
         ]);
     }
 
@@ -85,12 +89,13 @@ class PostController extends AbstractController
     {
         // dump($post);
         // dd($commentRepository->findBy(['post'=>$post]));
-        
+        //$post->getComments();
         $comments= $commentRepository->findBy(['post'=>$post], ['id'=>'DESC']);
 
         $newComment = new Comment();
         $form = $this->createForm(CommentFormType::class, $newComment);
         $form->handleRequest($request);
+       // dd($this->getUser()->getNickname());
 
         if ($form->isSubmitted() && $form->isValid()) {
             // after the form is submitted 
@@ -99,13 +104,17 @@ class PostController extends AbstractController
             $this->denyAccessUnlessGranted('ROLE_USER', $user, 'Accès refusé - Zone protégée');
            
             // we fetch user_id and post_id
-            $newComment->setUser($user);
+            $newComment->setUser($this->getUser());
             $newComment->setPost($post);
             
             // we can save our data
             $em = $this->getDoctrine()->getManager();
             $em->persist($newComment);
             $em->flush();
+
+
+            // if the transfert is ok, we add a message for user
+            $this->addFlash('msg', "Votre commentaire a été publié" );
 
             // We redirect to the post
             return $this->redirectToRoute('blog_post', ['id'=> $post->getId()] );
@@ -126,9 +135,9 @@ class PostController extends AbstractController
      * @Route("/post/user/{id}/add", name="add")
      * 
      */
-    public function addPost(Request $request, User $user)
+    public function addPost(Request $request, User $user, SluggerInterface $slugger)
     {
-       // dd($user);
+        //dd($user);
 
         // only members registrated and online can add a new post
         $this->denyAccessUnlessGranted('ROLE_USER', $user);
@@ -136,10 +145,40 @@ class PostController extends AbstractController
         $newPost = new Post();
 
         $form = $this->createForm(PostType::class, $newPost);
-
+        
         $form->handleRequest($request);
         
         if ($form->isSubmitted() && $form->isValid()){
+
+                // manage Downloading picturefile
+                /** @var UploadedFile $picture */
+                $picture = $form->get('picture')->getData();
+
+                // this condition to change original file's name
+                if ($picture){
+                    //we get the name's file
+                    $originalFilename = pathinfo($picture->getClientOriginalName(), PATHINFO_FILENAME);
+
+                    //we 'clean' the file name with service SluggerInterface (delete specials caracters,..)
+                    $safeFilename = $slugger->slug($originalFilename);
+
+                    //we create a unique name 
+                    $fileName = $safeFilename . '-' . uniqid() . '.' . $picture->guessExtension();
+
+                    //we transfer the picture to public file with 
+                    try{
+                        $picture->move(
+
+                            // file where downloading 
+                            'img/',
+                            $fileName
+                        );
+                    } catch (FileException $e) {
+                        $this->addFlash("warning", "Une erreur est survenue ");
+                    }
+
+                }
+                    $newPost->setPicture($fileName);
 
 
             $newPost->setUser($user);
@@ -147,10 +186,16 @@ class PostController extends AbstractController
             $em->persist($newPost);
             $em->flush();
 
+            // if the transfert is ok, we add a message for user
+            $this->addFlash('msg', "Votre article a bien été posté" );
+
             return $this->redirectToRoute('blog_posts');
         }
+
+        //if not ok it returns to the add post from
         return $this->render('post/add.html.twig', [
-            'form' => $form->createView()
+            'formPostAdd' => $form->createView(),
+            'user' =>$user,
         ]);
     }
 }
