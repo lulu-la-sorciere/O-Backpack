@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\MessageRepository;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass=MessageRepository::class)
@@ -62,12 +63,12 @@ class Message
         return $this;
     }
 
-    public function getUser(): ?string
+    public function getUser(): UserInterface
     {
         return $this->user;
     }
 
-    public function setUser(string $user): self
+    public function setUser(UserInterface $user): self
     {
         $this->user = $user;
 

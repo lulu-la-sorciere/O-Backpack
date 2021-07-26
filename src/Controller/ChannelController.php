@@ -32,26 +32,15 @@ class ChannelController extends AbstractController
     }
 
     /**
-     * @Route("/chat/{id}", name="chat", methods={"GET"})
+     * @Route("/chat/{id}", name="chat_message", methods={"POST"})
      */
-    public function chat(Channel $channel, MessageRepository $message): Response
-    {
-        $messages = $message->findBy([
-            'channel' => $channel
-        ], ['createdAt' => 'ASC']);
-
-        return $this->render('channel/chat.html.twig', [
-            'channel' => $channel,
-            'messages' => $messages
-        ]);
-    }
-
-      /**
-     * @Route("/chat/{id}", name="sendMessage", methods={"POST"})
-     */
-    public function sendMessage(Request $request, ChannelRepository $channel, EntityManagerInterface $em, SerializerInterface $serializer,
-    HubInterface $publisher): JsonResponse
-    {
+    public function sendMessage(
+        Request $request,
+        ChannelRepository $channel,
+        EntityManagerInterface $em,
+        SerializerInterface $serializer,
+        HubInterface $publisher
+    ): JsonResponse {
         $data = \json_decode($request->getContent(), true); // On récupère les data postées et on les déserialize
         if (empty($content = $data['content'])) {
             throw new AccessDeniedHttpException('No data sent');
@@ -66,6 +55,7 @@ class ChannelController extends AbstractController
         $message = new Message(); // Après validation, on crée le nouveau message
         $message->setContent($content);
         $message->setChannel($channel);
+        $message->setUser($this->getUser());
 
         $em->persist($message);
         $em->flush(); // Sauvegarde du nouvel objet en DB
@@ -73,20 +63,39 @@ class ChannelController extends AbstractController
         $jsonMessage = $serializer->serialize($message, 'json', [
             'groups' => ['message'] // On serialize la réponse avant de la renvoyer
         ]);
-
+        dd($jsonMessage);
         $update = new Update( // Création d'une nouvelle update
-            sprintf('http://localhost:8080/chat/%s', // On précise le topic, avec pour Id l'identifiant de notre Channel
-                $channel->getId()),
+            sprintf(
+                'http://localhost:8080/chat/%d', // On précise le topic, avec pour Id l'identifiant de notre Channel
+                $channel->getId()
+            ),
             $jsonMessage, // On y passe le message serializer en content value
         );
+        dd($update);
         $publisher->publish($update);
-
+       
         return new JsonResponse( // Enfin, on retourne la réponse
             $jsonMessage,
             Response::HTTP_OK,
             [],
             true
         );
-
     }
+
+    /**
+     * @Route("/chat/{id}", name="chat", methods={"GET"})
+     */
+    public function chat(Channel $channel, MessageRepository $message): Response
+    {
+        $messages = $message->findBy([
+            'channel' => $channel
+        ], ['createdAt' => 'ASC']);
+
+        return $this->render('channel/chat.html.twig', [
+            'channel' => $channel,
+            'messages' => $messages
+        ]);
+    }
+
+   
 }
