@@ -36,13 +36,15 @@ class PostType extends AbstractType
             ->add('continent', ChoiceType::class, [
                 'placeholder' => "Choisissez un continent", 
                 'choices' => [
-                  
+                  'Europe',
+                  'Afrique',
                 ],
             ])
             ->add('country', ChoiceType::class,[            
                 'placeholder' => "Choisissez un pays", 
                 'choices' => [
-                  
+                    'France',
+                    'Italie',
                 ],
                 ])
             
