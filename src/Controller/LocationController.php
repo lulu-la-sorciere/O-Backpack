@@ -6,6 +6,7 @@ use App\Entity\Continent;
 use App\Entity\Country;
 use App\Repository\ContinentRepository;
 use App\Repository\StuffRepository;
+use App\Service\OpenWeather;
 use App\Service\CountryRestApi;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -87,9 +88,9 @@ class LocationController extends AbstractController
      * @Route("country/{id}/weather", name="country_weather")
      * 
      */
-    public function countryWeather(Country $country)
+    public function countryWeather(Country $country, OpenWeather $weather)
     {
-
+        dd($weather->getWeather($country));
         return $this->render('location/weather.html.twig', [
             'country' => $country,
         ]);
