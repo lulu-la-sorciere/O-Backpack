@@ -32,57 +32,6 @@ class ChannelController extends AbstractController
     }
 
     /**
-     * @Route("/chat/{id}", name="chat_message", methods={"POST"})
-     */
-    public function sendMessage(
-        Request $request,
-        ChannelRepository $channel,
-        EntityManagerInterface $em,
-        SerializerInterface $serializer,
-        HubInterface $publisher
-    ): JsonResponse {
-        $data = \json_decode($request->getContent(), true); // On récupère les data postées et on les déserialize
-        if (empty($content = $data['content'])) {
-            throw new AccessDeniedHttpException('No data sent');
-        }
-        $channel = $channel->findOneBy([
-            'id' => $data['channel'] // On cherche à savoir de quel channel provient le message
-        ]);
-        if (!$channel) {
-            throw new AccessDeniedHttpException('Message have to be sent on a specific channel');
-        }
-
-        $message = new Message(); // Après validation, on crée le nouveau message
-        $message->setContent($content);
-        $message->setChannel($channel);
-        $message->setUser($this->getUser());
-
-        $em->persist($message);
-        $em->flush(); // Sauvegarde du nouvel objet en DB
-
-        $jsonMessage = $serializer->serialize($message, 'json', [
-            'groups' => ['message'] // On serialize la réponse avant de la renvoyer
-        ]);
-        dd($jsonMessage);
-        $update = new Update( // Création d'une nouvelle update
-            sprintf(
-                'http://localhost:8080/chat/%d', // On précise le topic, avec pour Id l'identifiant de notre Channel
-                $channel->getId()
-            ),
-            $jsonMessage, // On y passe le message serializer en content value
-        );
-        dd($update);
-        $publisher->publish($update);
-       
-        return new JsonResponse( // Enfin, on retourne la réponse
-            $jsonMessage,
-            Response::HTTP_OK,
-            [],
-            true
-        );
-    }
-
-    /**
      * @Route("/chat/{id}", name="chat", methods={"GET"})
      */
     public function chat(Channel $channel, MessageRepository $message): Response
@@ -97,5 +46,53 @@ class ChannelController extends AbstractController
         ]);
     }
 
-   
+
+
+    /**
+     * @Route("/chat/{id}", name="chat_message", methods={"POST"})
+     */
+    public function sendMessage(Request $request, ChannelRepository $channel, EntityManagerInterface $em, SerializerInterface $serializer, HubInterface $hub): JsonResponse
+    {
+
+        $data = \json_decode($request->getContent(), true);
+        //dd($data); // On récupère les data postées et on les déserialize
+        if (empty($content = $data['content'])) {
+            throw new AccessDeniedHttpException('No data sent');
+        }
+        $channel = $channel->findOneBy([
+            'id' => $data['channel'] // On cherche à savoir de quel channel provient le message
+        ]);
+        if (!$channel) {
+            throw new AccessDeniedHttpException('Message have to be sent on a specific channel');
+        }
+
+        $message = new Message(); // Après validation, on crée le nouveau message
+        $message->setContent($content);
+        $message->setChannel($channel);
+        $message->setUser($this->getUser());
+        //dd($message);
+        $em->persist($message);
+        $em->flush(); // Sauvegarde du nouvel objet en DB
+
+        $jsonMessage = $serializer->serialize($message, 'json', [
+            'groups' => ['message'] // On serialize la réponse avant de la renvoyer
+        ]);
+        dd($jsonMessage);
+
+        $update = new Update('http://localhost:8080/chat/{id}', json_encode([
+            'user' => $request->request->get('user'),
+            'message' => $request->request->get('message'),
+        ]));
+        dd($update);
+
+        $hub->publish($update);
+        dd($hub);
+
+        return new JsonResponse( // Enfin, on retourne la réponse
+            $jsonMessage,
+            Response::HTTP_OK,
+            [],
+            true
+        );
+    }
 }
