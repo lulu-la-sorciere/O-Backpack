@@ -5,9 +5,12 @@ namespace App\Form;
 use App\Entity\Continent;
 use App\Entity\Country;
 use App\Entity\Post;
+use Doctrine\ORM\EntityRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\ChoiceList\ChoiceList;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -34,23 +37,21 @@ class PostType extends AbstractType
                 )
             ))
             ->add('continent', ChoiceType::class, [
-                'placeholder' => "Choisissez un continent", 
-                'choice_value' => function (?Continent $continent) {
-                    return $continent ? $continent->getId() : '';
-                }
+                'placeholder' => "Choisissez un continent",             
               
             ])
-            ->add('country', ChoiceType::class,[            
-                'placeholder' => "Choisissez un pays", 
-               
-                ])
+            ->add('country', //EntityType::class, [            
+                //'placeholder' => "Choisissez un pays", 
+                //'class' => Country::class,
+                //]
+                )
             
             //->add('user')
             ->add('picture', FileType::class, [
                 'label' => 'Ajouter une image',
                 'required' =>false,
                 ])
-            ->add('Valider', SubmitType::class);
+            ->add('Valider', SubmitType::class );
         ;
     }
 
