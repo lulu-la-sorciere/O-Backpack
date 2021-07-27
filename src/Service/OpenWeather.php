@@ -34,5 +34,6 @@ class OpenWeather
     public function icon_img($icon = null)
     {
         return 'http://openweathermap.org/img/w/' . $icon . '.png';
+
     }
 }
