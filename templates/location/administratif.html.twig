@@ -6,8 +6,8 @@
 
 {% block content %}
 	<div class="imageandtitle">
-		<img src="" alt="image monde" class="continentspec">
-		<h2>{{country.name}}
+		<img src="#" alt="image monde" class="continentspec">
+		<h2>{{name}}
 			- Administratif</h2>
 	</div>
 
@@ -20,7 +20,7 @@
 		</button>
 		<button class="continue post">
 			<a href="{{ path('location_country', {id:country.id}) }}">Retour au
-				{{country.name}}
+				{{name}}
 			</a>
 		</button>
 	</div>

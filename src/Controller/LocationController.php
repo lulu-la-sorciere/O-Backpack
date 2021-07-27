@@ -50,31 +50,31 @@ class LocationController extends AbstractController
     /**
      * Country's details
      * 
-     * @Route("continent/{id}/country/{name}", name="country")
+     * @Route("continent/country/{name}", name="country")
      */
-    public function show(CountryRestApi $countryRestApi, $name, $id): Response
+    public function show(CountryRestApi $countryRestApi, $name): Response
     {
-        //dd($name);
-       
+        //dd($name);   
         
         return $this->render('location/country.html.twig', [
             'country' => $countryRestApi->fetch($name),
             'name'=>$name,
-            'id'=>$id
+            
         ]);
     }
 
     /**
      * Method for administration administrative information
-     * @Route("country/{id}/administratif", name="country_administratif")
+     * @Route("country/{name}/administratif", name="country_administratif")
      * 
      */
-    public function countryAdministratif(Country $country)
+    public function countryAdministratif(CountryRestApi $countryRestApi, $name)
     {
 
         //dump('route ok');
         return $this->render('location/administratif.html.twig', [
-            'country' => $country,
+            'country' =>$countryRestApi->fetch($name),
+            'name'=>$name,
         ]);
     }
 
@@ -97,7 +97,7 @@ class LocationController extends AbstractController
      *
      * @return void
      */
-    public function countryStuff(Country $country, StuffRepository $stuff)
+    public function countryStuff(Country $country)
     {
         $stuffs=$country->getStuff();
         // dd($stuffs);

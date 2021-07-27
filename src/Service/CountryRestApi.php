@@ -13,6 +13,7 @@ class CountryRestApi
     {
         $this->client= $client;
     }
+    
     public function region(): array
     {
         $response = $this->client->request(
