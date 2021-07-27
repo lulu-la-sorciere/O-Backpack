@@ -72,9 +72,13 @@ class LocationController extends AbstractController
     {
 
         //dump('route ok');
+        $detailCountry=$countryRestApi->detailsOfCountry($name);
+        
+      //dd($countryRestApi->detailsOfCountry($name));
         return $this->render('location/administratif.html.twig', [
             'country' =>$countryRestApi->fetch($name),
             'name'=>$name,
+            'detailCountry'=>$detailCountry,
         ]);
     }
 

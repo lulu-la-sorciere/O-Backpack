@@ -33,7 +33,7 @@ class CountryRestApi
         return $response->toArray();
     }
     
-    public function fetch($country)
+    public function fetch($country): array
     {
         
         $response= $this->client->request(
@@ -42,4 +42,14 @@ class CountryRestApi
         );
         return $response->toArray();
     }
+
+    public function detailsOfCountry ($country)
+    {
+        $response =$this->client->request(
+            'GET',
+            $this->apiCountryUrl . 'name/'. $country . '?fields=name;capital;languages;region;currencies;flag'
+        );
+        return $response->toArray();
+    }
 }
+//https://restcountries.eu/rest/v2/{service}?fields={field};{field};{field}
