@@ -226,6 +226,29 @@ h4 {
 .continentall {
   width: 100%;
 }
+/* country */
+
+.adminCountry{
+  display: flex;
+  flex-wrap: wrap row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.adminCountry_info{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* margin-right: 5%; */
+}
+
+.adminCountry_flag{
+  width:25%;
+}
+.flag{
+  width:100%;
+  display: block;
+}
 
 /* search */
 
