@@ -14,34 +14,33 @@
 	</div>
 
 	<div class="links">
-		<a href="">Recherche</a> -
-		<a href="">Filtre</a>
+		<button class="continue post"><a href="">Recherche</a> </button>
+		<button class="continue post"><a href="">Filtre</a> </button>
+		<button class="continue post"><a href="/blog/post/user/1/add"> &#43; Ajouter un article</a></button>
 	</div>
 
 	<section class="post">
-		<art>
-			<h4>
-				Title : Le tour du monde en 80jrs
-			</h4>
-			<ul>
-				<li>Author : Jon Doe
-				</li>
-				<li>Publication Date: 01/01/1901
-				</li>
-				<li>Update date:21/07/2021
-				</li>
-			</ul>
-			<p>
-				Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab dicta,illum eius aperiam nobis facere dolorum, quidem rerum perferendis quisfuga explicabo nulla molestias porro omnis voluptate harum. Laborum, qui</p>
-		</art>
-
-		<div class="continue">
-			<a href="{{ path('blog_posts') }}">
-				Lire nos articles
-			</a>
-		</div>
+		
+            <div class="postleft">
+                <figure class="postpic">
+                    <img src="{{ asset('img/'~ posts|last.picture)}}" alt="photo illustrant l'article">
+                </figure>
+            </div>
+            <div class="postright">
+                <h4>{{ posts|last.title }}</h4>
+                <div class="postbeginning">
+                    <p>{{ posts|last.content|slice(0, 300) }}...</p>
+                    <p>{{ posts|last.user.nickname }} - Le {{ posts|last.publishedAt|date('d-m-Y') }}</p>
+                </div>
+                
+            </div>
     
 	</section>
+	
+	<button class="continue post">
+        <a href="{{ path('blog_posts') }}">Lire la suite</a>
+    </button>
+
 	<section class="blog_carousel">
 		<div class="carousel-inner">
 			<div class="item active">

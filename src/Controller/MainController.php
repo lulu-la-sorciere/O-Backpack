@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Repository\ContinentRepository;
 use App\Repository\CountryRepository;
+use App\Repository\PostRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -49,10 +50,13 @@ class MainController extends AbstractController
      *
      * @return Response
      */
-    public function home(): Response
+    public function home(PostRepository $postR): Response
     {
+        $posts=$postR->findBy([],['id'=>'DESC'], 3);
+       
         return $this->render('main/index.html.twig', [
             'title' => 'Accueil',
+            'posts' => $posts,
         ]);
     }
 

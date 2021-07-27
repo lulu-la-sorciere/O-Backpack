@@ -55,58 +55,26 @@
         <h3>Nos 3 derniers articles</h3>
     </div>
 
-    <div class="lastposts">
-        <div class="post">
-            <div class="postleft">
-                <figure class="postpic">
-                    <img src="" alt="photo illustrant l'article">
-                </figure>
-            </div>
-            <div class="postright">
-                <h4>titre de l'article</h4>
-                <div class="postbeginning">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce varius placerat purus vel volutpat. Fusce non velit nec quam euismod posuere vel eget diam. Praesent.  
-                </div>
-                <div class="continue">
-                    Lire la suite
-                </div>
-            </div>
+    <section class="post">
+
+		{% for post in posts  %}
+      <div class="postleft">
+          <figure class="postpic">
+              <img src="{{ asset('img/'~ post.picture)}}" alt="photo illustrant l'article">
+          </figure>
+      </div>
+      <div class="postright">
+          <h4>{{ post.title }}</h4>
+          <div class="postbeginning">
+              <p>{{ post.content|slice(0, 300) }}...</p>
+              <p>{{ post.user.nickname }} - Le {{ post.publishedAt|date('d-m-Y') }}</p>
+          </div>
+          <div class="continue">
+            <a href="{{ path('blog_post', {id:post.id}) }}">Lire la suite</a>
         </div>
-        
-        <div class="post">
-            <div class="postleft">
-                <figure class="postpic">
-                    <img src="" alt="photo illustrant l'article">
-                </figure>
-            </div>
-            <div class="postright">
-                <h4>titre de l'article</h4>
-                <div class="postbeginning">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce varius placerat purus vel volutpat. Fusce non velit nec quam euismod posuere vel eget diam. Praesent.  
-                </div>
-                <div class="continue">
-                    Lire la suite
-                </div>
-            </div>
-        </div>
-        
-        <div class="post">
-            <div class="postleft">
-                <figure class="postpic">
-                    <img src="" alt="photo illustrant l'article">
-                </figure>
-            </div>
-            <div class="postright">
-                <h4>titre de l'article</h4>
-                <div class="postbeginning">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce varius placerat purus vel volutpat. Fusce non velit nec quam euismod posuere vel eget diam. Praesent.  
-                </div>
-                <div class="continue">
-                    Lire la suite
-                </div>
-            </div>
-        </div>
-    </div>
+      </div>
+    {% endfor %}
+    </section>
 
     {# </div> #}
 
