@@ -75,3 +75,43 @@ var repeat = function(activeClass){
   repeater();
 }
 repeat();
+
+
+// CAROUSEL BLOG
+/*
+var items = document.querySelectorAll('.item');
+var arrows = document.querySelectorAll('.arrow');
+let currentPic = 1;
+
+var arrowNav = function(manual){
+  items.forEach((item) => {
+    item.classList.remove('active');
+
+    arrows.forEach((arrow) => {
+      arrow.classList.remove('active');
+    });
+  });
+
+  items[manual].classList.add('active');
+  arrows[manual].classList.add('active');
+}
+arrows.forEach((arrow, i) => {
+  arrow.addEventListener("click", () => {
+    arrowNav(i);
+    currentPic = i;
+  });
+});
+
+var itemIndex = 1;
+
+function showSlides(n) {
+  var i;
+  var items = document.getElementsByClassName("item");
+  
+  if (n > items.length) {itemIndex = 1}    
+  if (n < 1) itemIndex = items.length}
+  for (i = 0; i < items.length; i++) {
+      items[i].style.display = "none";  
+  }
+  items[itemIndex-1].style.display = "block";
+}*/
