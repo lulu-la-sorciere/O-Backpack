@@ -17,13 +17,18 @@
     <h2 class="h3 formspace">Veuillez vous connecter</h2>
 
         <div class="formwrapper">
+            <div class="col">
+                <div class="formgroup">
+                {# <label for="inputEmail" class="formspace">Email : </label> #}
+                <input type="email" value="{{ last_username }}" name="email"    id="inputEmail" class="formspace" placeholder="Votre e-mail" autocomplete="email"  required autofocus></div>
+            </div>
+            <div class="col">
+                <div class="formgroup">
+                {# <label for="inputPassword" class="formspace">Mot de passe : </label> #}
+                <input type="password" placeholder="Votre mot de passe" name="password" id="inputPassword"   class="formspace" autocomplete="current-password" required></div>
+            </div>
 
-            <label for="inputEmail" class="formspace">Email : </label>
-            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control formspace fieldshape" autocomplete="email" required autofocus>
-            <label for="inputPassword" class="formspace">Mot de passe : </label>
-            <input type="password" name="password" id="inputPassword" class="form-control formspace fieldshape" autocomplete="current-password" required>
-
-            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                <div><input type="hidden" name="_csrf_token" value="{{ csrf_token   ('authenticate') }}"></div>
 
         
 
@@ -38,7 +43,7 @@
         </div>
     #}
 
-            <button class="login-button formspace" type="submit">
+            <button class="formspace buttonform" type="submit">
                 Se connecter
             </button>
 
