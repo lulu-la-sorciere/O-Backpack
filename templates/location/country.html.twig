@@ -7,24 +7,24 @@
 {% block content %}
 
 	<div class="imageandtitle">
-		<img src="" alt="image monde" class="continentspec">
-		<h2>{{country.name}}</h2>
+		<img src="#" alt="image monde" class="continentspec">
+		<h2>{{name}}</h2>
 	</div>
 	<button class="continue post">
-		<a href="{{ path('location_detail', {id:country.id}) }}">Retour à la liste des pays</a>
+		<a href="{{ path('location_continent')}}">Retour à la liste des continents</a>
 	</button>
 	<section class="country_details continentli">
 		<div class="administratif_presentation continent">
-			<a href="{{ path('location_country_administratif', {id:country.id}) }}#administratif">Administratif</a>
+			<a href="{{ path('location_country_administratif', {name}) }}#administratif">Administratif</a>
 		</div>
 		<div class="meteo continent">
-			<a href="{{ path('location_country_weather', {id:country.id}) }}">Météo</a>
+			<a href="{#{{ path('location_country_weather', {id:country.id}) }}#}">Météo</a>
 		</div>
 		<div class="events continent">
-			<a href="{{ path('location_country_administratif', {id:country.id}) }}#evenements">Evènements</a>
+			<a href="{#{{ path('location_country_administratif', {id:country.id}) }}#}#evenements">Evènements</a>
 		</div>
 		<div class="materiel continent">
-			<a href="{{ path('location_country_stuff', {id:country.id}) }}">Matériel</a>
+			<a href="{#{{ path('location_country_stuff', {id:country.id}) }}#}">Matériel</a>
 		</div>
 	</section>
 
