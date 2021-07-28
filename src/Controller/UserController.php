@@ -118,7 +118,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/maps", name="profile")
+     * @Route("/profile/{id}/maps", name="map")
      */
     public function getMaps(): Response
     {
