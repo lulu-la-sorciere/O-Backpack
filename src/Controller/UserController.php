@@ -116,4 +116,13 @@ class UserController extends AbstractController
                 "form" =>$form->createView(),
             ]);
     }
+
+    /**
+     * @Route("/maps", name="profile")
+     */
+    public function getMaps(): Response
+    {
+        return $this->render('user/map.html.twig',[
+        ]);
+    }
 }
