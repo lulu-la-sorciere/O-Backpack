@@ -16,12 +16,21 @@ main {
 }
 
 h2 {
+  color:#fffd81;
+  text-shadow: 2px 2px #155472;
+  font-size: 2em;
   background-color: #D87151;
-  padding: 0.8em;
-  width: 55%;
+  padding: 0.4em;
+  width: 60%;
   border-radius: 5px;
   border: 1px solid #EEBC69;
   margin: auto auto 1em auto;
+  font-family: "Lobster", "Open sans", sans-serif;
+  font-weight: lighter;
+}
+
+.space {
+  margin-top: 1em;
 }
 
 /* header */
@@ -350,6 +359,8 @@ h5 {
   margin: 2em auto;
   border: ridge 3px #D87151;
   padding: 1em;
+  border-radius: 7px;
+  background-color: #32AAAA;
 }
 
 .linkData {
@@ -645,21 +656,18 @@ h5 {
 /* fields */
 
 .col {
-  /* position: relative; */
   width: 100%;
   margin: 0.5em 0.5em 1.5em 0;
   transition: 0.5s;
 }
 
 .formgroup {
-  /* position: relative; */
   width: 100%;
   color: #F7F2EB;
 }
 
 .formgroup input,
 .formgroup textarea {
-  /* position: absolute; */
   width: 80%;
   height: 60%;
   background: transparent;
