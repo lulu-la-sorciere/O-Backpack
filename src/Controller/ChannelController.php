@@ -82,13 +82,11 @@ class ChannelController extends AbstractController
         $jsonMessage = $serializer->serialize($message, 'json', [
             'groups' => ['message'] // On serialize la réponse avant de la renvoyer
         ]);
-        dd($jsonMessage);
+        //dd($jsonMessage);
 
-        $update = new Update('http://localhost:8080/chat/{id}', json_encode([
-            'user' => $request->request->get('user'),
-            'messages' => $request->request->get('messages'),
-        ]));
-        dd($update);
+        $update = new Update('http://localhost:8080/chat/{id}', 
+            $jsonMessage);
+        //dd($update);
 
         $hub->publish($update);
         dd($hub);
