@@ -49,26 +49,23 @@
 	<button class="continue post">
 		<a href="{{ path('blog_posts') }}">Lire la suite</a>
 	</button>
-	<div class="title">
-		<a href="{{ path('blog_gallery') }}">Galerie photo</a>
+	<div class="title galery">
+		<h2>
+			<a href="{{ path('blog_gallery') }}">Galerie photo</a>
+		</h2>
 	</div>
 
 	<section class="blog-carousel">
-		<div id="carousel-inner">
-			<div class="item">
-				<img src="{{ asset('img/0015.jpg')}}" alt="Picture1" class="galery-carousel">
-			</div>
-			<div class="item">
-				<img src="{{ asset('img/0013.jpg')}}" alt="Picture2" class="galery-carousel">
-			</div>
-			<div class="item">
-				<img src="{{ asset('img/0012.jpg')}}" alt="Picture3" class="galery-carousel">
-			</div>
-
-			<div class="arrow precedent" onclick="ChangeSlide(-1)">
+		<div class="carousel-inner">
+			<img class="active2 item" src="{{ asset('img/0015.jpg')}}" alt="Picture1">
+			<img class="item" src="{{ asset('img/0013.jpg')}}" alt="Picture2">
+			<img class="item" src="{{ asset('img/0012.jpg')}}" alt="Picture3">
+		</div>
+		<div class="arrows">
+			<div class="arrow precedent">
 				&lt;
 			</div>
-			<div class="arrow suivant" onclick="ChangeSlide(1)">
+			<div class="arrow suivant">
 				&gt;
 			</div>
 		</div>
