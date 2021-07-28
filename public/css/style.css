@@ -5,6 +5,7 @@ html {
   color: #F7F2EB;
   font-size: 1em;
   font-family: 'Railway', sans-serif;
+
 }
 
 main {
@@ -554,7 +555,6 @@ h5 {
 
 .form_container div {
   margin: 10px;
-}
 
 .form_container input, textarea, select {
   width: 14em;
@@ -573,11 +573,14 @@ h5 {
 .country_details {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .country_details div {
-  border: 1px solid black;
+  margin: 1em;
+  padding: 1em;
 }
+
 
 /*button country/continent*/
 
@@ -599,6 +602,59 @@ h5 {
 .evenements {
   width: 100%;
   height: 15em;
+}
+
+/* galery carousel*/
+
+.title.galery {
+  margin: 2em auto;
+}
+.blog-carousel {
+  position: relative;
+  max-width: 100%;
+  margin-bottom: 20%;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.05);
+}
+
+.carousel-inner img {
+  width: 100%;
+  margin: auto;
+  display: none; 
+  border-radius: 10px;
+}
+
+img.active2 {
+  display: block;
+  animation: fade 0.8s;
+}
+@keyframes fade {
+  from {
+    opacity:0;
+  }
+  to{
+    opacity:1;
+  }
+}
+
+.precedent,
+.suivant {
+  cursor: pointer;
+  position: absolute;
+  bottom: 0;
+  font-size: 3em;
+  color: #EEBC69;
+  width: 15%;
+  height:100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.precedent {
+  left: 0;
+}
+.suivant {
+  right: 0;
 }
 
 /* form templating */
@@ -786,4 +842,3 @@ h5 {
   color: #f3d8ab;
   font-size: 1em;
 }
-
