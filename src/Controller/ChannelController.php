@@ -16,6 +16,7 @@ use Symfony\Component\Mercure\HubInterface;
 use Symfony\Component\Mercure\Update;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\WebLink\Link;
 
 class ChannelController extends AbstractController
 {
@@ -34,11 +35,15 @@ class ChannelController extends AbstractController
     /**
      * @Route("/chat/{id}", name="chat", methods={"GET"})
      */
-    public function chat(Channel $channel, MessageRepository $message): Response
+    public function chat(Channel $channel, MessageRepository $message, Request $request): Response
     {
         $messages = $message->findBy([
             'channel' => $channel
         ], ['createdAt' => 'ASC']);
+
+        $hubUrl = $this->getParameter('mercure.default_hub'); // Mercure automatically define this parameter
+        //dd($hubUrl);
+        $this->addLink($request, new Link('mercure', $hubUrl));
 
         return $this->render('channel/chat.html.twig', [
             'channel' => $channel,
@@ -49,7 +54,7 @@ class ChannelController extends AbstractController
 
 
     /**
-     * @Route("/chat/{id}", name="chat_message", methods={"POST"})
+     * @Route("/chat/{id}", name="message", methods={"POST"})
      */
     public function sendMessage(Request $request, ChannelRepository $channel, EntityManagerInterface $em, SerializerInterface $serializer, HubInterface $hub): JsonResponse
     {
@@ -81,7 +86,7 @@ class ChannelController extends AbstractController
 
         $update = new Update('http://localhost:8080/chat/{id}', json_encode([
             'user' => $request->request->get('user'),
-            'message' => $request->request->get('message'),
+            'messages' => $request->request->get('messages'),
         ]));
         dd($update);
 
