@@ -81,37 +81,30 @@ repeat();
 
 const items = document.getElementsByClassName('item');
 const nbSlide = items.length;
-console.log(nbSlide);
-const next = document.querySelector('.suivant');
 
+const next = document.querySelector('.suivant');
 const previous = document.querySelector('.precedent');
 let count = 0;
 
 function nextSlide() {
-  console.log('ok');
   items[count].classList.remove('active2');
-  console.log(items[count]);
-  if(count < nbSlide -1){
+  if (count < nbSlide - 1) {
     count++;
-  }else{
+  } else {
     count = 0;
   }
   items[count].classList.add('active2')
-  console.log(count); 
 }
 next.addEventListener('click', nextSlide);
-setInterval("nextSlide()",4000);
+setInterval("nextSlide()", 4000);
 
 function prevSlide() {
-  console.log('ok prev');
   items[count].classList.remove('active2');
-  console.log(items[count]);
-  if(count > 0){
+  if (count > 0) {
     count--;
-  }else{
+  } else {
     count = nbSlide - 1;
   }
   items[count].classList.add('active2');
-  console.log(count); 
 }
 previous.addEventListener('click', prevSlide);
