@@ -234,7 +234,9 @@ h4 {
 /* In progress */
 
 .construction {
-  width: 60%;
+  width: 50%;
+  margin-bottom: 2em;
+  margin-top: 1em;
 }
 
 /* team */
@@ -696,3 +698,4 @@ h5 {
   color: #f3d8ab;
   font-size: 1em;
 }
+
