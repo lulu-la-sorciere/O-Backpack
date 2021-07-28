@@ -14,54 +14,62 @@
 	</div>
 
 	<div class="links">
-		<button class="continue post"><a href="">Recherche</a> </button>
-		<button class="continue post"><a href="">Filtre</a> </button>
-		<button class="continue post"><a href="/blog/post/user/1/add"> &#43; Ajouter un article</a></button>
+		<button class="continue post">
+			<a href="">Recherche</a>
+		</button>
+		<button class="continue post">
+			<a href="">Filtre</a>
+		</button>
+		<button class="continue post">
+			<a href="/blog/post/user/1/add">
+				&#43; Ajouter un article</a>
+		</button>
 	</div>
 
 	<section class="post">
-		
-            <div class="postleft">
-                <figure class="postpic">
-                    <img src="{{ asset('img/'~ posts|last.picture)}}" alt="photo illustrant l'article">
-                </figure>
-            </div>
-            <div class="postright">
-                <h4>{{ posts|last.title }}</h4>
-                <div class="postbeginning">
-                    <p>{{ posts|last.content|slice(0, 300) }}...</p>
-                    <p>{{ posts|last.user.nickname }} - Le {{ posts|last.publishedAt|date('d-m-Y') }}</p>
-                </div>
-                
-            </div>
-    
-	</section>
-	
-	<button class="continue post">
-        <a href="{{ path('blog_posts') }}">Lire la suite</a>
-    </button>
 
-	<section class="blog_carousel">
-		<div class="carousel-inner">
-			<div class="item active">
-				<img src="pic1" alt="Picture 1">
+		<div class="postleft">
+			<figure class="postpic">
+				<img src="{{ asset('img/'~ posts|last.picture)}}" alt="photo illustrant l'article">
+			</figure>
+		</div>
+		<div class="postright">
+			<h4>{{ posts|last.title }}</h4>
+			<div class="postbeginning">
+				<p>{{ posts|last.content|slice(0, 300) }}...</p>
+				<p>{{ posts|last.user.nickname }}
+					- Le
+					{{ posts|last.publishedAt|date('d-m-Y') }}</p>
 			</div>
-			<div class="item active">
-				<img src="pic2" alt="Picture 2">
-			</div>
-			<div class="item active">
-				<img src="pic3" alt="Picture 3">
-			</div>
+
 		</div>
 
-		<a class="left">
-			<span class="left_arrow">&lt;</span>
-		</a>
-		<a class="right">
-			<span class="right_arrow">&gt;</span>
-		</a>
+	</section>
 
-		<div class="title"><a href="{{ path('blog_gallery') }}">Galerie photo</a></div>
+	<button class="continue post">
+		<a href="{{ path('blog_posts') }}">Lire la suite</a>
+	</button>
+	<div class="title galery">
+		<h2>
+			<a href="{{ path('blog_gallery') }}">Galerie photo</a>
+		</h2>
+	</div>
+
+	<section class="blog-carousel">
+		<div class="carousel-inner">
+			<img class="active2 item" src="{{ asset('img/0015.jpg')}}" alt="Picture1">
+			<img class="item" src="{{ asset('img/0013.jpg')}}" alt="Picture2">
+			<img class="item" src="{{ asset('img/0012.jpg')}}" alt="Picture3">
+			<img class="item" src="{{ asset('img/0017.jpg')}}" alt="Picture4">
+		</div>
+		<div class="arrows">
+			<div class="arrow precedent">
+				&lt;
+			</div>
+			<div class="arrow suivant">
+				&gt;
+			</div>
+		</div>
 	</section>
 
 {% endblock %}

@@ -12,12 +12,10 @@ use App\Form\CommentFormType;
 use App\Form\PostType;
 use App\Repository\CommentRepository;
 use App\Repository\PostRepository;
-use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use App\Service\ImageUploader;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Symfony\Component\String\Slugger\SluggerInterface;
 
 
 /**
@@ -135,7 +133,7 @@ class PostController extends AbstractController
      * @Route("/post/user/{id}/add", name="add")
      * 
      */
-    public function addPost(Request $request, User $user, SluggerInterface $slugger)
+    public function addPost(Request $request, User $user, ImageUploader $imageUploader)
     {
         //dd($user);
 
@@ -145,43 +143,20 @@ class PostController extends AbstractController
         $newPost = new Post();
 
         $form = $this->createForm(PostType::class, $newPost);
+
+        //dd($form);
         
         $form->handleRequest($request);
         
         if ($form->isSubmitted() && $form->isValid()){
 
-                // manage Downloading picturefile
-                /** @var UploadedFile $picture */
-                $picture = $form->get('picture')->getData();
+            //we call the service imageuploaer and his upload method to upload picture on blog post
+            $newFilename = $imageUploader->upload($form, 'picture');
 
-                // this condition to change original file's name
-                if ($picture){
-                    //we get the name's file
-                    $originalFilename = pathinfo($picture->getClientOriginalName(), PATHINFO_FILENAME);
-
-                    //we 'clean' the file name with service SluggerInterface (delete specials caracters,..)
-                    $safeFilename = $slugger->slug($originalFilename);
-
-                    //we create a unique name 
-                    $fileName = $safeFilename . '-' . uniqid() . '.' . $picture->guessExtension();
-
-                    //we transfer the picture to public file with 
-                    try{
-                        $picture->move(
-
-                            // file where downloading 
-                            'img/',
-                            $fileName
-                        );
-                    } catch (FileException $e) {
-                        $this->addFlash("warning", "Une erreur est survenue ");
-                    }
-
-                }
-                    $newPost->setPicture($fileName);
-
-
+            $newPost->setPicture($newFilename);
             $newPost->setUser($user);
+
+            //we call the entitymanager (doing getDoctrine, getManager) to persist and save datas on the database
             $em= $this->getDoctrine()->getManager();
             $em->persist($newPost);
             $em->flush();
