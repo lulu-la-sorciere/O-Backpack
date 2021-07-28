@@ -6,41 +6,70 @@
 
 {% block content %}
 	<div class="imageandtitle">
-		<img src="" alt="image monde" class="continentspec">
-		<h2>{{country.name}}
+		<img src="#" alt="image monde" class="continentspec">
+		<h2>{{name}}
 			- Administratif</h2>
 	</div>
 
 	<div class="links">
 		<button class="continue post">
-			<a href="{{ path('location_country_stuff', {id:country.id}) }}">Matériel</a>
+			<a href="{#{{ path('location_country_stuff', {id:country.id}) }}#}">Matériel</a>
 		</button>
 		<button class="continue post">
 			<a href="">Météo</a>
 		</button>
 		<button class="continue post">
-			<a href="{{ path('location_country', {id:country.id}) }}">Retour au
-				{{country.name}}
+			<a href="{{ path('location_country', {name:detailCountry.0.name}) }}">Retour
+				{{detailCountry.0.name}}
 			</a>
 		</button>
 	</div>
+	<div class= "adminCountry" >
+		<div class = "adminCountry_info" >
+			<div>
+				Region : {{detailCountry.0.region}}
+			</div>
+			<div>
+				Capital :{{detailCountry.0.capital}}
+			</div>
+			<div>Langue :
+				{% for languages in detailCountry.0.languages %}
+					
+					{{languages["nativeName"]}},
+				{% endfor %}
+				
+			</div>
+			<div>
+				Devise :
+				{% for currencies in detailCountry.0.currencies %}
 
-	<div>Langue :
-		{{ country.language}}
-	</div>
-	<div>Monnaie :
-		{{ country.money }}
-	</div>
+				{{currencies.name}}	{{currencies.symbol}} {{currencies.code}}
 
-	<div>Vaccin :
-		{{ country.vaccine }}
+				{% endfor %}
+				
+			</div>
+		</div>
+		<div class="adminCountry_flag">
+			<img class="flag" src="{{detailCountry.0.flag}}" alt="{{detailCountry.0.name}}"> 
+		</div>
 	</div>
+	
 	<div class="administratif continue post" id="administratif">
 		<h4>Administratif :</h4>
-		<p>Passeport, visa</p>
+			<ul>
+				<li>
+					Visa :
+				</li>
+				<li>
+					Passeport :
+				</li>
+				<li>
+					Vaccin :
+				</li>
+			</ul>
 	</div>
 	<div class="evenements continue post" id="evenements">
 		<h4>Evenements :</h4>
-		<p>{{ country.events }}</p>
+		<p></p>
 	</div>
 {% endblock %}

@@ -76,6 +76,7 @@ var repeat = function(activeClass){
 }
 repeat();
 
+
 // forms
 
 $('input').on('focusin', function() {
@@ -87,3 +88,6 @@ $('input').on('focusout', function() {
     $(this).parent().find('label').removeClass('active');
   }
 });
+
+// CHAT //
+
