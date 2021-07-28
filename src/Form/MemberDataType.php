@@ -33,11 +33,7 @@ class MemberDataType extends AbstractType
 
                 // unmapped fields can't define their validation using annotations
                 // in the associated entity, so you can use the PHP constraint classes
-                /*'constraints' => [
-                    new File([
-                        'maxSize' => '1024k'
-                    ])
-                ],*/
+               
             ])
             ->add('country')
             ->add('dateOfBirth', DateType::class, [
@@ -46,7 +42,7 @@ class MemberDataType extends AbstractType
             ->add('Valider', SubmitType::class);
     }
 
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => User::class,
