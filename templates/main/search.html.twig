@@ -6,17 +6,24 @@
 
 {% block content %}
 	<section class="search_form">
-		<form action="" method="GET">
-			<input name="search" type="text" onfocus="this.placeholder=''" placeholder="Tapez votre recherche" >
-			<button type="submit">
-				Envoyer
-			</button>
-		</form>
+		<div class="formwrapper">
+            <div class="col">
+                <div class="formgroup">
+					<form action="" method="GET">
+						<input name="search" type="text" onfocus="this.placeholder=''" placeholder="Tapez votre recherche"><br>
+						<button type="submit" class="buttonform2">
+							Rechercher
+						</button>
+					</form>
+				</div>
+			</div>
+        <div>
+	
 	</section>
 
 	<section class="results">
 		
-			<h3>Vous recherchez :</h3>
+			<h3>Résultats :</h3>
 			{#{{ searchValue }}#}
 
 
