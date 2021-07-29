@@ -109,6 +109,21 @@ function prevSlide() {
 previous.addEventListener('click', prevSlide);
 
 // MAP //
+// forms
+
+$('input').on('focusin', function() {
+  $(this).parent().find('label').addClass('active');
+});
+
+$('input').on('focusout', function() {
+  if (!this.value) {
+    $(this).parent().find('label').removeClass('active');
+  }
+});
+
+// CHAT //
+
+
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiY2xheTg4IiwiYSI6ImNrcmx1NHpjeDBnc28ycG1kcHMyZWszanQifQ.8O52rFQB2HcZNpcgXq_cGg';
 
@@ -147,19 +162,4 @@ function setupMap(center) {
       'top-left'
       );
 }
-
-// forms
-
-$('input').on('focusin', function() {
-  $(this).parent().find('label').addClass('active');
-});
-
-$('input').on('focusout', function() {
-  if (!this.value) {
-    $(this).parent().find('label').removeClass('active');
-  }
-});
-
-// CHAT //
-
 
