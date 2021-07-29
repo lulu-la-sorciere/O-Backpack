@@ -35,9 +35,6 @@ var manualNav = function (manual) {
       btn.classList.remove('active');
     });
   });
-
-  slides[manual].classList.add('active');
-  btns[manual].classList.add('active');
 }
 
 btns.forEach((btn, i) => {
@@ -59,9 +56,6 @@ var repeat = function (activeClass) {
         activeSlide.classList.remove('active');
       });
 
-      slides[i].classList.add('active');
-      btns[i].classList.add('active');
-      i++;
 
       if (slides.length == i) {
         i = 0;
@@ -94,8 +88,6 @@ function nextSlide() {
   }
   items[count].classList.add('active2')
 }
-next.addEventListener('click', nextSlide);
-setInterval("nextSlide()", 4000);
 
 function prevSlide() {
   items[count].classList.remove('active2');
@@ -106,9 +98,9 @@ function prevSlide() {
   }
   items[count].classList.add('active2');
 }
+
 previous.addEventListener('click', prevSlide);
 
-// MAP //
 // forms
 
 $('input').on('focusin', function() {
@@ -121,9 +113,7 @@ $('input').on('focusout', function() {
   }
 });
 
-// CHAT //
-
-
+// MAP //
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiY2xheTg4IiwiYSI6ImNrcmx1NHpjeDBnc28ycG1kcHMyZWszanQifQ.8O52rFQB2HcZNpcgXq_cGg';
 
