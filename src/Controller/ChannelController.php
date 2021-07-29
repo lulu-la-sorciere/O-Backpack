@@ -1,6 +1,11 @@
 <?php
 
+
 namespace App\Controller;
+
+
+define ( 'HUB_URL' , 'http://localhost:3000/.well-known/mercure' );
+define ( 'JWT' , 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZXJjdXJlIjp7InB1Ymxpc2giOlsiKiJdLCJzdWJzY3JpYmUiOlsiKiJdfX0.4DUMumRBcwown63lKUecQcFxGAr8Dg2vwpSuKfAoKcs' );
 
 use App\Entity\Channel;
 use App\Entity\Message;
@@ -12,7 +17,9 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Symfony\Component\Mercure\Hub;
 use Symfony\Component\Mercure\HubInterface;
+use Symfony\Component\Mercure\Jwt\StaticTokenProvider;
 use Symfony\Component\Mercure\Update;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
@@ -51,8 +58,6 @@ class ChannelController extends AbstractController
         ]);
     }
 
-
-
     /**
      * @Route("/chat/{id}", name="message", methods={"POST"})
      */
@@ -82,19 +87,18 @@ class ChannelController extends AbstractController
         $jsonMessage = $serializer->serialize($message, 'json', [
             'groups' => ['message'] // On serialize la réponse avant de la renvoyer
         ]);
-        dd($jsonMessage);
+        //dd($jsonMessage);
 
-        $update = new Update('http://localhost:8080/chat/{id}', json_encode([
-            'user' => $request->request->get('user'),
-            'messages' => $request->request->get('messages'),
-        ]));
-        dd($update);
+        $update = new Update('http://localhost:8080/chat/{id}', $channel->getId(),
+            $jsonMessage);
+        //dd($update);
 
-        $hub->publish($update);
-        dd($hub);
+        $hub = new Hub(HUB_URL, new StaticTokenProvider(JWT));
+
+        $id = $hub->publish($update);
 
         return new JsonResponse( // Enfin, on retourne la réponse
-            $jsonMessage,
+            $id,
             Response::HTTP_OK,
             [],
             true

@@ -6,6 +6,7 @@ use App\Repository\MessageRepository;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=MessageRepository::class)
@@ -16,22 +17,19 @@ class Message
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("message")
      */
     private $id;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups("message")
      */
     private $content;
 
     /**
-     *@ORM\ManyToOne(targetEntity=User::class, inversedBy="messages")
-     *@ORM\JoinColumn(nullable=false)
-     */
-    private $user;
-
-    /**
      * @ORM\Column(type="datetime")
+     * @Groups("message")
      */
     private $createdAt;
 
@@ -40,6 +38,13 @@ class Message
      * @ORM\JoinColumn(nullable=false)
      */
     private $channel;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="messages")
+     * @ORM\JoinColumn(nullable=false)
+     * @Groups("message")
+     */
+    private $user;
 
     public function __construct()
     {
