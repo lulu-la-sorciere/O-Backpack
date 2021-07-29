@@ -42,11 +42,12 @@
 
 {% block javascripts_footer %}
 
+
 <script>
 // The subscriber subscribes to updates for the https://example.com/users/dunglas topic
 // and to any topic matching https://example.com/books/{id}
 const url = new URL('http://localhost:3000/.well-known/mercure');
-url.searchParams.append('topic', 'http://localhost:8080/chat/{{ channel.id }}');
+url.searchParams.append('topic', 'http://localhost:8080/chat/{id}');
 //url.searchParams.append('topic', 'http://localhost:8080/message');
 // The URL class is a convenient way to generate URLs such as https://localhost/.well-known/mercure?topic=https://example.com/books/{id}&topic=https://example.com/users/dunglas
 

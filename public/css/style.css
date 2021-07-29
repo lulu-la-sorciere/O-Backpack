@@ -554,13 +554,14 @@ h5 {
 }
 
 .form_container div {
-  margin: 10px;
-
+  margin: 1em;
+}
 .form_container input, textarea, select {
-  width: 14em;
-  height: 4em;
-  font-size: 20px;
+  width: 4.5em;
+  height: 2em;
+  font-size: 1em;
   border-radius: 10px;
+  margin: 0.2em;
 }
 
 .form_container #post_Valider {
@@ -569,18 +570,6 @@ h5 {
   height: 3em;
   font-size: 20px;
 }
-
-.country_details {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.country_details div {
-  margin: 1em;
-  padding: 1em;
-}
-
 
 /*button country/continent*/
 
@@ -665,9 +654,9 @@ img.active2 {
 
 .formwrapper {
   background-color: #32AAAA;
-  padding: 1.5em;
+  padding: 1.5em 1em;
   border-radius: 5px;
-  max-width: 70%;
+  width: 80%;
   text-align: center;
   display: flex;
   flex-wrap: wrap;
@@ -702,7 +691,7 @@ img.active2 {
   transition: filter .2s;
   user-select: none;
   -webkit-user-select: none;
-  width: 70%;
+  width: 75%;
   margin-top: 1em;
 }
 
@@ -795,8 +784,12 @@ img.active2 {
 
 .col {
   width: 100%;
-  margin: 0.5em 0.5em 1.5em 0;
+  margin: 0.5em 0.5em 1em 1.5em;
   transition: 0.5s;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
 }
 
 .formgroup {
@@ -806,12 +799,12 @@ img.active2 {
 
 .formgroup input,
 .formgroup textarea {
-  width: 80%;
+  width: 70%;
   height: 60%;
   background: transparent;
   outline: none;
-  font-size: 1em;
-  padding: 0.5em 0.2em 0.5em 1em;
+  font-size: 1.2em;
+  padding: 0.7em 0.2em 0.7em 1em;
   border: 3px solid rgba(0, 0, 0, 0.3);
   box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.3);
   color: #F7F2EB;
@@ -841,4 +834,8 @@ img.active2 {
 ::placeholder {
   color: #f3d8ab;
   font-size: 1em;
+}
+
+::label {
+  margin-bottom: 0.5em;
 }

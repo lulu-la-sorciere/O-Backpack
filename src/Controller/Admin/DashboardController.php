@@ -23,25 +23,28 @@ class DashboardController extends AbstractDashboardController
      */
     public function index(): Resp
     {
-        return parent::index();
+        return $this->render('admin/dashboard.html.twig');
     }
 
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('O Backpack - Admin');
+            ->setTitle('O Backpack');
     }
 
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
-        yield MenuItem::linkToCrud('User', 'fas fa-user', User::class);
-        yield MenuItem::linkToCrud('Comment', 'fas fa-user', Comment::class);
-        yield MenuItem::linkToCrud('Continent', 'fas fa-user', Continent::class);
-        yield MenuItem::linkToCrud('Country', 'fas fa-user', Country::class);
-        yield MenuItem::linkToCrud('ForumSubject', 'fas fa-user', ForumSubject::class);
-        yield MenuItem::linkToCrud('Post', 'fas fa-user', Post::class);
-        yield MenuItem::linkToCrud('Response', 'fas fa-user', Response::class);
-        yield MenuItem::linkToCrud('Stuff', 'fas fa-user', Stuff::class);
+        yield MenuItem::linkToCrud('Utilisateur', 'fas fa-user', User::class);
+        yield MenuItem::linkToCrud('Articles', 'fas fa-book', Post::class);
+        yield MenuItem::linkToCrud('Commentaires', 'fas fa-comment', Comment::class);
+
+        yield MenuItem::linkToCrud('Continents', 'fas fa-globe', Continent::class);
+        yield MenuItem::linkToCrud('Pays', 'fas fa-flag', Country::class);
+
+        yield MenuItem::linkToCrud('Forum/Sujet', 'fas fa-list', ForumSubject::class);
+        yield MenuItem::linkToCrud('Réponse Forum', 'fas fa-comment', Response::class);
+        
+        yield MenuItem::linkToCrud('Matériel', 'fas fa-suitcase', Stuff::class);
     }
 }
