@@ -35,9 +35,6 @@ var manualNav = function (manual) {
       btn.classList.remove('active');
     });
   });
-
-  slides[manual].classList.add('active');
-  btns[manual].classList.add('active');
 }
 
 btns.forEach((btn, i) => {
@@ -59,9 +56,6 @@ var repeat = function (activeClass) {
         activeSlide.classList.remove('active');
       });
 
-      slides[i].classList.add('active');
-      btns[i].classList.add('active');
-      i++;
 
       if (slides.length == i) {
         i = 0;
@@ -94,8 +88,6 @@ function nextSlide() {
   }
   items[count].classList.add('active2')
 }
-next.addEventListener('click', nextSlide);
-setInterval("nextSlide()", 4000);
 
 function prevSlide() {
   items[count].classList.remove('active2');
@@ -106,59 +98,6 @@ function prevSlide() {
   }
   items[count].classList.add('active2');
 }
-previous.addEventListener('click', prevSlide);
-
-// MAP //
-
-mapboxgl.accessToken = 'pk.eyJ1IjoiY2xheTg4IiwiYSI6ImNrcmx1NHpjeDBnc28ycG1kcHMyZWszanQifQ.8O52rFQB2HcZNpcgXq_cGg';
-
-navigator.geolocation.getCurrentPosition(successLocation, errorLocation, { enableHighAccuracy: true })
-
-
-//When the location is fetched successfully.
-function successLocation(position) {
-  //Mapbox receives longitude and latitude from Geolocation API
-  setupMap([position.coords.longitude, position.coords.latitude])
-}
-
-//When there is an error in fetching the location the location with these coordinates is mocked.
-function errorLocation() {
-  setupMap([12.9716,77.5946])
-}
-
-//This function initializes the map with the center coordinates passed.
-function setupMap(center) {
-    //This is mapboxgl object from the mapboxgl scripts we added in index.html
-    var map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v11',
-        //This is used to go to the coordinate on initialization
-        center: center,
-        zoom: 10
-      });
-      
-    const nav = new mapboxgl.NavigationControl();
-    map.addControl(nav);
-    
-    map.addControl(
-      new MapboxDirections({
-      accessToken: mapboxgl.accessToken
-      }),
-      'top-left'
-      );
-}
-
-// forms
-
-$('input').on('focusin', function() {
-  $(this).parent().find('label').addClass('active');
-});
-
-$('input').on('focusout', function() {
-  if (!this.value) {
-    $(this).parent().find('label').removeClass('active');
-  }
-});
 
 // CHAT //
 
