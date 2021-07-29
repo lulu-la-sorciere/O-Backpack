@@ -4,6 +4,28 @@
 
 {% block content %}
 
-    {{ form(form) }} 
+    <h2>Modifiez votre mot de passe</h2>
+
+    <div class="formwrapper">
+
+        {{ form_start(form) }}
+
+            
+            <div class="col">
+                <div class="formgroup">{{ form_row(form.password, {
+                label: 'Mot de passe actuel'
+            }) }}</div>
+            </div><br>
+            <div class="col">
+                <div class="formgroup">{{ form_row(form.new_password, {
+                label: 'Nouveau mot de passe'
+            }) }}</div>
+            </div>
+
+            <button type="submit" class="buttonform">Modifier</button>
+    
+        {{ form_end(form) }}
+
+    </div>
 
  {% endblock %}
