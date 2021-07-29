@@ -56,6 +56,10 @@ var repeat = function (activeClass) {
         activeSlide.classList.remove('active');
       });
 
+      // slides[i].classList.add('active');
+      // btns[i].classList.add('active');
+      i++;
+
 
       if (slides.length == i) {
         i = 0;

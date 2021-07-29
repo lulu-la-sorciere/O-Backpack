@@ -6,7 +6,10 @@ use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
@@ -18,17 +21,39 @@ class RegistrationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('firstname')
-            ->add('lastname')
-            ->add('nickname')
-            ->add('country')
+            ->add('firstname', TextType::class, [
+                'label' => 'Prénom',
+                'attr' => [
+                'placeholder' => 'Prénom']
+            ])
+            ->add('lastname', TextType::class, [
+                'label' => 'Nom',
+                'attr' => [
+                'placeholder' => 'Nom']
+            ])
+            ->add('nickname', TextType::class, [
+                'label' => 'Pseudo',
+                'attr' => [
+                'placeholder' => 'Pseudo']
+            ])
+            ->add('country', TextType::class, [
+                'label' => 'Pays de résidence',
+                'attr' => [
+                'placeholder' => 'Pays']
+            ])
             ->add('date_of_birth', BirthdayType::class, [
+                'label' => 'Date de naissance',
                 'placeholder' => [
-                    'day' => 'Day', 'month' => 'Month', 'year' => 'Year',
+                    'day' => 'Jour', 'month' => 'Mois', 'year' => 'Année',
                 ]
             ])
-            ->add('email')
+            ->add('email', EmailType::class, [
+                'label' => 'E-mail',
+                'attr' => [
+                'placeholder' => 'E-mail']
+            ])
             ->add('agreeTerms', CheckboxType::class, [
+                'label' => 'Accepter les CGU ',
                 'mapped' => false,
                 'constraints' => [
                     new IsTrue([
@@ -39,8 +64,11 @@ class RegistrationFormType extends AbstractType
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
+                'label' => 'Mot de passe',
                 'mapped' => false,
-                'attr' => ['autocomplete' => 'new-password'],
+                'attr' => [
+                    'placeholder' => 'Mot de passe',
+                    'autocomplete' => 'new-password'],
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Veuillez choisir un mot de passe',
