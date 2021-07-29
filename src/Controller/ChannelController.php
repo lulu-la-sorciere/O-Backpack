@@ -52,6 +52,7 @@ class ChannelController extends AbstractController
         //dd($hubUrl);
         $this->addLink($request, new Link('mercure', $hubUrl));
 
+
         return $this->render('channel/chat.html.twig', [
             'channel' => $channel,
             'messages' => $messages
@@ -96,7 +97,7 @@ class ChannelController extends AbstractController
         $hub = new Hub(HUB_URL, new StaticTokenProvider(JWT));
 
         $id = $hub->publish($update);
-
+        //dd($id);
         return new JsonResponse( // Enfin, on retourne la réponse
             $id,
             Response::HTTP_OK,

@@ -839,3 +839,7 @@ img.active2 {
 ::label {
   margin-bottom: 0.5em;
 }
+
+.icon-weather{
+  width: 10%;
+}
