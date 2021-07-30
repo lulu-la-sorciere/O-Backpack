@@ -138,6 +138,7 @@ class PostController extends AbstractController
     public function addPost(Request $request, ImageUploader $imageUploader, UserRepository $user)
     {
         
+        $this->denyAccessUnlessGranted('ROLE_USER', $user);
 
         // only members registrated and online can add a new post
         
@@ -152,7 +153,6 @@ class PostController extends AbstractController
        
         if ($form->isSubmitted() && $form->isValid()){
         
-            $this->denyAccessUnlessGranted('ROLE_USER', $user);
             //we call the service imageuploaer and his upload method to upload picture on blog post
             $newFilename = $imageUploader->upload($form, 'picture');
 
