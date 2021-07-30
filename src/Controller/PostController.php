@@ -12,6 +12,7 @@ use App\Form\CommentFormType;
 use App\Form\PostType;
 use App\Repository\CommentRepository;
 use App\Repository\PostRepository;
+use App\Repository\UserRepository;
 use App\Service\ImageUploader;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -69,11 +70,12 @@ class PostController extends AbstractController
     public function postsList(PostRepository $postRepository)
     {
         //dd($postRepository);
-        $posts = $postRepository->findAll();
+        $postsList = $postRepository->findBy([], ['id'=>'DESC']);
 
+      //  dd($postsList);
         return $this->render('post/postsList.html.twig', [
             "title" => "Articles",
-            "posts" => $posts,
+            "postsList" => $postsList,
         ]);
     }
 
@@ -83,7 +85,7 @@ class PostController extends AbstractController
      *
      * @return void
      */
-    public function detail(Post $post,User $user, Request $request, CommentRepository $commentRepository)
+    public function detail(Post $post,UserRepository $user, Request $request, CommentRepository $commentRepository)
     {
         // dump($post);
         // dd($commentRepository->findBy(['post'=>$post]));
@@ -130,15 +132,15 @@ class PostController extends AbstractController
     /**
      * Method for adding a new post
      * 
-     * @Route("/post/user/{id}/add", name="add")
+     * @Route("/post/add", name="add")
      * 
      */
-    public function addPost(Request $request, User $user, ImageUploader $imageUploader)
+    public function addPost(Request $request, ImageUploader $imageUploader, UserRepository $user)
     {
-        //dd($user);
+        
 
         // only members registrated and online can add a new post
-        $this->denyAccessUnlessGranted('ROLE_USER', $user);
+        
         
         $newPost = new Post();
 
@@ -147,15 +149,16 @@ class PostController extends AbstractController
         //dd($form);
         
         $form->handleRequest($request);
-        
+       
         if ($form->isSubmitted() && $form->isValid()){
-
+        
+            $this->denyAccessUnlessGranted('ROLE_USER', $user);
             //we call the service imageuploaer and his upload method to upload picture on blog post
             $newFilename = $imageUploader->upload($form, 'picture');
 
             $newPost->setPicture($newFilename);
-            $newPost->setUser($user);
-
+            $newPost->setUser($this->getUser());
+          
             //we call the entitymanager (doing getDoctrine, getManager) to persist and save datas on the database
             $em= $this->getDoctrine()->getManager();
             $em->persist($newPost);
@@ -170,7 +173,7 @@ class PostController extends AbstractController
         //if not ok it returns to the add post from
         return $this->render('post/add.html.twig', [
             'formPostAdd' => $form->createView(),
-            'user' =>$user,
+            // 'user' =>$user,
         ]);
     }
 }
