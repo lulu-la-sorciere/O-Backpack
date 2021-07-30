@@ -10,7 +10,7 @@
         </div>
     {% endif %}
     <h1>Channel {{ channel.name }}</h1>
-    <div class="container" style="height: 600px">
+    <div class="container">
         <div class="container bg-light h-75 overflow-auto">
             {% for message in messages %}
                 {% if app.user == message.user %}
@@ -46,8 +46,8 @@
 <script>
 // The subscriber subscribes to updates for the https://example.com/users/dunglas topic
 // and to any topic matching https://example.com/books/{id}
-const url = new URL('http://localhost:3000/.well-known/mercure');
-url.searchParams.append('topic', 'http://localhost:8080/chat/{id}');
+const url = new URL('http://localhost:3000/.well-known/mercure', window.origin);
+url.searchParams.append('topic', 'http://localhost:8080/chat/{{channel.id}}');
 //url.searchParams.append('topic', 'http://localhost:8080/message');
 // The URL class is a convenient way to generate URLs such as https://localhost/.well-known/mercure?topic=https://example.com/books/{id}&topic=https://example.com/users/dunglas
 
@@ -57,9 +57,10 @@ const eventSource = new EventSource(url, {
     }
 });
 
-eventSource.onmessage = event => {
-    console.log(JSON.parse(event.data));
-}
+    eventSource.onmessage = event => {
+        console.log('coucou');
+        console.log(JSON.parse(event.data));
+    }
 
       const form = document.getElementById('form');
       console.log(form);
@@ -77,11 +78,12 @@ eventSource.onmessage = event => {
                 'channel': {{ channel.id }} // ... Et le canal correspondant
             }
             console.log(data); // Pour vérifier vos informations
-            fetch('/chat/{id}', { // On envoie avec un post nos datas 
+            fetch('/chat/{{channel.id}}', { // On envoie avec un post nos datas 
                 method: 'POST',
                 body: JSON.stringify(data) // On envoie les data sous format JSON
             }).then((response) => {
                 message.value = '';
+                console.log('response');
                 console.log(response);
             });
         }
@@ -89,7 +91,9 @@ const appUser = {{ app.user.id }};
 
 
 eventSource.onmessage = ({data}) => { // On écoute les événements publiés par le Hub
+
     const message = JSON.parse(data); // Le contenu des événements est sous format JSON, il faut le parser
+    console.log('message:'+message);
         document.querySelector('.bg-light').insertAdjacentHTML( // On injecte le nouveau message selon le HTML déjà présent plus haut dans notre fichier Twig
         'beforeend',
             appUser === message.user.id ?

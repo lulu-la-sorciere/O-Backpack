@@ -14,6 +14,7 @@ main {
     width: 90%;
     text-align: center;
     margin: 2em auto;
+    min-height: 73vh;
 }
 
 h2, .ah2{
@@ -30,7 +31,6 @@ h2, .ah2{
   font-weight: lighter;
   display: inline-block;
 }
-
 
 .space {
   margin-top: 1em;
@@ -53,7 +53,7 @@ header {
 /* nav */
 
 * {
-  position: relative;
+    /* position: relative; on récupère le carrousel*/
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -139,8 +139,8 @@ footer {
   justify-content: center;
   padding: 0.5em 0;
   border-top: 1px solid #EEBC69;
-  position: fixed;
-  bottom: 0;
+  /* position: fixed;
+  bottom: 0; */
 }
 
 /* home */
@@ -156,7 +156,7 @@ h3 {
   flex-wrap: wrap;
 }
 
-.threelastposts {
+.threelastposts { /* différence ici*/
   display: flex;
   width: 30%;
   background-color: #32AAAA;
@@ -455,7 +455,7 @@ h5 {
 }
 
 .img-slider .slide .info h6 {
-  text-align: start;
+  /* text-align: start; décalage du titre sur les slides accueil*/
   color: #fff;
   font-size: 45px;
   text-transform: uppercase;
@@ -592,9 +592,7 @@ h5 {
   margin: 1em;
 }
 
-.form_container input,
-textarea,
-select {
+.form_container input, textarea, select {
   width: 4.5em;
   height: 2em;
   font-size: 1em;
@@ -613,10 +611,11 @@ select {
 
 .links {
   display: inline-flex;
+  /* margin-bottom: 10%; pas de modification */
 }
 
 .links button {
-  margin-left: 1em;
+  margin: 0.5em;
   align-items: center;
 }
 
@@ -637,11 +636,10 @@ select {
 }
 
 .blog-carousel {
-  position: relative;
-    max-width: 70%;
-    margin-bottom: 20%;
+    position: relative;
+    max-width: 70%;/*100% ancien code*/
     box-shadow: 0 0 2px rgb(0 0 0 / 5%);
-    display: flex;
+    display: flex; /*  pas de display */
     margin: auto;
 }
 
@@ -693,21 +691,21 @@ img.active2 {
 
 .formspace {
   margin-bottom: 0.5em;
-  width: 30%;
+  /* width: 30%; */
 }
 
 .formwrapper {
   background-color: #32AAAA;
   padding: 1.5em 1em;
   border-radius: 5px;
-  width: 60%;
+  width: 80%;
   text-align: center;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   box-shadow: rgba(238, 188, 105, 0.4) 5px 5px, rgba(238, 188, 105, 0.2) 10px 10px, rgba(238, 188, 105, 0.05) 15px 15px;
   margin: 2em auto 1.5em auto;
-  align-content: center;
+  /* align-content: center; */
 }
 
 /* submit button */
@@ -736,7 +734,7 @@ img.active2 {
     transition: filter .2s;
     user-select: none;
     -webkit-user-select: none;
-    width: 60%;
+    width: 75%;
     margin-top: 1em;
 }
 
