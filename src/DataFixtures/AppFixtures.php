@@ -39,6 +39,8 @@ class AppFixtures extends Fixture
             $manager->persist($continent);
         }
 
+        $width = '300px';
+        $height = "200px";
         // create 20 user!
         $userList = [];
         for ($i = 0; $i < 20; $i++) {
@@ -52,7 +54,6 @@ class AppFixtures extends Fixture
             $user->setFirstname($faker->firstName());
             $user->setLastname($faker->lastName());
             $user->setNickname($faker->userName());
-            $user->setPicture($faker->imageUrl());
             $user->setCountry($faker->country());
             $user->setDateOfBirth($faker->dateTimeThisCentury($max = 'now', $timezone = null));
             $userList[] = $user;
