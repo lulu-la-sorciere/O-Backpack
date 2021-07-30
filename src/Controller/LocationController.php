@@ -85,14 +85,16 @@ class LocationController extends AbstractController
 
     /**
      * Current weather for the selected Country
-     * @Route("country/{id}/weather", name="country_weather")
+     * @Route("country/{name}/weather", name="country_weather")
      * 
      */
-    public function countryWeather(Country $country, OpenWeather $weather)
+    public function countryWeather(CountryRestApi $country, OpenWeather $weather, $name)
     {
-        dd($weather->getWeather($country));
+        //dd($weather->getWeather($name));
         return $this->render('location/weather.html.twig', [
-            'country' => $country,
+            'country' => $country->fetch($name),
+            'name'=>$name,
+            'weather' => $weather->getWeather($name)
         ]);
     }
     
