@@ -7,20 +7,20 @@
 {% block content %}
 	<div class="imageandtitle">
 		<img src="#" alt="image monde" class="continentspec">
-		<h2>{{country.name}}
+		<h2>{{name}}
 			- Matériel</h2>
 	</div>
 
 	<div class="links">
 		<button class="continue post">
-			<a href="{{ path('location_country_administratif', {id:country.id}) }}#administratif">Administratif</a>
+			<a href="{{ path('location_country_administratif', {name:name}) }}#administratif">Administratif</a>
 		</button>
 		<button class="continue post">
-			<a href="">Météo</a>
+			<a href="{{ path('location_country_weather', {name}) }}">Météo</a>
 		</button>
 		<button class="continue post">
-			<a href="{{ path('location_country', {id:country.id}) }}">Retour au
-				{{country.name}}
+			<a href="{{ path('location_country', {name:name}) }}">Retour au
+				{{name}}
 			</a>
 		</button>
 	</div>
@@ -28,13 +28,10 @@
 	<div>Matériel nécessaire :
 	</div>
 	<ul>
-		{% for stuff in stuffs %}
-
-			<li>
-				{{ stuff.name }}
-			</li>
-
-		{% endfor %}
+		<li>Tente</li>
+		<li>Parapluie</li>
+		<li>Lampe torche</li>
+		<li>Batterie de secours pour téléphone portable</li>
 	</ul>
 
 {% endblock %}

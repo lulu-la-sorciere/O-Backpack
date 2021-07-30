@@ -459,6 +459,7 @@ h5 {
   text-transform: uppercase;
   font-weight: 800;
   letter-spacing: 2px;
+  z-index: 2;
 }
 
 .img-slider .slide .info p {
@@ -468,6 +469,7 @@ h5 {
   width: 60%;
   padding: 10px;
   border-radius: 4px;
+  z-index: 2;
 }
 
 .img-slider .navigation {

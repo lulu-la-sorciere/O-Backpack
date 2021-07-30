@@ -13,10 +13,10 @@
 
 	<div class="links">
 		<button class="continue post">
-			<a href="{#{{ path('location_country_stuff', {id:country.id}) }}#}">Matériel</a>
+			<a href="{{ path('location_country_stuff', {name:name}) }}">Matériel</a>
 		</button>
 		<button class="continue post">
-			<a href="">Météo</a>
+			<a href="{{ path('location_country_weather', {name}) }}">Météo</a>
 		</button>
 		<button class="continue post">
 			<a href="{{ path('location_country', {name:detailCountry.0.name}) }}">Retour
