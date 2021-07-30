@@ -9,11 +9,11 @@ html {
 }
 
 main {
-  display: block;
-  width: 90%;
-  height: 70vh;
-  text-align: center;
-  margin: 2em auto;
+  position: relative;
+    display: block;
+    width: 90%;
+    text-align: center;
+    margin: 2em auto;
 }
 
 h2 {
@@ -51,9 +51,10 @@ header {
 /* nav */
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  position: relative;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 li {
@@ -137,7 +138,7 @@ footer {
   padding: 0.5em 0;
   border-top: 1px solid #EEBC69;
   position: fixed;
-  bottom: 0%;
+  bottom: 0;
 }
 
 /* home */
