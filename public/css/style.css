@@ -9,26 +9,28 @@ html {
 }
 
 main {
-  position: relative;
+    position: relative;/*pour le footer*/
     display: block;
     width: 90%;
     text-align: center;
     margin: 2em auto;
 }
 
-h2 {
+h2, .ah2{
   color: #fffd81;
   text-shadow: 2px 2px #155472;
   font-size: 2em;
   background-color: #D87151;
-  padding: 0.4em;
-  width: 30%;
+  padding: 0.4em 2em;
+  width: auto;
   border-radius: 5px;
   border: 1px solid #EEBC69;
   margin: auto auto 1em auto;
   font-family: "Lobster", "Open sans", sans-serif;
   font-weight: lighter;
+  display: inline-block;
 }
+
 
 .space {
   margin-top: 1em;
