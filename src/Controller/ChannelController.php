@@ -90,7 +90,7 @@ class ChannelController extends AbstractController
         ]);
         //dd($jsonMessage);
 
-        $update = new Update('http://localhost:8080/chat/{id}', $channel->getId(),
+        $update = new Update('http://localhost:8080/chat/{id}',
             $jsonMessage);
         //dd($update);
 
