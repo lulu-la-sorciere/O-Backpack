@@ -36,10 +36,10 @@ class PostType extends AbstractType
                     'placeholder' => 'Votre article'
                 )
             ))
-            ->add('continent', ChoiceType::class, [
-                'placeholder' => "Choisissez un continent",             
+            // ->add('continent', ChoiceType::class, [
+            //     'placeholder' => "Choisissez un continent",             
               
-            ])
+            // ])
             ->add('country', //EntityType::class, [            
                 //'placeholder' => "Choisissez un pays", 
                 //'class' => Country::class,

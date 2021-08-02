@@ -21,7 +21,7 @@
 			<a href="">Filtre</a>
 		</button>
 		<button class="continue post">
-			<a href="/blog/post/user/1/add">
+			<a href="{{ path('blog_add') }}">
 				&#43; Ajouter un article</a>
 		</button>
 	</div>
@@ -50,9 +50,8 @@
 		<a href="{{ path('blog_posts') }}">Lire la suite</a>
 	</button>
 	<div class="title galery">
-		<h2>
-			<a href="{{ path('blog_gallery') }}">Galerie photo</a>
-		</h2>
+
+			<a class="ah2" href="{{ path('blog_gallery') }}">Galerie photo</a>
 	</div>
 
 	<section class="blog-carousel">

@@ -27,52 +27,57 @@ let currentSlide = 1;
 
 // Javascript for image slider manual navigation
 
-var manualNav = function (manual) {
-  slides.forEach((slide) => {
-    slide.classList.remove('active');
-
+if(slides.length) {
+  var manualNav = function(manual){
+    slides.forEach((slide) => {
+      slide.classList.remove('active');
+    });
+  
     btns.forEach((btn) => {
       btn.classList.remove('active');
     });
-  });
-}
-
-btns.forEach((btn, i) => {
-  btn.addEventListener("click", () => {
-    manualNav(i);
-    currentSlide = i;
-  });
-});
-
-// Javascript for image slider autoplay navigation
-
-var repeat = function (activeClass) {
-  let active = document.getElementsByClassName('active');
-  let i = 1;
-
-  var repeater = () => {
-    setTimeout(function () {
-      [...active].forEach((activeSlide) => {
-        activeSlide.classList.remove('active');
-      });
-
-      // slides[i].classList.add('active');
-      // btns[i].classList.add('active');
-      i++;
-
-
-      if (slides.length == i) {
-        i = 0;
-      }
-      if (i >= slides.length) {
-        return;
-      }
-      repeater();
-    }, 10000);
+  
+    slides[manual].classList.add('active');
+    btns[manual].classList.add('active');
   }
-  repeater();
+  btns.forEach((btn, i) => {
+    btn.addEventListener("click", () => {
+      manualNav(i);
+      currentSlide = i;
+    });
+  });
+  
+  // Javascript for image slider autoplay navigation
+  
+  var repeat = function (activeClass) {
+    let active = document.getElementsByClassName('active');
+    let i = 1;
+  
+    var repeater = () => {
+      setTimeout(function () {
+        [...active].forEach((activeSlide) => {
+          activeSlide.classList.remove('active');
+        });
+  
+        slides[i].classList.add('active');
+        btns[i].classList.add('active');
+        i++;
+  
+  
+        if (slides.length == i) {
+          i = 0;
+        }
+        if (i >= slides.length) {
+          return;
+        }
+        repeater();
+      }, 10000);
+    }
+    repeater();
+  }
+  repeat();
 }
-repeat();
+
 
 // CAROUSEL BLOG
 
@@ -83,77 +88,87 @@ const next = document.querySelector('.suivant');
 const previous = document.querySelector('.precedent');
 let count = 0;
 
-function nextSlide() {
-  items[count].classList.remove('active2');
-  if (count < nbSlide - 1) {
-    count++;
-  } else {
-    count = 0;
+if(previous && next) {
+  function nextSlide() {
+    items[count].classList.remove('active2');
+    if (count < nbSlide - 1) {
+      count++;
+    } else {
+      count = 0;
+    }
+    items[count].classList.add('active2')
   }
-  items[count].classList.add('active2')
+  
+  function prevSlide() {
+    items[count].classList.remove('active2');
+    if (count > 0) {
+      count--;
+    } else {
+      count = nbSlide - 1;
+    }
+    items[count].classList.add('active2');
+  }
+  next.addEventListener('click', nextSlide);
+  previous.addEventListener('click', prevSlide);
 }
 
-function prevSlide() {
-  items[count].classList.remove('active2');
-  if (count > 0) {
-    count--;
-  } else {
-    count = nbSlide - 1;
-  }
-  items[count].classList.add('active2');
-}
-
-previous.addEventListener('click', prevSlide);
 
 // forms
 
-$('input').on('focusin', function() {
-  $(this).parent().find('label').addClass('active');
-});
+let inputField = document.querySelector("input");
 
-$('input').on('focusout', function() {
-  if (!this.value) {
-    $(this).parent().find('label').removeClass('active');
-  }
-});
+if(inputField) {
+  $('input').on('focusin', function() {
+    $(this).parent().find('label').addClass('active');
+  });
+  
+  $('input').on('focusout', function() {
+    if (!this.value) {
+      $(this).parent().find('label').removeClass('active');
+    }
+  });
+}
+
 
 // MAP //
+if(typeof mapboxgl !== 'undefined') {
+  mapboxgl.accessToken = 'pk.eyJ1IjoiY2xheTg4IiwiYSI6ImNrcmx1NHpjeDBnc28ycG1kcHMyZWszanQifQ.8O52rFQB2HcZNpcgXq_cGg';
 
-mapboxgl.accessToken = 'pk.eyJ1IjoiY2xheTg4IiwiYSI6ImNrcmx1NHpjeDBnc28ycG1kcHMyZWszanQifQ.8O52rFQB2HcZNpcgXq_cGg';
-
-navigator.geolocation.getCurrentPosition(successLocation, errorLocation, { enableHighAccuracy: true })
+  navigator.geolocation.getCurrentPosition(successLocation, errorLocation, { enableHighAccuracy: true })
 
 
-//When the location is fetched successfully.
-function successLocation(position) {
-  //Mapbox receives longitude and latitude from Geolocation API
-  setupMap([position.coords.longitude, position.coords.latitude])
-}
+  //When the location is fetched successfully.
+  function successLocation(position) {
+    //Mapbox receives longitude and latitude from Geolocation API
+    setupMap([position.coords.longitude, position.coords.latitude])
+  }
 
-//When there is an error in fetching the location the location with these coordinates is mocked.
-function errorLocation() {
-  setupMap([12.9716,77.5946])
-}
+  //When there is an error in fetching the location the location with these coordinates is mocked.
+  function errorLocation() {
+    setupMap([12.9716,77.5946])
+  }
 
-//This function initializes the map with the center coordinates passed.
-function setupMap(center) {
-    //This is mapboxgl object from the mapboxgl scripts we added in index.html
-    var map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v11',
-        //This is used to go to the coordinate on initialization
-        center: center,
-        zoom: 10
-      });
+  //This function initializes the map with the center coordinates passed.
+  function setupMap(center) {
+      //This is mapboxgl object from the mapboxgl scripts we added in index.html
+      var map = new mapboxgl.Map({
+          container: 'map',
+          style: 'mapbox://styles/mapbox/streets-v11',
+          //This is used to go to the coordinate on initialization
+          center: center,
+          zoom: 10
+        });
+        
+      const nav = new mapboxgl.NavigationControl();
+      map.addControl(nav);
       
-    const nav = new mapboxgl.NavigationControl();
-    map.addControl(nav);
-    
-    map.addControl(
-      new MapboxDirections({
-      accessToken: mapboxgl.accessToken
-      }),
-      'top-left'
-      );
+      map.addControl(
+        new MapboxDirections({
+        accessToken: mapboxgl.accessToken
+        }),
+        'top-left'
+        );
+  }
+
 }
 

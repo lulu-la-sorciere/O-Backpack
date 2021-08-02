@@ -30,10 +30,4 @@ class OpenWeather
             return $response->toArray();
     }
 
-
-    public function icon_img($icon = null)
-    {
-        return 'http://openweathermap.org/img/w/' . $icon . '.png';
-
-    }
 }
