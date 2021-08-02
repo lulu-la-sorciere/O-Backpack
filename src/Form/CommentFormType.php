@@ -21,7 +21,7 @@ class CommentFormType extends AbstractType
             //->add('updatedAt')
             //->add('user') /* ajouter un event de formulaire
             //->add('post') /* ajouter un event de formulaire
-            ->add('Envoyer', SubmitType::class)
+            // ->add('Envoyer', SubmitType::class)
         ;
     }
 
