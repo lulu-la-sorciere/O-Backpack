@@ -20,7 +20,7 @@ main {
     width: 90%;
     text-align: center;
     margin: 2em auto;
-    min-height: 73vh;
+    min-height: 100vh;
 }
 
 h2, .ah2{
