@@ -20,27 +20,6 @@ class AppFixtures extends Fixture
         // $product = new Product();
         // $manager->persist($product);
 
-        $faker = Faker\Factory::create('fr_FR');
-
-        $continentList = [
-            'europe',
-            'asia',
-            'americas',
-            'africa',
-            'oceania'
-        ];
-
-        $continentListTotal = count($continentList);
-
-        for ($i = 0; $i < 5; $i++) {
-            $continent = new Continent();
-            $continent->setName($continentList[mt_rand(0, $continentListTotal - 1)]);
-            $continentList[] = $continent;
-            $manager->persist($continent);
-        }
-
-        $width = '300px';
-        $height = "200px";
         // create 20 user!
         $userList = [];
         for ($i = 0; $i < 20; $i++) {
@@ -81,7 +60,6 @@ class AppFixtures extends Fixture
                 $post = new Post();
                 $post->setTitle($faker->sentence($nbWords = 6, $variableNbWords = true));
                 $post->setContent($faker->text());
-                $post->setPicture($faker->imageUrl($width, $height) );
                 $post->setCreatedAt($faker->dateTime($max='now'));
                 $post->setUpdatedAt($faker->dateTime($max='now'));
                 $post->setPublishedAt($faker->dateTime($max='now'));

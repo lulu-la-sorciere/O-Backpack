@@ -5,38 +5,48 @@
 {% block content %}
 <div class="container">
     {% if app.user %}
-        <div class="mb-3">
-            You are logged in as {{ app.user.firstname }}, <a href="{{ path('app_logout') }}">Logout</a>
+        <div class="info-log">
+            <img src="{{ asset('img/icon/chat.png') }}" alt="" class="chat-icon">
+            <p>You are logged in as <strong>{{ app.user.firstname }}</strong>, <a href="{{ path('app_logout') }}" class="chat-logout">Logout</a></p>
         </div>
     {% endif %}
     <h1>Channel {{ channel.name }}</h1>
-    <div class="container">
-        <div class="container bg-light h-75 overflow-auto">
+    <div class="list-user">
+    </div>
+    <div class="chat-container">
+        <div class="chat">
             {% for message in messages %}
                 {% if app.user == message.user %}
-                    <div class="row w-75 float-right">
-                        <b>{{ message.user.nickname }}</b>
-                        <p class="alert alert-info w-100">
+                    <div class="my-message">
+                    <img src="{{asset('img/'~message.user.picture)}}" alt="" class="user-profil">
+                        <div class="chat-message">
+                        <p class="my-info"><strong>{{ message.user.nickname }}</strong> a répondu le {{message.createdAt|format_datetime(locale='fr')}}</p>
+                        <p class="info-my-message">
                             {{ message.content }}
                         </p>
+                        </div>
                     </div>
                 {% else %}
-                    <div class="row w-75 float-left">
-                        <b>{{ message.user.nickname}}</b>
-                        <p class="alert alert-success w-100">
+                    <div class="user-message">
+                        <img src="{{asset('img/'~message.user.picture)}}" alt="" class="user-profil">
+                        <div class="chat-message">
+                        <p class="info-user"><strong>{{ message.user.nickname}}</strong> a envoyé un message le {{message.createdAt|format_datetime(locale='fr')}}</p>
+                        <p class="info-user-message">
                             {{ message.content }}
                         </p>
+                        </div>
                     </div>
                 {% endif %}
             {% endfor %}
         </div>
-        <div>
-            <form id="form" class="container row"> 
-                <input id="message" class="input-group-text col-sm-9" placeholder="Message" type="text" />
-                <button id="submit" type="submit" class="btn btn-success col-sm-3">Send</button>
+        <div class="send-message">
+            <form id="form" class="message-input"> 
+                <input id="message" class="message-chat" placeholder="Message" type="text" />
+                <button id="submit" type="submit" class="btn-chat">Envoyer</button>
             </form>
         </div>
     </div>
+    
 </div>
 {% endblock %}
 
@@ -91,20 +101,28 @@ const appUser = {{ app.user.id }};
 
 
 eventSource.onmessage = ({data}) => { // On écoute les événements publiés par le Hub
-
+    const imageDirectory = {{ asset('img/') }}
     const message = JSON.parse(data); // Le contenu des événements est sous format JSON, il faut le parser
-    console.log('message:'+message);
-        document.querySelector('.bg-light').insertAdjacentHTML( // On injecte le nouveau message selon le HTML déjà présent plus haut dans notre fichier Twig
+    const options = {year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit'};
+    document.querySelector('.chat').insertAdjacentHTML( // On injecte le nouveau message selon le HTML déjà présent plus haut dans notre fichier Twig
         'beforeend',
             appUser === message.user.id ?
-            `<div class="row w-75 float-right">
-            <b>${message.user.nickname}</b>
-            <p class="alert alert-info w-100">${message.content}</p>
-        </div>` :
-            `<div class="row w-75 float-left">
-            <b>${message.user.nickname}</b>
-            <p class="alert alert-success w-100">${message.content}</p>
-        </div>`
+            `<div class="my-message">
+                    <img src="${imageDirectory + message.user.picture}" alt="" class="user-profil">
+                        <div class="chat-message">
+                        <p class="my-info"><strong>${ message.user.nickname }</strong> a répondu le ${new Date(message.createdAt).toLocaleDateString('fr-FR', options)}</p>
+                        <p class="info-my-message">
+                            ${ message.content }
+                        </p>
+                        </div>` :
+            `<div class="user-message">
+                        <img src="${imageDirectory + message.user.picture}" alt="" class="user-profil">
+                        <div class="chat-message">
+                        <p class="info-user"><strong>${ message.user.nickname}</strong> a envoyé un message le ${new Date(message.createdAt).toLocaleDateString('fr-FR', options)}</p>
+                        <p class="info-user-message">
+                            ${ message.content }
+                        </p>
+                        </div>`
     )
 }
  window.addEventListener('beforeunload', function(){

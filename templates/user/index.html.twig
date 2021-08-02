@@ -32,7 +32,9 @@
                     <p>Pays : {{ user.country }}</p>
                     
                 </div>
-                    
+                <div>
+                    <img src = "{{ asset('img/'~ user.picture)}}" alt="">
+                </div>
             </div>
 
         <p class="linkData"><a href ="{{ path('user_map', {id:user.id}) }}">Vos itinéraires</a></p>
