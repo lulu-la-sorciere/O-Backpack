@@ -14,7 +14,7 @@ class CommentFormType extends AbstractType
     {
         $builder
             ->add('content', null, [
-                'label' => 'Commentaire'
+                'label' => ' '
             ])
             //->add('createdAt')
             //->add('publishedAt')

@@ -39,12 +39,12 @@ class MemberDataType extends AbstractType
             ->add('country')
             ->add('dateOfBirth', DateType::class, [
                     "widget"=> "single_text"
-                    ])
+                    ]);
             /* ->add('maps', TextType::class, [
                 'mapped' => false,
                 'required' => false,
                 ]) */
-            ->add('Valider', SubmitType::class);
+            // ->add('Valider', SubmitType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
