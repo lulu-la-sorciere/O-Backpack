@@ -222,6 +222,13 @@ h3 {
 h4 {
   color: #EEBC69;
   margin-bottom: 0.2em;
+  font-size: 1.3em;
+  text-transform: capitalize;
+}
+
+.it {
+  font-style: italic;
+  font-size: smaller;
 }
 
 /* continent */
@@ -882,6 +889,15 @@ img.active2 {
 ::label {
   margin-bottom: 0.5em;
 }
+
+.textb4form {
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+}
+
+
+
+/* Weather */
 
 .icon-weather {
   width: 10%;
