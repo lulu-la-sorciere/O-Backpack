@@ -99,25 +99,24 @@ const appUser = {{ app.user.id }};
 
 
 eventSource.onmessage = ({data}) => { // On écoute les événements publiés par le Hub
+
+    const imageDirectory = {{ asset('img/') }}
     const message = JSON.parse(data); // Le contenu des événements est sous format JSON, il faut le parser
-        document.querySelector('.chat').insertAdjacentHTML( // On injecte le nouveau message selon le HTML déjà présent plus haut dans notre fichier Twig
+    const options = {year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit'};
+    document.querySelector('.chat').insertAdjacentHTML( // On injecte le nouveau message selon le HTML déjà présent plus haut dans notre fichier Twig
         'beforeend',
             appUser === message.user.id ?
-            ` <div class="my-message">
-                    <img src="${asset('img/'~message.user.picture)}" alt="" class="user-profil">
+            `<div class="my-message">
+                    <img src="${imageDirectory + message.user.picture}" alt="" class="user-profil">
                         <div class="chat-message">
-                        <p class="my-info"><strong>${ message.user.nickname }</strong> a répondu le ${message.createdAt}</p>
-                        <p class="info-my-message">
-                            ${ message.content }
-                        </p>
+                        <p class="my-info"><strong>${ message.user.nickname }</strong> a répondu le ${new Date(message.createdAt).toLocaleDateString('fr-FR', options)}</p>
+                        <p class="info-my-message">${ message.content }</p>
                         </div>` :
             `<div class="user-message">
-                        <img src="${asset('img/'~message.user.picture)}" alt="" class="user-profil">
+                        <img src="${imageDirectory + message.user.picture}" alt="" class="user-profil">
                         <div class="chat-message">
-                        <p class="info-user"><strong>${ message.user.nickname}</strong> a envoyé un message le ${message.createdAt}</p>
-                        <p class="info-user-message">
-                            ${ message.content }
-                        </p>
+                        <p class="info-user"><strong>${ message.user.nickname}</strong> a envoyé un message le ${new Date(message.createdAt).toLocaleDateString('fr-FR', options)}</p>
+                        <p class="info-user-message">${ message.content }</p>
                         </div>`
     )
 }
