@@ -20,7 +20,7 @@ main {
     width: 90%;
     text-align: center;
     margin: 2em auto;
-    min-height: 73vh;
+    min-height: 100vh;
 }
 
 h2, .ah2{
@@ -36,6 +36,7 @@ h2, .ah2{
   font-family: "Lobster", "Open sans", sans-serif;
   font-weight: lighter;
   display: inline-block;
+  text-transform: capitalize;
 }
 
 .space {
@@ -164,7 +165,7 @@ h3 {
 
 .threelastposts { /* différence ici*/
   display: flex;
-  width: 30%;
+  width: 80%;
   background-color: #32AAAA;
   border-radius: 7px;
   border: 2px groove #F7F2EB;
@@ -245,12 +246,15 @@ h4 {
 }
 
 .continentli {
-  width: 40%;
+  width: 45%;
   background-color: #32AAAA;
   border-radius: 7px;
   border: 2px groove #EEBC69;
   margin: 0.3em auto;
-  padding: 2em;
+  padding: 0.2em;
+  text-align: center;
+  align-self: center;
+  text-transform: capitalize;
 }
 
 .continentall {
@@ -261,16 +265,18 @@ h4 {
 
 .adminCountry {
   display: flex;
-  flex-wrap: wrap row;
+  flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
+  padding-top: 0.7em;
 }
 
 .adminCountry_info {
+  padding-top: 0.7em;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  /* margin-right: 5%; */
+  text-align:left;
+  justify-content: flex-start;
 }
 
 .adminCountry_flag {
@@ -280,6 +286,10 @@ h4 {
 .flag {
   width: 100%;
   display: block;
+}
+.listAdmin{
+  padding-left: 1em;
+  text-align:left;
 }
 
 /* search */
@@ -1171,7 +1181,7 @@ img.active2 {
   left: calc(50% - 100px);
   opacity: 0;
   animation: display 10s infinite;
-  margin-top: 50px
+  margin-top: 40px
 }
 
 img:nth-child(2) {
