@@ -56,8 +56,8 @@
 <script>
 // The subscriber subscribes to updates for the https://example.com/users/dunglas topic
 // and to any topic matching https://example.com/books/{id}
-const url = new URL('http://localhost:3000/.well-known/mercure', window.origin);
-url.searchParams.append('topic', 'http://localhost:8080/chat/{{channel.id}}');
+const url = new URL('http://localhost:3000/.well-known/mercure');
+url.searchParams.append('topic', 'http://localhost:8080/chat/{id}');
 //url.searchParams.append('topic', 'http://localhost:8080/message');
 // The URL class is a convenient way to generate URLs such as https://localhost/.well-known/mercure?topic=https://example.com/books/{id}&topic=https://example.com/users/dunglas
 
@@ -67,10 +67,9 @@ const eventSource = new EventSource(url, {
     }
 });
 
-    eventSource.onmessage = event => {
-        console.log('coucou');
-        console.log(JSON.parse(event.data));
-    }
+eventSource.onmessage = event => {
+    console.log(JSON.parse(event.data));
+}
 
       const form = document.getElementById('form');
       console.log(form);
@@ -88,12 +87,11 @@ const eventSource = new EventSource(url, {
                 'channel': {{ channel.id }} // ... Et le canal correspondant
             }
             console.log(data); // Pour vérifier vos informations
-            fetch('/chat/{{channel.id}}', { // On envoie avec un post nos datas 
+            fetch('/chat/{id}', { // On envoie avec un post nos datas 
                 method: 'POST',
                 body: JSON.stringify(data) // On envoie les data sous format JSON
             }).then((response) => {
                 message.value = '';
-                console.log('response');
                 console.log(response);
             });
         }
@@ -101,6 +99,7 @@ const appUser = {{ app.user.id }};
 
 
 eventSource.onmessage = ({data}) => { // On écoute les événements publiés par le Hub
+
     const imageDirectory = {{ asset('img/') }}
     const message = JSON.parse(data); // Le contenu des événements est sous format JSON, il faut le parser
     const options = {year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit'};
@@ -111,17 +110,13 @@ eventSource.onmessage = ({data}) => { // On écoute les événements publiés pa
                     <img src="${imageDirectory + message.user.picture}" alt="" class="user-profil">
                         <div class="chat-message">
                         <p class="my-info"><strong>${ message.user.nickname }</strong> a répondu le ${new Date(message.createdAt).toLocaleDateString('fr-FR', options)}</p>
-                        <p class="info-my-message">
-                            ${ message.content }
-                        </p>
+                        <p class="info-my-message">${ message.content }</p>
                         </div>` :
             `<div class="user-message">
                         <img src="${imageDirectory + message.user.picture}" alt="" class="user-profil">
                         <div class="chat-message">
                         <p class="info-user"><strong>${ message.user.nickname}</strong> a envoyé un message le ${new Date(message.createdAt).toLocaleDateString('fr-FR', options)}</p>
-                        <p class="info-user-message">
-                            ${ message.content }
-                        </p>
+                        <p class="info-user-message">${ message.content }</p>
                         </div>`
     )
 }
