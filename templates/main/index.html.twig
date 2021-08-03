@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block subtitle %} - Bienvenue!  {% endblock %}
+{% block subtitle %}Bienvenue!{% endblock %}
 
 {% block content %}
 
@@ -54,10 +54,10 @@
     <div class="threelastposts">
         <h3>Nos 3 derniers articles</h3>
     </div>
-
+{% for post in posts  %}
     <section class="post">
 
-		{% for post in posts  %}
+		
       <div class="postleft">
           <figure class="postpic">
               <img src="{{ asset('img/'~ post.picture)}}" alt="photo illustrant l'article">
@@ -67,15 +67,15 @@
           <h4>{{ post.title }}</h4>
           <div class="postbeginning">
               <p>{{ post.content|slice(0, 300) }}...</p>
-              <p>{{ post.user.nickname }} - Le {{ post.publishedAt|date('d-m-Y') }}</p>
+              <p>{{ post.user.nickname }} - Le {{ post.createdAt|date('d-m-Y') }}</p>
           </div>
           <div class="continue">
             <a href="{{ path('blog_post', {id:post.id}) }}">Lire la suite</a>
         </div>
       </div>
-    {% endfor %}
+    
     </section>
-
+{% endfor %}
     {# </div> #}
 
 {% endblock %}

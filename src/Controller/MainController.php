@@ -52,7 +52,7 @@ class MainController extends AbstractController
      */
     public function home(PostRepository $postR): Response
     {
-        $posts=$postR->findBy([],['id'=>'DESC'], 3);
+        $posts=$postR->findBy([],['createdAt'=>'DESC'], 3);
        
         return $this->render('main/index.html.twig', [
             'title' => 'Accueil',

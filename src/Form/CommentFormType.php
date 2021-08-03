@@ -14,14 +14,14 @@ class CommentFormType extends AbstractType
     {
         $builder
             ->add('content', null, [
-                'label' => 'Commentaire'
+                'label' => ' '
             ])
             //->add('createdAt')
             //->add('publishedAt')
             //->add('updatedAt')
             //->add('user') /* ajouter un event de formulaire
             //->add('post') /* ajouter un event de formulaire
-            ->add('Envoyer', SubmitType::class)
+            // ->add('Envoyer', SubmitType::class)
         ;
     }
 
