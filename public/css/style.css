@@ -260,12 +260,29 @@ h4 {
   padding: 0.2em;
   text-align: center;
   align-self: center;
-
   text-transform: capitalize;
 }
 
 .continentall {
   width: 100%;
+}
+
+.continentli, .country_details {
+  width: 40%;
+  background-color: #32AAAA;
+  border-radius: 7px;
+  border: 2px groove #EEBC69;
+  margin:0.3em auto;
+  padding: 2em;
+  text-transform: capitalize;
+}
+.country_details{
+  margin: 30px auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  width: 50%;
 }
 
 /* country */
@@ -760,7 +777,7 @@ img.active2 {
     display: flex;
     flex-wrap: wrap;  
     justify-content: center;
-    font-size: 0;
+    font-size: 1em;
   }
 
   .uniq.continentpictures img{
@@ -1351,3 +1368,10 @@ img:nth-child(7) {
   padding-top: 8em;
 }
 
+/* map */
+
+.map-img{
+  width: 60%;
+  height: 300px;
+  margin-left: 20px;
+}
