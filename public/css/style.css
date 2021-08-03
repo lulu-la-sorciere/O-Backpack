@@ -791,6 +791,20 @@ img.active2 {
   /* align-content: center; */
 }
 
+.formwrapper2 {
+  background-color: #32AAAA;
+  padding: 1.5em 1em;
+  border-radius: 5px;
+  width: 90%;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  box-shadow: rgba(238, 188, 105, 0.4) 5px 5px, rgba(238, 188, 105, 0.2) 10px 10px, rgba(238, 188, 105, 0.05) 15px 15px;
+  margin: 2em auto 1.5em auto;
+  align-content: center;
+}
+
 /* submit button */
 
 .buttonform {
@@ -873,7 +887,7 @@ img.active2 {
   transition: filter .2s;
   user-select: none;
   -webkit-user-select: none;
-  width: 40%;
+  width: 50%;
   margin-top: 1em;
 }
 
