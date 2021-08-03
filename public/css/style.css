@@ -804,7 +804,7 @@ img.active2 {
     display: flex;
     flex-wrap: wrap;  
     justify-content: center;
-    font-size: 0;
+    font-size: 1em;
   }
 
   .uniq.continentpictures img{
