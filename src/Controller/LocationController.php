@@ -44,6 +44,7 @@ class LocationController extends AbstractController
 
         return $this->render('location/countries.html.twig', [
             'continent' => $continent,
+            'name' => $continent->getName(),
             'countries' => $continent->getCountries(),
             'datas'=>$countryRestApi->countryByContinent($continent->getName()),
         ]);
@@ -57,7 +58,8 @@ class LocationController extends AbstractController
     public function show(CountryRestApi $countryRestApi, $name): Response
     {
         //dd($name);   
-        
+        //dd($picture->getPicture());
+
         return $this->render('location/country.html.twig', [
             'country' => $countryRestApi->fetch($name),
             'name'=>$name,
