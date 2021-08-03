@@ -36,8 +36,20 @@
                 label: 'Mot de passe'
             }) }}</div>
             </div>
-            <div>
+
+            <br>
                 <div>{{ form_row(registrationForm.agreeTerms) }}</div>
+
+                <a class="open-button" popup-open="popup-1" href="javascript:void(0)">Lire les CGU</a>
+
+                <div class="popup" popup-name="popup-1">
+                    <div class="popup-content">
+                        <h2>CGU</h2>
+                                <p>les conditions générales d'utilisation détails</p>
+                        <a class="close-button" popup-close="popup-1" href="javascript:void(0)">x</a>
+                     </div>
+                </div>
+
             </div>
 
             <button type="submit" class="buttonform">S'enregistrer</button>
@@ -45,5 +57,30 @@
         {{ form_end(registrationForm) }}
 
     </div>
+
+    <script>
+$(function() {
+    // Open Popup
+    $('[popup-open]').on('click', function() {
+        var popup_name = $(this).attr('popup-open');
+	$('[popup-name="' + popup_name + '"]').fadeIn(300);
+    });
+
+    // Close Popup
+    $('[popup-close]').on('click', function() {
+	var popup_name = $(this).attr('popup-close');
+	$('[popup-name="' + popup_name + '"]').fadeOut(300);
+    });
+	
+    // Close Popup When Click Outside
+    $('.popup').on('click', function() {
+	var popup_name = $(this).find('[popup-close]').attr('popup-close');
+	$('[popup-name="' + popup_name + '"]').fadeOut(300);
+    }).children().click(function() {
+	return false;
+    });
+	
+});
+</script>
 
 {% endblock %}
