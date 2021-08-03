@@ -1,42 +1,42 @@
 /* general */
 
-html {
+.wrapper {
+  width: 100vw;
+  min-height: 100vh;
   background-color: #155472;
   color: #F7F2EB;
   font-size: 1em;
   font-family: 'Railway', sans-serif;
-
-}
-
-body {
-  width: 100vw;
-  height: 100vh;
-  overflow-y: auto;
 }
 
 main {
     position: relative;/*pour le footer*/
     display: block;
-    width: 90%;
+    width: 100%;
     text-align: center;
-    margin: 2em auto;
-    min-height: 100vh;
+    min-height: 130vh;
+   /* margin: 2em auto;
+    min-height: 100vh; */
+
 }
 
 h2, .ah2{
-  color: #fffd81;
-  text-shadow: 2px 2px #155472;
+  color: #EEBC69;
+  text-shadow: #155472 5px 5px 5px;
   font-size: 2em;
-  background-color: #D87151;
+  background-color: #9c9c9c80;
   padding: 0.4em 2em;
   width: auto;
   border-radius: 5px;
   border: 1px solid #EEBC69;
-  margin: auto auto 1em auto;
-  font-family: "Lobster", "Open sans", sans-serif;
+  margin: -50px auto 1em auto;
   font-weight: lighter;
   display: inline-block;
   text-transform: capitalize;
+}
+
+.ah2{
+  margin: auto;
 }
 
 .space {
@@ -50,6 +50,10 @@ header {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  position: absolute;
+  top: 0;
+  z-index: 1000000;
+  background-color: #bbbbbb65;
 }
 
 #logomenu {
@@ -124,7 +128,7 @@ a {
 
 .nav-link:hover {
   font-size: 1.2em;
-  color: #F7F2EB;
+  color: #155472;
 }
 
 .nav-ul a:hover {
@@ -169,10 +173,8 @@ h3 {
   background-color: #32AAAA;
   border-radius: 7px;
   border: 2px groove #F7F2EB;
-  margin-right: auto;
-  margin-top: 1em;
+  margin: 1em auto 0 auto;
   justify-content: center;
-  margin-left: auto;
 }
 
 .lastposts {
@@ -184,23 +186,27 @@ h3 {
 }
 
 .post {
+  width: 80%;
   display: flex;
   flex-wrap: wrap;
   background-color: #32AAAA;
   border-radius: 7px;
   border: 2px groove #EEBC69;
-  margin-top: 1em;
+  margin: 1em auto;
   padding: 1em;
+  justify-content: center;
 }
 
 .postleft {
   width: 30%;
+  margin: 1em 0;
 }
 
 .postright {
   width: 70%;
   text-align: left;
   padding-left: 0.5em;
+  margin: 1em 0;
 }
 
 .postpic img {
@@ -254,6 +260,7 @@ h4 {
   padding: 0.2em;
   text-align: center;
   align-self: center;
+
   text-transform: capitalize;
 }
 
@@ -296,7 +303,7 @@ h4 {
 
 .results,
 .search_form {
-  padding: 2em;
+  padding-top: 8em;
 }
 
 /* In progress */
@@ -451,9 +458,8 @@ h5 {
 .img-slider {
   position: relative;
   width: 100%;
-  height: 400px;
+  height: 55vh;
   background: #1D212B;
-  margin: auto;
 }
 
 .img-slider .slide {
@@ -474,13 +480,13 @@ h5 {
   z-index: 1;
   width: 100%;
   height: 100%;
-  border-radius: 5px;
   object-fit: cover;
+  box-shadow: #9c9c9c80;
 }
 
 .img-slider .slide .info {
   position: absolute;
-  top: 0;
+  top: 50%;
   padding: 15px 30px;
 }
 
@@ -667,10 +673,10 @@ h5 {
 
 .blog-carousel {
     position: relative;
-    max-width: 70%;/*100% ancien code*/
+    max-width: 50%;/*100% ancien code*/
     box-shadow: 0 0 2px rgb(0 0 0 / 5%);
     display: flex; /*  pas de display */
-    margin: auto;
+    margin: auto auto 2em auto;
 }
 
 .carousel-inner img {
@@ -678,6 +684,7 @@ h5 {
   margin: auto;
   display: none;
   border-radius: 10px;
+  
 }
 
 img.active2 {
@@ -1247,4 +1254,39 @@ img:nth-child(7) {
 
 .chat-icon{
   width: 100px;
+}
+
+
+
+/******** IMAGES HEAD **********/
+
+.continentall{
+  background-image: url(../img/0022.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 350px;
+}
+
+.continentspec{
+  background-image: url(../img/0007.jpg);
+  background-position: 50% 70%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 350px;
+}
+
+.imageandtitle{
+  width: 100%;
+
+}
+
+.imageandtitle-error{
+  padding-top: 8em;
+}
+
+.form-post{
+  padding-top: 8em;
 }

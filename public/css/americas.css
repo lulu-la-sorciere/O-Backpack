@@ -1,0 +1,8 @@
+.continentspec{
+    background-image: url(../img/continent/americas.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 350px;
+}
