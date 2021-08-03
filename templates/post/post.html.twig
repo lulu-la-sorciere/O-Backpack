@@ -35,8 +35,18 @@
     
     <section >
     
-        <p class="textb4form"> Ajouter un commentaire : <span class="it">(Vous devez être connecté)</span></p>
-          {{ form(commentForm) }}   
+        <p class="textb4form"> Ajouter un commentaire :<br><span class="it">(Vous devez être connecté)</span></p>
+
+           {{ form_start(commentForm) }}
+
+                <div class="centerform">
+                    <div class="commentform">{{ form_row(commentForm.content) }}</div>
+                </div>
+
+                <button type="submit" class="sendcomment">Valider</button>
+
+           {{ form_end(commentForm) }}
+
         {% for comment in comments %}
             <div class="post">
                 <div class="commentProfile">
