@@ -167,7 +167,7 @@ h3 {
 
 .threelastposts { /* différence ici*/
   display: flex;
-  width: 30%;
+  width: 80%;
   background-color: #32AAAA;
   border-radius: 7px;
   border: 2px groove #F7F2EB;
@@ -263,6 +263,7 @@ h4 {
   flex-wrap: wrap;
 }
 
+
 .continentli, .country_details {
   width: 40%;
   background-color: #32AAAA;
@@ -290,17 +291,18 @@ h4 {
 
 .adminCountry {
   display: flex;
-  flex-wrap: wrap row;
+  flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
   margin: 20px auto
 }
 
 .adminCountry_info {
+  padding-top: 0.7em;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  /* margin-right: 5%; */
+  text-align:left;
+  justify-content: flex-start;
 }
 
 .adminCountry_flag {
@@ -310,6 +312,10 @@ h4 {
 .flag {
   width: 100%;
   display: block;
+}
+.listAdmin{
+  padding-left: 1em;
+  text-align:left;
 }
 
 /* search */
@@ -762,6 +768,52 @@ img.active2 {
   right: 0;
 }
 
+/* Continent Picture*/
+
+.gallery.continentul {
+  display: flex;
+  flex-direction: column;
+}
+
+.continentpictures {
+  margin: 1em auto;
+  padding: 1.5em;
+  background-color: #32AAAA;
+  border-radius: 7px;
+  border: 2px groove #EEBC69;
+  width: 100%;
+  display: block;
+  align-items: flex-start;
+}
+
+.continentpictures img {
+  width: 100%;
+  margin: 1em auto;
+  border-radius: 7px;
+}
+
+.continentname {
+  font-size: 2em;
+  font-style: italic;
+  margin-bottom: inherit;
+}
+
+@media (min-width: 600px ) {
+  .continent {
+    width:100%;
+    display: flex;
+    flex-wrap: wrap;  
+    justify-content: center;
+    font-size: 0;
+  }
+
+  .uniq.continentpictures img{
+    width: 30%;
+    margin: 7px;
+    align-self: auto;    
+  }
+}
+
 /* form templating */
 
 .formspace {
@@ -902,7 +954,7 @@ img.active2 {
 
 .col {
   width: 100%;
-  margin: 0.5em 0.5em 1em 1.5em;
+  margin: 0.5em 0.5em 0.5em 1.5em;
   transition: 0.5s;
   display: flex;
   flex-wrap: wrap;
@@ -1000,6 +1052,42 @@ img.active2 {
   width: 10%;
 }
 
+.commentform {
+  width: 80%;
+}
+
+#comment_form_content {
+  background-color: transparent;
+  border-radius: 7px;
+  border: 1px solid #32AAAA;
+  width: 100%;
+  height: 5em;
+  margin: auto;
+  padding: 0.5em;
+}
+
+.sendcomment {
+  margin-top: 1em;
+  border: none;
+  width: 30%;
+  height: 2em;
+  text-transform: uppercase;
+  border: 5px;
+  background-color: transparent;
+  color: #EEBC69;
+  cursor: pointer;
+}
+
+.centerform {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: auto;
+}
+
+#member_data_picture {
+  font-size: smaller;
+}
 /******** CHAT ********/
 
 .chat-logout:hover{
@@ -1257,7 +1345,7 @@ img.active2 {
   left: calc(50% - 100px);
   opacity: 0;
   animation: display 10s infinite;
-  margin-top: 50px
+  margin-top: 40px
 }
 
 img:nth-child(2) {

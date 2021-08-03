@@ -54,13 +54,13 @@
     <div class="threelastposts">
         <h3>Nos 3 derniers articles</h3>
     </div>
-
+{% for post in posts  %}
     <section class="post">
 
-		{% for post in posts  %}
+		
       <div class="postleft">
           <figure class="postpic">
-              <img src="{{ asset('img'~ post.picture)}}" alt="photo illustrant l'article">
+              <img src="{{ asset('img/'~ post.picture)}}" alt="photo illustrant l'article">
           </figure>
       </div>
       <div class="postright">
@@ -73,9 +73,9 @@
             <a href="{{ path('blog_post', {id:post.id}) }}">Lire la suite</a>
         </div>
       </div>
-    {% endfor %}
+    
     </section>
-
+{% endfor %}
     {# </div> #}
 
 {% endblock %}

@@ -18,22 +18,28 @@
 	</button>
 
 	<section class="gallery continentul">
+
 		{% for continent in continents %}
-			<div class="continentli">
-
-				<a class="left">
-					<span class="left_arrow">&lt;</span>
-				</a>
-				<img src="pic.jpg" alt="Pic">
-				<a class="right">
-					<span class="right_arrow">&gt;</span>
-				</a>
-
+				<section class="blog-carousel continentpictures">
+					<div class="carousel-inner">
+						<img class="active2 item" src="{{ asset('img/0006.jpg')}}" alt="Picture1">
+						<img class="item" src="{{ asset('img/0013.jpg')}}" alt="Picture2">
+						<img class="item" src="{{ asset('img/0012.jpg')}}" alt="Picture3">
+						<img class="item" src="{{ asset('img/0017.jpg')}}" alt="Picture4">
+					</div>
+					<div class="arrows">
+						<div class="arrow precedent">
+							&lt;
+						</div>
+						<div class="arrow suivant">
+							&gt;
+						</div>
+					</div>
+						
 				<a href="{{ path('blog_continentPic', {id:continent.id}) }} ">
 					{{ continent.name }}
 				</a>
-
-			</div>
+				</section>
 		{% endfor %}
 
 	</section>

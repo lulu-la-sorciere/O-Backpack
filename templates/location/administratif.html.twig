@@ -25,6 +25,9 @@
 		</p>
 	</div>
 	<div class= "adminCountry" >
+		<div class="adminCountry_flag">
+			<img class="flag" src="{{detailCountry.0.flag}}" alt="{{detailCountry.0.name}}"> 
+		</div>
 		<div class = "adminCountry_info" >
 			<div>
 				Region : {{detailCountry.0.region}}
@@ -32,7 +35,8 @@
 			<div>
 				Capital :{{detailCountry.0.capital}}
 			</div>
-			<div>Langue :
+			<div>
+				Langue :
 				{% for languages in detailCountry.0.languages %}
 					
 					{{languages["nativeName"]}},
@@ -49,14 +53,12 @@
 				
 			</div>
 		</div>
-		<div class="adminCountry_flag">
-			<img class="flag" src="{{detailCountry.0.flag}}" alt="{{detailCountry.0.name}}"> 
-		</div>
+		
 	</div>
 	
 	<div class="administratif continue post" id="administratif">
 		<h4>Administratif :</h4>
-			<ul>
+			<ul class="listAdmin" >
 				<li>
 					Visa :
 				</li>
