@@ -10,13 +10,12 @@
 		<img src="#" alt="image monde" class="continentspec">
 		<h2>{{ title }}</h2>
 	</div> 
-    <div>
-        <a href="">Rechercher</a>
-        
-    </div>
     <div class="links">
         <button class="post">
             <a href="{{ path('blog_list') }}">Retour au blog</a>
+        </button>
+        <button class="post">
+            <a href="{{ path('main_search') }}">Rechercher</a>
         </button>
         <button class="continue post">
             <a href="{{ path('blog_add') }}">&#43; Ajouter un article</a>
@@ -41,8 +40,16 @@
             </div>
         </div>
     {% endfor %}
-    
-  <button class="post">Voir Plus</button>
-  <button class="post"><a href="{{ path('blog_list') }}">Retour au blog</a></button>
-  {#<button class="post"><a href="{{ path('blog_add', {id:post.id}) }}">Ajout d'un article</a></button>#}
+    <div class="links">
+        {# <button class="post">
+            <a href="#">Voir Plus</a>
+        </button> #}
+        <button class="post">
+            <a href="{{ path('blog_list') }}">Retour au blog</a>
+        </button>
+        <button class="continue post">
+            <a href="{{ path('blog_add') }}">&#43; Ajouter un article</a>
+        </button> 
+    </div>
+
 {% endblock %}

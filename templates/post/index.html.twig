@@ -15,14 +15,13 @@
 
 	<div class="links">
 		<button class="continue post">
-			<a href="">Recherche</a>
+			<a href="{{ path('main_search') }}">Recherche</a>
 		</button>
-		<button class="continue post">
+		{# <button class="continue post">
 			<a href="">Filtre</a>
-		</button>
+		</button> #}
 		<button class="continue post">
-			<a href="{{ path('blog_add') }}">
-				&#43; Ajouter un article</a>
+			<a href="{{ path('blog_add') }}">&#43; Ajouter un article</a>
 		</button>
 	</div>
 
@@ -41,13 +40,17 @@
 					- Le
 					{{ posts|last.publishedAt|date('d-m-Y') }}</p>
 			</div>
-
+			<div class="continue">
+				<a href="{{ path('blog_post', {id:posts|last.id}) }}">Lire la suite</a>
+			</div>
 		</div>
 
 	</section>
 
 	<button class="continue post">
+
 		<a href="{{ path('blog_posts') }}">Accéder à tous les articles</a>
+
 	</button>
 	<div class="title galery">
 
