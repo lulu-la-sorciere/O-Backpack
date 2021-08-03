@@ -6,23 +6,23 @@
 
 {% block content %}
 	<div class="imageandtitle">
-		<img src="#" alt="image monde" class="continentspec">
+		<p class="administratif-title"></p>
 		<h2>{{name}}
 			- Administratif</h2>
 	</div>
 
 	<div class="links">
-		<button class="continue post">
+		<p class="link-post">
 			<a href="{{ path('location_country_stuff', {name:name}) }}">Matériel</a>
-		</button>
-		<button class="continue post">
+		</p>
+		<p class="link-post">
 			<a href="{{ path('location_country_weather', {name}) }}">Météo</a>
-		</button>
-		<button class="continue post">
+		</p>
+		<p class="link-post">
 			<a href="{{ path('location_country', {name:detailCountry.0.name}) }}">Retour
 				{{detailCountry.0.name}}
 			</a>
-		</button>
+		</p>
 	</div>
 	<div class= "adminCountry" >
 		<div class = "adminCountry_info" >
