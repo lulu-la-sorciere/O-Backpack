@@ -1,4 +1,4 @@
-/* general */
+/*** general ***/
 
 .wrapper {
   width: 100vw;
@@ -41,7 +41,7 @@ h2, .ah2{
   margin-top: 1em;
 }
 
-/* header */
+/*** header ***/
 
 header {
   width: 100%;
@@ -59,7 +59,7 @@ header {
   padding-left: 1em;
 }
 
-/* nav */
+/*** nav ***/
 
 * {
     /* position: relative; on récupère le carrousel*/
@@ -136,7 +136,7 @@ a {
   transition: 0.3s;
 }
 
-/* footer */
+/*** footer ***/
 
 footer {
   font-size: 0.8em;
@@ -152,7 +152,7 @@ footer {
   bottom: 0; */
 }
 
-/* home */
+/*** home ***/
 
 h3 {
   font-style: italic;
@@ -256,13 +256,12 @@ h4 {
   font-size: smaller;
 }
 
-/* continent */
+/*** continent ***/
 
 .continentul {
   display: flex;
   flex-wrap: wrap;
 }
-
 
 .continentli, .country_details {
   width: 40%;
@@ -287,7 +286,7 @@ h4 {
   width: 100%;
 }
 
-/* country */
+/*** country ***/
 
 .adminCountry {
   display: flex;
@@ -318,21 +317,21 @@ h4 {
   text-align:left;
 }
 
-/* search */
+/*** search ***/
 
 .results,
 .search_form {
   padding-top: 8em;
 }
 
-/* In progress */
+/*** In progress ***/
 
 .construction {
   margin: 2em auto;
   width: 30%;
 }
 
-/* team */
+/*** team ***/
 
 .team img {
   width: 100%;
@@ -423,7 +422,7 @@ h4 {
   }
 }
 
-/* update data and paswd forms */
+/*** update data and paswd forms ***/
 
 h5 {
   display: flex;
@@ -470,7 +469,7 @@ h5 {
   border-radius: 50px;
 }
 
-/* slider */
+/*** slider ***/
 
 .img-slider {
   position: relative;
@@ -634,7 +633,7 @@ h5 {
   }
 }
 
-/* form style*/
+/*** form style ***/
 
 .form_container {
   display: flex;
@@ -662,7 +661,7 @@ h5 {
   font-size: 20px;
 }
 
-/*button country/continent*/
+/*** button country/continent ***/
 
 .links {
   width: 70%;
@@ -709,7 +708,7 @@ h5 {
   height: 15em;
 }
 
-/* galery carousel*/
+/*** galery carousel ***/
 
 .title.galery {
   margin: 2em auto;
@@ -768,7 +767,7 @@ img.active2 {
   right: 0;
 }
 
-/* Continent Picture*/
+/*** Continent Picture ***/
 
 .gallery.continentul {
   display: flex;
@@ -814,7 +813,7 @@ img.active2 {
   }
 }
 
-/* form templating */
+/*** form templating ***/
 
 .formspace {
   margin-bottom: 0.5em;
@@ -835,7 +834,7 @@ img.active2 {
   /* align-content: center; */
 }
 
-/* submit button */
+/*** submit button ***/
 
 .buttonform {
   appearance: button;
@@ -950,7 +949,7 @@ img.active2 {
   cursor: auto;
 }
 
-/* fields */
+/*** fields ***/
 
 .col {
   width: 100%;
@@ -1015,7 +1014,7 @@ img.active2 {
   margin-bottom: 0.5em;
 }
 
-/***** STUFFS *******/
+/*** STUFFS ***/
 
 .stuffs-list{
   display: flex;
@@ -1024,7 +1023,7 @@ img.active2 {
   justify-content: space-evenly;
 }
 
-/* Weather */
+/*** Weather */
 
 .title{
 
@@ -1088,7 +1087,8 @@ img.active2 {
 #member_data_picture {
   font-size: smaller;
 }
-/******** CHAT ********/
+
+/*** CHAT ***/
 
 .chat-logout:hover{
   color: #D87151;
@@ -1305,8 +1305,7 @@ img.active2 {
   }
 }
 
-
-/******* icon caroussel ********/
+/*** icon caroussel ***/
 
 .pic-ctn {
   width: 100%;
@@ -1367,7 +1366,7 @@ img:nth-child(7) {
   animation-delay: 14s;
 }
 
-/********* ICONS *********/
+/*** ICONS ***/
 
 .point{
   width: 50px;
@@ -1377,9 +1376,7 @@ img:nth-child(7) {
   width: 100px;
 }
 
-
-
-/******** IMAGES HEAD **********/
+/*** IMAGES HEAD ***/
 
 .continentall{
   background-image: url(../img/0022.jpg);
@@ -1409,7 +1406,6 @@ img:nth-child(7) {
 
 .imageandtitle{
   width: 100%;
-
 }
 
 .imageandtitle-error{
@@ -1420,11 +1416,10 @@ img:nth-child(7) {
   padding-top: 10em;
 }
 
-/******* MAP ********/
+/*** MAP ***/
 
 .map-img{
   width: 60%;
   height: 300px;
   margin-left: 20px;
 }
-
