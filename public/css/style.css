@@ -724,6 +724,52 @@ img.active2 {
   right: 0;
 }
 
+/* Continent Picture*/
+
+.gallery.continentul {
+  display: flex;
+  flex-direction: column;
+}
+
+.continentpictures {
+  margin: 1em auto;
+  padding: 1.5em;
+  background-color: #32AAAA;
+  border-radius: 7px;
+  border: 2px groove #EEBC69;
+  width: 100%;
+  display: block;
+  align-items: flex-start;
+}
+
+.continentpictures img {
+  width: 100%;
+  margin: 1em auto;
+  border-radius: 7px;
+}
+
+.continentname {
+  font-size: 2em;
+  font-style: italic;
+  margin-bottom: inherit;
+}
+
+@media (min-width: 600px ) {
+  .continent {
+    width:100%;
+    display: flex;
+    flex-wrap: wrap;  
+    justify-content: center;
+    font-size: 0;
+  }
+
+  .uniq.continentpictures img{
+    width: 30%;
+    margin: 7px;
+    align-self: auto;    
+  }
+}
+
 /* form templating */
 
 .formspace {
