@@ -6,28 +6,31 @@
 
 {% block content %}
 
-	<div class="imageandtitle">
-		<img src="" alt="image monde" class="continentspec">
+	<div class="title">
 		<h2> {{name}} - Quand partir</h2>
 	</div>
 
 	<div class="links">
-		<button class="continue post">
+		<p class="link-post">
 			<a href="{{ path('location_country_administratif', {name:name}) }}#administratif">Administratif</a>
-		</button>
-		<button class="continue post">
+		</p>
+		<p class="link-post">
 			<a href="{{ path('location_country_stuff', {name:name}) }}">Matériel</a>
-		</button>
-		<button class="continue post">
-			<a href="{{ path('location_country', {name}) }}">Retour {{name}}</a>
-		</button>
+		</p>
+		<p class="link-post">
+			<a href="{{ path('location_country', {name}) }}">Retour </a>
+		</p>
 	</div>
+  
 	<section class="weather">
-		<div>
-			<p>Temps du moment :</p>
+		<div class="weather-description">
+			<h3>Temps du moment :</h3>
 			<p>{{ weather.weather.0.description }}</p>
 			<img class="icon-weather" src="http://openweathermap.org/img/w/{{ weather.weather.0.icon  }}.png" alt="Icon weather">
-			<p>température  Min : {{ weather.main.temp_min|round }}°C, Max: {{ weather.main.temp_max|round }}°C, Ressenti:{{ weather.main.feels_like|round }}°C, Humidité:{{ weather.main.humidity }}%</p>
+			<p>température  Min : {{ weather.main.temp_min|round }}°C, 
+			Max: {{ weather.main.temp_max|round }}°C </p><br>
+			<p>Ressenti: {{ weather.main.feels_like|round }}°C, 
+			Humidité: {{ weather.main.humidity }}%</p>
 
 		</div>
 	</section>

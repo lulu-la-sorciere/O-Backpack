@@ -14,10 +14,8 @@ main {
     display: block;
     width: 100%;
     text-align: center;
-    min-height: 130vh;
-   /* margin: 2em auto;
-    min-height: 100vh; */
-
+    min-height: 94vh;
+    height: max-content;
 }
 
 h2, .ah2{
@@ -185,6 +183,20 @@ h3 {
   margin: 1em auto;
 }
 
+.continue{
+  color: #F5F5F5;
+  text-align: left;
+  margin-left: 20px;
+}
+
+.continue-read{
+  text-align: center;
+}
+
+.continue-read:hover{
+  font-style: italic;
+}
+
 .post {
   width: 80%;
   display: flex;
@@ -194,7 +206,7 @@ h3 {
   border: 2px groove #EEBC69;
   margin: 1em auto;
   padding: 1em;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 
 .postleft {
@@ -251,16 +263,24 @@ h4 {
   flex-wrap: wrap;
 }
 
-.continentli {
-  width: 45%;
+
+.continentli, .country_details {
+  width: 40%;
   background-color: #32AAAA;
   border-radius: 7px;
   border: 2px groove #EEBC69;
-  margin: 0.3em auto;
-  padding: 0.2em;
-  text-align: center;
-  align-self: center;
+  margin:0.3em auto;
+  padding: 2em;
   text-transform: capitalize;
+}
+
+.country_details{
+  margin: 30px auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  width: 50%;
 }
 
 .continentall {
@@ -274,7 +294,7 @@ h4 {
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
-  padding-top: 0.7em;
+  margin: 20px auto
 }
 
 .adminCountry_info {
@@ -333,15 +353,13 @@ h4 {
 .msg {
   background-color: aquamarine;
   color: black;
-  width: 80%;
+  width: 40%;
   border-radius: 0.8em;
   display: flex;
   justify-content: center;
-  align-items: center;
-  text-align: center;
   padding: 2%;
-  margin: 5% auto;
-  border: aquamarine 2px solid;
+  margin: 5.5em auto 0 auto;
+  position: absolute;
 }
 
 .msgError {
@@ -620,7 +638,9 @@ h5 {
 
 .form_container {
   display: flex;
-  justify-content: center;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
 }
 
 .form_container div {
@@ -645,22 +665,47 @@ h5 {
 /*button country/continent*/
 
 .links {
+  width: 70%;
   display: inline-flex;
-  /* margin-bottom: 10%; pas de modification */
+  height: 100px;
+  justify-content: space-around;
 }
 
-.links button {
+.link-post{
+  padding: 1em;
   margin: 0.5em;
   align-items: center;
+  width: 100%;
+  display: flex;
+  background-color: #32AAAA;
+  border-radius: 7px;
+  border: 2px groove #EEBC69;
+  justify-content: center;
 }
 
-.administratif {
+.administratif-title {
   width: 100%;
-  height: 15em;
+  height: 350px;
+  background-image: url(../img/passeport.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.add-post{
+  width: 70%;
+}
+
+.add-post input, .add-post textarea, .add-post select{
+  width: 100%;
+}
+
+.add-post textarea{
+  height: 200px;
 }
 
 .evenements {
-  width: 100%;
+  width: 80%;
   height: 15em;
 }
 
@@ -970,9 +1015,38 @@ img.active2 {
   margin-bottom: 0.5em;
 }
 
+/***** STUFFS *******/
 
+.stuffs-list{
+  display: flex;
+  height: 300px;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
 
 /* Weather */
+
+.title{
+
+  padding-top: 200px;
+}
+
+.weather{
+  display: flex;
+  width: 100%;
+  height: 300px;
+  justify-content: center;
+}
+
+.weather-description{
+  width: 100%;
+  height: 100%;
+  margin: 20px 0;
+}
+
+.weather-description p{
+  text-transform: capitalize;
+}
 
 .icon-weather {
   width: 10%;
@@ -1235,7 +1309,9 @@ img.active2 {
 /******* icon caroussel ********/
 
 .pic-ctn {
+  width: 100%;
   position: relative;
+  height: 300px;
 }
 
 @keyframes display {
@@ -1314,13 +1390,21 @@ img:nth-child(7) {
   height: 350px;
 }
 
-.continentspec{
+.blog{
   background-image: url(../img/0007.jpg);
   background-position: 50% 70%;
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
   height: 350px;
+  object-fit: cover;
+}
+
+.continentspec{
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  text-align: center;
 }
 
 .imageandtitle{
@@ -1333,5 +1417,5 @@ img:nth-child(7) {
 }
 
 .form-post{
-  padding-top: 8em;
+  padding-top: 10em;
 }
