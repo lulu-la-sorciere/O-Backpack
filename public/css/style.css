@@ -1382,20 +1382,6 @@ img:nth-child(7) {
 
 /* modal cgu*/
 
-/* Popup Open button */	
-/* .open-button{
-  color:#FFF;
-  background:#32AAAA;
-  padding:10px;
-  text-decoration:none;
-  border:1px solid #0157ad;
-  border-radius:3px;
-}
-
-.open-button:hover{
-  background:#32AAAA;
-} */
-
 .popup {
   position:fixed;
   top:0px;
