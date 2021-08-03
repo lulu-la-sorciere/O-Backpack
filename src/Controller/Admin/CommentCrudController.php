@@ -31,6 +31,7 @@ class CommentCrudController extends AbstractCrudController
             IdField::new('id')->hideOnForm(),
             TextField::new('content'),
             TextField::new('user.nickname')->hideOnForm(),
+            TextField::new('post.title'),
             AssociationField::new('post'),
             AssociationField::new('user'),
             DateField::new('createdAt')->hideOnIndex()->hideOnForm(),
