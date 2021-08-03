@@ -17,6 +17,8 @@ class AppFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
+        $faker = Faker\Factory::create('fr_FR');
+
         // $product = new Product();
         // $manager->persist($product);
 
@@ -51,18 +53,15 @@ class AppFixtures extends Fixture
          }
          $commentListTotal = count($commentList);
 
-           $width = '300px';
-           $height = '200px';
-
             // create post!
             $postList = [];
             for ($i = 0; $i < 20; $i++) {
                 $post = new Post();
                 $post->setTitle($faker->sentence($nbWords = 6, $variableNbWords = true));
                 $post->setContent($faker->text());
-                $post->setCreatedAt($faker->dateTime($max='now'));
-                $post->setUpdatedAt($faker->dateTime($max='now'));
-                $post->setPublishedAt($faker->dateTime($max='now'));
+                $post->setCreatedAt($faker->dateTimeThisDecade($max = 'now', $timezone = null));
+                $post->setUpdatedAt($faker->dateTimeThisDecade($max = 'now', $timezone = null));
+                $post->setPublishedAt($faker->dateTimeThisDecade($max = 'now', $timezone = null));
                 $post->setUser($user);
                 $postList[] = $post;
                 $manager->persist($post);

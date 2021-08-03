@@ -32,6 +32,10 @@ h2, .ah2{
   text-transform: capitalize;
 }
 
+.ah2{
+  margin: auto;
+}
+
 .space {
   margin-top: 1em;
 }
@@ -187,6 +191,7 @@ h3 {
   border: 2px groove #EEBC69;
   margin: 1em auto;
   padding: 1em;
+  justify-content: center;
 }
 
 .postleft {
@@ -656,10 +661,10 @@ h5 {
 
 .blog-carousel {
     position: relative;
-    max-width: 70%;/*100% ancien code*/
+    max-width: 50%;/*100% ancien code*/
     box-shadow: 0 0 2px rgb(0 0 0 / 5%);
     display: flex; /*  pas de display */
-    margin: auto;
+    margin: auto auto 2em auto;
 }
 
 .carousel-inner img {
