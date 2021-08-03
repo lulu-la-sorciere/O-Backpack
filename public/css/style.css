@@ -1419,3 +1419,12 @@ img:nth-child(7) {
 .form-post{
   padding-top: 10em;
 }
+
+/******* MAP ********/
+
+.map-img{
+  width: 60%;
+  height: 300px;
+  margin-left: 20px;
+}
+
