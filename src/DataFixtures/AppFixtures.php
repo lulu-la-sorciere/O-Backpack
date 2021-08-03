@@ -36,7 +36,7 @@ class AppFixtures extends Fixture
             $user->setLastname($faker->lastName());
             $user->setNickname($faker->userName());
             $user->setCountry($faker->country());
-            $user->setDateOfBirth($faker->dateTimeThisCentury($max = 'now', $timezone = null));
+            $user->setDateOfBirth($faker->dateTimeBetween('-50 years'));
             $userList[] = $user;
             $manager->persist($user);
         }
@@ -59,12 +59,16 @@ class AppFixtures extends Fixture
                 $post = new Post();
                 $post->setTitle($faker->sentence($nbWords = 6, $variableNbWords = true));
                 $post->setContent($faker->text());
-                $post->setCreatedAt($faker->dateTimeThisDecade($max = 'now', $timezone = null));
-                $post->setUpdatedAt($faker->dateTimeThisDecade($max = 'now', $timezone = null));
-                $post->setPublishedAt($faker->dateTimeThisDecade($max = 'now', $timezone = null));
+                $post->setCreatedAt($faker->dateTimeBetween('-10 years'));
+                $post->setUpdatedAt($faker->dateTimeBetween('-10 years'));
+                $post->setPublishedAt($faker->dateTimeBetween('-10 years'));
                 $post->setUser($user);
                 $postList[] = $post;
                 $manager->persist($post);
+
+                for ($j=1; $j <= mt_rand(1, 10); $j++){
+                    
+                }
             }
             $postListTotal = count($postList);
 

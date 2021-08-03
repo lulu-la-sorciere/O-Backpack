@@ -9,6 +9,7 @@ use App\Repository\CountryRepository;
 use App\Repository\StuffRepository;
 use App\Service\OpenWeather;
 use App\Service\CountryRestApi;
+use App\Service\Unsplash;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -55,13 +56,15 @@ class LocationController extends AbstractController
      * 
      * @Route("continent/country/{name}", name="country")
      */
-    public function show(CountryRestApi $countryRestApi, $name): Response
+    public function show(CountryRestApi $countryRestApi, $name, Unsplash $picture): Response
     {
         //dd($name);   
-        //dd($picture->getPicture());
+        $picture = $picture->getPicture($name);
+        //dd($picture);
 
         return $this->render('location/country.html.twig', [
             'country' => $countryRestApi->fetch($name),
+            'picture' => $picture,
             'name'=>$name,
             
         ]);
