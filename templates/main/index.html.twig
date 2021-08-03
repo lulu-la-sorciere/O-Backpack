@@ -1,20 +1,81 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello MainController!{% endblock %}
+{% block subtitle %}Bienvenue!{% endblock %}
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+{% block content %}
 
-<div class="example-wrapper">
-    <h1>Hello {{ title }}! ✅</h1>
+{# <div class="welcome"> #}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{#{ '/var/www/html/obackpack/o-backpack/src/Controller/MainController.php'|file_link(0) }#}">src/Controller/MainController.php</a></code></li>
-        <li>Your template at <code><a href="{#{ '/var/www/html/obackpack/o-backpack/templates/main/index.html.twig'|file_link(0) }#}">templates/main/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <div class="img-slider">
+      <div class="slide active">
+        <img src="{{ asset('img/slide-main/0003.jpg')}}" alt="photo" class="carousel">
+        <div class="info">
+          <h6>o'backpack</h6>
+          <p>Toutes les infos dont vous avez besoin sur un seul site!</p>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="{{ asset('img/slide-main/0016.jpg')}}" alt="photo" class="carousel">
+        <div class="info">
+          <h6>Clélia</h6>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="{{ asset('img/slide-main/0025.jpg')}}" alt="photo" class="carousel">
+        <div class="info">
+          <h6>Céline</h6>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="{{ asset('img/slide-main/adventure.jpg')}}" alt="photo" class="carousel">
+        <div class="info">
+          <h6>Samia</h6>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="{{ asset('img/slide-main/sl02.jpg')}}" alt="photo" class="carousel">
+        <div class="info">
+          <h6>Viviane</h6>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+      </div>
+      <div class="navigation">
+        <div class="btn active"></div>
+        <div class="btn"></div>
+        <div class="btn"></div>
+        <div class="btn"></div>
+        <div class="btn"></div>
+      </div>
+    </div>
+
+    <div class="threelastposts">
+        <h3>Nos 3 derniers articles</h3>
+    </div>
+{% for post in posts  %}
+    <section class="post">
+
+		
+      <div class="postleft">
+          <figure class="postpic">
+              <img src="{{ asset('img/'~ post.picture)}}" alt="photo illustrant l'article">
+          </figure>
+      </div>
+      <div class="postright">
+          <h4>{{ post.title }}</h4>
+          <div class="postbeginning">
+              <p>{{ post.content|slice(0, 300) }}...</p>
+              <p>{{ post.user.nickname }} - Le {{ post.createdAt|date('d-m-Y') }}</p>
+          </div>
+          <div class="continue">
+            <a href="{{ path('blog_post', {id:post.id}) }}">Lire la suite</a>
+        </div>
+      </div>
+    
+    </section>
+{% endfor %}
+    {# </div> #}
+
 {% endblock %}

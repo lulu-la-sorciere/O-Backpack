@@ -1,0 +1,36 @@
+{% extends "base.html.twig" %}
+
+{% block subtitle %}
+	Matériel
+{% endblock %}
+
+{% block content %}
+	<div class="imageandtitle">
+		<img src="#" alt="image monde" class="continentspec">
+		<h2>{{name}}
+			- Matériel</h2>
+	</div>
+
+	<div class="links">
+		<button class="continue post">
+			<a href="{{ path('location_country_administratif', {name:name}) }}#administratif">Administratif</a>
+		</button>
+		<button class="continue post">
+			<a href="{{ path('location_country_weather', {name}) }}">Météo</a>
+		</button>
+		<button class="continue post">
+			<a href="{{ path('location_country', {name:name}) }}">Retour {{name}}
+			</a>
+		</button>
+	</div>
+    
+	<div>Matériel nécessaire :
+	</div>
+	<ul>
+		<li>Tente</li>
+		<li>Parapluie</li>
+		<li>Lampe torche</li>
+		<li>Batterie de secours pour téléphone portable</li>
+	</ul>
+
+{% endblock %}

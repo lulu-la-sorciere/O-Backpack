@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block subtitle %}
+	Recherche
+{% endblock %}
+
+{% block content %}
+	<section class="search_form">
+		<div class="formwrapper">
+            <div class="col">
+                <div class="formgroup">
+					<form action="" method="GET">
+						<input name="search" type="text" onfocus="this.placeholder=''" placeholder="Tapez votre recherche"><br>
+						<button type="submit" class="buttonform2">
+							Rechercher
+						</button>
+					</form>
+				</div>
+			</div>
+        <div>
+	
+	</section>
+
+	<section class="results">
+		
+			<h3>Résultats :</h3>
+			{#{{ searchValue }}#}
+
+
+			{% for continent in continents %}
+
+				<a href="{{ path('location_detail', {id:continent.id}) }}">{{continent.name}}</a>
+
+			{% endfor %}
+
+	
+	</section>
+{% endblock %}

@@ -1,20 +1,49 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello UserController!{% endblock %}
+{% block subtitle %}Votre espace{% endblock %}
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+{% block content %}
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/var/www/html/obackpack/o-backpack/src/Controller/UserController.php'|file_link(0) }}">src/Controller/UserController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/var/www/html/obackpack/o-backpack/templates/user/index.html.twig'|file_link(0) }}">templates/user/index.html.twig</a></code></li>
-    </ul>
-</div>
+
+    <h5>Bienvenue dans votre compte, {{ user.nickname }}</h5>
+
+    {% if is_granted('ROLE_ADMIN') %}
+
+        <a href="{{ path('admin') }}"> Aller vers le Dashboard </a> <br>
+
+    {% endif %}
+
+    <div class="space">
+        <h5>- Vos informations -</h5>
+    </div>
+
+            <div class="profiletable">
+
+            <div class="avatarprofile">
+                <img src="{{ asset('img/'~ user.picture)}}" alt="photo de profil" width=100%>
+            </div>
+
+                <div class="listData">
+                    <p>Nom : {{ user.lastname }}</p>
+                    <p>Prénom : {{ user.firstname }}</p>
+                    <p>E-mail : {{ user.email }}</p>
+                    <p>Date de naissance : {{ user.dateOfBirth|date('d/m/Y') }}</p>
+                    <p>Pays : {{ user.country }}</p>
+                    
+                </div>
+                <div>
+                    <img src = "{{ asset('img/'~ user.picture)}}" alt="">
+                </div>
+            </div>
+
+        <p class="linkData"><a href ="{{ path('user_map', {id:user.id}) }}">Vos itinéraires</a></p>
+
+        <p class="linkData"><a href="{{ path('user_update', {id:user.id}) }}">Modifiez vos données</a></p>
+
+
+        <p class="linkData"><a href="{{ path('user_edit', {id:user.id}) }}">Modifiez votre mot de passe</a></p>
+
+   
+
 {% endblock %}

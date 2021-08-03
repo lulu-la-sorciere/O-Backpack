@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block subtitle %} - Les Supers Nanas  {% endblock %}
+
+{% block content %}
+    <div class="imageandtitle-error">
+     
+        <h2>{{title}}</h2>
+    </div>
+    <div>
+        <p>
+            Bonjour, nous sommes au regrès de vous annoncer que la page demandée n'est pas disponible pour le moment.
+        </p>
+        <p>
+            En cours de construction ...</p>
+            <img class="construction" src="{{ asset('img/construction.png')}}" alt="En construction">
+        
+        <p>
+            Les supers nanas vous proposent de retourner à  <a href="{{path('main_home')}}">l'accueil</a>  
+        </p>
+    </div>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Galerie
+{% endblock %}
+
+{% block content %}
+
+	<div class="imageandtitle">
+		<img src="" alt="image monde" class="continentspec">
+		<h2>
+			Galerie Photo
+		</h2>
+	</div>
+
+	<button class="post">
+		<a href="{{ path('blog_list') }}">Retour au blog</a>
+	</button>
+
+	<section class="gallery continentul">
+
+		{% for continent in continents %}
+				<section class="blog-carousel continentpictures">
+					<div class="carousel-inner">
+						<img class="active2 item" src="{{ asset('img/0006.jpg')}}" alt="Picture1">
+						<img class="item" src="{{ asset('img/0013.jpg')}}" alt="Picture2">
+						<img class="item" src="{{ asset('img/0012.jpg')}}" alt="Picture3">
+						<img class="item" src="{{ asset('img/0017.jpg')}}" alt="Picture4">
+					</div>
+					<div class="arrows">
+						<div class="arrow precedent">
+							&lt;
+						</div>
+						<div class="arrow suivant">
+							&gt;
+						</div>
+					</div>
+						
+				<a href="{{ path('blog_continentPic', {id:continent.id}) }} ">
+					{{ continent.name }}
+				</a>
+				</section>
+		{% endfor %}
+
+	</section>
+
+{% endblock %}

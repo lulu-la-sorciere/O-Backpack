@@ -12,6 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Continent
 {
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -38,6 +39,10 @@ class Continent
     {
         $this->posts = new ArrayCollection();
         $this->countries = new ArrayCollection();
+    }
+    public function __toString()
+    {
+        return $this->name;
     }
 
     public function getId(): ?int

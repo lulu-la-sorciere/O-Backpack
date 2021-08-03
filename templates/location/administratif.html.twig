@@ -1,0 +1,77 @@
+{% extends "base.html.twig" %}
+
+{% block subtitle %}
+	Informations
+{% endblock %}
+
+{% block content %}
+	<div class="imageandtitle">
+		<img src="#" alt="image monde" class="continentspec">
+		<h2>{{name}}
+			- Administratif</h2>
+	</div>
+
+	<div class="links">
+		<button class="continue post">
+			<a href="{{ path('location_country_stuff', {name:name}) }}">Matériel</a>
+		</button>
+		<button class="continue post">
+			<a href="{{ path('location_country_weather', {name}) }}">Météo</a>
+		</button>
+		<button class="continue post">
+			<a href="{{ path('location_country', {name:detailCountry.0.name}) }}">Retour
+				{{detailCountry.0.name}}
+			</a>
+		</button>
+	</div>
+	<div class= "adminCountry" >
+		<div class="adminCountry_flag">
+			<img class="flag" src="{{detailCountry.0.flag}}" alt="{{detailCountry.0.name}}"> 
+		</div>
+		<div class = "adminCountry_info" >
+			<div>
+				Region : {{detailCountry.0.region}}
+			</div>
+			<div>
+				Capital :{{detailCountry.0.capital}}
+			</div>
+			<div>
+				Langue :
+				{% for languages in detailCountry.0.languages %}
+					
+					{{languages["nativeName"]}},
+				{% endfor %}
+				
+			</div>
+			<div>
+				Devise :
+				{% for currencies in detailCountry.0.currencies %}
+
+				{{currencies.name}}	{{currencies.symbol}} {{currencies.code}}
+
+				{% endfor %}
+				
+			</div>
+		</div>
+		
+	</div>
+	
+	<div class="administratif continue post" id="administratif">
+		<h4>Administratif :</h4>
+			<ul class="listAdmin" >
+				<li>
+					Visa :
+				</li>
+				<li>
+					Passeport :
+				</li>
+				<li>
+					Vaccin :
+				</li>
+			</ul>
+	</div>
+	<div class="evenements continue post" id="evenements">
+		<h4>Evenements :</h4>
+		<p></p>
+	</div>
+{% endblock %}

@@ -3,12 +3,14 @@
 namespace App\Entity;
 
 use App\Repository\PostRepository;
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=PostRepository::class)
+ * 
  */
 class Post
 {
@@ -16,6 +18,7 @@ class Post
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * 
      */
     private $id;
 
@@ -57,6 +60,7 @@ class Post
 
     /**
      * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="post")
+     * @ORM\OrderBy({"id"="DESC"})
      */
     private $comment;
 
@@ -75,6 +79,10 @@ class Post
         $this->comment = new ArrayCollection();
         $this->continent = new ArrayCollection();
         $this->country = new ArrayCollection();
+        $this->createdAt = new DateTime();
+        $this->updatedAt = new DateTime();
+        $this->publishedAt = new DateTime();
+
     }
 
     public function getId(): ?int
