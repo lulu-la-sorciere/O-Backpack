@@ -2,7 +2,7 @@
 
 {% block subtitle %}Un e-mail vient de vous être envoyé{% endblock %}
 
-{% block body %}
+{% block content %}
     <p>
         Si un compte est bien relié à l'e-mail que vous avez renseigné, alors vous vous recevrez un message dans quelques minutes.
         Le lien est valable {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.

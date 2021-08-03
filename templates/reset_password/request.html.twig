@@ -2,7 +2,7 @@
 
 {% block subtitle %}Mot de passe oublié{% endblock %}
 
-{% block body %}
+{% block content %}
     {% for flashError in app.flashes('reset_password_error') %}
         <div class="alert alert-danger" role="alert">{{ flashError }}</div>
     {% endfor %}
