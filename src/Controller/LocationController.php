@@ -27,7 +27,7 @@ class LocationController extends AbstractController
 
        // dd($countryRestApi->getTestData());
         return $this->render('location/index.html.twig', [
-            'location_continent' => $continentRepository->findAll(),
+            'locationContinent' => $continentRepository->findAll(),
             //'datas'=>$countryRestApi->getTestData(),
         ]);
     }
@@ -55,8 +55,9 @@ class LocationController extends AbstractController
      * 
      * @Route("continent/country/{name}", name="country")
      */
-    public function show(CountryRestApi $countryRestApi, $name): Response
+    public function show( CountryRestApi $countryRestApi, $name): Response
     {
+      
         //dd($name);   
         //dd($picture->getPicture());
 
