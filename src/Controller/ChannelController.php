@@ -4,7 +4,7 @@
 namespace App\Controller;
 
 
-define ( 'HUB_URL' , 'http://localhost:3000/.well-known/mercure' );
+define ( 'HUB_URL' , 'http://ec2-3-238-91-104.compute-1.amazonaws.com:3000/.well-known/mercure' );
 define ( 'JWT' , 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZXJjdXJlIjp7InB1Ymxpc2giOlsiKiJdLCJzdWJzY3JpYmUiOlsiKiJdfX0.4DUMumRBcwown63lKUecQcFxGAr8Dg2vwpSuKfAoKcs' );
 
 use App\Entity\Channel;
