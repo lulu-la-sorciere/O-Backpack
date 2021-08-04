@@ -51,17 +51,14 @@ class PostController extends AbstractController
 
     /**
      * Method to continent's pictures
-     * @Route("/pictures/{name}", name="continentPic")
+     * @Route("/pictures/{id}", name="continentPic")
      * 
      */
-    public function continentPic(Continent $continent, Unsplash $pictures, $name)
+    public function continentPic(Continent $continent)
     {
-        //dd($pictures->getRandomPicture($name));
-
         return $this->render('post/picbycontinent.html.twig', [
             'continent' => $continent,
-            'name' => $name,
-            'pictures' => $pictures->getRandomPicture($name),
+
         ]);
     }
 
