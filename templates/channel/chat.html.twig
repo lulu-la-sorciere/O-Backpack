@@ -98,7 +98,7 @@ eventSource.onmessage = event => {
 
                 const options = {year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit'};
 
-                console.log(message.value, "contenu du message");
+                console.log(message, "contenu du message");
                 document.querySelector('.chat').insertAdjacentHTML( // On injecte le nouveau message selon le HTML déjà présent plus haut dans notre fichier Twig
             'beforeend',
           
