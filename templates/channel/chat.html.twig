@@ -87,7 +87,7 @@ eventSource.onmessage = event => {
                 'channel': {{ channel.id }} // ... Et le canal correspondant
             }
             console.log(data); // Pour vérifier vos informations
-            fetch('/chat/{id}', { // On envoie avec un post nos datas 
+            fetch('/chat/{{ channel.id }}', { // On envoie avec un post nos datas 
                 method: 'POST',
                 body: JSON.stringify(data) // On envoie les data sous format JSON
             }).then((response) => {
