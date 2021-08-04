@@ -79,9 +79,10 @@ eventSource.onmessage = event => {
         function handleForm(e) {
             e.preventDefault(); // Empêche la page de se rafraîchir après le submit du formulaire
         }
+        const message = document.getElementById('message');
         const submit = document.querySelector('#submit');
         submit.onclick = e => { // On change le comportement du submit
-            const message = document.getElementById('message'); // Récupération du message dans l'input correspondant
+             // Récupération du message dans l'input correspondant
             const data = { // La variable data sera envoyée au controller
                 'content': message.value, // On transmet le message...
                 'channel': {{ channel.id }} // ... Et le canal correspondant
@@ -91,7 +92,7 @@ eventSource.onmessage = event => {
                 method: 'POST',
                 body: JSON.stringify(data) // On envoie les data sous format JSON
             }).then((response) => {
-                const message = document.getElementById('message');
+              
                 console.log("reponse du fetch",response);
 
                 const imageDirectory = {{ asset('img/') }};
