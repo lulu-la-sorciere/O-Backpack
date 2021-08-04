@@ -56,7 +56,7 @@
 <script>
 // The subscriber subscribes to updates for the https://example.com/users/dunglas topic
 // and to any topic matching https://example.com/books/{id}
-const url = new URL('http://http://ec2-3-238-91-104.compute-1.amazonaws.com:3000/.well-known/mercure');
+const url = new URL('http://ec2-3-238-91-104.compute-1.amazonaws.com:3000/.well-known/mercure');
 url.searchParams.append('topic', 'http://localhost/chat/{{channel.id}}');
 url.searchParams.append('topic', 'http://ec2-3-238-91-104.compute-1.amazonaws.com/chat/{{channel.id}}');
 url.searchParams.append('topic', 'http://localhost/chat/*');
