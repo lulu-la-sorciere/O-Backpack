@@ -33,6 +33,10 @@ h2, .ah2{
   text-transform: capitalize;
 }
 
+.small {
+  padding: 1em 2em;
+}
+
 .ah2{
   margin: auto;
 }
@@ -263,16 +267,6 @@ h4 {
   flex-wrap: wrap;
 }
 
-.continentli, .country_details {
-  width: 40%;
-  background-color: #32AAAA;
-  border-radius: 7px;
-  border: 2px groove #EEBC69;
-  margin:0.3em auto;
-  padding: 2em;
-  text-transform: capitalize;
-}
-
 .country_details{
   margin: 30px auto;
   display: flex;
@@ -285,6 +279,18 @@ h4 {
 .continentall {
   width: 100%;
 }
+
+
+.continentli, .country_details {
+  width: 40%;
+  background-color: #32AAAA;
+  border-radius: 7px;
+  border: 2px groove #EEBC69;
+  margin:0.3em auto;
+  padding: 2em;
+  text-transform: capitalize;
+}
+
 
 /*** country ***/
 
@@ -834,7 +840,24 @@ img.active2 {
   /* align-content: center; */
 }
 
+
+.formwrapper2 {
+  background-color: #32AAAA;
+  padding: 1.5em 1em;
+  border-radius: 5px;
+  width: 90%;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  box-shadow: rgba(238, 188, 105, 0.4) 5px 5px, rgba(238, 188, 105, 0.2) 10px 10px, rgba(238, 188, 105, 0.05) 15px 15px;
+  margin: 2em auto 1.5em auto;
+  align-content: center;
+}
+
+
 /*** submit button ***/
+
 
 .buttonform {
   appearance: button;
@@ -916,7 +939,7 @@ img.active2 {
   transition: filter .2s;
   user-select: none;
   -webkit-user-select: none;
-  width: 40%;
+  width: 50%;
   margin-top: 1em;
 }
 
@@ -1413,13 +1436,61 @@ img:nth-child(7) {
 }
 
 .form-post{
-  padding-top: 10em;
+  padding-top: 8em;
 }
 
+
 /*** MAP ***/
+
 
 .map-img{
   width: 60%;
   height: 300px;
   margin-left: 20px;
 }
+
+
+/* modal cgu*/
+
+.popup {
+  position:fixed;
+  top:0px;
+  left:0px;
+  background:rgba(0,0,0,0.75);
+  width:100%;
+  height:100%;
+  display:none;
+}
+
+/* Popup inner div */
+.popup-content {
+  width: 70%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 40px;
+  margin-top: 100px;
+  box-shadow: 0px 2px 6px rgba(0,0,0,1);
+  border-radius: 3px;
+  background: #32AAAA;
+  position: relative;
+}
+
+/* Popup close button */
+.close-button {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  border-radius: 20px;
+  background: #D87151;
+  font-size: 20px;
+  text-align: center;
+  color: #fff;
+  text-decoration:none;
+}
+
+.close-button:hover {
+  background: #155472;
+}
+
