@@ -35,10 +35,16 @@ class Continent
      */
     private $countries;
 
+    /**
+     * @ORM\OneToMany(targetEntity=ForumSubject::class, mappedBy="continents")
+     */
+    private $forumSubjects;
+
     public function __construct()
     {
         $this->posts = new ArrayCollection();
         $this->countries = new ArrayCollection();
+        $this->forumSubjects = new ArrayCollection();
     }
     public function __toString()
     {
@@ -113,6 +119,36 @@ class Continent
             // set the owning side to null (unless already changed)
             if ($country->getContinent() === $this) {
                 $country->setContinent(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|ForumSubject[]
+     */
+    public function getForumSubjects(): Collection
+    {
+        return $this->forumSubjects;
+    }
+
+    public function addForumSubject(ForumSubject $forumSubject): self
+    {
+        if (!$this->forumSubjects->contains($forumSubject)) {
+            $this->forumSubjects[] = $forumSubject;
+            $forumSubject->setContinents($this);
+        }
+
+        return $this;
+    }
+
+    public function removeForumSubject(ForumSubject $forumSubject): self
+    {
+        if ($this->forumSubjects->removeElement($forumSubject)) {
+            // set the owning side to null (unless already changed)
+            if ($forumSubject->getContinents() === $this) {
+                $forumSubject->setContinents(null);
             }
         }
 

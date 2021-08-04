@@ -1,4 +1,4 @@
-/* general */
+/*** general ***/
 
 .wrapper {
   width: 100vw;
@@ -14,10 +14,8 @@ main {
     display: block;
     width: 100%;
     text-align: center;
-    min-height: 130vh;
-   /* margin: 2em auto;
-    min-height: 100vh; */
-
+    min-height: 94vh;
+    height: max-content;
 }
 
 h2, .ah2{
@@ -35,6 +33,10 @@ h2, .ah2{
   text-transform: capitalize;
 }
 
+.small {
+  padding: 1em 2em;
+}
+
 .ah2{
   margin: auto;
 }
@@ -43,7 +45,7 @@ h2, .ah2{
   margin-top: 1em;
 }
 
-/* header */
+/*** header ***/
 
 header {
   width: 100%;
@@ -61,7 +63,7 @@ header {
   padding-left: 1em;
 }
 
-/* nav */
+/*** nav ***/
 
 * {
     /* position: relative; on récupère le carrousel*/
@@ -124,6 +126,7 @@ a {
   font-size: 1.2em;
   font-weight: bold;
   color: #EEBC69;
+  text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
 }
 
 .nav-link:hover {
@@ -138,7 +141,7 @@ a {
   transition: 0.3s;
 }
 
-/* footer */
+/*** footer ***/
 
 footer {
   font-size: 0.8em;
@@ -154,11 +157,21 @@ footer {
   bottom: 0; */
 }
 
-/* home */
+
+/*** home ***/
+.main-title{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  font-size: 1.5em;
+  text-decoration: underline overline;
+}
+
 
 h3 {
   font-style: italic;
   padding: 1em;
+  width: 100%;
 }
 
 .welcome {
@@ -185,6 +198,27 @@ h3 {
   margin: 1em auto;
 }
 
+.continue{
+  display: flex;
+  width: 30%;
+  color: #F5F5F5;
+  text-align: left;
+  margin: 20px;
+  justify-content: space-around;
+}
+
+.continue:hover{
+  font-style: italic;
+}
+
+.continue-read{
+  text-align: center;
+}
+
+.continue-read:hover{
+  font-style: italic;
+}
+
 .post {
   width: 80%;
   display: flex;
@@ -194,7 +228,8 @@ h3 {
   border: 2px groove #EEBC69;
   margin: 1em auto;
   padding: 1em;
-  justify-content: center;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .postleft {
@@ -221,15 +256,18 @@ h3 {
 .commentProfile {
   width: 27%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
 }
 
-.miniAvatarPost {
-  max-width: 10%;
+.comment-user-info{
+  text-transform: capitalize;
+  min-width: 40%;
 }
 
 .miniAvatar {
-  max-width: 25%;
+  max-width: 45%;
+  border-radius: 50%;
 }
 
 h4 {
@@ -244,38 +282,46 @@ h4 {
   font-size: smaller;
 }
 
-/* continent */
+/*** continent ***/
 
 .continentul {
   display: flex;
   flex-wrap: wrap;
 }
 
-.continentli {
-  width: 45%;
-  background-color: #32AAAA;
-  border-radius: 7px;
-  border: 2px groove #EEBC69;
-  margin: 0.3em auto;
-  padding: 0.2em;
-  text-align: center;
-  align-self: center;
-
-  text-transform: capitalize;
+.country_details{
+  margin: 30px auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  width: 50%;
 }
 
 .continentall {
   width: 100%;
 }
 
-/* country */
+
+.continentli, .country_details {
+  width: 40%;
+  background-color: #32AAAA;
+  border-radius: 7px;
+  border: 2px groove #EEBC69;
+  margin:0.3em auto;
+  padding: 2em;
+  text-transform: capitalize;
+}
+
+
+/*** country ***/
 
 .adminCountry {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
-  padding-top: 0.7em;
+  margin: 20px auto
 }
 
 .adminCountry_info {
@@ -299,31 +345,36 @@ h4 {
   text-align:left;
 }
 
-/* search */
+/*** search ***/
 
 .results,
 .search_form {
   padding-top: 8em;
 }
 
-/* In progress */
+/*** In progress ***/
 
 .construction {
   margin: 2em auto;
   width: 30%;
 }
 
-/* team */
+/*** team ***/
 
 .team img {
-  width: 100%;
+  width: 80%;
+  border-radius: 50%;
+  box-shadow: 5px 5px 5px #80808054;
 }
 
 .teamList {
+  width: 100vw;
   display: flex;
   flex-wrap: wrap;
-  margin: auto;
-  justify-content: center;
+  /* margin: auto; */
+  justify-content: space-evenly;
+  height: 500px;
+  align-items: center;
 }
 
 .team {
@@ -332,17 +383,14 @@ h4 {
 }
 
 .msg {
-  background-color: aquamarine;
-  color: black;
-  width: 80%;
-  border-radius: 0.8em;
+  font-weight: bold;
+  padding: 1%;
+  color: rgb(31 193 31);
+  width: 35%;
   display: flex;
   justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 2%;
-  margin: 5% auto;
-  border: aquamarine 2px solid;
+  margin: 5.5em auto 0 auto;
+  position: absolute;
 }
 
 .msgError {
@@ -406,7 +454,7 @@ h4 {
   }
 }
 
-/* update data and paswd forms */
+/*** update data and paswd forms ***/
 
 h5 {
   display: flex;
@@ -451,9 +499,10 @@ h5 {
 
 .avatarprofile img{
   border-radius: 50px;
+  width: 100%;
 }
 
-/* slider */
+/*** slider ***/
 
 .img-slider {
   position: relative;
@@ -493,7 +542,7 @@ h5 {
 .img-slider .slide .info h6 {
   /* text-align: start; décalage du titre sur les slides accueil*/
   color: #fff;
-  font-size: 45px;
+  font-size: 30px;
   text-transform: uppercase;
   font-weight: 800;
   letter-spacing: 2px;
@@ -504,6 +553,7 @@ h5 {
   color: #fff;
   background: rgba(0, 0, 0, 0.1);
   font-size: 16px;
+  min-width: 40%;
   width: 60%;
   padding: 10px;
   border-radius: 4px;
@@ -514,7 +564,7 @@ h5 {
   z-index: 2;
   position: absolute;
   display: flex;
-  bottom: 30px;
+  bottom: 5px;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -561,6 +611,10 @@ h5 {
     height: 10px;
     margin: 8px;
   }
+
+  .continue{
+    width: 50%;
+  }
 }
 
 @media (max-width: 620px) {
@@ -591,6 +645,10 @@ h5 {
     height: 8px;
     margin: 6px;
   }
+
+  .continue{
+    width: 80%;
+  }
 }
 
 @media (max-width: 420px) {
@@ -615,13 +673,19 @@ h5 {
   .img-slider .navigation {
     bottom: 10px;
   }
+
+  .continue{
+    width: 80%;
+  }
 }
 
-/* form style*/
+/*** form style ***/
 
 .form_container {
   display: flex;
-  justify-content: center;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
 }
 
 .form_container div {
@@ -643,31 +707,58 @@ h5 {
   font-size: 20px;
 }
 
-/*button country/continent*/
+/*** button country/continent ***/
 
 .links {
+  width: 95%;
   display: inline-flex;
-  /* margin-bottom: 10%; pas de modification */
-}
-
-.links button {
-  margin: 0.5em;
+  height: 100px;
+  justify-content: space-between;
   align-items: center;
 }
 
-.administratif {
+.link-post{
+  height: -webkit-fill-available;
+  padding: 1em;
+  margin: 0.5em;
+  align-items: center;
   width: 100%;
-  height: 15em;
+  display: flex;
+  background-color: #32AAAA;
+  border-radius: 7px;
+  border: 2px groove #EEBC69;
+  justify-content: center;
+}
+
+.administratif-title {
+  width: 100%;
+  height: 350px;
+  background-image: url(../img/passeport.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.add-post{
+  width: 70%;
+}
+
+.add-post input, .add-post textarea, .add-post select{
+  width: 100%;
+}
+
+.add-post textarea{
+  height: 200px;
 }
 
 .evenements {
-  width: 100%;
+  width: 80%;
   height: 15em;
 }
 
-/* galery carousel*/
+/*** galery carousel ***/
 
-.title.galery {
+.title-galery {
   margin: 2em auto;
 }
 
@@ -724,7 +815,7 @@ img.active2 {
   right: 0;
 }
 
-/* Continent Picture*/
+/*** Continent Picture ***/
 
 .gallery.continentul {
   display: flex;
@@ -737,13 +828,14 @@ img.active2 {
   background-color: #32AAAA;
   border-radius: 7px;
   border: 2px groove #EEBC69;
-  width: 100%;
+  width: 95%;
   display: block;
   align-items: flex-start;
 }
 
 .continentpictures img {
   width: 100%;
+  height: 350px;
   margin: 1em auto;
   border-radius: 7px;
 }
@@ -760,7 +852,7 @@ img.active2 {
     display: flex;
     flex-wrap: wrap;  
     justify-content: center;
-    font-size: 0;
+    font-size: 1em;
   }
 
   .uniq.continentpictures img{
@@ -770,7 +862,7 @@ img.active2 {
   }
 }
 
-/* form templating */
+/*** form templating ***/
 
 .formspace {
   margin-bottom: 0.5em;
@@ -791,7 +883,24 @@ img.active2 {
   /* align-content: center; */
 }
 
-/* submit button */
+
+.formwrapper2 {
+  background-color: #32AAAA;
+  padding: 1.5em 1em;
+  border-radius: 5px;
+  width: 90%;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  box-shadow: rgba(238, 188, 105, 0.4) 5px 5px, rgba(238, 188, 105, 0.2) 10px 10px, rgba(238, 188, 105, 0.05) 15px 15px;
+  margin: 2em auto 1.5em auto;
+  align-content: center;
+}
+
+
+/*** submit button ***/
+
 
 .buttonform {
   appearance: button;
@@ -873,7 +982,7 @@ img.active2 {
   transition: filter .2s;
   user-select: none;
   -webkit-user-select: none;
-  width: 40%;
+  width: 50%;
   margin-top: 1em;
 }
 
@@ -906,7 +1015,7 @@ img.active2 {
   cursor: auto;
 }
 
-/* fields */
+/*** fields ***/
 
 .col {
   width: 100%;
@@ -971,9 +1080,37 @@ img.active2 {
   margin-bottom: 0.5em;
 }
 
+/*** STUFFS ***/
 
+.stuffs-list{
+  display: flex;
+  height: 300px;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
 
-/* Weather */
+/*** Weather */
+
+.title{
+  padding-top: 150px;
+}
+
+.weather{
+  display: flex;
+  width: 100%;
+  height: 300px;
+  justify-content: center;
+}
+
+.weather-description{
+  width: 100%;
+  height: 100%;
+  margin: 20px 0;
+}
+
+.weather-description p{
+  text-transform: capitalize;
+}
 
 .icon-weather {
   width: 10%;
@@ -996,13 +1133,21 @@ img.active2 {
 .sendcomment {
   margin-top: 1em;
   border: none;
-  width: 30%;
+  width: 15%;
   height: 2em;
   text-transform: uppercase;
   border: 5px;
   background-color: transparent;
   color: #EEBC69;
   cursor: pointer;
+  font-weight: bold;
+}
+
+.sendcomment:hover{
+  background-color: #EEBC69;
+  color: #F5F5F5;
+  border-radius: 20px;
+  font-weight: bold;
 }
 
 .centerform {
@@ -1015,7 +1160,8 @@ img.active2 {
 #member_data_picture {
   font-size: smaller;
 }
-/******** CHAT ********/
+
+/*** CHAT ***/
 
 .chat-logout:hover{
   color: #D87151;
@@ -1153,6 +1299,11 @@ img.active2 {
   height: 50px;
 }
 
+.user-post-info{
+  margin: 20px auto 0 auto;
+  text-transform: capitalize;
+}
+
 .info-user {
   text-align: initial;
   height: 40%;
@@ -1232,11 +1383,12 @@ img.active2 {
   }
 }
 
-
-/******* icon caroussel ********/
+/*** icon caroussel ***/
 
 .pic-ctn {
+  width: 100%;
   position: relative;
+  height: 300px;
 }
 
 @keyframes display {
@@ -1292,7 +1444,7 @@ img:nth-child(7) {
   animation-delay: 14s;
 }
 
-/********* ICONS *********/
+/*** ICONS ***/
 
 .point{
   width: 50px;
@@ -1302,9 +1454,7 @@ img:nth-child(7) {
   width: 100px;
 }
 
-
-
-/******** IMAGES HEAD **********/
+/*** IMAGES HEAD ***/
 
 .continentall{
   background-image: url(../img/0022.jpg);
@@ -1315,18 +1465,25 @@ img:nth-child(7) {
   height: 350px;
 }
 
-.continentspec{
+.blog{
   background-image: url(../img/0007.jpg);
   background-position: 50% 70%;
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
   height: 350px;
+  object-fit: cover;
+}
+
+.continentspec{
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  text-align: center;
 }
 
 .imageandtitle{
   width: 100%;
-
 }
 
 .imageandtitle-error{
@@ -1335,4 +1492,70 @@ img:nth-child(7) {
 
 .form-post{
   padding-top: 8em;
+}
+
+
+/*** MAP ***/
+
+
+.map-img{
+  width: 60%;
+  height: 300px;
+  margin-left: 20px;
+}
+
+
+/******* FORUM *******/
+
+.title-forum{
+  text-transform: uppercase;
+  width: 80%;
+  height: 50px;
+  margin: auto;
+  text-align: start;
+}
+
+
+/* modal cgu*/
+
+.popup {
+  position:fixed;
+  top:0px;
+  left:0px;
+  background:rgba(0,0,0,0.75);
+  width:100%;
+  height:100%;
+  display:none;
+}
+
+/* Popup inner div */
+.popup-content {
+  width: 70%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 40px;
+  margin-top: 100px;
+  box-shadow: 0px 2px 6px rgba(0,0,0,1);
+  border-radius: 3px;
+  background: #32AAAA;
+  position: relative;
+}
+
+/* Popup close button */
+.close-button {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  border-radius: 20px;
+  background: #D87151;
+  font-size: 20px;
+  text-align: center;
+  color: #fff;
+  text-decoration:none;
+}
+
+.close-button:hover {
+  background: #155472;
 }

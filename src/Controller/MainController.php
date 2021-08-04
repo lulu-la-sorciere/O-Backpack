@@ -61,6 +61,19 @@ class MainController extends AbstractController
     }
 
     /**
+     * Method for the view of legal notices
+     * @Route("legalNotices", name="legalNotices")
+     *
+     * @return void
+     */
+    public function legalNotices()
+    {
+        return $this->render('main/legalNotices.html.twig',[
+            'title'=> 'Mentions Légales'
+        ]);
+    }
+
+    /**
      * Method for the Team's view
      * @Route("team", name="team")
      *
