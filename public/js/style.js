@@ -10,14 +10,14 @@ function mobileMenu() {
 
 // nav element color changes when current page is active
 
-/* const currentLocation = location.href;
+ const currentLocation = location.href;
     const menuItem = document.querySelectorAll('a');
     const menuLength = menuItem.length
         for (let i=0; i<menuLength; i++){
             if(menuItem[i].href === currentLocation){
                 menuItem[i].className = "active"
                 }
-            } */
+            } 
 
 // SLIDER
 
@@ -80,36 +80,39 @@ if(slides.length) {
 
 
 // CAROUSEL BLOG
+const blogCarousels = document.querySelectorAll('.blog-carousel');
 
-const items = document.getElementsByClassName('item');
-const nbSlide = items.length;
+for(carousel of blogCarousels) {
+  const items = carousel.getElementsByClassName('item');
+  const nbSlide = items.length;
 
-const next = document.querySelector('.suivant');
-const previous = document.querySelector('.precedent');
-let count = 0;
+  const next = carousel.querySelector('.suivant');
+  const previous = carousel.querySelector('.precedent');
+  let count = 0;
 
-if(previous && next) {
-  function nextSlide() {
-    items[count].classList.remove('active2');
-    if (count < nbSlide - 1) {
-      count++;
-    } else {
-      count = 0;
+  if(previous && next) {
+    function nextSlide() {
+      items[count].classList.remove('active2');
+      if (count < nbSlide - 1) {
+        count++;
+      } else {
+        count = 0;
+      }
+      items[count].classList.add('active2')
     }
-    items[count].classList.add('active2')
-  }
-  
-  function prevSlide() {
-    items[count].classList.remove('active2');
-    if (count > 0) {
-      count--;
-    } else {
-      count = nbSlide - 1;
+    
+    function prevSlide() {
+      items[count].classList.remove('active2');
+      if (count > 0) {
+        count--;
+      } else {
+        count = nbSlide - 1;
+      }
+      items[count].classList.add('active2');
     }
-    items[count].classList.add('active2');
+    next.addEventListener('click', nextSlide);
+    previous.addEventListener('click', prevSlide);
   }
-  next.addEventListener('click', nextSlide);
-  previous.addEventListener('click', prevSlide);
 }
 
 

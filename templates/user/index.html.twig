@@ -4,7 +4,7 @@
 
 {% block content %}
 
-
+    <div class="title">
 
     <h5>Bienvenue dans votre compte, {{ user.nickname }}</h5>
 
@@ -13,7 +13,7 @@
         <a href="{{ path('admin') }}"> Aller vers le Dashboard </a> <br>
 
     {% endif %}
-
+    </div>
     <div class="space">
         <h5>- Vos informations -</h5>
     </div>
@@ -21,7 +21,7 @@
             <div class="profiletable">
 
             <div class="avatarprofile">
-                <img src="{{ asset('img/'~ user.picture)}}" alt="photo de profil" width=100%>
+                <img src="{{ asset('img/'~ user.picture)}}" alt="photo de profil">
             </div>
 
                 <div class="listData">
@@ -31,9 +31,6 @@
                     <p>Date de naissance : {{ user.dateOfBirth|date('d/m/Y') }}</p>
                     <p>Pays : {{ user.country }}</p>
                     
-                </div>
-                <div>
-                    <img src = "{{ asset('img/'~ user.picture)}}" alt="">
                 </div>
             </div>
 

@@ -16,11 +16,12 @@
         {% endblock %}
 
 {% block content %}
+    <div class="title">
+        <h5>Vos Itinéraires
+            <img src="{{ asset('img/icon/point.png') }}" alt="" class="point">
+        </h5>
+    </div>
 
-    <h5>Vos Itinéraires
-    <img src="{{ asset('img/icon/point.png') }}" alt="" class="point">
-    </h5>
-
-    <div id='map' style='width: 60%; height: 300px;'></div>
+    <div id='map' class="map-img"></div>
 
 {% endblock %}

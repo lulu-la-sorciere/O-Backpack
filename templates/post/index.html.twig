@@ -7,22 +7,23 @@
 {% block content %}
 
 	<div class="imageandtitle">
-		<p class="continentspec"></p>
+		<p class="blog"></p>
 		<h2>
 			Blog
 		</h2>
 	</div>
 
 	<div class="links">
-		<button class="continue post">
-			<a href="{{ path('main_search') }}">Recherche</a>
-		</button>
-		{# <button class="continue post">
+		<p class="link-post">
+			<a href="">Recherche</a>
+		</p>
+		<p class="link-post">
 			<a href="">Filtre</a>
-		</button> #}
-		<button class="continue post">
-			<a href="{{ path('blog_add') }}">&#43; Ajouter un article</a>
-		</button>
+		</p>
+		<p class="link-post">
+			<a href="{{ path('blog_add') }}">
+				&#43; Ajouter un article</a>
+		</p>
 	</div>
 
 	<section class="post">
@@ -47,13 +48,11 @@
 
 	</section>
 
-	<button class="continue post">
-
+	<p class="continue-read">
 		<a href="{{ path('blog_posts') }}">Accéder à tous les articles</a>
+	</p>
 
-	</button>
-	<div class="title galery">
-
+	<div class="title-galery">
 			<a class="ah2" href="{{ path('blog_gallery') }}">Galerie photo</a>
 	</div>
 
