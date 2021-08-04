@@ -42,7 +42,7 @@
         <div class="send-message">
             <form id="form" class="message-input"> 
                 <input id="message" class="message-chat" placeholder="Message" type="text" />
-                <button id="submit" type="button" class="btn-chat">Envoyer</button>
+                <button id="submit" type="submit" class="btn-chat">Envoyer</button>
             </form>
         </div>
     </div>
@@ -69,15 +69,9 @@ const eventSource = new EventSource(url, {
     }
 });
 const message = document.getElementById('message');
-eventSource.onmessage = event => {
-    console.log(JSON.parse(event.data));
-    console.log("onmessage",data)
-}
 
-      const form = document.getElementById('form');
-      console.log(form);
-       
-
+const form = document.getElementById('form');
+      
         form.addEventListener('submit', handleForm);
         function handleForm(e) {
             e.preventDefault(); // Empêche la page de se rafraîchir après le submit du formulaire
@@ -90,30 +84,17 @@ eventSource.onmessage = event => {
                 'content': message.value, // On transmet le message...
                 'channel': {{ channel.id }} // ... Et le canal correspondant
             }
-            console.log(data); // Pour vérifier vos informations
+            
+           // console.log(data); // Pour vérifier vos informations
             fetch('/chat/{{ channel.id }}', { // On envoie avec un post nos datas 
                 method: 'POST',
                 body: JSON.stringify(data) // On envoie les data sous format JSON
             }).then((response) => {
                //console.log(data);
                 console.log("reponse du fetch",response);
-
-                const imageDirectory = {{ asset('img/') }};
-
-                const options = {year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit'};
-
-                console.log(data.content, "contenu du message");
-                document.querySelector('.chat').insertAdjacentHTML( // On injecte le nouveau message selon le HTML déjà présent plus haut dans notre fichier Twig
-            'beforeend',
-          
-            `<div class="my-message">
-                    <img src="${imageDirectory }{{ app.user.picture }}" alt="" class="user-profil">
-                        <div class="chat-message">
-                        <p class="my-info"><strong>{{ app.user.nickname }}</strong> a répondu le ${new Date().toLocaleDateString('fr-FR', options)}</p>
-                        <p class="info-my-message">${ data.content }</p>
-                        </div>`
-            )});
-             message.value = '';
+                message.value = '';
+            });
+             
         }
 const appUser = {{ app.user.id }};
 
