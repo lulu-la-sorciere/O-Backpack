@@ -5,13 +5,12 @@
 {% endblock %}
 
 {% block content %}
-    <div class="imageandtitle">
-        <p class="blog"></p>
+    <div class="title">
         <h2>{{ title }}</h2>
     </div> 
-    <button class="post">
+    <p class="continue">
 		<a href="{{ path('blog_posts') }}">Retour aux articles</a>
-	</button>
+	</p>
 
     <section>
         <div class="post">
@@ -25,8 +24,8 @@
                 <article class="postbeginning">
                    {{post.content}}
                 </article>
-                <div>
-                    <p><img class ="miniAvatarPost" src="{{ asset('img/'~ post.user.picture)}}" alt="photo de {{post.user.nickname}}"> {{post.user.nickname}} </p> 
+                <div class="user-post-info">
+                    <p><strong>{{post.user.nickname}} </strong></p> 
                     <p>Le {{ post.publishedAt|date('d-m-Y') }}</p>
                 </div>
             </div>
@@ -53,16 +52,16 @@
                     <div>
                         <img class ="miniAvatar" src="{{ asset('img/'~ comment.user.picture)}}" alt="{{comment.user.nickname}}">
                     </div> 
-                    <div>
-                        {{comment.user.nickname}}  - date : {{ comment.publishedAt|date('d-m-Y') }}
+                    <div class ="comment-user-info">
+                        <strong>{{comment.user.nickname}}</strong>  - date : {{ comment.publishedAt|date('d-m-Y') }}
                     </div> 
                 </div>
                 <div class="fullComment">{{comment.content}}</div>
             </div> 
         {% endfor %}
     </section>
-    <button class="post">
+    <p class="continue">
 			<a href="{{ path('blog_posts') }}">Retour aux articles</a>
-		</button>
+		</p>
 {% endblock %}
 

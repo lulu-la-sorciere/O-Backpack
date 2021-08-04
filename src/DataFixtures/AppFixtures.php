@@ -12,7 +12,7 @@ use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
 use Doctrine\Persistence\ObjectManager;
 use Faker;
 
-class AppFixtures extends Fixture 
+class AppFixtures extends Fixture
 {
 
     public function load(ObjectManager $manager)
@@ -23,54 +23,58 @@ class AppFixtures extends Fixture
         // $manager->persist($product);
 
         // create 20 user!
-        $userList = [];
         for ($i = 0; $i < 20; $i++) {
             $user = new User();
             $user->setEmail($faker->freeEmail());
-            if($i === 1)
+            if ($i === 1) {
                 $user->setRoles(['ROLE_ADMIN']);
-            else
+            } else {
                 $user->setRoles(['ROLE_USER']);
+            }
             $user->setPassword($faker->password());
             $user->setFirstname($faker->firstName());
             $user->setLastname($faker->lastName());
             $user->setNickname($faker->userName());
             $user->setCountry($faker->country());
             $user->setDateOfBirth($faker->dateTimeBetween('-50 years'));
-            $userList[] = $user;
+
             $manager->persist($user);
-        }
-        $userListTotal = count($userList);
-
-
-         // create comments !
-         $commentList = [];
-         for ($i = 0; $i < 20; $i++) {
-             $comment = new Comment();
-             $comment->setContent($faker->text());
-             $commentList[] = $comment;
-             $manager->persist($comment);
-         }
-         $commentListTotal = count($commentList);
 
             // create post!
-            $postList = [];
-            for ($i = 0; $i < 20; $i++) {
+            for ($j = 0; $j < 20; $j++) {
                 $post = new Post();
-                $post->setTitle($faker->sentence($nbWords = 6, $variableNbWords = true));
-                $post->setContent($faker->text());
-                $post->setCreatedAt($faker->dateTimeBetween('-10 years'));
-                $post->setUpdatedAt($faker->dateTimeBetween('-10 years'));
-                $post->setPublishedAt($faker->dateTimeBetween('-10 years'));
+
+                $now = new \DateTime();
+                $days = $now->diff($post->getCreatedAt())->days;
+                $minimun = '-' . $days . 'days';
+
+                $post->setTitle($faker->realText($maxNbChars = 10));
+                $post->setContent($faker->realText($maxNbChars = 200));
+                $post->setCreatedAt($faker->dateTimeBetween($minimun));
+                $post->setUpdatedAt($faker->dateTimeBetween($minimun));
+                $post->setPublishedAt($faker->dateTimeBetween($minimun));
                 $post->setUser($user);
-                $postList[] = $post;
+
                 $manager->persist($post);
 
-                for ($j=1; $j <= mt_rand(1, 10); $j++){
-                    
+                for ($k = 1; $k <= mt_rand(1, 10); $k++) {
+                    $comments = new Comment();
+
+                    $now = new \DateTime();
+                    $days = $now->diff($post->getCreatedAt())->days;
+                    $minimun = '-' . $days . 'days';
+
+                    $comments->setContent($faker->realText($maxNbChars = 50));
+                    $comments->setCreatedAt($faker->dateTimeBetween($minimun));
+                    $comments->setUpdatedAt($faker->dateTimeBetween($minimun));
+                    $comments->setPublishedAt($faker->dateTimeBetween($minimun));
+                    $comments->setPost($post);
+                    $comments->setUser($user);
+
+                    $manager->persist($comments);
                 }
             }
-            $postListTotal = count($postList);
+        }
 
 
 

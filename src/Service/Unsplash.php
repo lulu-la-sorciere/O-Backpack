@@ -28,4 +28,16 @@ class Unsplash
             return $response->toArray();
     }
 
+
+    public function getRandomPicture($city)
+    {
+            $response = $this->client->request(
+                'GET',
+          $this->apiUrl
+          . 'photos?query=' . $city
+          . '&client_id=' . $this->apiKey
+            );
+            return $response->toArray();
+    }
+
 }

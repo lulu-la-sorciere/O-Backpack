@@ -14,10 +14,11 @@ use App\Repository\CommentRepository;
 use App\Repository\PostRepository;
 use App\Repository\UserRepository;
 use App\Service\ImageUploader;
+use App\Service\Unsplash;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
 
 /**
  * @Route("/blog", name="blog_", requirements={"id" = "\d+"})
@@ -50,14 +51,17 @@ class PostController extends AbstractController
 
     /**
      * Method to continent's pictures
-     * @Route("/pictures/{id}", name="continentPic")
+     * @Route("/pictures/{name}", name="continentPic")
      * 
      */
-    public function continentPic(Continent $continent)
+    public function continentPic(Continent $continent, Unsplash $pictures, $name)
     {
+        //dd($pictures->getRandomPicture($name));
+
         return $this->render('post/picbycontinent.html.twig', [
             'continent' => $continent,
-
+            'name' => $name,
+            'pictures' => $pictures->getRandomPicture($name),
         ]);
     }
 
@@ -67,15 +71,22 @@ class PostController extends AbstractController
      *
      * @return void
      */
-    public function postsList(PostRepository $postRepository)
+    public function postsList(PostRepository $postRepository, PaginatorInterface $paginator, Request $request)
     {
         //dd($postRepository);
         $postsList = $postRepository->findBy([], ['id'=>'DESC']);
+
+        $posts = $paginator->paginate(
+            $postsList,
+            $request->query->getInt('page', 1),
+            6
+        );
 
       //  dd($postsList);
         return $this->render('post/postsList.html.twig', [
             "title" => "Articles",
             "postsList" => $postsList,
+            'posts' => $posts,
         ]);
     }
 

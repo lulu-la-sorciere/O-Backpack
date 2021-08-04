@@ -47,4 +47,9 @@ class ForumSubjectRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function getContinentId()
+    {
+        
+    }
 }
