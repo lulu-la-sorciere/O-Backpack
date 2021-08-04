@@ -122,6 +122,7 @@ a {
   font-size: 1.2em;
   font-weight: bold;
   color: #EEBC69;
+  text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
 }
 
 .nav-link:hover {
@@ -153,10 +154,18 @@ footer {
 }
 
 /* home */
+.main-title{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  font-size: 1.5em;
+  text-decoration: underline overline;
+}
 
 h3 {
   font-style: italic;
   padding: 1em;
+  width: 100%;
 }
 
 .welcome {
@@ -184,9 +193,16 @@ h3 {
 }
 
 .continue{
+  display: flex;
+  width: 30%;
   color: #F5F5F5;
   text-align: left;
-  margin-left: 20px;
+  margin: 20px;
+  justify-content: space-around;
+}
+
+.continue:hover{
+  font-style: italic;
 }
 
 .continue-read{
@@ -206,7 +222,8 @@ h3 {
   border: 2px groove #EEBC69;
   margin: 1em auto;
   padding: 1em;
-  justify-content: space-evenly;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .postleft {
@@ -233,15 +250,18 @@ h3 {
 .commentProfile {
   width: 27%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
 }
 
-.miniAvatarPost {
-  max-width: 10%;
+.comment-user-info{
+  text-transform: capitalize;
+  min-width: 40%;
 }
 
 .miniAvatar {
-  max-width: 25%;
+  max-width: 45%;
+  border-radius: 50%;
 }
 
 h4 {
@@ -335,14 +355,19 @@ h4 {
 /* team */
 
 .team img {
-  width: 100%;
+  width: 80%;
+  border-radius: 50%;
+  box-shadow: 5px 5px 5px #80808054;
 }
 
 .teamList {
+  width: 100vw;
   display: flex;
   flex-wrap: wrap;
-  margin: auto;
-  justify-content: center;
+  /* margin: auto; */
+  justify-content: space-evenly;
+  height: 500px;
+  align-items: center;
 }
 
 .team {
@@ -351,13 +376,12 @@ h4 {
 }
 
 .msg {
-  background-color: aquamarine;
-  color: black;
-  width: 40%;
-  border-radius: 0.8em;
+  font-weight: bold;
+  padding: 1%;
+  color: rgb(31 193 31);
+  width: 35%;
   display: flex;
   justify-content: center;
-  padding: 2%;
   margin: 5.5em auto 0 auto;
   position: absolute;
 }
@@ -468,6 +492,7 @@ h5 {
 
 .avatarprofile img{
   border-radius: 50px;
+  width: 100%;
 }
 
 /* slider */
@@ -510,7 +535,7 @@ h5 {
 .img-slider .slide .info h6 {
   /* text-align: start; décalage du titre sur les slides accueil*/
   color: #fff;
-  font-size: 45px;
+  font-size: 30px;
   text-transform: uppercase;
   font-weight: 800;
   letter-spacing: 2px;
@@ -521,6 +546,7 @@ h5 {
   color: #fff;
   background: rgba(0, 0, 0, 0.1);
   font-size: 16px;
+  min-width: 40%;
   width: 60%;
   padding: 10px;
   border-radius: 4px;
@@ -531,7 +557,7 @@ h5 {
   z-index: 2;
   position: absolute;
   display: flex;
-  bottom: 30px;
+  bottom: 5px;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -578,6 +604,10 @@ h5 {
     height: 10px;
     margin: 8px;
   }
+
+  .continue{
+    width: 50%;
+  }
 }
 
 @media (max-width: 620px) {
@@ -608,6 +638,10 @@ h5 {
     height: 8px;
     margin: 6px;
   }
+
+  .continue{
+    width: 80%;
+  }
 }
 
 @media (max-width: 420px) {
@@ -631,6 +665,10 @@ h5 {
 
   .img-slider .navigation {
     bottom: 10px;
+  }
+
+  .continue{
+    width: 80%;
   }
 }
 
@@ -665,13 +703,15 @@ h5 {
 /*button country/continent*/
 
 .links {
-  width: 70%;
+  width: 95%;
   display: inline-flex;
   height: 100px;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .link-post{
+  height: -webkit-fill-available;
   padding: 1em;
   margin: 0.5em;
   align-items: center;
@@ -711,7 +751,7 @@ h5 {
 
 /* galery carousel*/
 
-.title.galery {
+.title-galery {
   margin: 2em auto;
 }
 
@@ -781,13 +821,14 @@ img.active2 {
   background-color: #32AAAA;
   border-radius: 7px;
   border: 2px groove #EEBC69;
-  width: 100%;
+  width: 95%;
   display: block;
   align-items: flex-start;
 }
 
 .continentpictures img {
   width: 100%;
+  height: 350px;
   margin: 1em auto;
   border-radius: 7px;
 }
@@ -1027,8 +1068,7 @@ img.active2 {
 /* Weather */
 
 .title{
-
-  padding-top: 200px;
+  padding-top: 150px;
 }
 
 .weather{
@@ -1069,13 +1109,21 @@ img.active2 {
 .sendcomment {
   margin-top: 1em;
   border: none;
-  width: 30%;
+  width: 15%;
   height: 2em;
   text-transform: uppercase;
   border: 5px;
   background-color: transparent;
   color: #EEBC69;
   cursor: pointer;
+  font-weight: bold;
+}
+
+.sendcomment:hover{
+  background-color: #EEBC69;
+  color: #F5F5F5;
+  border-radius: 20px;
+  font-weight: bold;
 }
 
 .centerform {
@@ -1224,6 +1272,11 @@ img.active2 {
   width: 50px;
   border-radius: 50%;
   height: 50px;
+}
+
+.user-post-info{
+  margin: 20px auto 0 auto;
+  text-transform: capitalize;
 }
 
 .info-user {
@@ -1428,3 +1481,12 @@ img:nth-child(7) {
   margin-left: 20px;
 }
 
+/******* FORUM *******/
+
+.title-forum{
+  text-transform: uppercase;
+  width: 80%;
+  height: 50px;
+  margin: auto;
+  text-align: start;
+}

@@ -54,6 +54,11 @@ class ForumSubject
      */
     private $responses;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Continent::class, inversedBy="forumSubjects")
+     */
+    private $continents;
+
     public function __construct()
     {
         $this->responses = new ArrayCollection();
@@ -162,6 +167,18 @@ class ForumSubject
                 $response->setForumSubject(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getContinents(): ?Continent
+    {
+        return $this->continents;
+    }
+
+    public function setContinents(?Continent $continents): self
+    {
+        $this->continents = $continents;
 
         return $this;
     }
