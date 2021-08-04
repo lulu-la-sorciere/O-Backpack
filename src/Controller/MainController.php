@@ -79,7 +79,7 @@ class MainController extends AbstractController
      * 
      * @return void
      */
-    public function search(Request $request, ContinentRepository $continentRepository, CountryRepository $countryRepository): Response
+    public function search(PostRepository $postRepository, Request $request, ContinentRepository $continentRepository, CountryRepository $countryRepository): Response
     {
         // We want to get informations contained on field's form which name is 'query'
         $searchValue = $request->get('search');
@@ -89,13 +89,24 @@ class MainController extends AbstractController
 
         //We Make a search in countries names
         $countries = $countryRepository->findCountryByHisName($searchValue);
+        
 
+        //Search on Posts
+        //$posts = $postRepository->findAll($searchValue);
+        
+        $title = $postRepository->findByTitle($searchValue);
+        $titledql = $postRepository->findByTitleDQL($searchValue);
+
+        dump($titledql);
         // We display results in vue search.html.twig
 
             return $this->render('main/search.html.twig', [
                 'continents' => $continents,
                 'countries' => $countries,
                 'searchValue' => $searchValue,
+                //'posts'=> $posts,
+                'title' => $title,
+                'titledql' => $titledql,
             ]);  
        
     }
