@@ -10,7 +10,7 @@
     </div>
  
     <ul class="continentul">
-        {% for continent in location_continent %}
+        {% for continent in locationContinent %}
             <li class="continentli"><a href="{{ path('location_detail', {id:continent.id}) }}">{{ continent.name}}</a></li>
         {% endfor %}
     </ul>

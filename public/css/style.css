@@ -1,4 +1,4 @@
-/* general */
+/*** general ***/
 
 .wrapper {
   width: 100vw;
@@ -14,10 +14,8 @@ main {
     display: block;
     width: 100%;
     text-align: center;
-    min-height: 130vh;
-   /* margin: 2em auto;
-    min-height: 100vh; */
-
+    min-height: 94vh;
+    height: max-content;
 }
 
 h2, .ah2{
@@ -47,7 +45,7 @@ h2, .ah2{
   margin-top: 1em;
 }
 
-/* header */
+/*** header ***/
 
 header {
   width: 100%;
@@ -65,7 +63,7 @@ header {
   padding-left: 1em;
 }
 
-/* nav */
+/*** nav ***/
 
 * {
     /* position: relative; on récupère le carrousel*/
@@ -142,7 +140,7 @@ a {
   transition: 0.3s;
 }
 
-/* footer */
+/*** footer ***/
 
 footer {
   font-size: 0.8em;
@@ -158,7 +156,7 @@ footer {
   bottom: 0; */
 }
 
-/* home */
+/*** home ***/
 
 h3 {
   font-style: italic;
@@ -189,6 +187,20 @@ h3 {
   margin: 1em auto;
 }
 
+.continue{
+  color: #F5F5F5;
+  text-align: left;
+  margin-left: 20px;
+}
+
+.continue-read{
+  text-align: center;
+}
+
+.continue-read:hover{
+  font-style: italic;
+}
+
 .post {
   width: 80%;
   display: flex;
@@ -198,7 +210,7 @@ h3 {
   border: 2px groove #EEBC69;
   margin: 1em auto;
   padding: 1em;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 
 .postleft {
@@ -248,28 +260,26 @@ h4 {
   font-size: smaller;
 }
 
-/* continent */
+/*** continent ***/
 
 .continentul {
   display: flex;
   flex-wrap: wrap;
 }
 
-.continentli {
-  width: 45%;
-  background-color: #32AAAA;
-  border-radius: 7px;
-  border: 2px groove #EEBC69;
-  margin: 0.3em auto;
-  padding: 0.2em;
-  text-align: center;
-  align-self: center;
-  text-transform: capitalize;
+.country_details{
+  margin: 30px auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  width: 50%;
 }
 
 .continentall {
   width: 100%;
 }
+
 
 .continentli, .country_details {
   width: 40%;
@@ -280,23 +290,16 @@ h4 {
   padding: 2em;
   text-transform: capitalize;
 }
-.country_details{
-  margin: 30px auto;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-content: center;
-  width: 50%;
-}
 
-/* country */
+
+/*** country ***/
 
 .adminCountry {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
-  padding-top: 0.7em;
+  margin: 20px auto
 }
 
 .adminCountry_info {
@@ -320,21 +323,21 @@ h4 {
   text-align:left;
 }
 
-/* search */
+/*** search ***/
 
 .results,
 .search_form {
   padding-top: 8em;
 }
 
-/* In progress */
+/*** In progress ***/
 
 .construction {
   margin: 2em auto;
   width: 30%;
 }
 
-/* team */
+/*** team ***/
 
 .team img {
   width: 100%;
@@ -355,15 +358,13 @@ h4 {
 .msg {
   background-color: aquamarine;
   color: black;
-  width: 80%;
+  width: 40%;
   border-radius: 0.8em;
   display: flex;
   justify-content: center;
-  align-items: center;
-  text-align: center;
   padding: 2%;
-  margin: 5% auto;
-  border: aquamarine 2px solid;
+  margin: 5.5em auto 0 auto;
+  position: absolute;
 }
 
 .msgError {
@@ -427,7 +428,7 @@ h4 {
   }
 }
 
-/* update data and paswd forms */
+/*** update data and paswd forms ***/
 
 h5 {
   display: flex;
@@ -474,7 +475,7 @@ h5 {
   border-radius: 50px;
 }
 
-/* slider */
+/*** slider ***/
 
 .img-slider {
   position: relative;
@@ -638,11 +639,13 @@ h5 {
   }
 }
 
-/* form style*/
+/*** form style ***/
 
 .form_container {
   display: flex;
-  justify-content: center;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
 }
 
 .form_container div {
@@ -664,29 +667,54 @@ h5 {
   font-size: 20px;
 }
 
-/*button country/continent*/
+/*** button country/continent ***/
 
 .links {
+  width: 70%;
   display: inline-flex;
-  /* margin-bottom: 10%; pas de modification */
+  height: 100px;
+  justify-content: space-around;
 }
 
-.links button {
+.link-post{
+  padding: 1em;
   margin: 0.5em;
   align-items: center;
+  width: 100%;
+  display: flex;
+  background-color: #32AAAA;
+  border-radius: 7px;
+  border: 2px groove #EEBC69;
+  justify-content: center;
 }
 
-.administratif {
+.administratif-title {
   width: 100%;
-  height: 15em;
+  height: 350px;
+  background-image: url(../img/passeport.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.add-post{
+  width: 70%;
+}
+
+.add-post input, .add-post textarea, .add-post select{
+  width: 100%;
+}
+
+.add-post textarea{
+  height: 200px;
 }
 
 .evenements {
-  width: 100%;
+  width: 80%;
   height: 15em;
 }
 
-/* galery carousel*/
+/*** galery carousel ***/
 
 .title.galery {
   margin: 2em auto;
@@ -745,7 +773,7 @@ img.active2 {
   right: 0;
 }
 
-/* Continent Picture*/
+/*** Continent Picture ***/
 
 .gallery.continentul {
   display: flex;
@@ -791,7 +819,7 @@ img.active2 {
   }
 }
 
-/* form templating */
+/*** form templating ***/
 
 .formspace {
   margin-bottom: 0.5em;
@@ -812,6 +840,7 @@ img.active2 {
   /* align-content: center; */
 }
 
+
 .formwrapper2 {
   background-color: #32AAAA;
   padding: 1.5em 1em;
@@ -826,7 +855,9 @@ img.active2 {
   align-content: center;
 }
 
-/* submit button */
+
+/*** submit button ***/
+
 
 .buttonform {
   appearance: button;
@@ -941,7 +972,7 @@ img.active2 {
   cursor: auto;
 }
 
-/* fields */
+/*** fields ***/
 
 .col {
   width: 100%;
@@ -1006,9 +1037,38 @@ img.active2 {
   margin-bottom: 0.5em;
 }
 
+/*** STUFFS ***/
 
+.stuffs-list{
+  display: flex;
+  height: 300px;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
 
-/* Weather */
+/*** Weather */
+
+.title{
+
+  padding-top: 200px;
+}
+
+.weather{
+  display: flex;
+  width: 100%;
+  height: 300px;
+  justify-content: center;
+}
+
+.weather-description{
+  width: 100%;
+  height: 100%;
+  margin: 20px 0;
+}
+
+.weather-description p{
+  text-transform: capitalize;
+}
 
 .icon-weather {
   width: 10%;
@@ -1050,7 +1110,8 @@ img.active2 {
 #member_data_picture {
   font-size: smaller;
 }
-/******** CHAT ********/
+
+/*** CHAT ***/
 
 .chat-logout:hover{
   color: #D87151;
@@ -1267,11 +1328,12 @@ img.active2 {
   }
 }
 
-
-/******* icon caroussel ********/
+/*** icon caroussel ***/
 
 .pic-ctn {
+  width: 100%;
   position: relative;
+  height: 300px;
 }
 
 @keyframes display {
@@ -1327,7 +1389,7 @@ img:nth-child(7) {
   animation-delay: 14s;
 }
 
-/********* ICONS *********/
+/*** ICONS ***/
 
 .point{
   width: 50px;
@@ -1337,9 +1399,7 @@ img:nth-child(7) {
   width: 100px;
 }
 
-
-
-/******** IMAGES HEAD **********/
+/*** IMAGES HEAD ***/
 
 .continentall{
   background-image: url(../img/0022.jpg);
@@ -1350,18 +1410,25 @@ img:nth-child(7) {
   height: 350px;
 }
 
-.continentspec{
+.blog{
   background-image: url(../img/0007.jpg);
   background-position: 50% 70%;
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
   height: 350px;
+  object-fit: cover;
+}
+
+.continentspec{
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  text-align: center;
 }
 
 .imageandtitle{
   width: 100%;
-
 }
 
 .imageandtitle-error{
@@ -1372,13 +1439,16 @@ img:nth-child(7) {
   padding-top: 8em;
 }
 
-/* map */
+
+/*** MAP ***/
+
 
 .map-img{
   width: 60%;
   height: 300px;
   margin-left: 20px;
 }
+
 
 /* modal cgu*/
 
@@ -1423,3 +1493,4 @@ img:nth-child(7) {
 .close-button:hover {
   background: #155472;
 }
+

@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block subtitle %} {{title}}  {% endblock %}
+
+{% block content %}
+    <div class="imageandtitle">
+        <img src="#" alt="image monde" class="continentspec">
+        <h2>{{title}}</h2>
+   
+    <div >
+        <p>
+           Liste des API utilisées :
+        </p>
+        <ul>
+           <li><a href="https://openweathermap.org/api" target="_blank">OpenWeather</a></li>
+           <li><a href="https://restcountries.eu/" target="_blank">RestCountry</a></li>
+           <li><a href="https://docs.mapbox.com/" target="_blank">Mapbox</a></li>
+           <li><a href="https://unsplash.com/developers" target="_blank">Unsplash</a></li>
+        </ul> 
+        
+    </div>
+    <div >
+        <p>
+            Liste des sites ressources d'images :
+        <ul>
+            <li><a href="https://www.rawpixel.com/" target="_blank">Images Rawpixel</a></li>
+            <li><a href="https://pixabay.com/fr/" target="_blank">Pixabay</a></li>
+        </ul>
+        </p>
+        
+     </div>
+{% endblock %}
