@@ -19,12 +19,16 @@
 	<section class="gallery continentul">
 
 		{% for continent in continents %}
+			{% if continent == "Asia" %}
 				<section class="blog-carousel continentpictures">
+					<a href="{{ path('blog_continentPic', {id:continent.id}) }} ">
+						{{ continent.name }}
+					</a>
 					<div class="carousel-inner">
-						<img class="active2 item" src="{{ asset('img/0006.jpg')}}" alt="Picture1">
-						<img class="item" src="{{ asset('img/0013.jpg')}}" alt="Picture2">
-						<img class="item" src="{{ asset('img/0012.jpg')}}" alt="Picture3">
-						<img class="item" src="{{ asset('img/0017.jpg')}}" alt="Picture4">
+						<img class="active2 item" src="{{ asset('img/asia/01.jpg')}}" alt="Picture1">
+						{% for i in range(2, 3) %}
+							<img class="item" src="{{ asset('img/asia/0' ~ (i) ~ '.jpg')}}" alt="Picture">
+						{% endfor %}
 					</div>
 					<div class="arrows">
 						<div class="arrow precedent">
@@ -34,11 +38,102 @@
 							&gt;
 						</div>
 					</div>
-						
+				
 				<a href="{{ path('blog_continentPic', {name:continent.name}) }} ">
 					{{ continent.name }}
 				</a>
+
 				</section>
+			{% endif %}
+
+			{% if continent == "Europe" %}
+				<section class="blog-carousel continentpictures">
+					<a href="{{ path('blog_continentPic', {id:continent.id}) }} ">
+						{{ continent.name }}
+					</a>
+					<div class="carousel-inner">
+						<img class="active2 item" src="{{ asset('img/europe/01.jpg')}}" alt="Picture1">
+						{% for i in range(2, 3) %}
+							<img class="item" src="{{ asset('img/europe/0' ~ (i) ~ '.jpg')}}" alt="Picture" ~ i"">
+						{% endfor %}
+					</div>
+					<div class="arrows">
+						<div class="arrow precedent">
+							&lt;
+						</div>
+						<div class="arrow suivant">
+							&gt;
+						</div>
+					</div>
+				</section>
+			{% endif %}
+
+			{% if continent == "Africa" %}
+				<section class="blog-carousel continentpictures">
+					<a href="{{ path('blog_continentPic', {id:continent.id}) }} ">
+						{{ continent.name }}
+					</a>
+					<div class="carousel-inner">
+						<img class="active2 item" src="{{ asset('img/africa/01.jpg')}}" alt="Picture1">
+						{% for i in range(2, 3) %}
+							<img class="item" src="{{ asset('img/africa/0' ~ (i) ~ '.jpg')}}" alt="Picture" ~ i"">
+						{% endfor %}
+					</div>
+					<div class="arrows">
+						<div class="arrow precedent">
+							&lt;
+						</div>
+						<div class="arrow suivant">
+							&gt;
+						</div>
+					</div>
+				</section>
+			{% endif %}
+
+			{% if continent == "Oceania" %}
+				<section class="blog-carousel continentpictures">
+					<a href="{{ path('blog_continentPic', {id:continent.id}) }} ">
+						{{ continent.name }}
+					</a>
+					<div class="carousel-inner">
+						<img class="active2 item" src="{{ asset('img/oceania/01.jpg')}}" alt="Picture1">
+						{% for i in range(2, 3) %}
+							<img class="item" src="{{ asset('img/oceania/0' ~ (i) ~ '.jpg')}}" alt="Picture" ~ i"">
+						{% endfor %}
+					</div>
+					<div class="arrows">
+						<div class="arrow precedent">
+							&lt;
+						</div>
+						<div class="arrow suivant">
+							&gt;
+						</div>
+					</div>
+				</section>
+			{% endif %}
+			{% if continent == "Americas" %}
+				<section class="blog-carousel continentpictures">
+					<a href="{{ path('blog_continentPic', {id:continent.id}) }} ">
+						{{ continent.name }}
+					</a>
+					<div class="carousel-inner">
+						<img class="active2 item" src="{{ asset('img/americas/01.jpg')}}" alt="Picture1">
+						{% for i in range(2, 3) %}
+							<img class="item" src="{{ asset('img/americas/0' ~ (i) ~ '.jpg')}}" alt="Picture" ~ i"">
+						{% endfor %}
+					</div>
+					<div class="arrows">
+						<div class="arrow precedent">
+							&lt;
+						</div>
+						<div class="arrow suivant">
+							&gt;
+						</div>
+					</div>
+				</section>
+			{% endif %}
+
+
 		{% endfor %}
 
 	</section>
