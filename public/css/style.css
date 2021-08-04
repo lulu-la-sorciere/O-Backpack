@@ -3,7 +3,8 @@
 .wrapper {
   width: 100vw;
   min-height: 100vh;
-  background-color: #155472;
+  background-color: #F5F5F5;
+  background-image: url(../img/bgivory.jpg);
   color: #F7F2EB;
   font-size: 1em;
   font-family: 'Railway', sans-serif;
@@ -253,7 +254,7 @@ h4 {
 
 .continentli {
   width: 45%;
-  background-color: #32AAAA;
+  background-color: #7ebdbd;
   border-radius: 7px;
   border: 2px groove #EEBC69;
   margin: 0.3em auto;
@@ -268,6 +269,27 @@ h4 {
   width: 100%;
 }
 
+<<<<<<< Updated upstream
+=======
+.continentli, .country_details {
+  width: 40%;
+  background-color: #7ebdbd;
+  border-radius: 7px;
+  border: 2px groove #EEBC69;
+  margin:0.3em auto;
+  padding: 2em;
+  text-transform: capitalize;
+}
+.country_details{
+  margin: 30px auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  width: 50%;
+}
+
+>>>>>>> Stashed changes
 /* country */
 
 .adminCountry {
