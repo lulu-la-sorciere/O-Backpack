@@ -3,7 +3,9 @@
 .wrapper {
   width: 100vw;
   min-height: 100vh;
-  background-color: #155472;
+  background-color: #F5F5F5;
+  background-image: url(../img/bgivory.jpg);
+  z-index: -30;
   color: #F7F2EB;
   font-size: 1em;
   font-family: 'Railway', sans-serif;
@@ -165,6 +167,7 @@ footer {
   justify-content: center;
   font-size: 1.5em;
   text-decoration: underline overline;
+  color: #32AAAA;
 }
 
 
@@ -172,6 +175,7 @@ h3 {
   font-style: italic;
   padding: 1em;
   width: 100%;
+  color: #32AAAA;
 }
 
 .welcome {
@@ -302,6 +306,18 @@ h4 {
   width: 100%;
 }
 
+.continentli {
+  width: 45%;
+  font-size: 0.8em;
+  background-color: #32AAAA;
+  border-radius: 7px;
+  border: 2px groove #EEBC69;
+  margin: 0.3em;
+  padding: 0.2em;
+  text-align: center;
+  align-self: center;
+  text-transform: capitalize;
+}
 
 .continentli, .country_details {
   width: 40%;
@@ -313,6 +329,14 @@ h4 {
   text-transform: capitalize;
 }
 
+.country_details{
+  margin: 30px auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  width: 50%;
+}
 
 /*** country ***/
 
@@ -489,6 +513,11 @@ h5 {
 
 .linkData {
   margin-bottom: 1em;
+}
+
+.linkData2 {
+  margin-bottom: 1em;
+  color: #32AAAA;
 }
 
 .avatarprofile {
