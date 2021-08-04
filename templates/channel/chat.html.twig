@@ -92,14 +92,14 @@ eventSource.onmessage = event => {
                 method: 'POST',
                 body: JSON.stringify(data) // On envoie les data sous format JSON
             }).then((response) => {
-               console.log(data);
+               //console.log(data);
                 console.log("reponse du fetch",response);
 
                 const imageDirectory = {{ asset('img/') }};
 
                 const options = {year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit'};
 
-                console.log(message, "contenu du message");
+                console.log(data.content, "contenu du message");
                 document.querySelector('.chat').insertAdjacentHTML( // On injecte le nouveau message selon le HTML déjà présent plus haut dans notre fichier Twig
             'beforeend',
           
@@ -107,7 +107,7 @@ eventSource.onmessage = event => {
                     <img src="${imageDirectory }{{ app.user.picture }}" alt="" class="user-profil">
                         <div class="chat-message">
                         <p class="my-info"><strong>{{ app.user.nickname }}</strong> a répondu le ${new Date().toLocaleDateString('fr-FR', options)}</p>
-                        <p class="info-my-message">${ message.value }</p>
+                        <p class="info-my-message">${ data.content }</p>
                         </div>`
             )});
              message.value = '';
