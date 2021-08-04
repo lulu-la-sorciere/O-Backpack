@@ -91,7 +91,7 @@ eventSource.onmessage = event => {
                 method: 'POST',
                 body: JSON.stringify(data) // On envoie les data sous format JSON
             }).then((response) => {
-                message.value = '';
+               
                 console.log("reponse du fetch",response);
 
                 const imageDirectory = {{ asset('img/') }};
@@ -109,6 +109,7 @@ eventSource.onmessage = event => {
                         <p class="info-my-message">${ message.value }</p>
                         </div>`
             )});
+             message.value = '';
         }
 const appUser = {{ app.user.id }};
 
