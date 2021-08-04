@@ -232,7 +232,8 @@ h3 {
   border: 2px groove #32AAAA;
   margin: 1em auto;
   padding: 0.5em;
-  justify-content: space-between;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .postleft {
@@ -252,12 +253,12 @@ h3 {
 }
 
 .fullComment {
-  width: 50%;
+  min-width: 20%;
   text-align: left;
 }
 
 .commentProfile {
-  width: 40%;
+  width: 60%;
   display: flex;
   flex-direction: row;
   margin-right: 20px;
@@ -266,7 +267,7 @@ h3 {
 
 .comment-user-info{
   text-transform: capitalize;
-  min-width: 40%;
+  min-width: 20%;
 }
 
 .miniAvatar {
@@ -275,7 +276,7 @@ h3 {
 }
 
 h4 {
-  color: #32AAAA;
+  color: #EEBC69;
   margin-bottom: 0.2em;
   font-size: 1.3em;
   text-transform: capitalize;
@@ -345,7 +346,9 @@ h4 {
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
-  margin: 20px auto
+  color: #155472;
+  margin: 20px auto;
+  font-weight: bold;
 }
 
 .adminCountry_info {
@@ -365,8 +368,10 @@ h4 {
   display: block;
 }
 .listAdmin{
+  width: 70%;
   padding-left: 1em;
   text-align:left;
+  color: white;
 }
 
 /*** search ***/
@@ -1117,6 +1122,7 @@ img.active2 {
   height: 300px;
   flex-direction: column;
   justify-content: space-evenly;
+  color: #155472;
 }
 
 /*** Weather */
@@ -1153,7 +1159,7 @@ img.active2 {
 #comment_form_content {
   background-color: transparent;
   border-radius: 7px;
-  border: 1px solid #32AAAA;
+  border: 1px solid #155472;
   width: 100%;
   height: 5em;
   margin: auto;
@@ -1593,5 +1599,20 @@ img:nth-child(7) {
 
 
 .user-profil{
-  width: 60%;
+  width: 50%;
+}
+
+.events{
+  width: 70%;
+  color: white;
+}
+
+table{
+  margin: 20px;
+}
+th{
+  color: #155472;
+  font-weight: bold;
+  font-size: 1.5em;
+  text-transform: capitalize;
 }

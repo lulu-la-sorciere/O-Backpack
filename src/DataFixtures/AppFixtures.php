@@ -14,9 +14,8 @@ use Faker;
 
 class AppFixtures extends Fixture
 {
-
     public function load(ObjectManager $manager)
-    {
+    {/*
         $faker = Faker\Factory::create('fr_FR');
 
         // $product = new Product();
@@ -74,10 +73,6 @@ class AppFixtures extends Fixture
                     $manager->persist($comments);
                 }
             }
-        }
-
-
-
-        $manager->flush();
+        }*/
     }
 }
