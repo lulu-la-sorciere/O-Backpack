@@ -93,14 +93,19 @@ eventSource.onmessage = event => {
             }).then((response) => {
                 message.value = '';
                 console.log("reponse du fetch",response);
+
+                const imageDirectory = {{ asset('img/') }};
+
+                const options = {year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit'};
+
                 document.querySelector('.chat').insertAdjacentHTML( // On injecte le nouveau message selon le HTML déjà présent plus haut dans notre fichier Twig
             'beforeend',
           
             `<div class="my-message">
-                    <img src="${imageDirectory + message.user.picture}" alt="" class="user-profil">
+                    <img src="${imageDirectory }{{ app.user.picture }}" alt="" class="user-profil">
                         <div class="chat-message">
-                        <p class="my-info"><strong>${ message.user.nickname }</strong> a répondu le ${new Date(message.createdAt).toLocaleDateString('fr-FR', options)}</p>
-                        <p class="info-my-message">${ message.content }</p>
+                        <p class="my-info"><strong>{{ app.user.nickname }}</strong> a répondu le ${new Date(message.createdAt).toLocaleDateString('fr-FR', options)}</p>
+                        <p class="info-my-message">${ message.value }</p>
                         </div>`
             )});
         }
