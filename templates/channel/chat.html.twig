@@ -91,7 +91,7 @@ eventSource.onmessage = event => {
                 method: 'POST',
                 body: JSON.stringify(data) // On envoie les data sous format JSON
             }).then((response) => {
-               
+                const message = document.getElementById('message');
                 console.log("reponse du fetch",response);
 
                 const imageDirectory = {{ asset('img/') }};
