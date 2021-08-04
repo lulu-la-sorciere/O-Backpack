@@ -17,7 +17,7 @@ final class PublishController extends AbstractController
      */
     public function sendMessage(HubInterface $bus, Request $request): Response
     {
-        $update = new Update('http://localhost:8080/message', json_encode([
+        $update = new Update('http://ec2-3-238-91-104.compute-1.amazonaws.com/message', json_encode([
             'message' => $request->request->get('message'),
         ]));
         $bus->publish($update);
