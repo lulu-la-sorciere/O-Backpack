@@ -40,7 +40,7 @@ class UserController extends AbstractController
     {
        // dd('route ok');
         //The member only can change its personnal information in its account
-        $this->denyAccessUnlessGranted('ROLE_USER', $user, 'Accès refusé - Zone protégée');
+        $this->denyAccessUnlessGranted('POST_EDIT', $user, 'Accès refusé - Zone protégée');
     
         $form = $this->createForm(ChangePasswordType::class, $user);
         $form->handleRequest($request);
@@ -88,6 +88,8 @@ class UserController extends AbstractController
         */
         public function update(ImageUploader $imageUploader, User $user, Request $request, int $id)
         {
+            $this->denyAccessUnlessGranted('POST_EDIT', $user, 'Accès refusé - Zone protégée');
+            
             $form = $this->createForm(MemberDataType::class, $user);
 
             $form->handleRequest($request);

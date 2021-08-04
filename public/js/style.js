@@ -10,7 +10,11 @@ function mobileMenu() {
 
 // nav element color changes when current page is active
 
+<<<<<<< HEAD
 const currentLocation = location.href;
+=======
+ const currentLocation = location.href;
+>>>>>>> 9baea4ec7ae1482ec984a8c25d1a4ff8ea2c4886
     const menuItem = document.querySelectorAll('a');
     const menuLength = menuItem.length
         for (let i=0; i<menuLength; i++){
