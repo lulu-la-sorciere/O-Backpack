@@ -57,8 +57,8 @@
 // The subscriber subscribes to updates for the https://example.com/users/dunglas topic
 // and to any topic matching https://example.com/books/{id}
 const url = new URL('http://localhost:3000/.well-known/mercure');
-url.searchParams.append('topic', 'http://localhost/chat/{{channel.id}}');
-//url.searchParams.append('topic', 'http://localhoshttp://ec2-3-238-91-104.compute-1.amazonaws.com/message');
+url.searchParams.append('topic', 'http://localhost/chat/*');
+url.searchParams.append('topic', 'http://ec2-3-238-91-104.compute-1.amazonaws.com/chat/*');
 // The URL class is a convenient way to generate URLs such as https://localhost/.well-known/mercure?topic=https://example.com/books/{id}&topic=https://example.com/users/dunglas
 
 const eventSource = new EventSource(url, {
