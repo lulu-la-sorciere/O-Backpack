@@ -1835,3 +1835,20 @@ tbody{
 .error-page p{
   color: #155472;
 }
+
+/* return to top arrow */
+
+.btn {
+  height: 100px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  cursor: pointer;
+}
+.top {
+  width: 40px;
+}
