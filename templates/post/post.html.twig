@@ -6,9 +6,9 @@
 
 {% block content %}
     <div class="title">
-        <h2>{{ title }}</h2>
+        <h2 class="title-post">{{ title }}</h2>
     </div> 
-    <p class="continue">
+    <p class="return">
 		<a href="{{ path('blog_posts') }}">Retour aux articles</a>
 	</p>
 
@@ -47,7 +47,7 @@
            {{ form_end(commentForm) }}
 
         {% for comment in comments %}
-            <div class="post">
+            <div class="post-comment">
                 <div class="commentProfile">
                     <div class="user-profil">
                         <img class ="miniAvatar" src="{{ asset('img/'~ comment.user.picture)}}" alt="{{comment.user.nickname}}">
@@ -64,7 +64,7 @@
             </div> 
         {% endfor %}
     </section>
-    <p class="continue">
+    <p class="return">
 			<a href="{{ path('blog_posts') }}">Retour aux articles</a>
 		</p>
 {% endblock %}
