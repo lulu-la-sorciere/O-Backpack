@@ -177,3 +177,6 @@ if(typeof mapboxgl !== 'undefined') {
 
 }
 
+var type="theme";
+var theme="aventure";
+
