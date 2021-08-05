@@ -12,14 +12,14 @@
 		</h2>
 	</div>
 
-	<p class="continue">
+	<p class="return">
 		<a href="{{ path('blog_list') }}">Retour au blog</a>
 	</p>
 
 	<section class="gallery continentul">
 
 		{% for continent in continents %}
-			{% if continent == "Asia" %}
+			{% if continent == "asia" %}
 				<section class="blog-carousel continentpictures">
 					<a href="{{ path('blog_continentPic', {id:continent.id}) }} ">
 						{{ continent.name }}
@@ -39,14 +39,14 @@
 						</div>
 					</div>
 				
-				<a href="{{ path('blog_continentPic', {name:continent.name}) }} ">
+				<a href="{{ path('blog_continentPic', {id:continent.id}) }} ">
 					{{ continent.name }}
 				</a>
 
 				</section>
 			{% endif %}
 
-			{% if continent == "Europe" %}
+			{% if continent == "europe" %}
 				<section class="blog-carousel continentpictures">
 					<a href="{{ path('blog_continentPic', {id:continent.id}) }} ">
 						{{ continent.name }}
@@ -68,7 +68,7 @@
 				</section>
 			{% endif %}
 
-			{% if continent == "Africa" %}
+			{% if continent == "africa" %}
 				<section class="blog-carousel continentpictures">
 					<a href="{{ path('blog_continentPic', {id:continent.id}) }} ">
 						{{ continent.name }}
@@ -90,7 +90,7 @@
 				</section>
 			{% endif %}
 
-			{% if continent == "Oceania" %}
+			{% if continent == "oceania" %}
 				<section class="blog-carousel continentpictures">
 					<a href="{{ path('blog_continentPic', {id:continent.id}) }} ">
 						{{ continent.name }}
@@ -111,7 +111,7 @@
 					</div>
 				</section>
 			{% endif %}
-			{% if continent == "Americas" %}
+			{% if continent == "americas" %}
 				<section class="blog-carousel continentpictures">
 					<a href="{{ path('blog_continentPic', {id:continent.id}) }} ">
 						{{ continent.name }}

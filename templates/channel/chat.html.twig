@@ -3,6 +3,11 @@
 {% block title %}Chat{% endblock %}
 
 {% block content %}
+
+<div class="title">
+        <h1 class="chat-title">Chat {{ channel.name }}</h1>
+</div>
+
 <div class="container">
     {% if app.user %}
         <div class="info-log">
@@ -10,7 +15,7 @@
             <p>You are logged in as <strong>{{ app.user.firstname }}</strong>, <a href="{{ path('app_logout') }}" class="chat-logout">Logout</a></p>
         </div>
     {% endif %}
-    <h1>Channel {{ channel.name }}</h1>
+
     <div class="list-user">
     </div>
     <div class="chat-container">
