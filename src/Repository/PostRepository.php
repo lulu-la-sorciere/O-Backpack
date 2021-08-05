@@ -56,6 +56,24 @@ class PostRepository extends ServiceEntityRepository
 
     }
 
+    /**
+    * Method to find a post by his content
+    */
+    public function findByContent($content)
+    {
+        //
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT post
+            FROM App\Entity\Post post
+            WHERE post.content LIKE :content
+            '
+        )->setParameter(':content', "%$content%");
+
+        return $query->getResult();
+
+    }
 
     // /**
     //  * @return Post[] Returns an array of Post objects

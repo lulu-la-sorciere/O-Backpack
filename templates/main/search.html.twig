@@ -7,32 +7,17 @@
 {% block content %}
 	<section class="search_form">
 		<div class="formwrapper2">
-            <div class="col">
-                <div class="formgroup">
+			<div class="col">
+				<div class="formgroup">
 					<form action="" method="GET">
-						<input name="search" type="text" onfocus="this.placeholder=''" placeholder="Tapez votre recherche"><br>
+						<input name="search" type="text" onfocus="this.placeholder=''" placeholder="Tapez votre recherche" pattern="[A-Za-z]{3,}" required><br>
 						<button type="submit" class="buttonform2">
 							Rechercher
 						</button>
 					</form>
 				</div>
 			</div>
-        <div>
-	
+		<div>
 	</section>
 
-	{# <section class="results">
-		
-			<h3>Résultats :</h3>
-			{{ searchValue }}
-
-
-			{% for continent in continents %}
-
-				<a href="{{ path('location_detail', {id:continent.id}) }}">{{continent.name}}</a>
-
-			{% endfor %}
-
-	
-	</section> #}
 {% endblock %}
