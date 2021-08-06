@@ -25,9 +25,9 @@ main {
 h2,
 .ah2 {
   color: #EEBC69;
-  text-shadow: #222 1px 1px 3px;
+  text-shadow: #d87151 1px 1px 1px;
   font-size: 2em;
-  background-color: #9c9c9c4a;
+  background-color: #cecece80;
   padding: 0.4em 2em;
   width: auto;
   border-radius: 5px;
@@ -140,7 +140,7 @@ a {
   font-size: 1.2em;
   font-weight: bold;
   color: #EEBC69;
-  text-shadow: 1px 1px 2px #444;
+  text-shadow: 1px 2px 3px #444;
 }
 
 .nav-link:hover {
@@ -309,7 +309,7 @@ h3 {
 
 
 .postleft {
-  width: 35%;
+  width: 40%;
   margin: 1em 0;
 }
 
@@ -385,6 +385,7 @@ h4 {
   box-shadow: 11px 11px 53px rgb(255 239 212 / 40%), 
              -11px -11px 53px #f7f2ea;
   justify-content: center;
+  border-radius: 20px;
 }
 
 .country_details a {
@@ -618,11 +619,15 @@ h5 {
 }
 
 .backpack{
-  top: -40px;
-  right: -60px;
-  width: 120px;
-  height: 100px;
+  top: -30px;
+  right: -40px;
+  width: 100px;
+  height: 80px;
   position: absolute;
+}
+
+.backpack img{
+  width: 100%;
 }
 
 .linkData {
@@ -630,8 +635,12 @@ h5 {
 }
 
 .linkData2 {
+  margin-right: auto;
+  height: 30px;
   margin-bottom: 1em;
   color: #D87151;
+  width: 300px;
+  margin-left: auto;
 }
 
 .avatarprofile {
@@ -1149,6 +1158,10 @@ img.active2 {
   /* width: 30%; */
 }
 
+input .formspace{
+  color: #D87151;
+}
+
 .formwrapper {
   background-color: #ffecceb0;
   padding: 1em;
@@ -1329,7 +1342,7 @@ img.active2 {
 .formgroup label {
   font-weight: bold;
   line-height: 1.4em;
-  color: #d87151;
+  color: #D87151;
   font-size: 1em;
   margin: auto;
   display: flex;
@@ -1348,7 +1361,7 @@ img.active2 {
 }
 
 ::placeholder {
-  color: #f3d8ab;
+  color: #D87151;
   font-size: 1em;
 }
 

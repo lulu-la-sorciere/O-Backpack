@@ -83,10 +83,16 @@ class Country
      */
     private $stuff;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Weather::class, mappedBy="country")
+     */
+    private $weather;
+
     public function __construct()
     {
         $this->posts = new ArrayCollection();
         $this->stuff = new ArrayCollection();
+        $this->weather = new ArrayCollection();
     }
     public function __toString()
     {
@@ -265,6 +271,33 @@ class Country
     public function removeStuff(Stuff $stuff): self
     {
         $this->stuff->removeElement($stuff);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Weather[]
+     */
+    public function getWeather(): Collection
+    {
+        return $this->weather;
+    }
+
+    public function addWeather(Weather $weather): self
+    {
+        if (!$this->weather->contains($weather)) {
+            $this->weather[] = $weather;
+            $weather->addCountry($this);
+        }
+
+        return $this;
+    }
+
+    public function removeWeather(Weather $weather): self
+    {
+        if ($this->weather->removeElement($weather)) {
+            $weather->removeCountry($this);
+        }
 
         return $this;
     }
