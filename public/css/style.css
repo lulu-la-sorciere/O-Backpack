@@ -502,7 +502,7 @@ h4 {
   /* margin: auto; */
   justify-content: space-evenly;
   height: 400px;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .team {
@@ -2023,11 +2023,13 @@ tbody{
   color: #D87151;
 }
 
+.linkedIn {
+  max-width: 15%;
+}
 .check{
   color: #D87151;
   font-weight: bold;
 }
-
 .required{
   color: #155472;
   font-weight: bold;
