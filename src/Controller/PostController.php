@@ -54,9 +54,9 @@ class PostController extends AbstractController
      * @Route("/pictures/{id}", name="continentPic")
      * 
      */
-
     public function continentPic(Continent $continent)
     {
+    
         return $this->render('post/picbycontinent.html.twig', [
             'continent' => $continent,
 
