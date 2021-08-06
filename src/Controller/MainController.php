@@ -92,7 +92,7 @@ class MainController extends AbstractController
      * 
      * @return void
      */
-    public function search(Request $request, ContinentRepository $continentRepository, CountryRepository $countryRepository): Response
+    /*public function search(PostRepository $postRepository, Request $request, ContinentRepository $continentRepository, CountryRepository $countryRepository): Response
     {
         // We want to get informations contained on field's form which name is 'query'
         $searchValue = $request->get('search');
@@ -102,14 +102,56 @@ class MainController extends AbstractController
 
         //We Make a search in countries names
         $countries = $countryRepository->findCountryByHisName($searchValue);
+        
 
+        //Search on Posts
+        //$posts = $postRepository->findAll($searchValue);
+        
+        $title = $postRepository->findByTitle($searchValue);
+        $titledql = $postRepository->findByTitleDQL($searchValue);
+
+        dump($titledql);
         // We display results in vue search.html.twig
 
             return $this->render('main/search.html.twig', [
                 'continents' => $continents,
                 'countries' => $countries,
                 'searchValue' => $searchValue,
+                //'posts'=> $posts,
+                'title' => $title,
+                'titledql' => $titledql,
             ]);  
        
+    }*/
+
+    /**
+     * Method to page searching
+     * @Route("search", name="search")
+     * 
+     * @return void
+     */
+    public function search(PostRepository $postRepository, Request $request): Response
+    {
+        // We want to get informations contained on field's form which name is 'query'
+        $searchValue = $request->get('search');
+
+        // find a post by his title
+        $posts = $postRepository->findByTitle($searchValue);
+
+        //find a post by his content
+        $postscontent = $postRepository->findByContent($searchValue);
+        // dd($posts);
+
+        // if our search is not null we are redirected to the page of results with datas
+        if ($searchValue == !null) {
+            return $this->render('main/results.html.twig', [
+            'searchValue' =>$searchValue,
+            'posts'=>$posts,
+            'postscontent' =>$postscontent,
+         ]);
+        } else {
+          //otherwise we are still on the search page and do have to make another search
+            return $this->render('main/search.html.twig');  
+        }
     }
 }
