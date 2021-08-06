@@ -1186,7 +1186,7 @@ img.active2 {
   text-shadow: 1px 1px #d87151;
   letter-spacing: .8px;
   line-height: 20px;
-  margin: auto;
+  margin: auto auto 20px auto;
   outline: none;
   overflow: visible;
   padding: 1em;
@@ -1318,8 +1318,9 @@ img.active2 {
 }
 
 .formgroup label {
+  font-weight: bold;
   line-height: 1.4em;
-  color: #F7F2EB;
+  color: #d87151;
   font-size: 1em;
   margin: auto;
   display: flex;
@@ -1991,4 +1992,14 @@ tbody{
 
 .password, .buttonform a{
   color: #D87151;
+}
+
+.check-email{
+  color: #D87151;
+  font-weight: bold;
+}
+
+.required{
+  color: #155472;
+  font-weight: bold;
 }
