@@ -182,7 +182,7 @@ var theme="aventure";
 
 // return to top
 
-const btn = document.querySelector('.btn');
+const btn = document.querySelector('.btn7');
 
 btn.addEventListener('click', () => {
 

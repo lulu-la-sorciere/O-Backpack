@@ -19,7 +19,61 @@ class PostRepository extends ServiceEntityRepository
         parent::__construct($registry, Post::class);
     }
 
-   
+    /**
+     * Method to find a pos by his title
+     */
+    public function findByTitle($title)
+    {
+        //We instanciate QueryBuilder
+        $qb = $this->createQueryBuilder('post');
+
+        $qb->where('post.title LIKE :title');
+
+        $qb->setParameter(':title', "%$title%");
+
+        $query = $qb->getQuery();
+
+        return $query->getResult();
+
+
+    }
+    /**
+     * Method to find a pos by his title
+     */
+    public function findByTitleDQL($title)
+    {
+        //
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT post
+            FROM App\Entity\Post post
+            WHERE post.title LIKE :title
+            '
+        )->setParameter(':title', "%$title%");
+
+        return $query->getResult();
+
+    }
+
+    /**
+    * Method to find a post by his content
+    */
+    public function findByContent($content)
+    {
+        //
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT post
+            FROM App\Entity\Post post
+            WHERE post.content LIKE :content
+            '
+        )->setParameter(':content', "%$content%");
+
+        return $query->getResult();
+
+    }
 
     // /**
     //  * @return Post[] Returns an array of Post objects
