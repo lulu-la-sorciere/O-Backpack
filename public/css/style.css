@@ -68,6 +68,9 @@ header {
   background-color: #bbbbbb65;
 }
 
+#menu{
+  right: 0;
+}
 #logomenu {
   max-height: 80px;
   padding-left: 1em;
@@ -194,10 +197,12 @@ h3 {
 .all{
   display: flex;
   justify-content: space-around;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .presentation{
+  margin: 20px;
+  padding: 1em;
   display: flex;
   width: 25%;
   height: 300px;
@@ -258,7 +263,7 @@ h3 {
 }
 
 .post {
-  border: 0.2em double;
+  border: 0.2em double white;
   width: 80%;
   display: flex;
   flex-wrap: wrap;
@@ -375,9 +380,9 @@ h4 {
   align-items: center;
   background-color: white;
   border-radius: 1px;
-  background: linear-gradient(155deg, #ffffff, #e6e6e6);
-  box-shadow: 11px 11px 53px #cccccc,
-    -11px -11px 53px #ffffff;
+  background: linear-gradient(155deg, #fffbf5, rgb(247 238 224));
+  box-shadow: 11px 11px 53px rgb(255 239 212 / 40%), 
+             -11px -11px 53px #f7f2ea;
   justify-content: center;
 }
 
@@ -401,39 +406,35 @@ h4 {
   justify-content: center;
 }
 
-.continentli {
-  width: 45%;
-  font-size: 0.8em;
-  background-color: #32AAAA;
-  border-radius: 7px;
-  border: 2px groove #EEBC69;
-  margin: 0.3em;
-  padding: 0.2em;
-  text-align: center;
-  align-self: center;
-  text-transform: capitalize;
-}
-
 .continentli a {
-  font-size: 1.7em;
+  font-size: 1em;
   font-weight: bold;
   text-decoration: none;
   color: white;
 }
 
+
 .continentli {
+  text-align: center;
+  align-self: center;
   width: 40%;
-  background-color: #b8d3e8;
+  background-color: #6badc3;
   border-radius: 7px;
   border: 2px groove #bfded9;
   margin: 0.3em auto;
   padding: 2em;
   text-transform: capitalize;
+  display: flex;
+  height: 120px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 
 /*** country ***/
 
 .adminCountry {
+  width: 70%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -444,6 +445,7 @@ h4 {
 }
 
 .adminCountry_info {
+  width: 60%;
   padding-top: 0.7em;
   display: flex;
   flex-direction: column;
@@ -461,6 +463,8 @@ h4 {
 }
 
 .listAdmin {
+  margin-top: 10px;
+  height: 60%;
   width: 70%;
   padding-left: 1em;
   text-align: left;
@@ -530,6 +534,7 @@ h4 {
 }
 
 @media only screen and (max-width: 768px) {
+
   .nav-menu {
     z-index: 3;
     position: fixed;
@@ -599,14 +604,24 @@ h5 {
 }
 
 .profiletable {
+  position: relative;
+  border-radius: 20px;
   color: #155472;
   display: flex;
-  width: 80%;
+  width: 60%;
   justify-content: center;
   margin: 2em auto;
-  border: 0.1em solid;
+  border: 0.2em double #d87151;
   padding: 1em;
-  background-color: #f5f5f5;
+  background-color: #ffecceb0;
+}
+
+.backpack{
+  top: -40px;
+  right: -60px;
+  width: 120px;
+  height: 100px;
+  position: absolute;
 }
 
 .linkData {
@@ -687,6 +702,10 @@ h5 {
   z-index: 2;
 }
 
+.navigation{
+
+}
+
 .img-slider .navigation {
   z-index: 2;
   position: absolute;
@@ -711,6 +730,45 @@ h5 {
 }
 
 @media (max-width: 820px) {
+
+  .all{
+    flex-wrap: wrap;
+  }
+  .presentation{
+    width: 80%;
+    font-size: 0.8em;
+    height: 200px;
+  }
+
+  .post {
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.posts{
+  width: 100%;
+    height: 100%;
+}
+
+.postleft{
+
+  width: 95%;
+}
+  .postright {
+    width: 100%;
+}
+
+  .postbeginning {
+    width: 95%;
+}
+
+.postpic img {
+  width: 80%;
+  border-radius: 40px;
+}
+
   .img-slider {
     width: 100%;
     height: 375px;
@@ -730,7 +788,7 @@ h5 {
   }
 
   .img-slider .navigation {
-    bottom: 25px;
+    bottom: 15px;
   }
 
   .img-slider .navigation .btn {
@@ -745,6 +803,49 @@ h5 {
 }
 
 @media (max-width: 620px) {
+
+  .profiletable {
+    width: 90%;
+  }
+
+  .all{
+    flex-wrap: wrap;
+  }
+  .presentation{
+    width: 80%;
+    font-size: 0.8em;
+    height: 200px;
+  }
+
+  .post {
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.posts{
+  width: 100%;
+    height: 100%;
+}
+
+.postleft{
+
+  width: 95%;
+}
+  .postright {
+    width: 100%;
+}
+
+.postpic img {
+  width: 100%;
+  border-radius: 40px;
+}
+
+  .postbeginning {
+    width: 95%;
+}
+
   .img-slider {
     width: 100%;
     height: 250px;
@@ -764,7 +865,7 @@ h5 {
   }
 
   .img-slider .navigation {
-    bottom: 15px;
+    bottom: 10px;
   }
 
   .img-slider .navigation .btn {
@@ -798,7 +899,7 @@ h5 {
   }
 
   .img-slider .navigation {
-    bottom: 10px;
+    bottom: 0;
   }
 
   .continue {
@@ -836,6 +937,10 @@ select {
   font-size: 20px;
 }
 
+.post_picture{
+  height: 50px;
+}
+
 /*** button country/continent ***/
 
 .links {
@@ -854,15 +959,16 @@ select {
   padding: 0.5em;
   margin: 0.2em;
   align-items: center;
-  width: 150px;
+  width: 200px;
   display: flex;
   background-color: white;
   border-radius: 7px;
   justify-content: center;
   font-size: 0.8em;
   border-radius: 15px;
-  background: linear-gradient(145deg, #f4f4ea, #e6e6e6);
-  box-shadow: 5px 5px 15px #dcdcda, -5px -5px 15px #eeeee4;
+  background: #fffbf5;
+  box-shadow: inset 23px 23px 46px #f5f1ec, 
+              inset -23px -23px 46px #ffffff
 }
 
 .administratif-title {
@@ -874,6 +980,9 @@ select {
   background-repeat: no-repeat;
 }
 
+.admin-title, .events-title{
+text-align: left;
+}
 .add-post {
   width: 70%;
 }
@@ -882,6 +991,13 @@ select {
 .add-post textarea,
 .add-post select {
   width: 100%;
+  padding: 10px
+}
+
+#post_picture{
+  height:80px;
+  color: #D87151;
+  font-weight: bold;
 }
 
 .add-post textarea {
@@ -891,7 +1007,6 @@ select {
 .evenements {
   width: 80%;
   height: 15em;
-  border-bottom-right-radius: 7px;
 }
 
 /*** galery carousel ***/
@@ -980,7 +1095,7 @@ img.active2 {
 .continentpictures {
   margin: 1em auto;
   padding: 1.5em;
-  background-color: #32AAAA;
+  background-color: #6badc3;
   border-radius: 7px;
   border: 2px groove #EEBC69;
   width: 95%;
@@ -1026,7 +1141,7 @@ img.active2 {
 }
 
 .formwrapper {
-  background-color: #32AAAA;
+  background-color: #ffecceb0;
   padding: 1.5em 1em;
   border-radius: 5px;
   width: 80%;
@@ -1041,7 +1156,7 @@ img.active2 {
 
 
 .formwrapper2 {
-  background-color: #32AAAA;
+  background-color: #ffecceb0;
   padding: 1.5em 1em;
   border-radius: 5px;
   width: 90%;
@@ -1198,7 +1313,7 @@ img.active2 {
   padding: 0.7em 0.2em 0.7em 1em;
   border: 3px solid rgba(0, 0, 0, 0.3);
   box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.3);
-  color: #F7F2EB;
+  color: #155472;
   border-radius: 50px;
 }
 
@@ -1234,6 +1349,8 @@ img.active2 {
 .textb4form {
   margin-top: 1em;
   margin-bottom: 0.5em;
+  color: #155472;
+  font-weight: bold;
 }
 
 /*** STUFFS ***/
@@ -1339,7 +1456,7 @@ img.active2 {
 
 .container {
   margin: 20px auto;
-  width: 90%;
+  width: 80%;
   height: 70vh;
   display: flex;
   flex-wrap: wrap;
@@ -1367,15 +1484,17 @@ img.active2 {
 
 .list-user {
   width: 20%;
-  background-color: #EEBC69;
+  background-color: rgb(249 189 138);
   height: 85%;
   border-right: 0.1em solid #F5F5F5;
+  border-bottom-left-radius: 10px;
 }
 
 .chat-container {
-  background-color: #EEBC69;
+  background-color: rgb(249 189 138);
   width: 80%;
   height: 85%;
+  border-bottom-right-radius: 10px;
 }
 
 .chat {
@@ -1492,7 +1611,6 @@ img.active2 {
 }
 
 .send-message {
-  background: #EEBC69;
   width: 100%;
   height: 10%;
   border-top: #F5F5F5 0.1em solid;
@@ -1527,14 +1645,12 @@ img.active2 {
 @media screen and (max-width: 768px) {
 
   .chat-container {
-    background-color: #EEBC69;
     width: 70%;
     height: 85%;
   }
 
   .list-user {
     width: 30%;
-    background-color: #EEBC69;
     height: 85%;
     border-right: 0.1em solid #F5F5F5;
   }
@@ -1657,6 +1773,7 @@ img:nth-child(7) {
   object-fit: cover;
 }
 
+
 .continentspec {
   width: 100%;
   height: 400px;
@@ -1682,6 +1799,10 @@ img:nth-child(7) {
 
 /*** MAP ***/
 
+#map{
+  width: 90%;
+  height: 400px;
+}
 
 .map-img {
   width: 60%;
@@ -1750,8 +1871,17 @@ img:nth-child(7) {
   width: 40%;
 }
 
+.event{
+  height: 70%;
+  text-align: left;
+  width: 100%;
+  color: white;
+  padding-left: 1em;
+}
+
 .events {
-  width: 70%;
+  text-align: left;
+  width: 100%;
   color: white;
 }
 
@@ -1834,4 +1964,31 @@ tbody{
 
 .error-page p{
   color: #155472;
+}
+
+
+/* return to top arrow */
+
+.btn {
+  height: 100px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  cursor: pointer;
+}
+.top {
+  width: 40px;
+}
+.or{
+  color: #D87151;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.password, .buttonform a{
+  color: #D87151;
 }
