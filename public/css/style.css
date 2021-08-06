@@ -500,7 +500,7 @@ h4 {
   /* margin: auto; */
   justify-content: space-evenly;
   height: 400px;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .team {
@@ -1991,4 +1991,8 @@ tbody{
 
 .password, .buttonform a{
   color: #D87151;
+}
+
+.linkedIn {
+  max-width: 15%;
 }
