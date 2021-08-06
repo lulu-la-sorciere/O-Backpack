@@ -25,9 +25,9 @@ main {
 h2,
 .ah2 {
   color: #EEBC69;
-  text-shadow: #d87151 1px 1px 1px;
+  text-shadow: #222 1px 1px 3px;
   font-size: 2em;
-  background-color: #cecece80;
+  background-color: #9c9c9c4a;
   padding: 0.4em 2em;
   width: auto;
   border-radius: 5px;
@@ -98,12 +98,13 @@ a {
 }
 
 .nav {
+  height: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
   align-content: center;
-  margin-right: 2em;
-  margin-top: 2.5em;
+  margin-right: 0.5em;
+  margin-top: 0.5em;
 }
 
 .hamburger {
@@ -139,7 +140,7 @@ a {
   font-size: 1.2em;
   font-weight: bold;
   color: #EEBC69;
-  text-shadow: 1px 2px 3px #444;
+  text-shadow: 1px 1px 2px #444;
 }
 
 .nav-link:hover {
@@ -914,6 +915,14 @@ h5 {
   .continue {
     width: 80%;
   }
+
+  .blog-carousel {
+    position: relative;
+    max-width: 90%;
+    box-shadow: 0 0 2px rgb(0 0 0 / 5%);
+    display: flex;
+    margin: auto auto 2em auto;
+}
 }
 
 /*** form style ***/
@@ -1054,7 +1063,7 @@ text-align: left;
   margin: auto;
   display: none;
   border-radius: 10px;
-
+  object-fit: contain;
 }
 
 img.active2 {
@@ -1155,14 +1164,14 @@ input .formspace{
 
 .formwrapper {
   background-color: #ffecceb0;
-  padding: 1.5em 1em;
+  padding: 1em;
   border-radius: 5px;
   width: 80%;
   text-align: center;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  box-shadow: rgba(238, 188, 105, 0.4) 5px 5px, rgba(238, 188, 105, 0.2) 10px 10px, rgba(238, 188, 105, 0.05) 15px 15px;
+  box-shadow: rgb(238 188 105 / 40%) 5px 5px, rgb(238 188 105 / 20%) 10px 10px, rgb(238 188 105 / 5%) 15px 15px;
   margin: 2em auto 1.5em auto;
   /* align-content: center; */
 }
@@ -1302,8 +1311,8 @@ input .formspace{
 /*** fields ***/
 
 .col {
-  width: 100%;
-  margin: 0.5em 0.5em 0.5em 1.5em;
+  width: 95%;
+  margin: 10px auto;
   transition: 0.5s;
   display: flex;
   flex-wrap: wrap;
@@ -1318,14 +1327,14 @@ input .formspace{
 
 .formgroup input,
 .formgroup textarea {
-  width: 70%;
+  width: 90%;
   height: 60%;
   background: transparent;
   outline: none;
   font-size: 1.2em;
   padding: 0.7em 0.2em 0.7em 1em;
   border: 3px solid rgba(0, 0, 0, 0.3);
-  box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 5px 5px 0 rgb(0 0 0 / 30%);
   color: #155472;
   border-radius: 50px;
 }
@@ -1333,7 +1342,7 @@ input .formspace{
 .formgroup label {
   font-weight: bold;
   line-height: 1.4em;
-  color: #D87151;
+  color: #d87151;
   font-size: 1em;
   margin: auto;
   display: flex;
@@ -1347,7 +1356,7 @@ input .formspace{
 
 .formgroup input:focus,
 .formgroup textarea:focus {
-  border: 5px solid #F7F2EB;
+  border: 5px solid #D87151;
   transition: all 0.5s;
 }
 
@@ -1663,6 +1672,14 @@ input .formspace{
     height: 85%;
   }
 
+  .carousel-inner{
+    width: 100%;
+  }
+
+  .carousel-inner img {
+    height: 350px;
+  }
+
   .list-user {
     width: 30%;
     height: 85%;
@@ -1804,7 +1821,7 @@ img:nth-child(7) {
 }
 
 .form-post {
-  padding-top: 8em;
+  padding-top: 10em;
 }
 
 .form-post h2{
@@ -1983,7 +2000,7 @@ tbody{
 
 /* return to top arrow */
 
-.btn7 {
+.btn {
   height: 100px;
   width: 50px;
   display: flex;
@@ -2000,9 +2017,18 @@ tbody{
 .or{
   color: #D87151;
   font-weight: bold;
-  font-size: 1.2em;
 }
 
 .password, .buttonform a{
   color: #D87151;
+}
+
+.check{
+  color: #D87151;
+  font-weight: bold;
+}
+
+.required{
+  color: #155472;
+  font-weight: bold;
 }
