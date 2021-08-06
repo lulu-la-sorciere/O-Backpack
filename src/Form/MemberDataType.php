@@ -22,7 +22,7 @@ class MemberDataType extends AbstractType
             ->add('lastname')
             ->add('email')
             ->add('nickname')
-            ->add('picture', FileType::class, [
+            ->add('upload', FileType::class, [
                 'label' => 'Téléverser une nouvelle image',
 
                 // unmapped means that this field is not associated to any entity property

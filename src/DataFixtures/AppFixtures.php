@@ -14,6 +14,7 @@ use Faker;
 
 class AppFixtures extends Fixture
 {
+
     public function load(ObjectManager $manager)
     {/*
         $faker = Faker\Factory::create('fr_FR');
@@ -30,7 +31,8 @@ class AppFixtures extends Fixture
             } else {
                 $user->setRoles(['ROLE_USER']);
             }
-            $user->setPassword($faker->password());
+            
+            $user->setPassword("azerty");
             $user->setFirstname($faker->firstName());
             $user->setLastname($faker->lastName());
             $user->setNickname($faker->userName());

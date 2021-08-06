@@ -49,5 +49,6 @@ class ImageUploader
                     return $fileName;
 
                 }
+                return null;
     }
 }

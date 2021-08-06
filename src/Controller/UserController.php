@@ -98,9 +98,11 @@ class UserController extends AbstractController
             if ($form->isSubmitted() && $form->isValid()) {
 
                 //we call the service imageuploaer and his  upload method to upload picture on blog post
-                $newFilename = $imageUploader->upload($form, 'picture');
-
-                $user->setPicture($newFilename);
+                $newFilename = $imageUploader->upload($form, 'upload');
+                if($newFilename){
+                    $user->setPicture($newFilename);
+                }
+                
 
                // after the submission and the validation of form 
                // the object "user" content the new data 

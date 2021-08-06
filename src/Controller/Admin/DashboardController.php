@@ -2,12 +2,15 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Channel;
 use App\Entity\User;
 use App\Entity\Comment;
 use App\Entity\Continent;
 use App\Entity\Country;
 use App\Entity\ForumSubject;
+use App\Entity\Message;
 use App\Entity\Post;
+use App\Entity\ResetPasswordRequest;
 use App\Entity\Response;
 use App\Entity\Stuff;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -39,6 +42,9 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Articles', 'fas fa-book', Post::class);
         yield MenuItem::linkToCrud('Commentaires', 'fas fa-comment', Comment::class);
 
+        yield MenuItem::linkToCrud('Channel', 'fas fa-comment', Channel::class);
+        yield MenuItem::linkToCrud('Message', 'fas fa-comment', Message::class);
+
         yield MenuItem::linkToCrud('Continents', 'fas fa-globe', Continent::class);
         yield MenuItem::linkToCrud('Pays', 'fas fa-flag', Country::class);
 
@@ -46,5 +52,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Réponse Forum', 'fas fa-comment', Response::class);
         
         yield MenuItem::linkToCrud('Matériel', 'fas fa-suitcase', Stuff::class);
+
+        yield MenuItem::linkToCrud('rest_password', 'fas fa-comment', ResetPasswordRequest::class);
     }
 }
