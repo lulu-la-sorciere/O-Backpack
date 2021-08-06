@@ -33,7 +33,7 @@
 				Region : {{detailCountry.0.region}}
 			</div>
 			<div>
-				Capital :{{detailCountry.0.capital}}
+				Capital : {{detailCountry.0.capital}}
 			</div>
 			<div>
 				Langue :
@@ -56,22 +56,19 @@
 		
 	</div>
 	
-	<div class="administratif continue post" id="administratif">
-		<h4>Administratif :</h4>
+	<div class="administratif post" id="administratif">
+		<h4 class="admin-title">Administratif :</h4>
 			<ul class="listAdmin" >
 				<li>
-					Visa :
+					Visa : {{ countryInfo.0.visa }}
 				</li>
 				<li>
-					Passeport :
-				</li>
-				<li>
-					Vaccin :
+					Vaccin : {{ countryInfo.0.vaccine }}
 				</li>
 			</ul>
 	</div>
-	<div class="evenements continue post" id="evenements">
-		<h4>Evenements :</h4>
-		<p></p>
+	<div class="evenements post" id="evenements">
+		<h4 class="events-title">Evenements :</h4>
+		<p class="event">{{ countryInfo.0.events }}</p>
 	</div>
 {% endblock %}

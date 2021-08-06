@@ -38,7 +38,7 @@
     };
 
     const url = new URL('{{ http://localhost:3000/.well-known/mercure }}');
-    url.searchParams.append('topic', 'http://localhost:8080/message');
+    url.searchParams.append('topic', 'http://ec2-3-238-91-104.compute-1.amazonaws.com/message');
     const eventSource = new EventSource(url, { withCredentials: true });
     eventSource.onmessage = (evt) => {
       const data = JSON.parse(evt.data);

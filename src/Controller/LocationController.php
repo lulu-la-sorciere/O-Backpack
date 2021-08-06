@@ -76,17 +76,20 @@ class LocationController extends AbstractController
      * @Route("country/{name}/administratif", name="country_administratif")
      * 
      */
-    public function countryAdministratif(CountryRestApi $countryRestApi, $name)
+    public function countryAdministratif(CountryRestApi $countryRestApi,CountryRepository $country, $name)
     {
 
         //dump('route ok');
         $detailCountry=$countryRestApi->detailsOfCountry($name);
-        
+        //dd($country->findCountryByHisName($name));
+        $countryInfo = $country->findCountryByHisName($name);
+
       //dd($countryRestApi->detailsOfCountry($name));
         return $this->render('location/administratif.html.twig', [
             'country' =>$countryRestApi->fetch($name),
             'name'=>$name,
             'detailCountry'=>$detailCountry,
+            'countryInfo' => $countryInfo,
         ]);
     }
 

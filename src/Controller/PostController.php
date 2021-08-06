@@ -54,6 +54,7 @@ class PostController extends AbstractController
      * @Route("/pictures/{id}", name="continentPic")
      * 
      */
+
     public function continentPic(Continent $continent)
     {
         return $this->render('post/picbycontinent.html.twig', [
@@ -61,7 +62,6 @@ class PostController extends AbstractController
 
         ]);
     }
-
     /**
      * Method to display the list of posts
      * @Route("/post", name="posts")
