@@ -177,8 +177,9 @@ if(typeof mapboxgl !== 'undefined') {
 
 }
 
-var type="theme";
-var theme="aventure";
+const citation = document.getElementsById('QuoteOFDay');
+citation = type="theme";
+citation = theme="aventure";
 
 // return to top
 
