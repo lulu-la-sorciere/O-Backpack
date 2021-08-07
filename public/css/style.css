@@ -25,9 +25,11 @@ main {
 h2,
 .ah2 {
   color: #EEBC69;
+  font-family: 'Abril Fatface', cursive;
   text-shadow: #d87151 1px 1px 1px;
   font-size: 2em;
   background-color: #cecece80;
+  text-shadow: #222 1px 1px 3px;
   padding: 0.4em 2em;
   width: auto;
   border-radius: 5px;
@@ -140,7 +142,7 @@ a {
   font-size: 1.2em;
   font-weight: bold;
   color: #EEBC69;
-  text-shadow: 1px 2px 3px #444;
+  text-shadow: 1px 1px 2px #444;
 }
 
 .nav-link:hover {
@@ -581,6 +583,7 @@ h4 {
     width: 40%;
     margin: 0.5em;
   }
+
 }
 
 /*** update data and paswd forms ***/
@@ -821,6 +824,7 @@ h5 {
   .all{
     flex-wrap: wrap;
   }
+
   .presentation{
     width: 80%;
     font-size: 0.8em;
@@ -941,6 +945,7 @@ h5 {
 .form_container input,
 textarea,
 select {
+  background-color: white;
   width: 4.5em;
   height: 2em;
   font-size: 1em;
@@ -1166,7 +1171,7 @@ input .formspace{
   background-color: #ffecceb0;
   padding: 1em;
   border-radius: 5px;
-  width: 80%;
+  width: 60%;
   text-align: center;
   display: flex;
   flex-wrap: wrap;
@@ -1208,7 +1213,7 @@ input .formspace{
   text-shadow: 1px 1px #d87151;
   letter-spacing: .8px;
   line-height: 20px;
-  margin: auto;
+  margin: auto auto 20px auto;
   outline: none;
   overflow: visible;
   padding: 1em;
@@ -1219,7 +1224,7 @@ input .formspace{
   transition: filter .2s;
   user-select: none;
   -webkit-user-select: none;
-  width: 75%;
+  width: 70%;
   margin-top: 1em;
 }
 
@@ -1342,7 +1347,7 @@ input .formspace{
 .formgroup label {
   font-weight: bold;
   line-height: 1.4em;
-  color: #D87151;
+  color: #d87151;
   font-size: 1em;
   margin: auto;
   display: flex;
@@ -1356,7 +1361,7 @@ input .formspace{
 
 .formgroup input:focus,
 .formgroup textarea:focus {
-  border: 5px solid #D87151;
+  border: 5px solid #EEBC69;
   transition: all 0.5s;
 }
 
@@ -1911,7 +1916,6 @@ img:nth-child(7) {
 }
 
 .events {
-  text-align: left;
   width: 100%;
   color: white;
 }
