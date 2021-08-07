@@ -102,8 +102,8 @@ a {
   flex-wrap: wrap;
   justify-content: flex-end;
   align-content: center;
-  margin-right: 2em;
-  margin-top: 2.5em;
+  margin-right: 0.5em;
+  margin-top: 0.5em;
 }
 
 .hamburger {
