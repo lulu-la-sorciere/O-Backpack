@@ -196,9 +196,3 @@ btn.addEventListener('click', () => {
 })
 
 // contact form
-
-function addClass() {
-  document.body.classList.add("sent");
-}
-
-sendLetter.addEventListener("click", addClass);
