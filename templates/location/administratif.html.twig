@@ -60,7 +60,8 @@
 		<h4 class="admin-title">Administratif :</h4>
 			<ul class="listAdmin" >
 				<li>
-					Visa : {{ countryInfo.0.visa }}
+
+				Visa : {{ countryInfo.0.visa == "1" ? "Oui" : "Non" }}
 				</li>
 				<li>
 					Vaccin : {{ countryInfo.0.vaccine }}

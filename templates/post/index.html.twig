@@ -23,7 +23,13 @@
 		</p>
 	</div>
 
-	<section class="post">
+
+	<section class="all-posts">
+
+	<div class="title-galery">
+		<a class="ah2" href="{{ path('blog_posts') }}">Tous les articles</a>
+	</div>
+	<div class="post">
 
 		<div class="postleft">
 			<figure class="postpic">
@@ -42,18 +48,18 @@
 				<a href="{{ path('blog_post', {id:posts|last.id}) }}">Lire la suite</a>
 			</div>
 		</div>
+	</div>
 
 	</section>
 
-	<p class="continue-read">
-		<a href="{{ path('blog_posts') }}">Accéder à tous les articles</a>
-	</p>
+	<section class="all-pics">
 
 	<div class="title-galery">
 			<a class="ah2" href="{{ path('blog_gallery') }}">Galerie photo</a>
 	</div>
 
-	<section class="blog-carousel">
+	<div class="blog-carousel">
+
 		<div class="carousel-inner">
 			<img class="active2 item" src="{{ asset('img/0015.jpg')}}" alt="Picture1">
 			<img class="item" src="{{ asset('img/0013.jpg')}}" alt="Picture2">
@@ -68,6 +74,7 @@
 				&gt;
 			</div>
 		</div>
+	</div>
 	</section>
 
 {% endblock %}
