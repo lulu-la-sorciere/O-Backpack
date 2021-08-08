@@ -151,7 +151,7 @@ a {
 
 .nav-link:hover {
   font-size: 1.2em;
-  color: #155472;
+  color: white;
 }
 
 .nav-ul a:hover {
@@ -261,7 +261,7 @@ h3 {
 
 .continue {
   display: flex;
-  width: 30%;
+  width: 50%;
   color: #155472;
   text-align: left;
   margin: 20px;
@@ -988,6 +988,7 @@ img:nth-child(7) {
 /* Popup inner div */
 .popup-content {
   width: 70%;
+  height: 500px;
   margin: 0 auto;
   box-sizing: border-box;
   padding: 40px;
@@ -996,6 +997,19 @@ img:nth-child(7) {
   border-radius: 3px;
   background: #32AAAA;
   position: relative;
+}
+
+.details-cgu{
+  overflow: auto;
+  width: 100%;
+  height: 90%;
+}
+
+.legal-mention p{
+  margin: auto;
+  width: 95%;
+  color: #155472;
+  font-size: 0.8em;
 }
 
 /* Popup close button */
