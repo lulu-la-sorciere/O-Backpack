@@ -2078,7 +2078,7 @@ formcontainer, ::placeholder {
   padding-left: 0.5em;
 }
 
-.send7 {
+.send7, #post_Valider{
 	font-weight: bold;
   color: #192952;
   height: 2.5rem;
@@ -2091,3 +2091,5 @@ formcontainer, ::placeholder {
   transition: all 0.3s ease-in-out;
   cursor: pointer;
 }
+
+/* newsletter */

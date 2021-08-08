@@ -195,4 +195,4 @@ btn.addEventListener('click', () => {
 
 })
 
-// contact form
+// newsletter
