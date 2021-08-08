@@ -66,10 +66,16 @@
 				<li>
 					Vaccin : {{ countryInfo.0.vaccine }}
 				</li>
+				<li><a href="https://www.diplomatie.gouv.fr/fr/conseils-aux-voyageurs/conseils-par-pays-destination/{{ name }}/#entree">
+				Pour plus d'informations
+				</a></li>
 			</ul>
 	</div>
 	<div class="evenements post" id="evenements">
 		<h4 class="events-title">Evenements :</h4>
 		<p class="event">{{ countryInfo.0.events }}</p>
+		{#<p><a href="https://www.diplomatie.gouv.fr/fr/conseils-aux-voyageurs/conseils-par-pays-destination/{{ name }}/#entree">
+		Voir le calendrier
+		</a></p>#}
 	</div>
 {% endblock %}
