@@ -25,7 +25,8 @@ class ContactType extends AbstractType
             ])
             ->add('message', TextareaType::class, [
                 'label' => 'Message',
-                'attr' => ['rows' => 5],
+                'attr' => ['rows' => 7,
+                'placeholder' => 'Message'],
             ])
         ;
     }

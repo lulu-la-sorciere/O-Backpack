@@ -4,25 +4,27 @@
 
 {% block content %}
 
-<div class="formcontainer">
-
-    <h2>Contactez-nous!</h2>
+<div class="formwrap">
+<h2>Contactez-nous!</h2>
     
+    <div class="formcontainer">
+        
         {{ form_start(contactform) }}
                 <div class="form-group">
-                    {{ form_row(contactform.name, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_widget(contactform.name, {'attr': {'class': 'form-control'}}) }}
                 </div>
                 <div class="form-group">
-                    {{ form_row(contactform.email, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_widget(contactform.email, {'attr': {'class': 'form-control'}}) }}
                 </div>
                 <div class="form-group">
-                    {{ form_row(contactform.message, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_widget(contactform.message, {'attr': {'class': 'form-control message'}}) }}
                 </div>
                 <div class="form-group">
                     <input type="submit" value="Envoyer" class="send7">
                 </div>
+                </div>
         {{ form_end(contactform) }}
 
-<div>
+</div>
 
 {% endblock %}
