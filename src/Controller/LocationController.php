@@ -102,6 +102,7 @@ class LocationController extends AbstractController
     public function countryWeather(CountryRestApi $country, WeatherRepository $countryWeather, CountryRepository $countryName ,OpenWeather $weather, $name)
     {
         //dd($countryName->findWithDetailsDQL($name));
+        //dd($weatherDetail->findAll($name));
         //dd($weather->getWeather($name));
 
         return $this->render('location/weather.html.twig', [

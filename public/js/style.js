@@ -194,3 +194,5 @@ btn.addEventListener('click', () => {
     })
 
 })
+
+// newsletter

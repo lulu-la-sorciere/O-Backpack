@@ -21,7 +21,6 @@ main {
   height: max-content;
 }
 
-
 h2,
 .ah2 {
   color: white;
@@ -85,7 +84,6 @@ header {
 /*** nav ***/
 
 * {
-  /* position: relative; on récupère le carrousel*/
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -146,7 +144,7 @@ a {
   font-size: 1.2em;
   font-weight: bold;
   color: #EEBC69;
-  text-shadow: 1px 2px 3px #444;
+  text-shadow: 1px 1px 2px #444;
 }
 
 .nav-link:hover {
@@ -173,8 +171,6 @@ footer {
   justify-content: center;
   padding: 0.5em 0;
   border-top: 1px solid #EEBC69;
-  /* position: fixed;
-  bottom: 0; */
 }
 
 
@@ -586,7 +582,7 @@ h4 {
   /* margin: auto; */
   justify-content: space-evenly;
   height: 400px;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .team {
@@ -818,7 +814,6 @@ h5 {
   width: 20px;
 }
 
-
 .img-slider .navigation {
   z-index: 2;
   position: absolute;
@@ -999,6 +994,18 @@ img:nth-child(7) {
   display: none;
 }
 
+.continue {
+    width: 80%;
+}
+
+.blog-carousel {
+    position: relative;
+    max-width: 90%;
+    box-shadow: 0 0 2px rgb(0 0 0 / 5%);
+    display: flex;
+    margin: auto auto 2em auto;
+}
+
 /* Popup inner div */
 .popup-content {
   width: 70%;
@@ -1155,18 +1162,24 @@ tbody {
   color: #155472;
 }
 
-
 .error-page img {
   margin: 10px auto;
   border-radius: 60px;
   width: 40%;
 }
 
+.carousel-inner img {
+  width: 100%;
+  margin: auto;
+  display: none;
+  border-radius: 10px;
+  object-fit: contain;
+}
+
 .imageandtitle-error h2 {
   padding-top: 10vh;
   font-size: 2em;
 }
-
 
 /* return to top arrow */
 
@@ -1249,9 +1262,25 @@ tbody {
     width: 100%;
   }
 
+
   .postpicpost img {
     height: 400px;
   }
+
+.formwrapper {
+  background-color: #ffecceb0;
+  padding: 1em;
+  border-radius: 5px;
+  width: 80%;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  box-shadow: rgb(238 188 105 / 40%) 5px 5px, rgb(238 188 105 / 20%) 10px 10px, rgb(238 188 105 / 5%) 15px 15px;
+  margin: 2em auto 1.5em auto;
+  /* align-content: center; */
+}
+
 
   .postbeginning {
     width: 95%;
@@ -1518,8 +1547,18 @@ select {
   font-size: 20px;
 }
 
+
 .post_picture {
   height: 50px;
+}
+.col {
+  width: 95%;
+  margin: 10px auto;
+  transition: 0.5s;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
 }
 
 /*** button country/continent ***/
@@ -1532,7 +1571,22 @@ select {
   align-items: center;
 }
 
-.links a {
+.formgroup input,
+.formgroup textarea {
+  width: 90%;
+  height: 60%;
+  background: transparent;
+  outline: none;
+  font-size: 1.2em;
+  padding: 0.7em 0.2em 0.7em 1em;
+  border: 3px solid rgba(0, 0, 0, 0.3);
+  box-shadow: 5px 5px 0 rgb(0 0 0 / 30%);
+  }
+
+/********************/
+/***  à Vérifier ***/
+/*******************/
+  .links a {
   color: #155472;
 }
 
@@ -1553,6 +1607,14 @@ select {
     inset -23px -23px 46px #ffffff
 }
 
+.formgroup label {
+  font-weight: bold;
+  line-height: 1.4em;
+  color: #d87151;
+  font-size: 1em;
+  margin: auto;
+}
+
 .administratif-title {
   width: 100%;
   height: 350px;
@@ -1562,9 +1624,16 @@ select {
   background-repeat: no-repeat;
 }
 
+
 .admin-title,
 .events-title {
   text-align: left;
+}
+
+.formgroup input:focus,
+.formgroup textarea:focus {
+  border: 5px solid #D87151;
+  transition: all 0.5s;
 }
 
 .add-post {
@@ -1919,8 +1988,47 @@ input .formspace {
   pointer-events: none;
 }
 
+
 .col:nth-child(6) {
   margin-top: 2em;
+}
+
+@media screen and (max-width: 768px) {
+
+  .chat-container {
+    width: 70%;
+    height: 85%;
+  }
+
+  .carousel-inner{
+    width: 100%;
+  }
+
+  .carousel-inner img {
+    height: 350px;
+  }
+
+  .list-user {
+    width: 30%;
+    height: 85%;
+    border-right: 0.1em solid #F5F5F5;
+  }
+
+  .message-chat {
+    width: 70%;
+    height: 80%;
+    border-radius: 10px;
+    border: white;
+    word-break: break-word;
+  }
+
+  .btn-chat {
+    width: 70px;
+    height: 50%;
+    border-radius: 20px;
+    border: white;
+  }
+
 }
 
 .formgroup input:focus,
@@ -2070,6 +2178,10 @@ input .formspace {
   height: 85%;
   border-right: 0.1em solid #F5F5F5;
   border-bottom-left-radius: 10px;
+}
+
+.form-post {
+  padding-top: 10em;
 }
 
 .user-connected{
@@ -2332,7 +2444,6 @@ input .formspace {
     margin: 0.5em;
   }
 
-
   .all-posts {
     margin: 20px;
   }
@@ -2348,3 +2459,103 @@ input .formspace {
   }
 
 }
+
+/*
+.btn7 {
+  height: 100px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  cursor: pointer;
+}
+.top {
+  width: 40px;
+}
+.or{
+  color: #D87151;
+  font-weight: bold;
+}
+*/
+
+.password, .buttonform a{
+  color: #D87151;
+}
+
+.linkedIn {
+  max-width: 15%;
+}
+.check{
+  color: #D87151;
+  font-weight: bold;
+}
+.required{
+  color: #155472;
+  font-weight: bold;
+}
+
+/* contact form */
+
+.formcontainer {
+  margin-top: 2em;
+  display: flex;
+  flex-wrap: wrap;
+} 
+
+.form-control {
+  width: 21em;
+  height: 3em;
+  margin-bottom: 1em;
+  border-radius: 2rem;
+  border: none;
+  box-shadow: 0px 7px 5px rgba(0, 0, 0, 0.11);
+
+    &:focus {
+      background-color: #f2f6f8;
+      border: none;
+      box-shadow: 0px 7px 5px rgba(0, 0, 0, 0.11);
+    }
+
+}
+
+.formwrap {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10em;
+}
+
+.message {
+  width: 24em;
+  height: 12em;
+}
+
+formcontainer, .message {
+  padding: 0.5em 0 0 0.5em;
+}
+
+formcontainer, ::placeholder {
+  padding-left: 0.5em;
+}
+
+.send7, #post_Valider{
+	font-weight: bold;
+  color: #192952;
+  height: 2.5rem;
+  line-height: 2.5rem;
+  padding: 0 3rem;
+  border: 0;
+  border-radius: 3rem;
+  background-image:linear-gradient(131deg, #ffd340, #ff923c, #ff923c, #ff923c);
+  background-size: 300% 100%;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+/* newsletter */
+
