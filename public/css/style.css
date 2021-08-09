@@ -214,6 +214,7 @@ h3 {
   box-shadow: inset 23px 23px 46px #e6e5e3,
     inset -23px -23px 46px #ffffff;
   align-items: center;
+  justify-content: center;
 }
 
 .all-posts {
