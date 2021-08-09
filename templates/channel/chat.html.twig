@@ -84,8 +84,12 @@ const form = document.getElementById('form');
                 'content': message.value, // On transmet le message...
                 'channel': {{ channel.id }} // ... Et le canal correspondant
             }
+<<<<<<< HEAD
             
            // console.log(data); // Pour vérifier vos informations
+=======
+            console.log(data); // Pour vérifier vos informations
+>>>>>>> 0202d20e8a83d44eaceeec7da34ae6ea8060b7c9
             fetch('/chat/{{ channel.id }}', { // On envoie avec un post nos datas 
                 method: 'POST',
                 body: JSON.stringify(data) // On envoie les data sous format JSON

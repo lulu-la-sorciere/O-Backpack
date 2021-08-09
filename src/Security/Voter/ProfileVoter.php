@@ -31,6 +31,10 @@ class ProfileVoter extends Voter
                 // return true or false
                 if ($user->getId()!==$subject->getId()) {
                     return false;
+
+                } else {
+                    return true;
+
                 }
                 break;
             case 'POST_VIEW':
