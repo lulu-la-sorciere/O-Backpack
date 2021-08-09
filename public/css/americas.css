@@ -13,3 +13,43 @@ a {
     text-decoration: none;
     color: white;
 }
+
+.continentli{
+    background-color: #5990D9;;
+}
+
+.return a{
+    color: #5990D9;
+}
+
+
+.continentli:nth-child(1){
+    background-image: none;
+    height: 120px;
+    font-size: 1em;
+  }
+  
+  .continentli:nth-child(2){
+    background-image: none;
+    height: 120px;
+    font-size: 1em;
+
+  }
+  
+  .continentli:nth-child(3){
+    background-image: none;
+    height: 120px;
+    font-size: 1em;
+  }
+  
+  .continentli:nth-child(4){
+    background-image: none;
+    height: 120px;
+    font-size: 1em;
+  }
+  
+  .continentli:nth-child(5){
+    background-image: none;
+    height: 120px;
+    font-size: 1em;
+  }

@@ -21,9 +21,12 @@
 			<a href="{{ path('location_country', {name}) }}">Retour </a>
 		</p>
 	</div>
-  <section>
+	<div class="main-descriptio-weather">
+  <section class="desc">
 	<div class="description-weather">
-		<p>{{  }}</p>
+	{% for weatherCOuntry in countryWeather.weather %}
+		<p>{{ weatherCOuntry.content|nl2br }}</p>
+		{% endfor %}
 	</div>
   </section>
 	<section class="weather">
@@ -31,11 +34,12 @@
 			<h3>Temps du moment :</h3>
 			<p>{{ weather.weather.0.description }}</p>
 			<img class="icon-weather" src="http://openweathermap.org/img/w/{{ weather.weather.0.icon  }}.png" alt="Icon weather">
-			<p>température  Min : {{ weather.main.temp_min|round }}°C, 
-			Max: {{ weather.main.temp_max|round }}°C </p><br>
+			<p>Température  Min : {{ weather.main.temp_min|round }}°C, 
+			Max: {{ weather.main.temp_max|round }}°C </p>
 			<p>Ressenti: {{ weather.main.feels_like|round }}°C, 
 			Humidité: {{ weather.main.humidity }}%</p>
 
 		</div>
 	</section>
+	</div>
 {% endblock %}

@@ -19,14 +19,14 @@
     <section>
         <div class="post">
             <div class="postleft">
-                <figure class="postpic">
+                <figure class="postpicpost">
                     <img src="{{ asset('img/'~ post.picture)}}" alt="photo illustrant l'article">
                 </figure>
             </div>
             <div class="postright">
                 <h4>{{ title }}</h4>
                 <article class="postbeginning">
-                   {{post.content}}
+                   {{post.content|nl2br}}
                 </article>
                 <div class="user-post-info">
                     <p><strong>{{post.user.nickname}} </strong></p> 
