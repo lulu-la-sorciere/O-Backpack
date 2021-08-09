@@ -183,9 +183,9 @@ citation = theme="aventure";
 
 // return to top
 
-const btn = document.querySelector('.btn7');
+const btnv = document.querySelector('.btn7');
 
-btn.addEventListener('click', () => {
+btnv.addEventListener('click', () => {
 
     window.scrollTo({
         top: 0,
