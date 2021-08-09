@@ -46,11 +46,25 @@
 			<div>
 				Devise :
 				{% for currencies in detailCountry.0.currencies %}
+				{% if currencies.name is defined and currencies.name is not null  %}
 
-				{{currencies.name}}	{{currencies.symbol}} {{currencies.code}}
+				{{currencies.name}}	
+				{% else %}
+				<p></p>
+				{% endif %}
+				{% if currencies.symbol is defined and currencies.symbol is not null  %}
 
+				{{currencies.symbol}}	
+				{% else %}
+				<p></p>
+				{% endif %}
+				{% if currencies.code is defined and currencies.code is not null  %}
+
+				{{currencies.code}}	
+				{% else %}
+				<p></p>
+				{% endif %}
 				{% endfor %}
-				
 			</div>
 		</div>
 		
@@ -60,11 +74,16 @@
 		<h4 class="admin-title">Administratif :</h4>
 			<ul class="listAdmin" >
 				<li>
-
+				{% if countryInfo.0.visa is defined and countryInfo.0.visa is not null %}
 				Visa : {{ countryInfo.0.visa == "1" ? "Oui" : "Non" }}
+				{% else %}
+				{% endif %}
 				</li>
 				<li>
+				{% if countryInfo.0.vaccine is defined and countryInfo.0.vaccine is not null %}
 					Vaccin : {{ countryInfo.0.vaccine }}
+					{% else %}
+				{% endif %}
 				</li>
 				<li><a href="https://www.diplomatie.gouv.fr/fr/conseils-aux-voyageurs/conseils-par-pays-destination/{{ name }}/#entree">
 				Pour plus d'informations
@@ -73,9 +92,12 @@
 	</div>
 	<div class="evenements post" id="evenements">
 		<h4 class="events-title">Evenements :</h4>
+		{% if countryInfo.0.events  is defined and countryInfo.0.events  is not null %}
 		<p class="event">{{ countryInfo.0.events }}</p>
 		{#<p><a href="https://www.diplomatie.gouv.fr/fr/conseils-aux-voyageurs/conseils-par-pays-destination/{{ name }}/#entree">
 		Voir le calendrier
 		</a></p>#}
+			{% else %}
+				{% endif %}
 	</div>
 {% endblock %}
