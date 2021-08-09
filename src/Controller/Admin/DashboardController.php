@@ -13,6 +13,7 @@ use App\Entity\Post;
 use App\Entity\ResetPasswordRequest;
 use App\Entity\Response;
 use App\Entity\Stuff;
+use App\Entity\Weather;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -47,6 +48,7 @@ class DashboardController extends AbstractDashboardController
 
         yield MenuItem::linkToCrud('Continents', 'fas fa-globe', Continent::class);
         yield MenuItem::linkToCrud('Pays', 'fas fa-flag', Country::class);
+        yield MenuItem::linkToCrud('Météo', 'fas fa-flag', Weather::class);
 
         yield MenuItem::linkToCrud('Forum/Sujet', 'fas fa-list', ForumSubject::class);
         yield MenuItem::linkToCrud('Réponse Forum', 'fas fa-comment', Response::class);
