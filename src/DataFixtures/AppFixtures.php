@@ -16,7 +16,7 @@ class AppFixtures extends Fixture
 {
 
     public function load(ObjectManager $manager)
-    {
+    {/*
         $faker = Faker\Factory::create('fr_FR');
 
         // $product = new Product();
@@ -31,7 +31,8 @@ class AppFixtures extends Fixture
             } else {
                 $user->setRoles(['ROLE_USER']);
             }
-            $user->setPassword($faker->password());
+            
+            $user->setPassword("azerty");
             $user->setFirstname($faker->firstName());
             $user->setLastname($faker->lastName());
             $user->setNickname($faker->userName());
@@ -74,10 +75,6 @@ class AppFixtures extends Fixture
                     $manager->persist($comments);
                 }
             }
-        }
-
-
-
-        $manager->flush();
+        }*/
     }
 }

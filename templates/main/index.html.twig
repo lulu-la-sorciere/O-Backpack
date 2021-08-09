@@ -11,7 +11,7 @@
         <img src="{{ asset('img/slide-main/0003.jpg')}}" alt="photo" class="carousel">
         <div class="info">
           <h6>o'backpack</h6>
-          <p>Toutes les infos dont vous avez besoin sur un seul site!</p>
+          <p>Un site dédié pour les backpacker afin d'y regrouper toutes les informations utlies</p>
         </div>
       </div>
       <div class="slide">
@@ -52,13 +52,18 @@
     </div>
 
     <div class="main-title">
-        <h3>Nos 3 derniers articles</h3>
+        <h2>Bienvenue</h2>
     </div>
+<div class="all">
+  <div class="presentation">
+      <div id="QuoteOFDay"></div>
+  </div>
+
+<div class="posts">
+  <h3>Nos trois derniers articles</h3>
 {% for post in posts  %}
     <section class="post">
-
-		
-      <div class="postleft">
+          <div class="postleft">
           <figure class="postpic">
               <img src="{{ asset('img/'~ post.picture)}}" alt="photo illustrant l'article">
           </figure>
@@ -76,6 +81,6 @@
     
     </section>
 {% endfor %}
-    {# </div> #}
-
+    </div> 
+</div>
 {% endblock %}

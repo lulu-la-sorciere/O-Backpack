@@ -7,6 +7,7 @@ use App\Entity\Country;
 use App\Repository\ContinentRepository;
 use App\Repository\CountryRepository;
 use App\Repository\StuffRepository;
+use App\Repository\WeatherRepository;
 use App\Service\OpenWeather;
 use App\Service\CountryRestApi;
 use App\Service\Unsplash;
@@ -55,12 +56,11 @@ class LocationController extends AbstractController
      * Country's details
      * 
      * @Route("continent/country/{name}", name="country")
-     */
+     *//*
     public function show(CountryRestApi $countryRestApi, $name, Unsplash $picture): Response
     {
       
         //dd($name);   
-        $picture = $picture->getPicture($name);
         //dd($picture);
 
         return $this->render('location/country.html.twig', [
@@ -69,24 +69,30 @@ class LocationController extends AbstractController
             'name'=>$name,
             
         ]);
-    }
+    }*/
 
     /**
      * Method for administration administrative information
      * @Route("country/{name}/administratif", name="country_administratif")
      * 
      */
-    public function countryAdministratif(CountryRestApi $countryRestApi, $name)
+    public function countryAdministratif(CountryRestApi $countryRestApi,CountryRepository $country, $name, Unsplash $picture)
     {
+
+        $picture = $picture->getPicture($name);
 
         //dump('route ok');
         $detailCountry=$countryRestApi->detailsOfCountry($name);
-        
+        //dd($country->findCountryByHisName($name));
+        $countryInfo = $country->findCountryByHisName($name);
+
       //dd($countryRestApi->detailsOfCountry($name));
         return $this->render('location/administratif.html.twig', [
             'country' =>$countryRestApi->fetch($name),
             'name'=>$name,
             'detailCountry'=>$detailCountry,
+            'picture' => $picture,
+            'countryInfo' => $countryInfo,
         ]);
     }
 
@@ -95,11 +101,16 @@ class LocationController extends AbstractController
      * @Route("country/{name}/weather", name="country_weather")
      * 
      */
-    public function countryWeather(CountryRestApi $country, OpenWeather $weather, $name)
+    public function countryWeather(CountryRestApi $country, WeatherRepository $countryWeather, CountryRepository $countryName ,OpenWeather $weather, $name)
     {
+        
+        //dd($countryName->findWithDetailsDQL($name));
+        //dd($weatherDetail->findAll($name));
         //dd($weather->getWeather($name));
+
         return $this->render('location/weather.html.twig', [
             'country' => $country->fetch($name),
+            'countryWeather' => $countryName->findWithDetailsDQL($name),
             'name'=>$name,
             'weather' => $weather->getWeather($name)
         ]);

@@ -18,10 +18,14 @@
 {% block content %}
     <div class="title">
         <h5>Vos Itinéraires
+
             <img src="{{ asset('img/icon/point.png') }}" alt="" class="point">
         </h5>
     </div>
 
     <div id='map' class="map-img"></div>
+    <p class="return">
+		<a href="{{ path('user_profile', {id:id}) }}">Retour</a>
+	</p>
 
 {% endblock %}

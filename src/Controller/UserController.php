@@ -98,9 +98,11 @@ class UserController extends AbstractController
             if ($form->isSubmitted() && $form->isValid()) {
 
                 //we call the service imageuploaer and his  upload method to upload picture on blog post
-                $newFilename = $imageUploader->upload($form, 'picture');
-
-                $user->setPicture($newFilename);
+                $newFilename = $imageUploader->upload($form, 'upload');
+                if($newFilename){
+                    $user->setPicture($newFilename);
+                }
+                
 
                // after the submission and the validation of form 
                // the object "user" content the new data 
@@ -128,9 +130,11 @@ class UserController extends AbstractController
     /**
      * @Route("/profile/{id}/maps", name="map")
      */
-    public function getMaps(): Response
+    public function getMaps($id): Response
     {
+        
         return $this->render('user/map.html.twig',[
+            'id'=>$id,
         ]);
     }
 }

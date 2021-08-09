@@ -1,4 +1,13 @@
-<h1>Salut!</h1>
+{% block subject 'Mot de passe oublié - O\'Backpack' %}
+
+{% block body_html %}
+
+<img src="{{ asset('img/oglobe.png')}}">
+<h1>Salut ~ user.getNickname()!</h1>
+
+{% endblock %}
+
+{% block body_text %}
 
 <p>Pour réinitialiser votre mot de passe, cliquez sur le lien suivant svp :</p>
 
@@ -6,4 +15,8 @@
 
 <p>Ce lien est valable pendant {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.</p>
 
-<p>À bientôt!</p>
+<p>À bientôt sur la route!</p>
+
+{% endblock %}
+
+

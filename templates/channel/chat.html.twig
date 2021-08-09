@@ -3,15 +3,28 @@
 {% block title %}Chat{% endblock %}
 
 {% block content %}
+
+<div class="title">
+        <h2 class="chat-title">Chat {{ channel.name }}</h2>
+</div>
+
+<p class="return">
+		<a href="{{ path('channel')}}">Retour aux channels</a>
+	</p>
+
 <div class="container">
     {% if app.user %}
         <div class="info-log">
             <img src="{{ asset('img/icon/chat.png') }}" alt="" class="chat-icon">
-            <p>You are logged in as <strong>{{ app.user.firstname }}</strong>, <a href="{{ path('app_logout') }}" class="chat-logout">Logout</a></p>
+            <p>Vous êtes connecté en tant que <strong>{{ app.user.nickname }}</strong>, <a href="{{ path('app_logout') }}" class="chat-logout">Logout</a></p>
         </div>
     {% endif %}
-    <h1>Channel {{ channel.name }}</h1>
+
     <div class="list-user">
+        <div class="user-connected">
+            <img src="{{ asset('img/'~ app.user.picture) }}" altr="">
+            <p>{{ app.user.nickname }}</p>
+        </div>
     </div>
     <div class="chat-container">
         <div class="chat">
@@ -56,11 +69,11 @@
 <script>
 // The subscriber subscribes to updates for the https://example.com/users/dunglas topic
 // and to any topic matching https://example.com/books/{id}
-const url = new URL('http://ec2-3-238-91-104.compute-1.amazonaws.com:3000/.well-known/mercure');
+const url = new URL('http://ec2-3-237-178-199.compute-1.amazonaws.com:3000/.well-known/mercure');
 url.searchParams.append('topic', 'http://localhost/chat/{{channel.id}}');
-url.searchParams.append('topic', 'http://ec2-3-238-91-104.compute-1.amazonaws.com/chat/{{channel.id}}');
+url.searchParams.append('topic', 'http://ec2-3-237-178-199.compute-1.amazonaws.com/chat/{{channel.id}}');
 url.searchParams.append('topic', 'http://localhost/chat/*');
-url.searchParams.append('topic', 'http://ec2-3-238-91-104.compute-1.amazonaws.com/chat/*');
+url.searchParams.append('topic', 'http://ec2-3-237-178-199.compute-1.amazonaws.com/chat/*');
 // The URL class is a convenient way to generate URLs such as https://localhost/.well-known/mercure?topic=https://example.com/books/{id}&topic=https://example.com/users/dunglas
 
 const eventSource = new EventSource(url, {
@@ -84,12 +97,13 @@ const form = document.getElementById('form');
                 'content': message.value, // On transmet le message...
                 'channel': {{ channel.id }} // ... Et le canal correspondant
             }
-<<<<<<< HEAD
             
            // console.log(data); // Pour vérifier vos informations
-=======
+
             console.log(data); // Pour vérifier vos informations
->>>>>>> 0202d20e8a83d44eaceeec7da34ae6ea8060b7c9
+   
+           // console.log(data); // Pour vérifier vos informations
+
             fetch('/chat/{{ channel.id }}', { // On envoie avec un post nos datas 
                 method: 'POST',
                 body: JSON.stringify(data) // On envoie les data sous format JSON

@@ -177,3 +177,22 @@ if(typeof mapboxgl !== 'undefined') {
 
 }
 
+let citation = document.getElementById('QuoteOFDay');
+citation = type="theme";
+citation = theme="aventure";
+
+// return to top
+
+const btnv = document.querySelector('.btn7');
+console.log(btnv);
+btnv.addEventListener('click', () => {
+
+    window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "smooth"
+    })
+
+})
+
+// newsletter

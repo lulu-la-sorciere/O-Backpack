@@ -12,26 +12,37 @@
 
 	<div class="links">
 		<p class="link-post">
-			<a href="{{ path('location_country_administratif', {name:name}) }}#administratif">Administratif</a>
-		</p>
-		<p class="link-post">
-			<a href="{{ path('location_country_stuff', {name:name}) }}">Matériel</a>
-		</p>
-		<p class="link-post">
-			<a href="{{ path('location_country', {name}) }}">Retour </a>
+			<a href="{{ path('location_country_administratif', {name}) }}">Retour </a>
 		</p>
 	</div>
-  
+	<div class="main-descriptio-weather">
+  <section class="desc">
+	<div class="description-weather">
+	{% if countryWeather.weather is defined and countryWeather.weather is not null %}
+	
+		{% for weatherCOuntry in countryWeather.weather %}
+
+			<p>{{ weatherCOuntry.content|nl2br }}</p>
+			
+		{% else %}
+			<p></p>
+		{% endfor %}
+
+	{% endif %}
+	</div>
+  </section>
+
 	<section class="weather">
 		<div class="weather-description">
 			<h3>Temps du moment :</h3>
 			<p>{{ weather.weather.0.description }}</p>
 			<img class="icon-weather" src="http://openweathermap.org/img/w/{{ weather.weather.0.icon  }}.png" alt="Icon weather">
-			<p>température  Min : {{ weather.main.temp_min|round }}°C, 
-			Max: {{ weather.main.temp_max|round }}°C </p><br>
+			<p>Température  Min : {{ weather.main.temp_min|round }}°C, 
+			Max: {{ weather.main.temp_max|round }}°C </p>
 			<p>Ressenti: {{ weather.main.feels_like|round }}°C, 
 			Humidité: {{ weather.main.humidity }}%</p>
 
 		</div>
 	</section>
+	</div>
 {% endblock %}

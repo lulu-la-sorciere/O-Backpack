@@ -37,6 +37,33 @@ class CountryRepository extends ServiceEntityRepository
         return $query->getResult();
     }
 
+       /**
+     * Méthode retournant tous les détails d'une série :
+     * - Infos de la série : title, description, ...
+     * - Les saisons associées
+     * - les catégories
+     * - les personnages
+     *
+     * @param int $id
+     * @return void
+     */
+    public function findWithDetailsDQL($name): ?Country
+    {
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT country, weather
+            FROM App\Entity\Country country
+            LEFT JOIN country.weather weather
+            WHERE country.name = :name
+            '
+        )->setParameter('name', $name);
+
+        // On execute et on retourne le résultat sous forme de tableau
+        // d'objets de la classe TvShow
+        return $query->getOneOrNullResult();
+    }
+
     // /**
     //  * @return Country[] Returns an array of Country objects
     //  */

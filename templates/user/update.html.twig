@@ -7,7 +7,9 @@
     <div class="title">
         <h2>Modifiez vos données</h2>
     </div>
-
+    <p class="return">
+		<a href="{{ path('user_profile', {id:user.id}) }}">Retour</a>
+	</p>
     <div class="formwrapper">
 
         {{ form_start(form) }}
@@ -33,7 +35,7 @@
             }) }}</div>
             </div>
             <div class="col">
-                <div class="formgroup">{{ form_row(form.picture, {
+                <div class="formgroup">{{ form_row(form.upload, {
                 label: 'Avatar'
             }) }}</div>
             </div>
