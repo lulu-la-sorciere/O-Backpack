@@ -5,18 +5,26 @@
 {% block content %}
 
 <div class="title">
-        <h1 class="chat-title">Chat {{ channel.name }}</h1>
+        <h2 class="chat-title">Chat {{ channel.name }}</h2>
 </div>
+
+<p class="return">
+		<a href="{{ path('channel')}}">Retour aux channels</a>
+	</p>
 
 <div class="container">
     {% if app.user %}
         <div class="info-log">
             <img src="{{ asset('img/icon/chat.png') }}" alt="" class="chat-icon">
-            <p>You are logged in as <strong>{{ app.user.firstname }}</strong>, <a href="{{ path('app_logout') }}" class="chat-logout">Logout</a></p>
+            <p>You are logged in as <strong>{{ app.user.nickname }}</strong>, <a href="{{ path('app_logout') }}" class="chat-logout">Logout</a></p>
         </div>
     {% endif %}
 
     <div class="list-user">
+        <div class="user-connected">
+            <img src="{{ asset('img/'~ app.user.picture) }}" altr="">
+            <p>{{ app.user.nickname }}</p>
+        </div>
     </div>
     <div class="chat-container">
         <div class="chat">

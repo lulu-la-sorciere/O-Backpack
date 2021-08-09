@@ -24,3 +24,39 @@ a {
     color: #f7f2eb;
 }
 
+.return a {
+    color: #d9b0b1;
+}
+
+
+.continentli:nth-child(1){
+    background-image: none;
+    height: 120px;
+    font-size: 1em;
+  }
+  
+  .continentli:nth-child(2){
+    background-image: none;
+    height: 120px;
+    font-size: 1em;
+
+  }
+  
+  .continentli:nth-child(3){
+    background-image: none;
+    height: 120px;
+    font-size: 1em;
+  }
+  
+  .continentli:nth-child(4){
+    background-image: none;
+    height: 120px;
+    font-size: 1em;
+  }
+  
+  .continentli:nth-child(5){
+    background-image: none;
+    height: 120px;
+    font-size: 1em;
+  }
+  

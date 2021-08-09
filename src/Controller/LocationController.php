@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Continent;
 use App\Entity\Country;
-use App\Entity\Weather;
 use App\Repository\ContinentRepository;
 use App\Repository\CountryRepository;
 use App\Repository\StuffRepository;
@@ -100,13 +99,16 @@ class LocationController extends AbstractController
      * @Route("country/{name}/weather", name="country_weather")
      * 
      */
-    public function countryWeather(CountryRestApi $country, OpenWeather $weather, $name)
+    public function countryWeather(CountryRestApi $country, WeatherRepository $countryWeather, CountryRepository $countryName ,OpenWeather $weather, $name)
     {
-        //dd($weatherDetail);
+        //dd($countryName->findWithDetailsDQL($name));
+        //dd($weatherDetail->findAll($name));
         //dd($weather->getWeather($name));
+
         return $this->render('location/weather.html.twig', [
             'country' => $country->fetch($name),
-            'name'=> $name,
+            'countryWeather' => $countryName->findWithDetailsDQL($name),
+            'name'=>$name,
             'weather' => $weather->getWeather($name)
         ]);
     }

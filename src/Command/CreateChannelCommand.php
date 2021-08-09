@@ -31,9 +31,8 @@ class CreateChannelCommand extends Command
                 ]
             )
             ->setHelp(
-                <<<'EOT'
-The <info>create:channel</info> command creates a channel with an <info>name</info> argument
-EOT
+'The <info>create:channel</info> command creates a channel with an <info>name</info> argument'
+
             );
     }
 
