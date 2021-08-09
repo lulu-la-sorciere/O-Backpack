@@ -807,12 +807,12 @@ h5 {
   padding-top: 10vh;
   font-size: 2em;
 }
-
+/* 
 .btn7 {
   position: absolute;
   bottom: 0;
   right: 20px;
-}
+} */
 
 .btn7 img {
   height: 30px;
@@ -2513,16 +2513,15 @@ input .formspace {
 
 }
 
-/*
 .btn7 {
-  height: 100px;
-  width: 50px;
+  height: 60px;
+  width: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
   position: fixed;
-  right: 20px;
-  bottom: 20px;
+  right: 2px;
+  bottom: 50px;
   cursor: pointer;
 }
 .top {
@@ -2532,7 +2531,7 @@ input .formspace {
   color: #D87151;
   font-weight: bold;
 }
-*/
+
 
 .password, .buttonform a{
   color: #D87151;
