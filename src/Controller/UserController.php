@@ -130,9 +130,11 @@ class UserController extends AbstractController
     /**
      * @Route("/profile/{id}/maps", name="map")
      */
-    public function getMaps(): Response
+    public function getMaps($id): Response
     {
+        
         return $this->render('user/map.html.twig',[
+            'id'=>$id,
         ]);
     }
 }

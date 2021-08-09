@@ -6,22 +6,16 @@
 
 {% block content %}
 	<div class="imageandtitle">
-		<p class="administratif-title"></p>
-		<h2>{{name}}
-			- Administratif</h2>
+		<img src="{{ picture.results.3.urls.raw }}&w=1600&dpr=2" alt="image monde" class="continentspec">
+		<h2>{{name}}</h2>
 	</div>
 
 	<div class="links">
 		<p class="link-post">
-			<a href="{{ path('location_country_stuff', {name:name}) }}">Matériel</a>
-		</p>
-		<p class="link-post">
 			<a href="{{ path('location_country_weather', {name}) }}">Météo</a>
 		</p>
 		<p class="link-post">
-			<a href="{{ path('location_country', {name:detailCountry.0.name}) }}">Retour
-				{{detailCountry.0.name}}
-			</a>
+		<a href="{{ path('location_continent') }}">Retour à la liste des continents</a>
 		</p>
 	</div>
 	<div class= "adminCountry" >
@@ -85,7 +79,7 @@
 					{% else %}
 				{% endif %}
 				</li>
-				<li><a href="https://www.diplomatie.gouv.fr/fr/conseils-aux-voyageurs/conseils-par-pays-destination/{{ name }}/#entree">
+				<li><a target="_blank" href="https://www.diplomatie.gouv.fr/fr/conseils-aux-voyageurs/conseils-par-pays-destination/{{ name }}/#entree">
 				Pour plus d'informations
 				</a></li>
 			</ul>
@@ -99,5 +93,14 @@
 		</a></p>#}
 			{% else %}
 				{% endif %}
+	</div>
+	<div class="stuffs-list post">
+		<h4 class="events-title">Matériel nécessaire : </h4>
+			<ul>
+				<li>Tente</li>
+				<li>Parapluie</li>
+				<li>Lampe torche</li>
+				<li>Batterie de secours pour téléphone portable</li>
+			</ul>
 	</div>
 {% endblock %}

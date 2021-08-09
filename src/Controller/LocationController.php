@@ -56,12 +56,11 @@ class LocationController extends AbstractController
      * Country's details
      * 
      * @Route("continent/country/{name}", name="country")
-     */
+     *//*
     public function show(CountryRestApi $countryRestApi, $name, Unsplash $picture): Response
     {
       
         //dd($name);   
-        $picture = $picture->getPicture($name);
         //dd($picture);
 
         return $this->render('location/country.html.twig', [
@@ -70,15 +69,17 @@ class LocationController extends AbstractController
             'name'=>$name,
             
         ]);
-    }
+    }*/
 
     /**
      * Method for administration administrative information
      * @Route("country/{name}/administratif", name="country_administratif")
      * 
      */
-    public function countryAdministratif(CountryRestApi $countryRestApi,CountryRepository $country, $name)
+    public function countryAdministratif(CountryRestApi $countryRestApi,CountryRepository $country, $name, Unsplash $picture)
     {
+
+        $picture = $picture->getPicture($name);
 
         //dump('route ok');
         $detailCountry=$countryRestApi->detailsOfCountry($name);
@@ -90,6 +91,7 @@ class LocationController extends AbstractController
             'country' =>$countryRestApi->fetch($name),
             'name'=>$name,
             'detailCountry'=>$detailCountry,
+            'picture' => $picture,
             'countryInfo' => $countryInfo,
         ]);
     }
@@ -101,6 +103,7 @@ class LocationController extends AbstractController
      */
     public function countryWeather(CountryRestApi $country, WeatherRepository $countryWeather, CountryRepository $countryName ,OpenWeather $weather, $name)
     {
+        
         //dd($countryName->findWithDetailsDQL($name));
         //dd($weatherDetail->findAll($name));
         //dd($weather->getWeather($name));

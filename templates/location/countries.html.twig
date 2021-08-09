@@ -45,7 +45,7 @@
 	<ul class="continentul">
 		{%  for data in datas %}
 			<li class="continentli">
-				<a href="{{ path('location_country', {name:data.name}) }}">{{data.name}}</a>
+				<a href="{{ path('location_country_administratif', {name:data.name}) }}">{{data.name}}</a>
 			</li>
 		{% endfor %}
 	</ul>
