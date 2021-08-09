@@ -663,11 +663,6 @@ h4 {
   justify-content: space-around;
 }
 
-  .team {
-    width: 40%;
-    margin: 0.5em;
-  }
-
 .weather-description h3{
   color: #D87151;
 }
@@ -921,16 +916,6 @@ img:nth-child(7) {
 .chat-icon {
   width: 100px;
 }
-
-  .all{
-    flex-wrap: wrap;
-  }
-
-  .presentation{
-    width: 80%;
-    font-size: 0.8em;
-    height: 200px;
-  }
 
 .continentall {
   margin: 0;
