@@ -177,14 +177,14 @@ if(typeof mapboxgl !== 'undefined') {
 
 }
 
-const citation = document.getElementsById('QuoteOFDay');
+let citation = document.getElementById('QuoteOFDay');
 citation = type="theme";
 citation = theme="aventure";
 
 // return to top
 
 const btnv = document.querySelector('.btn7');
-
+console.log(btnv);
 btnv.addEventListener('click', () => {
 
     window.scrollTo({
