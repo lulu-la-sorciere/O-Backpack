@@ -917,8 +917,6 @@ img:nth-child(7) {
   width: 100px;
 }
 
-
-
 .continentall {
   margin: 0;
   background-image: url(../img/0022.jpg);
@@ -1193,7 +1191,7 @@ tbody {
 }
 
 /* return to top arrow */
-
+/* 
 .btn {
   height: 100px;
   width: 50px;
@@ -1204,7 +1202,7 @@ tbody {
   right: 20px;
   bottom: 20px;
   cursor: pointer;
-}
+} */
 
 .top {
   width: 40px;
@@ -2552,11 +2550,11 @@ input .formspace {
   border: none;
   box-shadow: 0px 7px 5px rgba(0, 0, 0, 0.11);
 
-    &:focus {
+    /* &:focus {
       background-color: #f2f6f8;
       border: none;
       box-shadow: 0px 7px 5px rgba(0, 0, 0, 0.11);
-    }
+    } */
 
 }
 
