@@ -24,13 +24,15 @@
 	<div class="main-descriptio-weather">
   <section class="desc">
 	<div class="description-weather">
-	{% if countryWeather.weather == null %}
-	<p></p>
-	{% else %}
+	{% if countryWeather.weather is defined and countryWeather.weather is not null %}
+	
+		{% for weatherCOuntry in countryWeather.weather %}
 
-	{% for weatherCOuntry in countryWeather.weather %}
 			<p>{{ weatherCOuntry.content|nl2br }}</p>
-	{% endfor %}
+			
+		{% else %}
+			<p></p>
+		{% endfor %}
 
 	{% endif %}
 	</div>
